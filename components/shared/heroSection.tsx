@@ -1,9 +1,8 @@
 import { FloatingDockDemo } from "./Dock"
-import { BackgroundBeamsWithCollision } from "../ui/background-beams-with-collision"
 
 function HeroSection() {
   return (
-    <BackgroundBeamsWithCollision className="mt-40 bg-white">
+  
       <div className="xl:px-36 sm:px-32">
         <div className="relative isolate px-6 pt-14 lg:px-8">
           <div
@@ -34,7 +33,7 @@ function HeroSection() {
         </div>
 
       </div>
-    </BackgroundBeamsWithCollision>
+    
   )
 }
 
