@@ -28,7 +28,7 @@ const Navbar = () => {
                             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
                         >
                             <span className="sr-only">Open main menu</span>
-                            <Bars3Icon aria-hidden="true" className="h-6 w-6 text-white" />
+                            <Bars3Icon aria-hidden="true" className="h-6 w-6 text-black" />
                         </button>
                     </div>
 
@@ -38,7 +38,7 @@ const Navbar = () => {
                             <Link
                                 key={item.name}
                                 href={item.href}// Use fragment identifier
-                                className='text-gray-600 font-light leading-6 hover:text-slate-100'>
+                                className='text-gray-600 font-light leading-6 hover:text-black'>
                                 {item.name}
                             </Link>
                         ))}
@@ -61,7 +61,7 @@ const Navbar = () => {
                             {/* Company logo in mobile menu */}
                             <Link href="/" className="-m-1.5 p-1.5">
                                 <span className="sr-only">Your Company</span>
-                                <h1 className='font-extrabold text-slate-950'>Ojukwu<span className='font-extrabold text-blue-100'>Somkene</span></h1>
+                                <h1 className='font-extrabold text-slate-950'>Ojukwu<span className='font-extrabold text-yellow-400'> Somkene</span></h1>
                             </Link>
 
                             {/* Button to close mobile menu */}
@@ -71,7 +71,7 @@ const Navbar = () => {
                                 className="-m-2.5 rounded-md p-2.5 text-gray-700"
                             >
                                 <span className="sr-only">Close menu</span>
-                                <XMarkIcon aria-hidden="true" className="h-6 w-6" />
+                                <XMarkIcon aria-hidden="true" className=" h-6 w-6" />
                             </button>
                         </div>
                         <div className="mt-6 flow-root">
