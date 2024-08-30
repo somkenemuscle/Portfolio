@@ -2,14 +2,14 @@ import {
   IconBrandGithub,
   IconBrandX,
   IconBrandLinkedin,
-  IconBrandGmail
+  IconBrandGmail,
 
 } from "@tabler/icons-react";
 
 
 function Contact() {
   return (
-    <div id="contact" className="bg-gradient-to-r from-gray-50 to-white hover:cursor-pointer lg:px-48 sm:px-9 py-8 mt-10">
+    <div id="contact" className="hover:cursor-pointer lg:px-48 sm:px-9 py-8 mt-14">
       {/* <!-- Use flex-col to stack on small screens, flex-row for larger screens --> */}
       <div className="flex flex-col sm:flex-row justify-between items-center">
         <div className="mb-4 sm:mb-0">
@@ -34,6 +34,13 @@ function Contact() {
 
         </div>
       </div>
+
+      <footer className="mt-10 text-center">
+        <hr />
+        <br />
+        <span className="font-light text-sm text-gray-600">Copyright  2024 - Ojukwu Somkene.</span>
+
+      </footer>
     </div>
   )
 }

@@ -38,7 +38,7 @@ function Skills() {
   };
 
   return (
-    <div id="skills" className="py-12 px-16">
+    <div id="skills" className="py-12 px-16 my-8">
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-10 justify-items-center">
         {skills.map((skill, index) => (
           <motion.div
