@@ -1,3 +1,4 @@
+'use client'
 import {
   IconBrandReact,
   IconBrandMongodb,
@@ -12,31 +13,46 @@ import {
   IconBrandCss3,
   IconServer2,
 } from "@tabler/icons-react";
+import { motion } from "framer-motion";
 
 function Skills() {
   const skills = [
-    { name: "HTML5", logo: <IconBrandHtml5 size={64} className="text-orange-500" /> },
-    { name: "CSS3", logo: <IconBrandCss3 size={64} className="text-blue-700" /> },
-    { name: "JavaScript", logo: <IconBrandJavascript size={64} className="text-yellow-500" /> },
-    { name: "TypeScript", logo: <IconBrandTypescript size={64} className="text-blue-600" /> },
-    { name: "Bootstrap", logo: <IconBrandBootstrap size={64} className="text-purple-600" /> },
-    { name: "Tailwind", logo: <IconBrandTailwind size={64} className="text-teal-500" /> },
-    { name: "ReactJs", logo: <IconBrandReact size={64} className="text-blue-500" /> },
-    { name: "Next.js", logo: <IconBrandNextjs size={64} className="text-black" /> },
-    { name: "Node.js", logo: <IconBrandNodejs size={64} className="text-green-800" /> },
-    { name: "Express", logo: <IconServer2 size={64} className="text-gray-700" /> },
-    { name: "MongoDB", logo: <IconBrandMongodb size={64} className="text-green-500" /> },
-    { name: "Docker", logo: <IconBrandDocker size={64} className="text-indigo-700" /> }
+    { name: "HTML5", logo: <IconBrandHtml5 size={48} className="text-orange-500" /> },
+    { name: "CSS3", logo: <IconBrandCss3 size={48} className="text-blue-700" /> },
+    { name: "JavaScript", logo: <IconBrandJavascript size={48} className="text-yellow-500" /> },
+    { name: "TypeScript", logo: <IconBrandTypescript size={48} className="text-blue-600" /> },
+    { name: "Bootstrap", logo: <IconBrandBootstrap size={48} className="text-purple-600" /> },
+    { name: "Tailwind", logo: <IconBrandTailwind size={48} className="text-teal-500" /> },
+    { name: "ReactJs", logo: <IconBrandReact size={48} className="text-blue-500" /> },
+    { name: "Next.js", logo: <IconBrandNextjs size={48} className="text-black" /> },
+    { name: "Node.js", logo: <IconBrandNodejs size={48} className="text-green-800" /> },
+    { name: "Express", logo: <IconServer2 size={48} className="text-gray-700" /> },
+    { name: "MongoDB", logo: <IconBrandMongodb size={48} className="text-green-500" /> },
+    { name: "Docker", logo: <IconBrandDocker size={48} className="text-indigo-700" /> }
   ];
+
+  // Animation variants for each skill
+  const skillVariants = {
+    hidden: { opacity: 0, y: 50 }, // Starting state
+    visible: { opacity: 1, y: 0 }, // Ending state
+  };
 
   return (
     <div id="skills" className="py-12 px-16">
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-10 justify-items-center">
-        {skills.map((skill) => (
-          <div key={skill.name} className="flex flex-col items-center">
+        {skills.map((skill, index) => (
+          <motion.div
+            key={skill.name}
+            className="flex flex-col items-center"
+            variants={skillVariants} // Apply the animation variants
+            initial="hidden" // Initial animation state
+            whileInView="visible" // Animation state when the element is in view
+            viewport={{ once: true, amount: 0.2 }} // Controls when the element should animate
+            transition={{ duration: 0.5, delay: index * 0.1 }} // Duration and delay for a staggered effect
+          >
             {skill.logo}
             <span className="mt-2 text-sm font-light">{skill.name}</span>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
