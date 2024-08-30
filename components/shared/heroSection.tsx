@@ -13,7 +13,7 @@ function HeroSection() {
               </h1>
               <p className="mt-6 text-lg  font-light leading-8 ">
                 I am a <span className="text-gray-500 font-bold">Full-Stack developer</span>  based in Nigeria, with a passion for building web applications that
-                solve real-world problems.  Believe me when I say, <span className="font-bold text-gray-500">coding isn't just a job for me</span>, it's a hobby that I love and enjoy deeply.
+                solve real-world problems.  Believe me when I say, <span className="font-bold text-gray-500">"coding isn't just a job for me it's a hobby that I love and enjoy deeply".</span>
               </p>
               <div className="flex items-center justify-center gap-x-6">
                 <FloatingDockDemo />
