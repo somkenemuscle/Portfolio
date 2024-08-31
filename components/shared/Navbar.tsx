@@ -45,10 +45,13 @@ const Navbar = () => {
                     </div>
 
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <button className="font-extrabold border bg-black text-white border-gray-500 px-4 py-2 rounded hover:bg-gray-100 focus:outline-none">
-                            <span className=" blinking-dot inline-block bg-green-500 rounded-full w-3 h-3 mr-2"></span>
-                            Let's Work!
-                        </button>
+                        <Link href="mailto:somkeneoj@gmail.com">
+                            <button className="font-extrabold border bg-black text-white border-gray-500 px-4 py-2 rounded hover:bg-gray-700 focus:outline-none">
+                                <span className=" blinking-dot inline-block bg-green-500 rounded-full w-3 h-3 mr-2"></span>
+                                Let's Work!
+                            </button>
+                        </Link>
+
                     </div>
 
                 </nav>
@@ -88,10 +91,12 @@ const Navbar = () => {
                                     ))}
                                 </div>
                                 {/* Log in link in mobile menu */}
-                                <div className="py-6">
-                                    Hire Me
+                                <Link href="mailto:somkeneoj@gmail.com">
+                                    <div className="py-6">
+                                        Hire Me
+                                    </div>
+                                </Link>
 
-                                </div>
                             </div>
                         </div>
                     </DialogPanel>

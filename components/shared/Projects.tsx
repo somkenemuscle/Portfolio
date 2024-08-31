@@ -8,30 +8,30 @@ const cards = [
         title: "SwiftDocs",
         description:
             "A live-document collaboration application which allows users from all around the world , to share the same space and share innovative ideas.",
-        technologies: ["React", "Tailwind", "MongoDb", "Next.js", "Express"],
-        livePreview: "https://swiftdocs.example.com",
-        caseStudy: "https://swiftdocs.example.com/case-study",
-        sourceCode: "https://github.com/user/swiftdocs",
+        technologies: ["React", "Tailwind", "MongoDb", "Next.js", "Express", "Typescript"],
+        livePreview: "https://swiftdocs.vercel.app/",
+        caseStudy: "#",
+        sourceCode: "https://github.com/somkenemuscle/Swift-Docs",
         image: "/assets/images/sd.jpg",
     },
     {
         title: "Appvarsity",
         description:
             "This is a description for Project 2. It involves building a full-stack application using Next.js and MongoDB.",
-        technologies: ["Next.js", "MongoDB","Tailwind","Express","React"],
-        livePreview: "https://appvarsity.example.com",
-        caseStudy: "https://appvarsity.example.com/case-study",
-        sourceCode: "https://github.com/user/appvarsity",
+        technologies: ["Next.js", "MongoDB", "Tailwind", "Express", "React", "Typescript"],
+        livePreview: "https://appvarsity.vercel.app/",
+        caseStudy: "#",
+        sourceCode: "https://github.com/somkenemuscle/AppVarsity",
         image: "/assets/images/ap.jpg",
     },
     {
         title: "Simplons Beauty Care",
         description:
             "This is a description for Project 3. It's a mobile application developed with React Native and integrates with Firebase.",
-        technologies: ["React Native", "Firebase"],
-        livePreview: "https://simplonsbeauty.example.com",
-        caseStudy: "https://simplonsbeauty.example.com/case-study",
-        sourceCode: "https://github.com/user/simplonsbeauty",
+        technologies: ["React", "Bootstrap", "Css", "Javascript"],
+        livePreview: "https://simplons-beauty-care.vercel.app/",
+        caseStudy: "#",
+        sourceCode: "https://github.com/somkenemuscle/Simplons-Beauty-Care",
         image: "/assets/images/sn.jpg",
     },
 ];
@@ -64,10 +64,10 @@ export const Projects = () => {
                                 <h2 className="text-xl font-semibold mb-4">{card.title}</h2>
                                 <p className="text-gray-700 mb-4">{card.description}</p>
                                 <div className="flex gap-2 mb-4">
-                                    <Link href={card.caseStudy} className="text-blue-500 hover:underline">
+                                    <Link href={card.caseStudy} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
                                         Case Study
                                     </Link>
-                                    <Link href={card.sourceCode} className="text-blue-500 hover:underline">
+                                    <Link href={card.sourceCode} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
                                         Source Code
                                     </Link>
                                 </div>
@@ -85,6 +85,7 @@ export const Projects = () => {
                             <Link
                                 href={card.livePreview}
                                 className="inline-block mt-auto px-4 py-2 text-white bg-black text-center rounded-xl hover:bg-gray-700"
+                                target="_blank" rel="noopener noreferrer"
                             >
                                 Live Preview
                             </Link>

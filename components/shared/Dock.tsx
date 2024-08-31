@@ -16,28 +16,28 @@ export function FloatingDockDemo() {
             icon: (
                 <IconBrandLinkedin className="h-full w-full text-black dark:text-neutral-300" />
             ),
-            href: "#",
+            href: "https://www.linkedin.com/in/somkene-ojukwu/",
         },
         {
             title: "GitHub",
             icon: (
                 <IconBrandGithub className="h-full w-full text-orange-500 dark:text-neutral-300" />
             ),
-            href: "#",
+            href: "https://github.com/somkenemuscle",
         },
         {
             title: "E-mail",
             icon: (
                 <IconBrandGmail className="h-full w-full text-red-500" />
             ),
-            href: "#",
+            href: "mailto:somkeneoj@gmail.com",
         },
         {
             title: "Twitter",
             icon: (
                 <IconBrandX className="h-full w-full text-black dark:text-neutral-300" />
             ),
-            href: "#",
+            href: "https://x.com/somkeneOj",
         }
 
     ];
