@@ -12,9 +12,9 @@ import {
 export function FloatingDockDemo() {
     const contactlinks = [
         {
-            title: "Twitter",
+            title: "Linkedin",
             icon: (
-                <IconBrandX className="h-full w-full text-black dark:text-neutral-300"/>
+                <IconBrandLinkedin className="h-full w-full text-blue-900 dark:text-neutral-300" />
             ),
             href: "#",
         },
@@ -26,19 +26,20 @@ export function FloatingDockDemo() {
             href: "#",
         },
         {
-            title: "Linkedin",
-            icon: (
-                <IconBrandLinkedin className="h-full w-full text-blue-900 dark:text-neutral-300" />
-            ),
-            href: "#",
-        },
-        {
             title: "E-mail",
             icon: (
                 <IconBrandGmail className="h-full w-full text-red-500" />
             ),
             href: "#",
         },
+        {
+            title: "Twitter",
+            icon: (
+                <IconBrandX className="h-full w-full text-black dark:text-neutral-300" />
+            ),
+            href: "#",
+        }
+
     ];
 
 

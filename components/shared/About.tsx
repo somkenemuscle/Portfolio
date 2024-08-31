@@ -5,16 +5,27 @@ import {
     IconBrandNodejs,
     IconBrandTailwind,
     IconBrandNextjs,
+    IconBrandHtml5,
+    IconBrandCss3,
+    IconBrandJavascript,
 } from "@tabler/icons-react";
 
 const About = () => {
     const technologies = [
-        { logo: <IconBrandTypescript size={48} className="text-blue-600" /> },
-        { logo: <IconBrandTailwind size={48} className="text-teal-500" /> },
-        { logo: <IconBrandReact size={48} className="text-blue-500" /> },
-        { logo: <IconBrandNextjs size={48} className="text-black" /> },
-        { logo: <IconBrandNodejs size={48} className="text-green-800" /> },
-        { logo: <IconBrandMongodb size={48} className="text-green-500" /> },
+        { logo: <IconBrandTypescript size={34} className="text-blue-600" /> },
+        { logo: <IconBrandTailwind size={34} className="text-teal-500" /> },
+        { logo: <IconBrandReact size={34} className="text-blue-500" /> },
+        { logo: <IconBrandNextjs size={34} className="text-black" /> },
+        { logo: <IconBrandNodejs size={34} className="text-green-800" /> },
+        { logo: <IconBrandMongodb size={34} className="text-green-500" /> },
+
+    ];
+    const technologies2 = [
+        { logo: <IconBrandTypescript size={34} className="text-blue-600" /> },
+        { logo: <IconBrandTailwind size={34} className="text-teal-500" /> },
+        { logo: <IconBrandReact size={34} className="text-blue-500" /> },
+        { logo: <IconBrandNextjs size={34} className="text-black" /> },
+        { logo: <IconBrandJavascript size={34} className="text-yellow-500" /> },
     ];
 
     return (
@@ -35,9 +46,9 @@ const About = () => {
                                 <h4 className="text-xl font-bold">Founder & Full-Stack Developer, Appvarsity</h4>
                                 <span className="text-sm text-gray-500">Aug 2024 - Present</span>
                                 <p className="mt-2 text-md font-light">
-                                    Founded and lead the development of Appvarsity, a platform designed to support Aptech students. Responsible for
-                                    overseeing both front-end and back-end development, managing a team, and ensuring the platform delivers valuable tools to
-                                    enhance students' educational experiences.
+                                    Founded and led the development of Appvarsity, A platform designed to support Aptech students. I am Responsible for
+                                    overseeing both front-end and back-end development, Managing the team and Ensuring the platform delivers valuable tools to
+                                    enhance students educational needs.
                                     <span className="block mt-2 font-semibold">Technologies Used:</span>
                                 </p>
                                 <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
@@ -52,8 +63,17 @@ const About = () => {
                                 <h4 className="text-xl font-bold">Frontend Developer Intern, Mindera</h4>
                                 <span className="text-sm text-gray-500">Jun 2023 - Jul 2023</span>
                                 <p className="mt-2 text-md font-light">
-                                    Focused on creating responsive user interfaces with a strong emphasis on performance and accessibility using HTML, CSS, JavaScript, and modern frameworks like Vue.js.
+                                Focused on creating responsive user interfaces with a strong emphasis on performance and accessibility. Leveraged agile methodologies to enhance teamwork and foster effective communication, contributing to a more cohesive and productive development process.
+
+                                    <span className="block mt-2 font-semibold">Technologies Used:</span>
                                 </p>
+                                <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
+                                    {technologies2.map((tech, index) => (
+                                        <span key={index} className="flex items-center justify-center">
+                                            {tech.logo}
+                                        </span>
+                                    ))}
+                                </div>
                             </li>
                         </ul>
                     </div>
