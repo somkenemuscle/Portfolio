@@ -8,7 +8,7 @@ import {
     IconBrandNextjs,
     IconBrandJavascript,
     IconBrandGit,
-    IconServer2,
+    IconServer2
 
 
 } from "@tabler/icons-react";
