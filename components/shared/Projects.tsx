@@ -39,14 +39,14 @@ const cards = [
 export const Projects = () => {
     return (
         <div>
-            <span className="text-center mb-7 block">
+            <div className="text-center mb-7 mx-4">
                 <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                     Featured <span className="text-yellow-400">Projects</span>
                 </p>
-                <p className="mt-3 font-light text-gray-500">
+                <p className="mt-3  font-light text-gray-500">
                     Check out my selected projects to see my work in action.
                 </p>
-            </span>
+            </div>
 
             <div className="hover:cursor-pointer grid grid-cols-1 gap-8 px-4 py-8 lg:mx-36 sm:mx-11">
                 {cards.map((card, idx) => (

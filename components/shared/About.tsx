@@ -45,22 +45,22 @@ const About = () => {
                         <h2 className="text-3xl text-center font-semibold mb-4 text-gray-800">About <span className="text-yellow-400">Me</span> </h2>
                         <p className="font-light">
                             With over four years of experience as a full-stack developer, I have had a deep passion for creating and building things. My journey into
-                             software engineering was driven by my love for creation, which began with drawing and making music. This creative inclination naturally 
-                             led me to explore the world of technology and software development.
+                            software engineering was driven by my love for creation, which began with drawing and making music. This creative inclination naturally
+                            led me to explore the world of technology and software development.
                         </p>
                         <p className="font-light mt-5">
-                            I specialize in both frontend and backend development, having worked extensively in both areas. I thrive on the continuous learning 
+                            I specialize in both frontend and backend development, having worked extensively in both areas. I thrive on the continuous learning
                             process that coding offers and relish the opportunity to apply new knowledge to solve real-world problems. Coding, for me, is more
-                             than just a profession, it is a hobby and a source of joy.
+                            than just a profession, it is a hobby and a source of joy.
                         </p>
                         <p className="font-light mt-5">
                             In addition to my technical skills, I am a highly social person and have always found myself in leadership roles, guiding teams and
-                             fostering collaboration. One of the projects I am most proud of is <span className="font-semibold">Appvarsity,</span>  a platform I developed with a team I brought together
-                              to provide essential information and resources to Aptech students, helping them navigate their academic careers more effectively.
+                            fostering collaboration. One of the projects I am most proud of is <span className="font-semibold">Appvarsity,</span>  a platform I developed with a team I brought together
+                            to provide essential information and resources to Aptech students, helping them navigate their academic careers more effectively.
                         </p>
                         <p className="font-light mt-5">
                             I am always excited to take on new challenges and build innovative solutions that make a difference. Let's connect and see how we can
-                             create something amazing together!
+                            create something amazing together!
                         </p>
 
                         {/* Experience */}
