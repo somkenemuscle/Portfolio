@@ -21,6 +21,6 @@ html {
 
 /* Apply the animation to the blinking-dot class */
 .blinking-dot {
-  animation: blink 1s infinite;
+  animation: blink 0.7s infinite;
 }
 
