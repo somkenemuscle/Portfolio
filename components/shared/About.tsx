@@ -36,7 +36,7 @@ const About = () => {
                 <div className="container mx-auto flex flex-col items-center md:flex-row">
                     {/* Description */}
                     <div className="text-center md:text-left">
-                        <h2 className="text-3xl font-semibold mb-4 text-gray-800">About Me</h2>
+                        <h2 className="text-3xl text-center font-semibold mb-4 text-gray-800">About Me</h2>
                         <p className="text-lg font-light text-gray-600 mb-6">
                             I am a passionate developer with a keen interest in building scalable and efficient software solutions. With over 4 years of experience in full-stack development, I specialize in creating dynamic and user-friendly web applications. I enjoy tackling complex problems and learning new technologies to enhance my skill set. Outside of coding, I love exploring new places, reading about tech innovations, and contributing to open-source projects.
                         </p>
