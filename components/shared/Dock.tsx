@@ -44,7 +44,7 @@ export function FloatingDockDemo() {
 
 
     return (
-        <div id="about" className="flex items-center justify-center mt-14 w-full">
+        <div id="projects"  className="flex items-center justify-center mt-14 w-full">
             <FloatingDock
                 items={contactlinks}
             />

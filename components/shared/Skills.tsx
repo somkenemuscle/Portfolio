@@ -45,7 +45,7 @@ function Skills() {
           These are the technologies i specialize in, drawn from my experience as a Frontend and Backend developer <span aria-hidden="true">→</span>
         </p>
       </SlideIn>
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-10 justify-items-center">
+      <div id="about" className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-10 justify-items-center">
         {skills.map((skill, index) => (
           <motion.div
             key={skill.name}
