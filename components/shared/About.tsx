@@ -6,7 +6,7 @@ import {
     IconBrandTailwind,
     IconBrandNextjs,
     IconBrandJavascript,
-  IconBrandGit
+    IconBrandGit
 
 } from "@tabler/icons-react";
 import SlideIn from "./SlideIn";
