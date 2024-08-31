@@ -12,7 +12,6 @@ import {
   IconBrandHtml5,
   IconBrandCss3,
   IconServer2,
-  IconBrandGit
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 

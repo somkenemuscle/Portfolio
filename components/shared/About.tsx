@@ -6,6 +6,8 @@ import {
     IconBrandTailwind,
     IconBrandNextjs,
     IconBrandJavascript,
+  IconBrandGit
+
 } from "@tabler/icons-react";
 import SlideIn from "./SlideIn";
 
@@ -24,6 +26,8 @@ const About = () => {
         { logo: <IconBrandTypescript size={24} className="text-blue-600" />, name: "TypeScript" },
         { logo: <IconBrandTailwind size={24} className="text-teal-500" />, name: "Tailwind CSS" },
         { logo: <IconBrandJavascript size={24} className="text-yellow-500" />, name: "JavaScript" },
+        { logo: <IconBrandGit size={24} className="text-orange-600" />, name: "Git" },
+
     ];
 
     return (
