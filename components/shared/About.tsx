@@ -11,24 +11,24 @@ import SlideIn from "./SlideIn";
 
 const About = () => {
     const technologies = [
-        { logo: <IconBrandTypescript size={24} className="text-blue-600" />, name: "TypeScript" },
-        { logo: <IconBrandTailwind size={24} className="text-teal-500" />, name: "Tailwind CSS" },
         { logo: <IconBrandReact size={24} className="text-blue-500" />, name: "React" },
         { logo: <IconBrandNextjs size={24} className="text-black" />, name: "Next.js" },
+        { logo: <IconBrandTypescript size={24} className="text-blue-600" />, name: "TypeScript" },
+        { logo: <IconBrandTailwind size={24} className="text-teal-500" />, name: "Tailwind CSS" },
         { logo: <IconBrandNodejs size={24} className="text-green-800" />, name: "Node.js" },
         { logo: <IconBrandMongodb size={24} className="text-green-500" />, name: "MongoDB" },
     ];
     const technologies2 = [
-        { logo: <IconBrandTypescript size={24} className="text-blue-600" />, name: "TypeScript" },
-        { logo: <IconBrandTailwind size={24} className="text-teal-500" />, name: "Tailwind CSS" },
         { logo: <IconBrandReact size={24} className="text-blue-500" />, name: "React" },
         { logo: <IconBrandNextjs size={24} className="text-black" />, name: "Next.js" },
+        { logo: <IconBrandTypescript size={24} className="text-blue-600" />, name: "TypeScript" },
+        { logo: <IconBrandTailwind size={24} className="text-teal-500" />, name: "Tailwind CSS" },
         { logo: <IconBrandJavascript size={24} className="text-yellow-500" />, name: "JavaScript" },
     ];
 
     return (
         <SlideIn direction='bottom'>
-            <section id="about" className="px-8 md:px-16 lg:px-32">
+            <section  className="px-8 md:px-16 lg:px-32">
                 <div className="container mx-auto flex flex-col items-center md:flex-row">
                     {/* Description */}
                     <div className="text-center md:text-left">
@@ -45,7 +45,7 @@ const About = () => {
                                     <h4 className="text-xl font-bold">Founder & Full-Stack Developer, Appvarsity</h4>
                                     <span className="text-sm text-gray-500">Aug 2024 - Present</span>
                                     <p className="mt-2 text-md font-light">
-                                        Founded and led the development of Appvarsity, a platform designed to support Aptech students. Responsible for overseeing both front-end and back-end development, managing the team, and ensuring the site delivers valuable tools to enhance students' educational needs.
+                                        Founded and led the development of Appvarsity, a platform designed to support Aptech students. Responsible for overseeing both front-end and back-end development, managing the team, and ensuring the site delivers valuable tools to enhance students educational needs.
                                         <span className="block mt-2 font-semibold">Technologies Used <span aria-hidden="true">→</span></span>
                                     </p>
                                     <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
