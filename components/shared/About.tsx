@@ -1,3 +1,4 @@
+'use client'
 import {
     IconBrandReact,
     IconBrandMongodb,
@@ -12,6 +13,7 @@ import {
 
 } from "@tabler/icons-react";
 import SlideIn from "./SlideIn";
+import { motion } from "framer-motion";
 
 const About = () => {
     const technologies = [
@@ -31,6 +33,12 @@ const About = () => {
         { logo: <IconBrandGit size={24} className="text-orange-600" />, name: "Git" },
 
     ];
+    // Animation variants for each skill
+    const skillVariants = {
+        hidden: { opacity: 0, y: 50 }, // Starting state
+        visible: { opacity: 1, y: 0 }, // Ending state
+    };
+
 
     return (
         <SlideIn direction='bottom'>
@@ -56,13 +64,23 @@ const About = () => {
                                     </p>
                                     <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
                                         {technologies.map((tech, index) => (
-                                            <button
+                                            <motion.div
                                                 key={index}
-                                                className="flex flex-col items-center justify-center p-3 rounded-md  transition-transform transform  focus:outline-none"
+                                                className="flex flex-col items-center"
+                                                variants={skillVariants} // Apply the animation variants
+                                                initial="hidden" // Initial animation state
+                                                whileInView="visible" // Animation state when the element is in view
+                                                viewport={{ once: true, amount: 0.2 }} // Controls when the element should animate
+                                                transition={{ duration: 0.5, delay: index * 0.1 }} // Duration and delay for a staggered effect
                                             >
-                                                <span className="text-lg">{tech.logo}</span>
-                                                <span className="mt-1 text-xs text-gray-700">{tech.name}</span>
-                                            </button>
+                                                <button
+                                                    key={index}
+                                                    className="flex flex-col items-center justify-center p-3 rounded-md  transition-transform transform  focus:outline-none"
+                                                >
+                                                    <span className="text-lg">{tech.logo}</span>
+                                                    <span className="mt-1 text-xs text-gray-700">{tech.name}</span>
+                                                </button>
+                                            </motion.div>
                                         ))}
                                     </div>
                                 </li>
@@ -75,13 +93,23 @@ const About = () => {
                                     </p>
                                     <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
                                         {technologies2.map((tech, index) => (
-                                            <button
+                                            <motion.div
                                                 key={index}
-                                                className="flex flex-col items-center justify-center p-3 rounded-md transition-transform transform  focus:outline-none"
+                                                className="flex flex-col items-center"
+                                                variants={skillVariants} // Apply the animation variants
+                                                initial="hidden" // Initial animation state
+                                                whileInView="visible" // Animation state when the element is in view
+                                                viewport={{ once: true, amount: 0.2 }} // Controls when the element should animate
+                                                transition={{ duration: 0.5, delay: index * 0.1 }} // Duration and delay for a staggered effect
                                             >
-                                                <span className="text-lg">{tech.logo}</span>
-                                                <span className="mt-1 text-xs text-gray-700">{tech.name}</span>
-                                            </button>
+                                                <button
+                                                    key={index}
+                                                    className="flex flex-col items-center justify-center p-3 rounded-md transition-transform transform  focus:outline-none"
+                                                >
+                                                    <span className="text-lg">{tech.logo}</span>
+                                                    <span className="mt-1 text-xs text-gray-700">{tech.name}</span>
+                                                </button>
+                                            </motion.div>
                                         ))}
                                     </div>
                                 </li>
