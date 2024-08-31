@@ -64,10 +64,10 @@ export const Projects = () => {
                                 <h2 className="text-xl font-bold mb-4">{card.title}</h2>
                                 <p className="text-gray-700 mb-4 font-light">{card.description}</p>
                                 <div className="flex gap-2 mb-4">
-                                    <Link href={card.caseStudy} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-                                        Case Study
+                                    <Link href={card.caseStudy} target="_blank" rel="noopener noreferrer"  className="text-gray-500 hover:underline">
+                                    Case Study -
                                     </Link>
-                                    <Link href={card.sourceCode} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                                    <Link href={card.sourceCode} target="_blank" rel="noopener noreferrer" className="text-gray-500  hover:underline">
                                         Source Code
                                     </Link>
                                 </div>
