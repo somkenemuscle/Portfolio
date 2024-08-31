@@ -6,7 +6,9 @@ import {
     IconBrandTailwind,
     IconBrandNextjs,
     IconBrandJavascript,
-    IconBrandGit
+    IconBrandGit,
+    IconServer2,
+
 
 } from "@tabler/icons-react";
 import SlideIn from "./SlideIn";
@@ -16,7 +18,7 @@ const About = () => {
         { logo: <IconBrandReact size={24} className="text-blue-500" />, name: "React" },
         { logo: <IconBrandNextjs size={24} className="text-black" />, name: "Next.js" },
         { logo: <IconBrandTypescript size={24} className="text-blue-600" />, name: "TypeScript" },
-        { logo: <IconBrandTailwind size={24} className="text-teal-500" />, name: "Tailwind CSS" },
+        { logo: <IconServer2 size={24} className="text-teal-500" />, name: "Express" },
         { logo: <IconBrandNodejs size={24} className="text-green-800" />, name: "Node.js" },
         { logo: <IconBrandMongodb size={24} className="text-green-500" />, name: "MongoDB" },
     ];
