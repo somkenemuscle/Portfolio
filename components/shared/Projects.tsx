@@ -9,25 +9,20 @@ type Card = {
 
 const cards: Card[] = [
     {
-        title: "Project 1",
+        title: "SwiftDocs",
         description:
             "This is a description for Project 1. It showcases a responsive website built with React and Tailwind CSS.",
     },
     {
-        title: "Project 2",
+        title: "Appvarsity",
         description:
             "This is a description for Project 2. It involves building a full-stack application using Next.js and MongoDB.",
     },
     {
-        title: "Project 3",
+        title: "Simplon's Beauty Care",
         description:
             "This is a description for Project 3. It's a mobile application developed with React Native and integrates with Firebase.",
-    },
-    {
-        title: "Project 4",
-        description:
-            "This is a description for Project 4. The project focuses on creating an e-commerce platform with payment integration.",
-    },
+    }
 ];
 
 export const Projects = () => {
