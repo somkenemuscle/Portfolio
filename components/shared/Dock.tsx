@@ -14,14 +14,14 @@ export function FloatingDockDemo() {
         {
             title: "Linkedin",
             icon: (
-                <IconBrandLinkedin className="h-full w-full text-blue-900 dark:text-neutral-300" />
+                <IconBrandLinkedin className="h-full w-full text-black dark:text-neutral-300" />
             ),
             href: "#",
         },
         {
             title: "GitHub",
             icon: (
-                <IconBrandGithub className="h-full w-full text-purple-600 dark:text-neutral-300" />
+                <IconBrandGithub className="h-full w-full text-orange-500 dark:text-neutral-300" />
             ),
             href: "#",
         },

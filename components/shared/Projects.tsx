@@ -1,78 +1,50 @@
-
 "use client";
-import { Tabs } from "../ui/tabs";
-import Image from "next/image";
 
-function Projects() {
-    const tabs = [
-        {
-            title: "Product",
-            value: "product",
-            content: (
-                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-                    <p>Product Tab</p>
-                  
-                </div>
-            ),
-        },
-        {
-            title: "Services",
-            value: "services",
-            content: (
-                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-                    <p>Services tab</p>
-                    <DummyContent />
-                </div>
-            ),
-        },
-        {
-            title: "Playground",
-            value: "playground",
-            content: (
-                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-                    <p>Playground tab</p>
-                    <DummyContent />
-                </div>
-            ),
-        },
-        {
-            title: "Content",
-            value: "content",
-            content: (
-                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-                    <p>Content tab</p>
-                    <DummyContent />
-                </div>
-            ),
-        },
-        {
-            title: "Random",
-            value: "random",
-            content: (
-                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-                    <p>Random tab</p>
-                    <DummyContent />
-                </div>
-            ),
-        },
-    ];
+import React from "react";
+
+type Card = {
+    title: string;
+    description: string;
+};
+
+const cards: Card[] = [
+    {
+        title: "Project 1",
+        description:
+            "This is a description for Project 1. It showcases a responsive website built with React and Tailwind CSS.",
+    },
+    {
+        title: "Project 2",
+        description:
+            "This is a description for Project 2. It involves building a full-stack application using Next.js and MongoDB.",
+    },
+    {
+        title: "Project 3",
+        description:
+            "This is a description for Project 3. It's a mobile application developed with React Native and integrates with Firebase.",
+    },
+    {
+        title: "Project 4",
+        description:
+            "This is a description for Project 4. The project focuses on creating an e-commerce platform with payment integration.",
+    },
+];
+
+export const Projects = () => {
     return (
-        <div className="h-[20rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-40">
-            <Tabs tabs={tabs} />
+        <div id="projects" className="grid grid-cols-1 gap-8 px-4 py-8 lg:mx-36 sm:mx-11">
+            {cards.map((card, idx) => (
+                <div
+                    key={idx}
+                    className="border border-gray-300 p-6 rounded-2xl h-96 bg-white sticky"
+                    style={{
+                        top: `calc(96px + ${idx * 40}px)`,
+                    }}
+                >
+                    <h2 className="text-xl font-semibold mb-4">{card.title}</h2>
+                    <p className="text-gray-700">{card.description}</p>
+                </div>
+            ))}
         </div>
-    )
-}
-
-export default Projects
-
-const DummyContent = () => {
-    return (
-        <Image
-            src="/linear.webp"
-            alt="dummy image"
-            width="1000"
-            height="1000"
-            className="object-cover object-left-top h-[60%]  md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto"
-        />
     );
 };
