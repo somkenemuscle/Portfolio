@@ -27,7 +27,7 @@ const cards = [
     {
         title: "Simplons Beauty Care",
         description:
-            "A beauty care website that showcases a range of high-quality products, designed to meet all your skincare and beauty needs.",
+            "A beauty care website that showcases a range of high-quality products, designed to meet all the skincare and beauty needs of customers.",
         technologies: ["React", "Bootstrap", "Css", "Javascript"],
         livePreview: "https://simplons-beauty-care.vercel.app/",
         caseStudy: "#",
