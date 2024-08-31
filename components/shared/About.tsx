@@ -5,8 +5,6 @@ import {
     IconBrandNodejs,
     IconBrandTailwind,
     IconBrandNextjs,
-    IconBrandHtml5,
-    IconBrandCss3,
     IconBrandJavascript,
 } from "@tabler/icons-react";
 
@@ -49,7 +47,7 @@ const About = () => {
                                     Founded and led the development of Appvarsity, A platform designed to support Aptech students. I am Responsible for
                                     overseeing both front-end and back-end development, Managing the team and Ensuring the platform delivers valuable tools to
                                     enhance students educational needs.
-                                    <span className="block mt-2 font-semibold">Technologies Used:</span>
+                                    <span className="block mt-2 font-semibold">Technologies Used <span aria-hidden="true">→</span></span>
                                 </p>
                                 <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
                                     {technologies.map((tech, index) => (
@@ -63,9 +61,12 @@ const About = () => {
                                 <h4 className="text-xl font-bold">Frontend Developer Intern, Mindera</h4>
                                 <span className="text-sm text-gray-500">Jun 2023 - Jul 2023</span>
                                 <p className="mt-2 text-md font-light">
-                                Focused on creating responsive user interfaces with a strong emphasis on performance and accessibility. Leveraged agile methodologies to enhance teamwork and foster effective communication, contributing to a more cohesive and productive development process.
+                                    Focused on creating responsive user interfaces with a strong emphasis on
+                                    performance and accessibility. Leveraged agile methodologies to enhance
+                                    teamwork and foster effective communication, contributing to a more cohesive
+                                    and productive development process.
 
-                                    <span className="block mt-2 font-semibold">Technologies Used:</span>
+                                    <span className="block mt-2 font-semibold">Technologies Used <span aria-hidden="true">→</span></span>
                                 </p>
                                 <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
                                     {technologies2.map((tech, index) => (
