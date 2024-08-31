@@ -40,7 +40,7 @@ const About = () => {
 
     return (
         <SlideIn direction='bottom'>
-            <section className="px-8 md:px-16 lg:px-32">
+            <section className="px-8 md:px-16 lg:px-32 mb-24">
                 <div className="container mx-auto flex flex-col items-center md:flex-row">
                     {/* Description */}
                     <div className="text-center md:text-left">
