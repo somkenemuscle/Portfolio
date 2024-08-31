@@ -9,11 +9,11 @@ import {
 
 function Contact() {
   return (
-    <div id="contact" className="hover:cursor-pointer lg:px-48 sm:px-9 py-8 mt-14">
+    <div id="contact" className="hover:cursor-pointer lg:px-40 sm:px-9 py-8 mt-14">
       {/* <!-- Use flex-col to stack on small screens, flex-row for larger screens --> */}
       <div className="flex flex-col sm:flex-row justify-between items-center">
         <div className="mb-4 sm:mb-0">
-          <span className="text-gray-500">Contact Me</span> <br />
+          <span className="text-gray-500 text-sm">Reach out to me <span aria-hidden="true">→</span></span> <br />
           <span className="text-xl hover:underline">somkeneoj@gmail.com</span>
         </div>
 

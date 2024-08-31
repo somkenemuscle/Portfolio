@@ -38,7 +38,7 @@ function Skills() {
   };
 
   return (
-    <div id="skills" className="py-12 px-16 my-12">
+    <div id="skills" className="py-12 px-24 my-12">
       <p className="text-center font-light mb-14 text-gray-900">
       These are the technologies i specialize in, drawn from my experience as a Frontend and Backend developer <span aria-hidden="true">→</span>
       </p>

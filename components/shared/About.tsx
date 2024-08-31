@@ -30,24 +30,23 @@ const About = () => {
                     {/* Experience */}
                     <div className="mt-8">
                         <h3 className="text-2xl font-semibold mb-4 text-gray-800">Experience</h3>
-                        <ul className="list-none space-y-4 text-gray-600">
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-600">
                             <li>
                                 <h4 className="text-xl font-bold">Founder & Full-Stack Developer, Appvarsity</h4>
                                 <span className="text-sm text-gray-500">Aug 2024 - Present</span>
                                 <p className="mt-2 text-md font-light">
                                     Founded and lead the development of Appvarsity, a platform designed to support Aptech students. Responsible for
-                                    overseeing both front-end and back-end development, managing a team, and ensuring the platform delivers valuabletools to
-                                    enhance students educational experiences.
+                                    overseeing both front-end and back-end development, managing a team, and ensuring the platform delivers valuable tools to
+                                    enhance students' educational experiences.
                                     <span className="block mt-2 font-semibold">Technologies Used:</span>
-                                   
                                 </p>
-                                <div className="flex flex-wrap gap-4 mt-2">
-                                        {technologies.map((tech, index) => (
-                                            <span key={index} className="flex items-center justify-center">
-                                                {tech.logo}
-                                            </span>
-                                        ))}
-                                    </div>
+                                <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
+                                    {technologies.map((tech, index) => (
+                                        <span key={index} className="flex items-center justify-center">
+                                            {tech.logo}
+                                        </span>
+                                    ))}
+                                </div>
                             </li>
                             <li>
                                 <h4 className="text-xl font-bold">Frontend Developer Intern, Mindera</h4>
@@ -58,6 +57,8 @@ const About = () => {
                             </li>
                         </ul>
                     </div>
+
+
                 </div>
             </div>
         </section>
