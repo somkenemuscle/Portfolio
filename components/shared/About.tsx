@@ -52,8 +52,8 @@ const About = () => {
                         </p>
 
                         {/* Experience */}
-                        <div className="mt-8">
-                            <h3 className="text-2xl font-semibold mb-4 text-gray-800">Experience</h3>
+                        <div className="mt-14">
+                            <h3 className="text-xl font-semibold mb-4 text-gray-800">Work Experience</h3>
                             <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-600">
                                 <li>
                                     <h4 className="text-xl font-bold">Founder & Full-Stack Developer, Appvarsity</h4>
