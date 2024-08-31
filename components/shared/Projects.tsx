@@ -7,7 +7,7 @@ const cards = [
     {
         title: "SwiftDocs",
         description:
-            "A live-document collaboration application which allows users from all around the world , to share the same space and share innovative ideas.",
+            "A live document collaboration application that allows users worldwide to share a common space and exchange innovative ideas seamlessly.",
         technologies: ["React", "Tailwind", "MongoDb", "Next.js", "Express", "Typescript"],
         livePreview: "https://swiftdocs.vercel.app/",
         caseStudy: "#",
@@ -17,7 +17,7 @@ const cards = [
     {
         title: "Appvarsity",
         description:
-            "This is a description for Project 2. It involves building a full-stack application using Next.js and MongoDB.",
+            "A platform dedicated to bridging the gap in information and resources for Aptech students by providing them with essential tools and support tailored to their needs. ",
         technologies: ["Next.js", "MongoDB", "Tailwind", "Express", "React", "Typescript"],
         livePreview: "https://appvarsity.vercel.app/",
         caseStudy: "#",
@@ -27,7 +27,7 @@ const cards = [
     {
         title: "Simplons Beauty Care",
         description:
-            "This is a description for Project 3. It's a mobile application developed with React Native and integrates with Firebase.",
+            "A beauty care website that showcases a range of high-quality products, designed to meet all your skincare and beauty needs.",
         technologies: ["React", "Bootstrap", "Css", "Javascript"],
         livePreview: "https://simplons-beauty-care.vercel.app/",
         caseStudy: "#",
@@ -48,7 +48,7 @@ export const Projects = () => {
                 </p>
             </span>
 
-            <div className="grid grid-cols-1 gap-8 px-4 py-8 lg:mx-36 sm:mx-11">
+            <div className="hover:cursor-pointer grid grid-cols-1 gap-8 px-4 py-8 lg:mx-36 sm:mx-11">
                 {cards.map((card, idx) => (
                     <div
                         key={idx}
@@ -61,8 +61,8 @@ export const Projects = () => {
                         {/* Text Section */}
                         <div className="p-6 flex flex-col justify-between order-2 lg:order-1">
                             <div>
-                                <h2 className="text-xl font-semibold mb-4">{card.title}</h2>
-                                <p className="text-gray-700 mb-4">{card.description}</p>
+                                <h2 className="text-xl font-bold mb-4">{card.title}</h2>
+                                <p className="text-gray-700 mb-4 font-light">{card.description}</p>
                                 <div className="flex gap-2 mb-4">
                                     <Link href={card.caseStudy} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
                                         Case Study
