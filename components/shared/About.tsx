@@ -28,7 +28,7 @@ const About = () => {
 
     return (
         <SlideIn direction='bottom'>
-            <section  className="px-8 md:px-16 lg:px-32">
+            <section className="px-8 md:px-16 lg:px-32">
                 <div className="container mx-auto flex flex-col items-center md:flex-row">
                     {/* Description */}
                     <div className="text-center md:text-left">
@@ -45,14 +45,14 @@ const About = () => {
                                     <h4 className="text-xl font-bold">Founder & Full-Stack Developer, Appvarsity</h4>
                                     <span className="text-sm text-gray-500">Aug 2024 - Present</span>
                                     <p className="mt-2 text-md font-light">
-                                        Founded and led the development of Appvarsity, a platform designed to support Aptech students. Responsible for overseeing both front-end and back-end development, managing the team, and ensuring the site delivers valuable tools to enhance students educational needs.
+                                        Founded and led the development of Appvarsity, a platform designed to support Aptech students. Responsible for overseeing both front-end and back-end development, managing the team, and ensuring the site gives valuable tools to enhance students educational needs.
                                         <span className="block mt-2 font-semibold">Technologies Used <span aria-hidden="true">→</span></span>
                                     </p>
                                     <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
                                         {technologies.map((tech, index) => (
                                             <button
                                                 key={index}
-                                                className="flex flex-col items-center justify-center p-3 rounded-md  transition-transform transform hover:scale-105 focus:outline-none"
+                                                className="flex flex-col items-center justify-center p-3 rounded-md  transition-transform transform  focus:outline-none"
                                             >
                                                 <span className="text-lg">{tech.logo}</span>
                                                 <span className="mt-1 text-xs text-gray-700">{tech.name}</span>
@@ -71,7 +71,7 @@ const About = () => {
                                         {technologies2.map((tech, index) => (
                                             <button
                                                 key={index}
-                                                className="flex flex-col items-center justify-center p-3 rounded-md transition-transform transform hover:scale-105  focus:outline-none"
+                                                className="flex flex-col items-center justify-center p-3 rounded-md transition-transform transform  focus:outline-none"
                                             >
                                                 <span className="text-lg">{tech.logo}</span>
                                                 <span className="mt-1 text-xs text-gray-700">{tech.name}</span>
