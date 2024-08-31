@@ -66,7 +66,7 @@ const About = () => {
                                 </li>
                                 <li>
                                     <h4 className="text-xl font-bold">Frontend Developer Intern, Mindera</h4>
-                                    <span className="text-sm text-gray-500">Jun 2023 - Jul 2023</span>
+                                    <span className="text-sm text-gray-500">Jan 2023 - Jul 2023</span>
                                     <p className="mt-2 text-md font-light">
                                         Focused on creating responsive user interfaces with a strong emphasis on performance and accessibility. Leveraged agile methodologies to enhance teamwork and foster effective communication, contributing to a more cohesive and productive development process.
                                         <span className="block mt-2 font-semibold">Technologies Used <span aria-hidden="true">→</span></span>
