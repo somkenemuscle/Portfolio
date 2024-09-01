@@ -53,7 +53,7 @@ function Contact() {
         {/* <!-- Keep icons in a straight line using flex-row on all screen sizes --> */}
         <div className="flex flex-row items-center space-x-4">
           {contactlinks.map((link, index) => (
-            <a
+            <Link
               key={index}
               href={link.href}
               target="_blank"
@@ -62,7 +62,7 @@ function Contact() {
               aria-label={link.title}
             >
               {link.icon}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
