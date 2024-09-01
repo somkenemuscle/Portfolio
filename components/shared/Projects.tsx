@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-
+import SlideIn from "./SlideIn";
 const cards = [
     {
         title: "SwiftDocs",
@@ -38,6 +38,7 @@ const cards = [
 
 export const Projects = () => {
     return (
+        <SlideIn direction="left">
         <div>
             <div className="text-center mb-7 mx-4">
                 <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -106,6 +107,7 @@ export const Projects = () => {
                 ))}
             </div>
         </div>
+        </SlideIn>
 
 
 

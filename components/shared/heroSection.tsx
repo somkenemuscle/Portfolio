@@ -1,8 +1,8 @@
 import { FloatingDockDemo } from "./Dock"
-
+import SlideIn from "./SlideIn"
 function HeroSection() {
   return (
-  
+     <SlideIn direction="top">
       <div className="xl:px-36 sm:px-32">
         <div className="relative isolate px-6 pt-14 lg:px-8">
          
@@ -29,6 +29,7 @@ function HeroSection() {
         </div>
 
       </div>
+      </SlideIn>
     
   )
 }
