@@ -53,7 +53,7 @@ export const Projects = () => {
                 {cards.map((card, idx) => (
                     <div
                         key={idx}
-                        className="border border-gray-300 rounded-2xl bg-white sticky grid md:grid-cols-1 lg:grid-cols-2 gap-4"
+                        className="border border-gray-300 rounded-2xl bg-white sticky grid md:grid-cols-1 lg:grid-cols-2 gap-4 shadow-sm hover:shadow-md"
                         style={{
                             top: `calc(96px + ${idx * 40}px)`,
                             height: "auto",
@@ -85,7 +85,7 @@ export const Projects = () => {
                             </div>
                             <Link
                                 href={card.livePreview}
-                                className="inline-block mt-auto px-4 py-2 text-white bg-black text-center rounded-xl hover:bg-gray-700"
+                                className="inline-block mt-auto px-4 py-2 text-white bg-black text-center rounded-xl hover:bg-gray-800"
                                 target="_blank" rel="noopener noreferrer"
                             >
                                 Live Preview
