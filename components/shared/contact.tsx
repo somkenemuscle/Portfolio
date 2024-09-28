@@ -28,7 +28,7 @@ function Contact() {
       icon: (
         <IconBrandGmail className="hover:text-black h-6 w-6 text-gray-600 dark:text-neutral-300" />
       ),
-      href: "mailto:your-email@example.com",  // Replace with your actual email
+      href: "mmailto:somkeneoj@gmail.com",  // Replace with your actual email
     },
     {
       title: "Twitter",
