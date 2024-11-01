@@ -16,7 +16,7 @@ const Navbar = () => {
                     <div className="flex lg:flex-1">
                         {/* Company logo */}
                         <Link href="/" className="-m-1.5 p-1.5">
-                            <h1 className='font-extrabold text-xl text-black'>Ojukwu <span className='text-yellow-400 font-bold'>Somkene</span> </h1>
+                            <h1 className='font-extrabold text-xl text-black font-sans'>Ojukwu<span className='text-yellow-400 font-bold'> Somkene</span></h1>
                         </Link>
                     </div>
 
@@ -38,7 +38,7 @@ const Navbar = () => {
                             <Link
                                 key={item.name}
                                 href={item.href}// Use fragment identifier
-                                className='text-gray-600 font-light leading-6 hover:text-black'>
+                                className='text-gray-600 font-light font-sans leading-6 hover:text-black'>
                                 {item.name}
                             </Link>
                         ))}
@@ -46,14 +46,12 @@ const Navbar = () => {
 
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                         <Link href="mailto:somkeneoj@gmail.com">
-                            <button className="font-extrabold border bg-black text-white border-gray-500 px-4 py-2 rounded hover:bg-gray-700 focus:outline-none">
-                                <span className=" blinking-dot inline-block bg-green-500 rounded-full w-3 h-3 mr-2"></span>
+                            <button className="font-semibold text-sm font-sans bg-black text-white px-4 py-2 rounded hover:bg-gray-900 focus:outline-none">
+                                <span className=" blinking-dot inline-block bg-green-500 rounded-full w-2 h-2 mr-2"></span>
                                 Let's Work!
                             </button>
                         </Link>
-
                     </div>
-
                 </nav>
 
                 {/* Mobile menu dialog */}
@@ -92,8 +90,8 @@ const Navbar = () => {
                                 </div>
                                 {/* Log in link in mobile menu */}
                                 <Link href="mailto:somkeneoj@gmail.com">
-                                    <div className="py-6">
-                                        Hire Me
+                                    <div className="py-6 font-bold">
+                                        Let's Work!
                                     </div>
                                 </Link>
 

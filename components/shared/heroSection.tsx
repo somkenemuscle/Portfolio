@@ -12,7 +12,7 @@ function HeroSection() {
                 OJUKWU <span className="text-yellow-400">SOMKENE</span> IFECHUKWU
               </h1>
               <p className="mt-6 text-lg  font-light leading-8 ">
-                I am a <span className="text-gray-500 font-bold">Full-Stack developer</span>  based in Nigeria, passionate about creating web applications that are both functional and visually appealing. <span className="font-semibold text-gray-500">"Coding is not just a job for me, it’s a hobby that I deeply enjoy."</span>
+                I am a <span className="text-gray-500 font-bold">Full-Stack developer</span>  based in <span className="font-extrabold text-gray-500">Nigeria</span>, passionate about creating web applications that are both functional and visually appealing. <span className="font-semibold text-gray-500">"Coding is not just a job for me, it’s a hobby that I deeply enjoy."</span>
               </p>
               <div className="flex items-center justify-center gap-x-6">
                 <FloatingDockDemo />

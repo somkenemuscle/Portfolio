@@ -21,14 +21,14 @@ export function FloatingDockDemo() {
         {
             title: "GitHub",
             icon: (
-                <IconBrandGithub className="h-full w-full text-orange-500 dark:text-neutral-300" />
+                <IconBrandGithub className="h-full w-full text-indigo-950 dark:text-neutral-300" />
             ),
             href: "https://github.com/somkenemuscle",
         },
         {
             title: "E-mail",
             icon: (
-                <IconBrandGmail className="h-full w-full text-red-500" />
+                <IconBrandGmail className="h-full w-full text-red-900" />
             ),
             href: "mailto:somkeneoj@gmail.com",
         },
@@ -44,7 +44,7 @@ export function FloatingDockDemo() {
 
 
     return (
-        <div id="projects"  className="flex items-center justify-center mt-14 w-full">
+        <div id="projects" className="flex items-center justify-center mt-14 w-full">
             <FloatingDock
                 items={contactlinks}
             />

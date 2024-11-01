@@ -4,12 +4,14 @@ import Link from "next/link";
 import React from "react";
 import SlideIn from "./SlideIn";
 import { projectData } from "@/constants/projectData";
-
+import {
+    IconBrandGithub,
+} from "@tabler/icons-react";
 
 export const Projects = () => {
     return (
         <SlideIn direction="left">
-            <div>
+            <div className="font-sans">
                 <div className="text-center mb-7 mx-4">
                     <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                         Featured <span className="text-yellow-400">Projects</span>
@@ -35,18 +37,22 @@ export const Projects = () => {
                                     <h2 className="text-xl font-bold mb-4">{project.title}</h2>
                                     <p className="text-gray-700 mb-4 font-light">{project.description}</p>
                                     <div className="flex gap-2 mb-4">
-                                        <Link href={project.caseStudy} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:underline">
+                                        {/* <Link href={project.caseStudy} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:underline">
                                             Case Study -
-                                        </Link>
-                                        <Link href={project.sourceCode} target="_blank" rel="noopener noreferrer" className="text-gray-500  hover:underline">
-                                            Source Code
+                                        </Link> */}
+                                        <Link href={project.sourceCode} target="_blank" rel="noopener noreferrer" className="text-gray-500 text-sm mb-4  hover:underline">
+                                            <div className="flex items-center space-x-1">
+                                                <IconBrandGithub className="h-4 w-4 text-indigo-950 dark:text-neutral-300" />
+                                                <span className="text-indigo-950 font-normal">Source Code</span>
+                                            </div>
+
                                         </Link>
                                     </div>
                                     <div className="flex flex-wrap gap-2 mb-4">
                                         {project.technologies.map((tech) => (
                                             <span
                                                 key={tech}
-                                                className="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-200 rounded-full"
+                                                className="px-4 py-1 text-xs font-sans text-white bg-gray-800 rounded-full"
                                             >
                                                 {tech}
                                             </span>
@@ -58,7 +64,7 @@ export const Projects = () => {
                                     className="inline-block mt-auto px-4 py-2  text-white bg-black text-center rounded-xl hover:bg-gray-800"
                                     target="_blank" rel="noopener noreferrer"
                                 >
-                                    Live Preview
+                                    Live Preview 
                                 </Link>
                             </div>
 

@@ -44,18 +44,18 @@ const About = () => {
                     <div className="text-center md:text-left">
                         <h2 className="text-3xl text-center font-semibold mb-4 text-gray-800">About <span className="text-yellow-400">Me</span> </h2>
                         <p className="font-light">
-                            With over four years of experience as a full-stack developer, I have had a deep passion for creating and building things. My journey into
+                            With over 3 years of experience as a <span className="font-semibold">Full-stack developer</span> , I have had a deep passion for creating and building things. My journey into
                             software engineering was driven by my love for creation, which began with drawing and making music. This creative inclination naturally
                             led me to explore the world of technology and software development.
                         </p>
                         <p className="font-light mt-5">
-                            I specialize in both frontend and backend development, having worked extensively in both areas. I thrive on the continuous learning
+                            I specialize in both <span className="font-semibold">Frontend </span> and <span className="font-semibold">Backend </span> development, having worked extensively in both areas. I thrive on the continuous learning
                             process that coding offers and relish the opportunity to apply new knowledge to solve real-world problems. Coding, for me, is more
                             than just a profession, it is a hobby and a source of joy.
                         </p>
                         <p className="font-light mt-5">
                             In addition to my technical skills, I am a highly social person and have always found myself in leadership roles, guiding teams and
-                            fostering collaboration. One of the projects I am most proud of is <span className="font-semibold">Appvarsity,</span>  a platform I developed with a team I brought together
+                            fostering collaboration. One of the projects I am most proud of is <span className="font-semibold">Appvarsity,</span>  a platform I and my team developed
                             to provide essential information and resources to Aptech students, helping them navigate their academic careers more effectively.
                         </p>
                         <p className="font-light mt-5">
@@ -71,7 +71,7 @@ const About = () => {
                                     <h4 className="text-xl font-bold">Founder & Full-Stack Developer, Appvarsity</h4>
                                     <span className="text-sm text-gray-500">Aug 2024 - Present</span>
                                     <p className="mt-2 text-md font-light">
-                                        Founded and led the development of Appvarsity, a platform designed to support Aptech students. Responsible for overseeing both front-end and back-end development, managing the team, and ensuring the site gives valuable tools to enhance students educational needs.
+                                        I Founded and led the development of Appvarsity, A platform designed to support Aptech students. I am responsible for overseeing both front-end and back-end development, managing the team, and ensuring we give valuable tools and resources to enhance students needs.
                                         <span className="block mt-2 font-semibold">Technologies Used <span aria-hidden="true">→</span></span>
                                     </p>
                                     <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
@@ -100,7 +100,7 @@ const About = () => {
                                     <h4 className="text-xl font-bold">Frontend Developer Intern, Mindera</h4>
                                     <span className="text-sm text-gray-500">Jan 2023 - Jul 2023</span>
                                     <p className="mt-2 text-md font-light">
-                                        Focused on creating responsive user interfaces with a strong emphasis on performance and accessibility. Leveraged agile methodologies to enhance teamwork and foster effective communication, contributing to a more cohesive and productive development process.
+                                        I Focused on creating responsive user interfaces with a strong emphasis on performance and accessibility. I Leveraged agile methodologies to enhance teamwork and foster effective communication, contributing to a more cohesive and productive development process.
                                         <span className="block mt-2 font-semibold">Technologies Used <span aria-hidden="true">→</span></span>
                                     </p>
                                     <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
