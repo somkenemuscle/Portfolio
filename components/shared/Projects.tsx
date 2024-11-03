@@ -4,9 +4,7 @@ import Link from "next/link";
 import React from "react";
 import SlideIn from "./SlideIn";
 import { projectData } from "@/constants/projectData";
-import {
-    IconBrandGithub,
-} from "@tabler/icons-react";
+import { GitHubLogoIcon } from "@radix-ui/react-icons"
 
 export const Projects = () => {
     return (
@@ -44,8 +42,8 @@ export const Projects = () => {
                                         </Link> */}
                                         <Link href={project.sourceCode} target="_blank" rel="noopener noreferrer" className="text-gray-500 text-sm mb-4  hover:underline">
                                             <div className="flex items-center space-x-1">
-                                                <IconBrandGithub className="h-4 w-4 text-indigo-950 dark:text-neutral-300" />
-                                                <span className="text-indigo-950 font-normal">Source Code</span>
+                                                <GitHubLogoIcon className="h-4 w-4 text-indigo-950 dark:text-neutral-300" />
+                                                <span className="text-indigo-950 font-normal">Source Code ...</span>
                                             </div>
 
                                         </Link>
@@ -63,10 +61,10 @@ export const Projects = () => {
                                 </div>
                                 <Link
                                     href={project.livePreview}
-                                    className="inline-block mt-auto px-4 py-2  text-white bg-black text-center rounded-xl hover:bg-gray-800"
+                                    className="inline-block mt-auto px-4 py-2 text-sm  text-white bg-black text-center rounded-xl hover:bg-gray-800"
                                     target="_blank" rel="noopener noreferrer"
                                 >
-                                    Live Preview 
+                                    Live Preview
                                 </Link>
                             </div>
 

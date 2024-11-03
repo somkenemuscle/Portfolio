@@ -2,43 +2,35 @@
 import React from "react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import {
-    IconBrandGithub,
     IconBrandX,
-    IconBrandLinkedin,
     IconBrandGmail
 
 } from "@tabler/icons-react";
+import { GitHubLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons"
 
 export function FloatingDockDemo() {
     const contactlinks = [
         {
             title: "Linkedin",
             icon: (
-                <IconBrandLinkedin className="h-full w-full text-black dark:text-neutral-300" />
+                <LinkedInLogoIcon className="h-full w-full text-blue-800 dark:text-neutral-300" />
             ),
             href: "https://www.linkedin.com/in/somkene-ojukwu/",
         },
         {
-            title: "GitHub",
+            title: "Twitter",
             icon: (
-                <IconBrandGithub className="h-full w-full text-indigo-950 dark:text-neutral-300" />
+                <TwitterLogoIcon className="h-full w-full text-neutral-800 dark:text-neutral-300" />
             ),
             href: "https://github.com/somkenemuscle",
         },
         {
-            title: "E-mail",
+            title: "GitHub",
             icon: (
-                <IconBrandGmail className="h-full w-full text-red-900" />
+                <GitHubLogoIcon className="h-full w-full text-purple-950 dark:text-neutral-300" />
             ),
-            href: "mailto:somkeneoj@gmail.com",
+            href: "https://github.com/somkenemuscle",
         },
-        {
-            title: "Twitter",
-            icon: (
-                <IconBrandX className="h-full w-full text-black dark:text-neutral-300" />
-            ),
-            href: "https://x.com/somkeneOj",
-        }
 
     ];
 
