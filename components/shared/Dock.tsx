@@ -1,11 +1,6 @@
 'use client'
 import React from "react";
 import { FloatingDock } from "@/components/ui/floating-dock";
-import {
-    IconBrandX,
-    IconBrandGmail
-
-} from "@tabler/icons-react";
 import { GitHubLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons"
 
 export function FloatingDockDemo() {
