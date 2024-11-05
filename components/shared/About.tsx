@@ -44,7 +44,7 @@ const About = () => {
                     <div className="text-center md:text-left">
                         <h2 className="text-3xl text-center font-semibold mb-4 text-gray-800">About <span className="text-yellow-400">Me</span> </h2>
                         <p className="font-light">
-                            With over 3 years of experience as a <span className="font-semibold">Full-stack developer</span> , I have had a deep passion for creating and building things. My journey into
+                            With over 4 years of experience as a <span className="font-semibold">Full-stack developer</span> , I have had a deep passion for creating and building things. My journey into
                             software engineering was driven by my love for creation, which began with drawing and making music. This creative inclination naturally
                             led me to explore the world of technology and software development.
                         </p>
