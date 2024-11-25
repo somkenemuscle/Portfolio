@@ -71,7 +71,7 @@ const About = () => {
                                     <h4 className="text-xl font-bold">Founder & Full-Stack Developer, Appvarsity</h4>
                                     <span className="text-sm text-gray-500">Jan 2021 - Present</span>
                                     <p className="mt-2 text-md font-light">
-                                        I Founded and led the development of Appvarsity, A platform designed to support Aptech students. I am responsible for overseeing both front-end and back-end development, managing the team, and ensuring we give valuable tools and resources to enhance students needs.
+                                        I Founded and led the development of Appvarsity, A platform designed to support Aptech students. I am responsible for overseeing both front-end and back-end development, managing the team, and ensuring we give valuable tools and essential resources to enhance students educational needs.
                                         <span className="block mt-2 font-semibold">Technologies Used <span aria-hidden="true">→</span></span>
                                     </p>
                                     <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
