@@ -12,7 +12,7 @@ export const projectData = [
     {
         title: "Retweet",
         description:
-            "A social media platform that enables users to share posts and interact with others, similar to a Twitter clone—at least, that's what it aspires to be! 😂",
+            "A fun and interactive social media platform designed for sharing posts and connecting with friends, built specifically for my school or any community and friends to create our very own online hangout space! 😂",
         technologies: ["React","Tailwind", "Next.js", "Typescript", "Express.js", "MongoDb"],
         livePreview: "https://retweet-frontend.vercel.app/",
         caseStudy: "#",
