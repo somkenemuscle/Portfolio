@@ -69,7 +69,7 @@ const About = () => {
                             <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-600">
                                 <li>
                                     <h4 className="text-xl font-bold">Founder & Full-Stack Developer, Appvarsity</h4>
-                                    <span className="text-sm text-gray-500">Jan 2021 - Present</span>
+                                    <span className="text-sm text-gray-500">Jan 2024 - Present</span>
                                     <p className="mt-2 text-md font-light">
                                         I Founded and led the development of Appvarsity, A platform designed to support Aptech students. I am responsible for overseeing both front-end and back-end development, managing the team, and ensuring we give valuable tools and essential resources to enhance students educational needs.
                                         <span className="block mt-2 font-semibold">Technologies Used <span aria-hidden="true">→</span></span>
