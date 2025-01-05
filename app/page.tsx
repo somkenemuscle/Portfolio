@@ -12,9 +12,12 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <Projects />
+      <Contact /> 
+
+      {/*
       <Skills />
       <About />
-      <Contact />
+      */}
     </main>
   );
 }

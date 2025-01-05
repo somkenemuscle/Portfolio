@@ -3,30 +3,25 @@ import SlideIn from "./SlideIn"
 function HeroSection() {
   return (
     <SlideIn direction="top">
-      <div className="xl:px-36 sm:px-32">
-        <div className="relative isolate px-6 pt-14 lg:px-8">
+      <div className="overflow-x-clip relative">
+        <div className=" size-[850px] hero-ring"></div>
+        <div className=" size-[1050px] hero-ring"></div>
+        <div className=" size-[1250px] hero-ring"></div>
+        <div className=" size-[1450px] hero-ring"></div>
 
-          <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-            <div className="text-center">
-              <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-6xl">
-                OJUKWU <span className="text-yellow-400">SOMKENE</span> IFECHUKWU
-              </h1>
-              <p className="mt-6 text-lg  font-light leading-8 ">
-                I am a <span className="text-gray-500 font-bold">Full-Stack developer</span>  based in <span className="font-extrabold text-gray-500">Nigeria</span>, passionate about creating web applications that are both functional and visually appealing. <span className="font-semibold text-gray-500">"Coding is not just a job for me, it’s a hobby that I deeply enjoy."</span>
-              </p>
-              <div className="flex items-center justify-center gap-x-6">
-                <FloatingDockDemo />
-              </div>
-            </div>
+        <div className="text-center py-40 hero mb-32">
+          <span className="text-7xl">👨🏽‍💻</span>
+          <div className="text-orange-50 bg-black w-fit justify-self-center px-4 py-2 text-xs rounded tracking-wide font-light">
+            <span className="animate-pulse-ring inline-block bg-green-600 rounded-full w-2 h-2 mr-2"></span> Available for new projects
           </div>
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-          >
-
-          </div>
+          <h1 className="text-orange-200 text-5xl md:text-6xl lg:text-7xl mt-9 tracking-tight hero-header">Ojukwu Somkene <br /> <span className="text-orange-50">Ifechukwu</span> </h1>
+          <p className=" leading-8 text-white max-w-xl lg:max-w-2xl justify-self-center mt-6 px-3">
+            I am a <span className="text-gray-400 font-semibold">Full-Stack developer</span>  based in <span className="font-semibold text-gray-400">Lagos, Nigeria</span>,
+            passionate about creating web applications that are both functional and visually appealing.
+            <span className="font-semibold text-gray-400">"Coding isn't just a job for me, it’s a hobby that I deeply enjoy"</span>
+          </p>
+          <FloatingDockDemo />
         </div>
-
       </div>
     </SlideIn>
 

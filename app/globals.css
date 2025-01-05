@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base {
+  .hero-ring {
+    @apply absolute inset-0 border-2 left-1/2 -translate-y-1/2 rounded-full border-emerald-300/5 shadow-[0_0_80px_inset] shadow-emerald-400/5;
+  }
+}
+
+
 /* Define the keyframes for the blinking effect */
 @keyframes blink {
 
@@ -17,11 +25,47 @@
 
 html {
   scroll-behavior: smooth;
-  
+  font-family: sans-serif;
 }
 
-/* Apply the animation to the blinking-dot class */
-.blinking-dot {
-  animation: blink 0.7s infinite;
+
+
+.navbar {
+  font-family: sans-serif;
+  opacity: 0.9;
 }
 
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  70% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 1.1s infinite;
+}
+
+.glowing-border {
+  border: 1px solid rgb(122, 100, 78);
+}
+
+.hero {
+  font-family: sans-serif;
+}
+
+.hero-header {
+  font-family: sans-serif;
+  font-weight: 800;
+}
