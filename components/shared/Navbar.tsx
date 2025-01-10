@@ -19,8 +19,8 @@ const Navbar = () => {
             </nav>
 
             {/* ON MOBILE DEVICES */}
-            <nav className="md:hidden lg:hidden  bg-neutral-950 rounded-full text-pink-50 font-sans text-sm pr-3 pl-7 py-2 navbar">
-                <ul className="flex flex-row items-center gap-x-8 cursor-pointer tracking-wide py-2 pr-4">
+            <nav className="md:hidden lg:hidden  bg-neutral-950 rounded-full text-pink-50 font-sans text-sm py-4 px-12 navbar nav-mobile">
+                <ul className="flex flex-row items-center gap-x-8 cursor-pointer tracking-wide">
                     {navigationOnMobile.map((mobileNav, index) => (
                         <Link key={index} href={mobileNav.href}>
                             <li className='hover:text-pink-300 transition duration-300 ease-in-out'>{mobileNav.name}</li>
