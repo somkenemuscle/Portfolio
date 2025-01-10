@@ -12,10 +12,10 @@ export const Projects = () => {
             <div className="font-sans">
                 <div className="text-center mb-10 mx-4 project-header">
                     <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                        Latest <span className="text-pink-200">Works</span>
+                        Selected <span className="text-pink-200">Projects</span>
                     </p>
                     <p className="mt-3  font-light text-gray-300">
-                        Selected projects to see my work in action.
+                        Recent works to see my creativity in action.
                     </p>
                 </div>
 
