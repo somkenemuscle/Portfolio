@@ -23,7 +23,7 @@ function Experience() {
                                             </h1>
                                             <span>
                                                 <Link href={exp.link} target="_blank" rel="noopener noreferrer">
-                                                    <ArrowTopRightIcon className="text-gray-100 hover:scale-110" />
+                                                    <ArrowTopRightIcon className="text-gray-100 hover:scale-125 transition-all duration-300" />
                                                 </Link>
                                             </span>
                                         </section>
