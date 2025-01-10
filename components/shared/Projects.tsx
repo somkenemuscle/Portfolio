@@ -1,116 +1,85 @@
-// "use client";
-// import Image from "next/image";
-// import Link from "next/link";
-// import React from "react";
-// import SlideIn from "./SlideIn";
-// import { projectData } from "@/constants/projectData";
-// import { GitHubLogoIcon } from "@radix-ui/react-icons"
-
-// export const Projects = () => {
-//     return (
-//         <SlideIn direction="left">
-//             <div className="font-sans">
-//                 <div className="text-center mb-7 mx-4">
-//                     <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-//                         Featured <span className="text-yellow-400">Projects</span>
-//                     </p>
-//                     <p className="mt-3  font-light text-gray-500">
-//                         Check out my selected projects to see my work in action.
-//                     </p>
-//                 </div>
-
-//                 <div className="hover:cursor-pointer grid grid-cols-1 gap-8 px-4 py-8 mx-auto max-w-6xl">
-
-
-//                     {projectData.map((project, index) => (
-//                         <div
-//                             key={index}
-//                             className="border border-gray-300 rounded-2xl bg-white sticky grid md:grid-cols-1 lg:grid-cols-2 gap-4 shadow-sm hover:shadow-md"
-//                             style={{
-//                                 top: `calc(96px + ${index * 40}px)`,
-//                                 height: "auto",
-//                             }}
-//                         >
-//                             {/* Text Section */}
-//                             <div className="p-6 flex flex-col justify-between order-2 lg:order-1">
-//                                 <div>
-//                                     <h2 className="text-xl font-bold mb-4">{project.title}</h2>
-//                                     <p className="text-gray-700 mb-4 font-light">{project.description}</p>
-//                                     <div className="flex gap-2 mb-4">
-//                                         {/* <Link href={project.caseStudy} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:underline">
-//                                             Case Study -
-//                                         </Link> */}
-//                                         <Link href={project.sourceCode} target="_blank" rel="noopener noreferrer" className="text-gray-500 text-sm mb-4  hover:underline">
-//                                             <div className="flex items-center space-x-1">
-//                                                 <GitHubLogoIcon className="h-4 w-4 text-indigo-950 dark:text-neutral-300" />
-//                                                 <span className="text-indigo-950 font-normal">Source Code ...</span>
-//                                             </div>
-
-//                                         </Link>
-//                                     </div>
-//                                     <div className="flex flex-wrap gap-2 mb-4">
-//                                         {project.technologies.map((tech) => (
-//                                             <span
-//                                                 key={tech}
-//                                                 className="px-4 py-1 text-xs font-sans text-white bg-gray-800 rounded-full"
-//                                             >
-//                                                 {tech}
-//                                             </span>
-//                                         ))}
-//                                     </div>
-//                                 </div>
-//                                 <Link
-//                                     href={project.livePreview}
-//                                     className="inline-block mt-auto px-4 py-2 text-sm  text-white bg-black text-center rounded-xl hover:bg-gray-800"
-//                                     target="_blank" rel="noopener noreferrer"
-//                                 >
-//                                     Live Preview
-//                                 </Link>
-//                             </div>
-
-//                             {/* Image Section */}
-//                             <div className="p-6 order-1 lg:order-2">
-//                                 <Image
-//                                     src={project.image}
-//                                     alt={project.title}
-//                                     className="w-full h-auto object-cover rounded-2xl"
-//                                     width={1200}
-//                                     height={800}
-//                                     priority
-//                                 />
-//                             </div>
-//                         </div>
-//                     ))}
-//                 </div>
-//             </div>
-//         </SlideIn>
-//     );
-// };
-
-
 "use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import SlideIn from "./SlideIn";
 import { projectData } from "@/constants/projectData";
-import { GitHubLogoIcon } from "@radix-ui/react-icons"
+import { GitHubLogoIcon, ArrowTopRightIcon } from "@radix-ui/react-icons";
 
 export const Projects = () => {
     return (
-        <SlideIn direction="left">
+        <SlideIn direction="bottom">
             <div className="font-sans">
-                <div className="text-center mb-7 mx-4">
+                <div className="text-center mb-10 mx-4">
                     <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                        Featured <span className="text-orange-100">Projects</span>
+                        Latest <span className="text-pink-200">Works</span>
                     </p>
                     <p className="mt-3  font-light text-gray-300">
-                        Check out my selected projects to see my work in action.
+                        Selected projects to see my work in action.
                     </p>
                 </div>
 
-               
-            </div>
-        </SlideIn>
+                <div className="card-container px-4 lg:px-8">
+                    {projectData.map((project, index) => (
+                        <div
+                            key={index}
+                            className="card md:sticky lg:sticky pb-20 md:pb-0 border-2 border-neutral-800 md:max-w-4xl lg:max-w-6xl mx-auto bg-neutral-900 rounded-3xl my-14 cursor-pointer hover:shadow-[0_0px_10px_0_rgba(255,105,180,0.2)] hover:bg-gradient-to-tl hover:via-transparent hover:from-neutral-950 hover:to-neutral-950 transition-all duration-300"
+                            style={{
+                                top: `calc(96px + ${index * 20}px)`,
+                                height: "auto",
+                            }}
+                        >
+                            {/* TOP SECTION */}
+                            <section className="pl-6 py-9 flex items-center justify-between">
+                                <span className="text-gray-400 tracking-widest text-sm font-light card-top-section-header">
+                                    {`0${index + 1} | ${project.niche}`}
+                                </span>
+                                <Link href={project.sourceCode} target="_blank" rel="noopener noreferrer">
+                                    <span>
+                                        <GitHubLogoIcon className="mr-6 h-7 w-7 border border-neutral-700 rounded-full text-purple-700 hover:scale-105 hover:text-indigo-200 transition-all duration-300" />
+                                    </span>
+                                </Link>
+                            </section>
+
+                            {/* GRID SECTION */}
+                            <section className="grid grid-cols-12 gap-4">
+                                <div className={`col-span-12 md:col-span-6 lg:col-span-6 ${project.device === 'laptop' && 'rounded-tr-3xl border-t-[3px] border-r-[3px] border-zinc-800'}`}>
+                                    <img
+                                        src={project.image}
+                                        alt={`${project.title} project screenshot`}
+                                        className={`object-cover h-[400px] mx-auto ${project.device === 'laptop' && 'object-left border-t-[16px]  border-r-[16px] border-neutral-950 rounded-tr-3xl rounded-bl-3xl'} `}
+                                    />
+                                </div>
+                                <div className="col-span-12 md:col-span-6 lg:col-span-6 pl-4 pr-8 pt-11 text-left">
+                                    {/* HEADER SECTION */}
+                                    <h1 className="text-gray-200 text-3xl mb-1 font-medium flex items-center gap-2">
+                                        <project.icon className="bg-neutral-950 p-2 rounded-full h-10 w-10 border border-neutral-400" /> {project.title}
+                                    </h1>
+                                    <p className="text-gray-400 tracking-wide pt-2 font-light">{project.description}</p>
+
+                                    {/* TECHNOLOGIES USED ICONS */}
+                                    <ul className="pt-11 flex items-center">
+                                        {project.technologies.map((tech, techIndex) => (
+                                            <li key={techIndex}>
+                                                <img className={`inline-block mr-4 w-7 h-7 ${tech.style || ''}`} src={tech.icon} alt={`${tech.name} logo`} />
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    {/* LIVE PREVIEW LINK */}
+                                    <section className="pt-11 w-fit">
+                                        <Link href={project.livePreview} target="_blank" rel="noopener noreferrer">
+                                            <p className="text-gray-300 font-medium tracking-wider rounded-xl text-sm hover:underline">
+                                                🌍 Live Preview →
+                                            </p>
+                                        </Link>
+                                    </section>
+                                </div>
+                            </section>
+                        </div>
+                    ))}
+                </div>
+            </div >
+        </SlideIn >
     );
 };

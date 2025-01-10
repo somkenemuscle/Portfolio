@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-
 export const metadata: Metadata = {
   title: "Ojukwu Somkene",
   description: "Ojukwu Somkene's portfolio",
@@ -14,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-neutral-900">{children}</body>
+      <body className="bg-neutral-950">{children}</body>
     </html>
   );
 }

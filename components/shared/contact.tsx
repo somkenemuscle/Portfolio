@@ -1,52 +1,27 @@
-import {
-  IconBrandGithub,
-  IconBrandX,
-  IconBrandLinkedin,
-  IconBrandGmail,
-
-} from "@tabler/icons-react";
+'use client'
 import Link from "next/link";
+import { contactlinks } from "@/constants/contactLinks";
 
 function Contact() {
-  const contactlinks = [
-    {
-      title: "Linkedin",
-      icon: (
-        <IconBrandLinkedin className="hover:text-blue-600 h-6 w-6 text-sky-400 dark:text-neutral-300" />
-      ),
-      href: "https://www.linkedin.com/in/somkene-ojukwu/",
-    },
-    {
-      title: "GitHub",
-      icon: (
-        <IconBrandGithub className="hover:text-purple-700 h-6 w-6 text-purple-400 dark:text-neutral-300" />
-      ),
-      href: "https://github.com/somkenemuscle",
-    },
-    {
-      title: "E-mail",
-      icon: (
-        <IconBrandGmail className="hover:text-red-700 h-6 w-6 text-red-500 dark:text-neutral-300" />
-      ),
-      href: "mmailto:somkeneoj@gmail.com",  // Replace with your actual email
-    },
-    {
-      title: "Twitter",
-      icon: (
-        <IconBrandX className="hover:text-orange-100 h-6 w-6 text-white dark:text-neutral-300" />
-      ),
-      href: "https://x.com/somkeneOj",
-    }
-  ];
-
   return (
-    <div id="contact" className="hover:cursor-pointer lg:px-40 sm:px-9 py-8 mt-14">
+    <div id="contact" className="cursor-pointer mt-32 px-4 lg:px-8 mb-12">
+      <div className="text-center">
+        <header className="pb-7 flex items-center justify-center">
+          <img className="w-14 h-14"
+            src="https://framerusercontent.com/images/tDOGAARw0kdQ37aQk0HWXiX9X8.png?scale-down-to=512" alt="icon" />
+          <span className="text-2xl font-bold font-sans text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-pink-100">
+            {" "} get in touch!</span>
+        </header>
+      </div>
+
       {/* <!-- Use flex-col to stack on small screens, flex-row for larger screens --> */}
-      <div className="flex flex-col sm:flex-row justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-center border-2 border-neutral-800 bg-neutral-900 md:max-w-4xl mx-auto lg:max-w-6xl rounded-3xl p-8 hover:bg-gradient-to-bl hover:via-transparent hover:from-black hover:to-black transition-all duration-300">
         <div className="mb-4 sm:mb-0">
-          <span className="text-gray-200 text-sm">Reach out to me <span aria-hidden="true">→</span></span> <br />
+          <span className="text-neutral-300 text-xs tracking-wide font-medium">Reach out to me <span aria-hidden="true">→</span></span> <br />
           <Link href="mailto:somkeneoj@gmail.com">
-            <span className="text-xl text-indigo-400 hover:underline">somkeneoj@gmail.com</span>
+            <span className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-100 hover:text-pink-500 tracking-wide font-sans">
+              somkeneoj@gmail.com
+            </span>
           </Link>
         </div>
 
@@ -58,21 +33,17 @@ function Contact() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="h-12 w-12 flex items-center justify-center rounded-full border border-gray-600 dark:border-neutral-300 hover:shadow-md"
+              className="h-14 w-14 flex items-center justify-center"
               aria-label={link.title}
+              style={{
+                transform: `rotate(${(index + 1) % 2 === 0 ? (index + 1) * 3 : -(index + 1) * 3}deg)`,
+              }}
             >
-              {link.icon}
+              <img src={link.icon} className="hover:scale-125 transition-transform duration-300 " />
             </Link>
           ))}
         </div>
       </div>
-
-      <footer className="mt-10 text-center">
-        <hr />
-        <br />
-        <span className="font-light text-sm text-orange-50">Copyright  2024 - Ojukwu Somkene.</span>
-
-      </footer>
     </div>
   )
 }

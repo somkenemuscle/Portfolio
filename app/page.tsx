@@ -3,7 +3,8 @@ import HeroSection from "@/components/shared/heroSection";
 import { Projects } from "@/components/shared/Projects";
 import Skills from "@/components/shared/Skills";
 import Contact from "@/components/shared/contact";
-import About from "@/components/shared/About";
+import Experience from "@/components/shared/Experience";
+
 
 export default function Home() {
 
@@ -12,12 +13,9 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <Projects />
-      <Contact /> 
-
-      {/*
       <Skills />
-      <About />
-      */}
+      <Experience />
+      <Contact />
     </main>
   );
 }

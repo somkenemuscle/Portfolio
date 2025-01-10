@@ -1,66 +1,55 @@
-'use client'
-import {
-  IconBrandReact,
-  IconBrandMongodb,
-  IconBrandTypescript,
-  IconBrandNodejs,
-  IconBrandDocker,
-  IconBrandTailwind,
-  IconBrandBootstrap,
-  IconBrandNextjs,
-  IconBrandJavascript,
-  IconBrandHtml5,
-  IconBrandCss3,
-  IconServer2,
-} from "@tabler/icons-react";
-import { motion } from "framer-motion";
-import SlideIn from "./SlideIn";
+import { stackIcons } from "@/constants/stackIcons";
 
 function Skills() {
-  const skills = [
-    { name: "HTML5", logo: <IconBrandHtml5 size={48} className="text-orange-500" /> },
-    { name: "CSS3", logo: <IconBrandCss3 size={48} className="text-blue-700" /> },
-    { name: "JavaScript", logo: <IconBrandJavascript size={48} className="text-yellow-500" /> },
-    { name: "TypeScript", logo: <IconBrandTypescript size={48} className="text-blue-600" /> },
-    { name: "Bootstrap", logo: <IconBrandBootstrap size={48} className="text-purple-600" /> },
-    { name: "Tailwind", logo: <IconBrandTailwind size={48} className="text-teal-500" /> },
-    { name: "ReactJs", logo: <IconBrandReact size={48} className="text-blue-500" /> },
-    { name: "Next.js", logo: <IconBrandNextjs size={48} className="text-black" /> },
-    { name: "Node.js", logo: <IconBrandNodejs size={48} className="text-green-800" /> },
-    { name: "Express", logo: <IconServer2 size={48} className="text-gray-700" /> },
-    { name: "MongoDB", logo: <IconBrandMongodb size={48} className="text-green-500" /> },
-    { name: "Docker", logo: <IconBrandDocker size={48} className="text-indigo-700" /> }
-  ];
-
-  // Animation variants for each skill
-  const skillVariants = {
-    hidden: { opacity: 0, y: 50 }, // Starting state
-    visible: { opacity: 1, y: 0 }, // Ending state
-  };
-
   return (
-    <div id="skills" className="py-12 px-24 my-12 mt-10 mb-36">
-      <SlideIn direction="bottom">
-        <p className="text-center font-light mb-14 text-gray-900">
-          These are the technologies i specialize in, drawn from my experience as a Frontend and Backend developer <span aria-hidden="true">→</span>
-        </p>
-      </SlideIn>
-      <div id="about" className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-10 justify-items-center">
-        {skills.map((skill, index) => (
-          <motion.div
-            key={skill.name}
-            className="flex flex-col items-center"
-            variants={skillVariants} // Apply the animation variants
-            initial="hidden" // Initial animation state
-            whileInView="visible" // Animation state when the element is in view
-            viewport={{ once: true, amount: 0.2 }} // Controls when the element should animate
-            transition={{ duration: 0.5, delay: index * 0.1 }} // Duration and delay for a staggered effect
-          >
-            {skill.logo}
-            <span className="mt-2 text-sm font-light">{skill.name}</span>
-          </motion.div>
-        ))}
-      </div>
+    <div className="skills-container px-4 lg:px-8 my-48 cursor-pointer">
+      <section className="md:max-w-4xl mx-auto lg:max-w-6xl">
+        <h1 className="text-5xl md:text-6xl lg:text-8xl pb-9 font-medium text-transparent bg-clip-text bg-gradient-to-br from-pink-300 to-yellow-300">
+          I don't have dark <br />secrets, only bright ones</h1>
+
+
+        {/* GRID SECTION */}
+        <div className="grid grid-cols-12 gap-4">
+          {/* Left Section */}
+          <div className="col-span-12 lg:col-span-4 p-8 rounded-3xl skills-bg bg-neutral-900 text-gray-100">
+            <div className="grid grid-cols-2 gap-4"> {/* Grid layout with 2 columns */}
+              {stackIcons.map((icon, index) => (
+                <div
+                  key={index}
+                  className="flex items-center py-1.5 px-3 text-xs font-medium"
+                >
+                  <img
+                    className={`w-9 h-9 ${icon.style || ""}`}
+                    src={icon.src}
+                    alt={icon.name}
+                  />
+                  <span className="pl-2">{icon.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Section */}
+          <div className="col-span-12 lg:col-span-8 font-light p-8 text-left tracking-wide text-gray-300 rounded-3xl bg-neutral-900  transition-all duration-300">
+            <p>
+              My journey into <span className="text-gray-50 font-medium">software engineering </span> began with a passion for artistic creation, honed through drawing and making music.
+              This creative background naturally guided me toward the world of technology, where I could merge artistry with problem-solving through software development.
+            </p>
+            <p className="pt-3">
+              I specialize in both <span className="text-gray-50 font-medium">frontend </span>and <span className="text-gray-50 font-medium">backend </span>development, with extensive experience across the full stack. I thrive on the continuous learning and
+              creativity that coding offers, enjoying the challenge of transforming ideas into impactful digital solutions.
+              <span className="text-gray-50 font-medium">
+                {" "}"For me, coding is not just a profession, it's a space to innovate and unleash my creativity"
+              </span>
+            </p>
+            <p className="pt-3">
+
+              Beyond coding, I enjoy video creation , video editing and watching anime, both of which inspire my approach to UI/UX design by shaping how I think about  <span className="text-gray-50 font-medium">visual
+                storytelling</span> and <span className="text-gray-50 font-medium">aesthetics ✨</span>
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
