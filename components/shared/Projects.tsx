@@ -53,7 +53,7 @@ export const Projects = () => {
                                 <div className="col-span-12 md:col-span-6 lg:col-span-6 pl-6 md:pl-4 pr-8 pt-11 text-left">
                                     {/* HEADER SECTION */}
                                     <h1 className="text-gray-200 text-3xl mb-1 font-medium flex items-center gap-2">
-                                        <project.icon className="bg-neutral-950 p-2 rounded-full h-10 w-10 border border-neutral-400" /> {project.title}
+                                        <project.icon className="bg-neutral-950 hover:animate-spin p-2 rounded-full h-10 w-10 border border-neutral-400" /> {project.title}
                                     </h1>
                                     <p className="text-gray-400 tracking-wide pt-2 font-light">{project.description}</p>
 
@@ -69,7 +69,7 @@ export const Projects = () => {
                                     {/* LIVE PREVIEW LINK */}
                                     <section className="pt-11">
                                         <Link href={project.livePreview} target="_blank" rel="noopener noreferrer">
-                                            <p className="text-gray-300 font-medium tracking-wider rounded-xl text-sm hover:underline">
+                                            <p className="text-gray-300 hover:underline tracking-wide">
                                                 🌍 Live Preview →
                                             </p>
                                         </Link>
