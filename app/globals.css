@@ -79,8 +79,15 @@ html {
 
 @media (max-width: 463px) {
   .hero-status-container {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     margin-left: 2.5rem;
+  }
+
+  .hero-status-info {
+    margin-top: 10px;
+    border: 1px solid rgb(40, 39, 39);
   }
 
   .hero-header {

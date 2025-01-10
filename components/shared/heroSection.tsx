@@ -12,9 +12,10 @@ function HeroSection() {
 
         <div className="text-center py-40 hero mb-32">
           <section className="hero-status-container flex flex-col items-center">
-            <span className="text-7xl"><img className="w-20 h-20 hover:scale-105 transition-all duration-300"
-              src="https://framerusercontent.com/images/DGJ4Gx0ogbA7MZuCQVUb98IKt1I.png?scale-down-to=512" /></span>
-            <div className="text-pink-50 bg-black w-fit px-4 py-2 text-xs rounded tracking-wide font-light">
+            <span className="hero-status-bitmoji"><img className="w-20 h-20 hover:scale-105 transition-all duration-300"
+              src="https://framerusercontent.com/images/DGJ4Gx0ogbA7MZuCQVUb98IKt1I.png?scale-down-to=512" />
+            </span>
+            <div className="text-pink-50 bg-black w-fit hero-status-info px-4 py-2 text-xs rounded tracking-wide font-light">
               <span className="animate-pulse-ring inline-block bg-pink-400 rounded-full w-2 h-2 mr-2"></span>
               {" "} Available for new projects
             </div>
