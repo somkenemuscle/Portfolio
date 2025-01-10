@@ -20,15 +20,23 @@ function HeroSection() {
 
           <section className="mx-10">
             <h1 className="text-pink-200  text-5xl md:text-6xl lg:text-7xl mt-9 tracking-tight hero-header">
-              Ojukwu Somkene <br /><span className="text-pink-50">Ifechukwu</span> </h1>
-            {/* <p className="leading-8 text-white max-w-xl lg:max-w-2xl mx-auto mt-6 px-3">
-              Yooooooooo !!, I'm a <span className="text-gray-400 font-semibold">Full-Stack developer</span>  based in <span className="font-semibold text-gray-400">
-                Lagos, Nigeria <img alt="" src="https://flagcdn.com/w320/ng.png" className="inline-block h-auto w-5 shrink-0" /></span> ,
-              passionate about creating web applications that are both functional and visually appealing.
-              <span className="font-semibold text-gray-400">"Coding isn't just a job for me, it’s a hobby that I deeply enjoy"</span>
-            </p> */}
+              Ojukwu Somkene <br /><span className="text-pink-50">Ifechukwu</span></h1>
+
+            <p className="text-gray-400 mt-6 tracking-wide mx-auto max-w-lg hidden md:block">
+              I'm a <span className="text-gray-200 font-semibold">Full-Stack developer</span> based in <span className="font-bold bg-gradient-to-r from-green-500 via-white to-green-500 bg-clip-text text-transparent">
+                Lagos, Nigeria,</span> specializing in using my creativity to design <span className="text-gray-200 font-semibold">aesthetically pleasing </span>
+              UIs and build <span className="text-gray-200 font-semibold">scalable applications </span>that perform efficiently
+            </p>
+
+            <p className="text-gray-400 mt-6 tracking-wide mx-auto max-w-lg block md:hidden">
+              I'm a <span className="text-gray-200 font-semibold">Full-Stack developer</span> based in <span className="font-bold bg-gradient-to-r from-green-500 via-white to-green-500 bg-clip-text text-transparent">
+                Lagos, Nigeria,</span> who builds<span className="text-gray-200 font-semibold"> aesthetically pleasing </span>
+              UIs and  <span className="text-gray-200 font-semibold">scalable applications </span>
+            </p>
           </section>
-          <FloatingDockDemo />
+          <div className="hidden md:block">
+            <FloatingDockDemo />
+          </div>
         </div>
       </div>
     </SlideIn>
