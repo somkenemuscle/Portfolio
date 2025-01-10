@@ -19,7 +19,7 @@ const Navbar = () => {
             </nav>
 
             {/* ON MOBILE DEVICES */}
-            <nav className="md:hidden lg:hidden  bg-neutral-950 rounded-full text-pink-50 font-sans text-sm py-4 px-12 navbar nav-mobile">
+            <nav className="md:hidden lg:hidden  bg-neutral-950 rounded-full text-pink-50 font-sans text-sm py-4 px-16 navbar nav-mobile">
                 <ul className="flex flex-row items-center gap-x-8 cursor-pointer tracking-wide">
                     {navigationOnMobile.map((mobileNav, index) => (
                         <Link key={index} href={mobileNav.href}>

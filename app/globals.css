@@ -78,11 +78,10 @@ html {
 }
 
 
-@media (max-width: 343px) {
+@media (max-width: 388px) {
   .nav-mobile {
     padding-left: 2rem;
     padding-right: 2rem;
-
   }
 
 }
