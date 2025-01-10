@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import SlideIn from "./SlideIn";
 import { projectData } from "@/constants/projectData";
-import { GitHubLogoIcon, ArrowTopRightIcon } from "@radix-ui/react-icons";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 export const Projects = () => {
     return (
@@ -24,10 +24,7 @@ export const Projects = () => {
                         <div
                             key={index}
                             className="card md:sticky lg:sticky pb-20 md:pb-0 border-2 border-neutral-800 md:max-w-4xl lg:max-w-6xl mx-auto bg-neutral-900 rounded-3xl my-14 cursor-pointer hover:shadow-[0_0px_10px_0_rgba(255,105,180,0.2)] hover:bg-gradient-to-tl hover:via-transparent hover:from-neutral-950 hover:to-neutral-950 transition-all duration-300"
-                            style={{
-                                top: `calc(96px + ${index * 20}px)`,
-                                height: "auto",
-                            }}
+                            style={{ top: `calc(96px + ${index * 20}px)`, height: "auto" }}
                         >
                             {/* TOP SECTION */}
                             <section className="pl-6 py-9 flex items-center justify-between">

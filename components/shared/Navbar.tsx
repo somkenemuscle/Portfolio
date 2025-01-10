@@ -12,9 +12,12 @@ const Navbar = () => {
                             <li className='hover:text-pink-300 transition duration-300 ease-in-out'>{nav.name}</li>
                         </Link>
                     ))}
-                    <li className="bg-neutral-800 text-white rounded-full px-4 py-2 transition duration-300 ease-in-out hover:bg-neutral-900 border border-neutral-700">
-                        <span className="animate-pulse-ring inline-block bg-green-600 rounded-full w-2 h-2 mr-2"></span>Let's Work
-                    </li>
+                    <Link href='mailto:somkeneoj@gmail.com'>
+                        <li className="bg-neutral-800 text-white rounded-full px-4 py-2 transition duration-300 ease-in-out hover:bg-neutral-900 border border-neutral-700">
+                            <span className="animate-pulse-ring inline-block bg-green-600 rounded-full w-2 h-2 mr-2"></span>Let's Work
+                        </li>
+                    </Link>
+
                 </ul>
             </nav>
 
