@@ -76,3 +76,27 @@ html {
   background-color: rgb(15, 15, 15);
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
+@media (max-width: 463px) {
+  .hero-status-container {
+    display: block;
+    margin-left: 2.5rem;
+  }
+
+  .hero-header {
+    font-size: 40px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+
+  .hero-subtext-mobile {
+    text-align: left;
+  }
+
+  .project-header {
+    text-align: left;
+    margin-left: 2.5rem;
+  }
+
+}

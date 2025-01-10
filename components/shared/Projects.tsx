@@ -10,7 +10,7 @@ export const Projects = () => {
     return (
         <SlideIn direction="bottom">
             <div className="font-sans">
-                <div className="text-center mb-10 mx-4">
+                <div className="text-center mb-10 mx-4 project-header">
                     <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
                         Latest <span className="text-pink-200">Works</span>
                     </p>
