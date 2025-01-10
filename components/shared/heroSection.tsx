@@ -37,7 +37,7 @@ function HeroSection() {
             <p className="text-gray-400 mt-6 tracking-wide mx-auto max-w-lg block md:hidden hero-subtext-mobile">
               <span className="text-gray-200 font-semibold">Full-Stack developer</span> based in <span className="font-bold bg-gradient-to-r from-green-500 via-white to-green-500 bg-clip-text text-transparent">
                 Lagos, Nigeria,</span> who builds<span className="text-gray-200 font-semibold"> aesthetically pleasing </span>
-              UIs and  <span className="text-gray-200 font-semibold">scalable applications</span>
+              UI's and  <span className="text-gray-200 font-semibold">scalable applications</span>
             </p>
           </section>
           <section className="hidden md:block">
