@@ -21,7 +21,7 @@ function Experience() {
                                                 <Link href={exp.link} target="_blank" rel="noopener noreferrer"> {exp.company} </Link>
                                                 {" "}  <img alt="" src={exp.location} className="ml-0.5 inline-block h-auto w-5 shrink-0" />
                                             </h1>
-                                            <span>
+                                            <span className="hidden md:block">
                                                 <Link href={exp.link} target="_blank" rel="noopener noreferrer">
                                                     <ArrowTopRightIcon className="text-gray-100 hover:scale-125 transition-all duration-300" />
                                                 </Link>
