@@ -1,13 +1,5 @@
 export const experiences = [
-    {
-        role: "Fullstack Engineer",
-        duration: "Founded Jan 2024",
-        link: "https://appvarsity.vercel.app",
-        company: "@Appvarsity ",
-        location: 'https://flagcdn.com/w320/ng.png',
-        description1: "I Founded and led the development of the platform to address personal challenges i faced as a student at Aptech, now serving 70+ students. Key responsibilities included leading a team of 4, assigning tasks, conducting code reviews, and presenting the platform to students. This experience enhanced my collaborative and leadership skills as I oversaw the frontend and backend integrations of the platform.",
-        technologies: ["NextJs", "Tailwind", "Typescript", "Clerk", "Zustand", "Webhooks", "Sentry", "Git", "Mongodb", "Mongoose"],
-    },
+
     {
         role: "Frontend Developer",
         duration: "June 2023 - Present",
@@ -25,5 +17,14 @@ export const experiences = [
         location: 'https://flagcdn.com/w320/gb.png',
         description1: "I created responsive, accessible user interfaces optimized for performance. I embraced agile methodologies to improve teamwork and communication, fostering a more productive development process. I ensured projects were delivered on time by managing tasks and maintaining high-quality standards. This experience greatly enhanced my technical expertise, communication skills, and collaborative abilities.",
         technologies: ["NextJs", "Tailwind", "CSS", "Javascript", "Context Api", "SEO", "Agile Methodology"],
-    }
+    },
+    // {
+    //     role: "Fullstack Developer Intern",
+    //     duration: "July 2021 - Dec 2021",
+    //     link: "https://wildfire.ng/",
+    //     company: "@WildFire ",
+    //     location: 'https://flagcdn.com/w320/ng.png',
+    //     description1: "I Founded and led the development of the platform to address personal challenges i faced as a student at Aptech, now serving 70+ students. Key responsibilities included leading a team of 4, assigning tasks, conducting code reviews, and presenting the platform to students. This experience enhanced my collaborative and leadership skills as I oversaw the frontend and backend integrations of the platform.",
+    //     technologies: ["", "NodeJs", "Javascript", "MongoDB", "REST"],
+    // },
 ];
