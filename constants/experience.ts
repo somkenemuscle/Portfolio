@@ -10,7 +10,7 @@ export const experiences = [
     },
     {
         role: "Frontend Developer",
-        duration: "July 2023 - Present",
+        duration: "June 2023 - Present",
         link: "https://clouddley.com/",
         company: "@Clouddley ",
         location: 'https://flagcdn.com/w320/us.png',
@@ -19,7 +19,7 @@ export const experiences = [
     },
     {
         role: "Frontend Developer Intern",
-        duration: "Jan 2023 - July 2023",
+        duration: "Jan 2023 - June 2023",
         link: "https://minderacodeacademy.com/",
         company: "@Mindera ",
         location: 'https://flagcdn.com/w320/gb.png',
