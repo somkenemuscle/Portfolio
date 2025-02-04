@@ -10,7 +10,7 @@ export const experiences = [
         technologies: ["NextJs", "Tailwind", "Typescript", 'Jest', "Zustand", "Framer Motion", "Custom Css",],
     },
     {
-        role: "Frontend Developer Intern",
+        role: "Frontend Developer",
         duration: "Jan 2023 - June 2023",
         link: "https://minderacodeacademy.com/",
         company: "@Mindera ",
