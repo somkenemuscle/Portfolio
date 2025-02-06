@@ -2,7 +2,7 @@ export const experiences = [
 
     {
         role: "Frontend Developer",
-        duration: "June 2023 - Present",
+        duration: "June 2023 - Jan 2025",
         link: "https://clouddley.com/",
         company: "@Clouddley ",
         location: 'https://flagcdn.com/w320/us.png',
