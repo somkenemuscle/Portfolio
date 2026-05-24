@@ -17,8 +17,7 @@ export const Projects = () => {
 
         {/* Section header */}
         <motion.div {...enter(0.05)} className="mb-16">
-          <p className="text-[11px] font-medium tracking-[0.18em] uppercase mb-4"
-            style={{ color: 'rgba(255,255,255,0.28)' }}>
+          <p className="text-[11px] font-medium tracking-[0.18em] uppercase mb-4 text-pink-200/50">
             Selected Work
           </p>
           <h2
@@ -151,13 +150,12 @@ export const Projects = () => {
                         href={project.livePreview}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[13px] font-medium transition-colors duration-150"
-                        style={{ color: 'rgba(255,255,255,0.55)' }}
+                        className="text-[13px] font-medium transition-colors duration-150 text-pink-200/70"
                         onMouseEnter={e =>
-                          ((e.currentTarget as HTMLAnchorElement).style.color = '#fff')
+                          ((e.currentTarget as HTMLAnchorElement).style.color = '#fbcfe8')
                         }
                         onMouseLeave={e =>
-                          ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.55)')
+                          ((e.currentTarget as HTMLAnchorElement).style.color = '')
                         }
                       >
                         Live Preview →

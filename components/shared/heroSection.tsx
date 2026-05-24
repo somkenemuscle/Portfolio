@@ -76,8 +76,8 @@ export default function HeroSection() {
               </motion.h1>
               <motion.h1
                 {...enter(0.2)}
-                className="block font-bold leading-[0.85] tracking-tight"
-                style={{ fontSize: 'clamp(3.8rem, 10vw, 8.5rem)', color: '#f5f5f7' }}
+                className="block font-bold leading-[0.85] tracking-tight text-pink-200"
+                style={{ fontSize: 'clamp(3.8rem, 10vw, 8.5rem)'}}
               >
                 Ojukwu.
               </motion.h1>
@@ -86,10 +86,7 @@ export default function HeroSection() {
 
             {/* Role row — prominent, right under the name */}
             <motion.div {...enter(0.3)} className="flex items-center gap-3 mb-8">
-              <span
-                className="text-[15px] md:text-[17px] font-semibold tracking-tight"
-                style={{ color: 'rgba(255,255,255,0.82)' }}
-              >
+              <span className="tracking-tight ">
                 Software Engineer
               </span>
               <span style={{ color: 'rgba(255,255,255,0.18)' }}>·</span>

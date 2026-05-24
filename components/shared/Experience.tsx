@@ -13,15 +13,12 @@ const enter = (delay: number) => ({
 
 function Experience() {
   return (
-    <section className="py-24 md:py-32">
+    <section   className="py-24 md:py-32">
       <div className="w-full max-w-screen-lg mx-auto px-8 md:px-16">
 
         {/* Section header */}
         <motion.div {...enter(0.05)} className="mb-16">
-          <p
-            className="text-[11px] font-medium tracking-[0.18em] uppercase mb-4"
-            style={{ color: "rgba(255,255,255,0.28)" }}
-          >
+          <p className="text-[11px] font-medium tracking-[0.18em] uppercase mb-4 text-pink-200/50">
             Experience
           </p>
           <h2
@@ -65,13 +62,12 @@ function Experience() {
                       href={exp.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-[14px] font-medium transition-colors duration-150"
-                      style={{ color: "rgba(255,255,255,0.45)" }}
+                      className="flex items-center gap-1 text-[14px] font-medium transition-colors duration-150 text-pink-200/50"
                       onMouseEnter={e =>
-                        ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.85)")
+                        ((e.currentTarget as HTMLAnchorElement).style.color = '#fbcfe8')
                       }
                       onMouseLeave={e =>
-                        ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.45)")
+                        ((e.currentTarget as HTMLAnchorElement).style.color = '')
                       }
                     >
                       {exp.company.replace("@", "")}

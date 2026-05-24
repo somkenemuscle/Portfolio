@@ -12,15 +12,12 @@ const enter = (delay: number) => ({
 
 function Contact() {
   return (
-    <section id="contact" className="py-24 md:py-32">
+    <section id="contact" className="py-10">
       <div className="w-full max-w-screen-lg mx-auto px-8 md:px-16">
 
         {/* Section header */}
-        <motion.div {...enter(0.05)} className="mb-16">
-          <p
-            className="text-[11px] font-medium tracking-[0.18em] uppercase mb-4"
-            style={{ color: "rgba(255,255,255,0.28)" }}
-          >
+        <motion.div {...enter(0.05)} className="mb-6">
+          <p className="text-[11px] font-medium tracking-[0.18em] uppercase mb-4 text-pink-200/50">
             Contact
           </p>
           <h2
@@ -61,7 +58,7 @@ function Contact() {
                 className="text-[18px] md:text-[22px] font-semibold tracking-tight transition-colors duration-150"
                 style={{ color: "rgba(255,255,255,0.75)" }}
                 onMouseEnter={e =>
-                  ((e.currentTarget as HTMLAnchorElement).style.color = "#fff")
+                  ((e.currentTarget as HTMLAnchorElement).style.color = "#fbcfe8")
                 }
                 onMouseLeave={e =>
                   ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.75)")
@@ -102,13 +99,13 @@ function Contact() {
         </motion.div>
 
         {/* Footer */}
-        <motion.p
+        {/* <motion.p
           {...enter(0.25)}
           className="mt-10 text-[12px] text-center"
           style={{ color: "rgba(255,255,255,0.18)" }}
         >
           Designed &amp; built by Somkene Ojukwu
-        </motion.p>
+        </motion.p> */}
 
       </div>
     </section>

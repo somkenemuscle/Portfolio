@@ -11,15 +11,12 @@ const enter = (delay: number) => ({
 
 function Skills() {
   return (
-    <section className="py-24 md:py-32">
+    <section id="about" className="py-24 md:py-32">
       <div className="w-full max-w-screen-lg mx-auto px-8 md:px-16">
 
         {/* Section header */}
         <motion.div {...enter(0.05)} className="mb-16">
-          <p
-            className="text-[11px] font-medium tracking-[0.18em] uppercase mb-4"
-            style={{ color: "rgba(255,255,255,0.28)" }}
-          >
+          <p className="text-[11px] font-medium tracking-[0.18em] uppercase mb-4 text-pink-200/50">
             Stack &amp; About
           </p>
           <h2
