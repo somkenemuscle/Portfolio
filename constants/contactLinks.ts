@@ -5,9 +5,9 @@ export const contactlinks = [
         href: "https://www.linkedin.com/in/somkene-ojukwu/",
     },
     {
-        title: "Threads",
-        icon: 'https://framerusercontent.com/images/23QIkTXJxWXuDvTC7jrVLxmu5cA.png',
-        href: "https://www.threads.net/@codes.by.oj",
+        title: "TikTok",
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tiktok/tiktok-original.svg',
+        href: "https://www.tiktok.com/@codes.by.oj",
     },
     {
         title: "Instagram",

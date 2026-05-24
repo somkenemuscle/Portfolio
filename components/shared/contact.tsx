@@ -1,50 +1,117 @@
 'use client'
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { contactlinks } from "@/constants/contactLinks";
+
+const enter = (delay: number) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] },
+});
 
 function Contact() {
   return (
-    <div id="contact" className="cursor-pointer mt-32 px-4 lg:px-8 mb-12">
-      <div className="text-center">
-        <header className="pb-7 flex items-center justify-center">
-          <img className="w-14 h-14"
-            src="https://framerusercontent.com/images/tDOGAARw0kdQ37aQk0HWXiX9X8.png?scale-down-to=512" alt="icon" />
-          <span className="text-2xl font-bold font-sans text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-pink-100">
-            {" "} get in touch!</span>
-        </header>
-      </div>
+    <section id="contact" className="py-24 md:py-32">
+      <div className="w-full max-w-screen-lg mx-auto px-8 md:px-16">
 
-      {/* <!-- Use flex-col to stack on small screens, flex-row for larger screens --> */}
-      <div className="flex flex-col sm:flex-row justify-between items-center border-2 border-neutral-800 bg-neutral-900 md:max-w-4xl mx-auto lg:max-w-6xl rounded-3xl p-8 hover:bg-gradient-to-bl hover:via-transparent hover:from-black hover:to-black transition-all duration-300">
-        <div className="mb-4 sm:mb-0">
-          <span className="text-neutral-300 text-xs tracking-wide font-medium">Reach out to me <span aria-hidden="true">→</span></span> <br />
-          <Link href="mailto:somkeneoj@gmail.com">
-            <span className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-100 hover:text-pink-500 tracking-wide font-sans">
-              somkeneoj@gmail.com
-            </span>
-          </Link>
-        </div>
+        {/* Section header */}
+        <motion.div {...enter(0.05)} className="mb-16">
+          <p
+            className="text-[11px] font-medium tracking-[0.18em] uppercase mb-4"
+            style={{ color: "rgba(255,255,255,0.28)" }}
+          >
+            Contact
+          </p>
+          <h2
+            className="font-bold leading-tight tracking-tight text-[#f5f5f7]"
+            style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}
+          >
+            Let&apos;s work together.
+          </h2>
+        </motion.div>
 
-        {/* <!-- Keep icons in a straight line using flex-row on all screen sizes --> */}
-        <div className="flex flex-row items-center space-x-4">
-          {contactlinks.map((link, index) => (
-            <Link
-              key={index}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-14 w-14 flex items-center justify-center"
-              aria-label={link.title}
-              style={{
-                transform: `rotate(${(index + 1) % 2 === 0 ? (index + 1) * 3 : -(index + 1) * 3}deg)`,
-              }}
-            >
-              <img src={link.icon} className="hover:scale-125 transition-transform duration-300 " />
-            </Link>
-          ))}
-        </div>
+        {/* Contact card */}
+        <motion.div {...enter(0.15)}>
+          <div
+            className="rounded-2xl p-8 md:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8 transition-all duration-300"
+            style={{
+              background: "rgba(255,255,255,0.025)",
+              border: "1px solid rgba(255,255,255,0.07)",
+            }}
+            onMouseEnter={e =>
+              ((e.currentTarget as HTMLDivElement).style.border =
+                "1px solid rgba(255,255,255,0.13)")
+            }
+            onMouseLeave={e =>
+              ((e.currentTarget as HTMLDivElement).style.border =
+                "1px solid rgba(255,255,255,0.07)")
+            }
+          >
+            {/* Email */}
+            <div>
+              <p
+                className="text-[11px] font-medium tracking-[0.16em] uppercase mb-3"
+                style={{ color: "rgba(255,255,255,0.25)" }}
+              >
+                Reach out
+              </p>
+              <Link
+                href="mailto:somkeneoj@gmail.com"
+                className="text-[18px] md:text-[22px] font-semibold tracking-tight transition-colors duration-150"
+                style={{ color: "rgba(255,255,255,0.75)" }}
+                onMouseEnter={e =>
+                  ((e.currentTarget as HTMLAnchorElement).style.color = "#fff")
+                }
+                onMouseLeave={e =>
+                  ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.75)")
+                }
+              >
+                somkeneoj@gmail.com
+              </Link>
+            </div>
+
+            {/* Social icons */}
+            <div className="flex items-center gap-3">
+              {contactlinks.map((link) => (
+                <Link
+                  key={link.title}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.title}
+                  className="w-10 h-10 flex items-center justify-center rounded-full transition-all duration-200"
+                  style={{
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "rgba(255,255,255,0.03)",
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLAnchorElement).style.border = "1px solid rgba(255,255,255,0.18)"
+                    ;(e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.07)"
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLAnchorElement).style.border = "1px solid rgba(255,255,255,0.08)"
+                    ;(e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.03)"
+                  }}
+                >
+                  <img src={link.icon} alt={link.title} className="w-5 h-5" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Footer */}
+        <motion.p
+          {...enter(0.25)}
+          className="mt-10 text-[12px] text-center"
+          style={{ color: "rgba(255,255,255,0.18)" }}
+        >
+          Designed &amp; built by Somkene Ojukwu
+        </motion.p>
+
       </div>
-    </div>
+    </section>
   )
 }
 

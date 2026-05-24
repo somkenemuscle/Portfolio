@@ -1,53 +1,186 @@
-import { FloatingDockDemo } from "./Dock"
-import SlideIn from "./SlideIn"
+'use client'
 
-function HeroSection() {
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+
+const enter = (delay: number) => ({
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] },
+})
+
+const fadeIn = (delay: number) => ({
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  transition: { duration: 1, delay, ease: 'easeOut' },
+})
+
+const socials = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/somkene-ojukwu/' },
+  { label: 'Twitter', href: 'https://x.com/somkeneOj' },
+  { label: 'Instagram', href: 'https://www.instagram.com/codes.by.oj/' },
+  { label: 'TikTok', href: 'https://www.tiktok.com/@codes.by.oj' },
+]
+
+export default function HeroSection() {
+  const [mouse, setMouse] = useState({ x: -9999, y: -9999 })
+
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => setMouse({ x: e.clientX, y: e.clientY })
+    window.addEventListener('mousemove', onMove)
+    return () => window.removeEventListener('mousemove', onMove)
+  }, [])
+
   return (
-    <SlideIn direction="top">
-      <div className="overflow-x-clip relative cursor-pointer">
-        <div className="size-[850px] hero-ring"></div>
-        <div className="size-[1050px] hero-ring"></div>
-        <div className="size-[1250px] hero-ring"></div>
-        <div className="size-[1450px] hero-ring"></div>
+    <div className="relative overflow-x-clip min-h-screen flex flex-col">
 
-        <div className="text-center py-40 hero mb-32">
-          <section className="hero-status-container flex flex-col items-center">
-            <span className="hero-status-bitmoji"><img className="w-20 h-20 hover:scale-105 transition-all duration-300"
-              src="https://framerusercontent.com/images/DGJ4Gx0ogbA7MZuCQVUb98IKt1I.png?scale-down-to=512" />
-            </span>
-            <div className="text-pink-50 bg-black w-fit hero-status-info px-4 py-2 text-xs rounded tracking-wide font-light">
-              <span className="animate-pulse-ring inline-block bg-pink-400 rounded-full w-2 h-2 mr-2"></span>
-              {" "} Available for new projects
+      {/* Mouse spotlight */}
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{
+          background: `radial-gradient(600px circle at ${mouse.x}px ${mouse.y}px,
+            rgba(255,255,255,0.022), transparent 50%)`,
+        }}
+      />
+
+      {/* Dot grid */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+          maskImage: 'radial-gradient(ellipse 90% 80% at 20% 50%, black 10%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 90% 80% at 20% 50%, black 10%, transparent 100%)',
+        }}
+      />
+
+      {/* Main content */}
+      <div className="relative z-10 flex-1 flex flex-col justify-center w-full max-w-screen-lg mx-auto px-8 md:px-16 pt-28 pb-24">
+
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12 lg:gap-8">
+
+          {/* LEFT: Name + role + tagline */}
+          <div className="lg:flex-1">
+
+            {/* Name */}
+            <div className="-ml-1 mb-14">
+              <motion.h1
+                {...enter(0.1)}
+                className="block font-bold leading-[0.85] tracking-tight"
+                style={{ fontSize: 'clamp(3.8rem, 10vw, 8.5rem)', color: '#f5f5f7' }}
+              >
+                Somkene
+              </motion.h1>
+              <motion.h1
+                {...enter(0.2)}
+                className="block font-bold leading-[0.85] tracking-tight"
+                style={{ fontSize: 'clamp(3.8rem, 10vw, 8.5rem)', color: '#f5f5f7' }}
+              >
+                Ojukwu.
+              </motion.h1>
             </div>
-          </section>
+            
 
+            {/* Role row — prominent, right under the name */}
+            <motion.div {...enter(0.3)} className="flex items-center gap-3 mb-8">
+              <span
+                className="text-[15px] md:text-[17px] font-semibold tracking-tight"
+                style={{ color: 'rgba(255,255,255,0.82)' }}
+              >
+                Software Engineer
+              </span>
+              <span style={{ color: 'rgba(255,255,255,0.18)' }}>·</span>
+              <span
+                className="text-[14px] font-medium"
+                style={{
+                  background: 'linear-gradient(90deg, #16a34a 0%, #ffffff 50%, #16a34a 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                Lagos, Nigeria
+              </span>
+            </motion.div>
 
-          <section className="mx-10">
-            <h1 className="text-pink-200  text-5xl md:text-6xl lg:text-7xl mt-9 tracking-tight hero-header">
-              Ojukwu Somkene <br /><span className="text-pink-50">Ifechukwu</span></h1>
+          
 
-            {/* LARGE SCREEN */}
-            <p className="text-gray-400 mt-6 tracking-wide mx-auto max-w-lg hidden md:block">
-              I'm a <span className="text-gray-200 font-semibold">Full-Stack Engineer</span> based in <span className="font-bold bg-gradient-to-r from-green-500 via-white to-green-500 bg-clip-text text-transparent">
-                Lagos, Nigeria,</span> specializing in using my creativity to design <span className="text-gray-200 font-semibold">aesthetically pleasing </span>
-              UIs and build <span className="text-gray-200 font-semibold">scalable applications </span>that perform efficiently
-            </p>
+            {/* Tagline */}
+            <motion.p
+              {...enter(0.42)}
+              className="text-[15px] leading-[1.75] max-w-[420px]"
+              style={{ color: 'rgba(255,255,255,0.38)' }}
+            >
+              I build scalable systems and clean interfaces.{' '}
+              <span style={{ color: 'rgba(255,255,255,0.58)' }}>
+                Focused on the details that make software feel right.
+              </span>
+            </motion.p>
+          </div>
 
-            {/* ON MOBILE DEVICES */}
-            <p className="text-gray-400 mt-6 tracking-wide mx-auto max-w-lg block md:hidden hero-subtext-mobile">
-              <span className="text-gray-200 font-semibold">Full-Stack developer</span> based in <span className="font-bold bg-gradient-to-r from-green-500 via-white to-green-500 bg-clip-text text-transparent">
-                Lagos, Nigeria,</span> who builds<span className="text-gray-200 font-semibold"> aesthetically pleasing </span>
-              UI's and  <span className="text-gray-200 font-semibold">scalable applications</span>
-            </p>
-          </section>
-          <section className="hidden md:block">
-            <FloatingDockDemo />
-          </section>
+          {/* RIGHT: CTAs + socials */}
+          <motion.div
+            {...enter(0.35)}
+            className="lg:w-[200px] flex flex-col gap-6"
+          >
+
+            {/* CTAs */}
+            <div className="flex flex-col gap-2">
+              <Link
+                href="#projects"
+                className="w-full text-center px-5 py-2.5 rounded-full bg-white text-black text-[13px] font-semibold hover:bg-white/90 transition-colors duration-200"
+              >
+                View Work
+              </Link>
+              <Link
+                href="mailto:somkeneoj@gmail.com"
+                className="w-full text-center px-5 py-2.5 rounded-full text-[13px] font-medium transition-colors duration-200"
+                style={{
+                  color: 'rgba(255,255,255,0.45)',
+                  border: '1px solid rgba(255,255,255,0.09)',
+                  background: 'rgba(255,255,255,0.03)',
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.8)'
+                  ;(e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.07)'
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.45)'
+                  ;(e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.03)'
+                }}
+              >
+                Get in touch
+              </Link>
+            </div>
+
+            {/* Thin rule */}
+            <div className="h-px" style={{ background: 'rgba(255,255,255,0.06)' }} />
+
+            {/* Socials */}
+            <div className="flex flex-wrap gap-x-3 gap-y-1.5">
+              {socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] font-medium transition-colors duration-150"
+                  style={{ color: 'rgba(255,255,255,0.25)' }}
+                  onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.65)')}
+                  onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.25)')}
+                >
+                  {s.label}
+                </a>
+              ))}
+            </div>
+
+          </motion.div>
         </div>
-      </div>
-    </SlideIn>
 
+      </div>
+    </div>
   )
 }
-
-export default HeroSection

@@ -1,37 +1,91 @@
-import Link from 'next/link'; // Import Link from Next.js
-import { navigationOnLargeScreen, navigationOnMobile } from '@/constants/navigation';
+'use client'
+
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { navigationOnLargeScreen } from '@/constants/navigation'
 
 const Navbar = () => {
-    return (
-        <div className="fixed z-50 top-6 inset-x-0 mx-auto w-fit">
-            {/* ON LARGE SCREEN DEVICES */}
-            <nav className="hidden md:block lg:block bg-neutral-950 rounded-full text-pink-50 font-sans text-sm pr-3 pl-7 py-2 navbar">
-                <ul className="flex flex-row items-center gap-x-8 cursor-pointer tracking-wide">
-                    {navigationOnLargeScreen.map((nav, index) => (
-                        <Link key={index} href={nav.href} {...(nav.name === 'Resume' && { target: "_blank", rel: "noopener noreferrer" })}>
-                            <li className='hover:text-pink-300 transition duration-300 ease-in-out'>{nav.name}</li>
-                        </Link>
-                    ))}
-                    <Link href='mailto:somkeneoj@gmail.com'>
-                        <li className="bg-neutral-800 text-white rounded-full px-4 py-2 transition duration-300 ease-in-out hover:bg-neutral-900 border border-neutral-700">
-                            <span className="animate-pulse-ring inline-block bg-green-600 rounded-full w-2 h-2 mr-2"></span>Let's Work
-                        </li>
-                    </Link>
-                </ul>
-            </nav>
+  const [scrolled, setScrolled] = useState(false)
 
-            {/* ON MOBILE DEVICES */}
-            <nav className="md:hidden lg:hidden  bg-neutral-950 rounded-full text-pink-50 font-sans text-sm py-4 px-16 navbar nav-mobile">
-                <ul className="flex flex-row items-center gap-x-8 cursor-pointer tracking-wide">
-                    {navigationOnMobile.map((mobileNav, index) => (
-                        <Link key={index} href={mobileNav.href} {...(mobileNav.name === 'Resume' && { target: "_blank", rel: "noopener noreferrer" })}>
-                            <li className='hover:text-pink-300 transition duration-300 ease-in-out'>{mobileNav.name}</li>
-                        </Link>
-                    ))}
-                </ul>
-            </nav>
-        </div>
-    );
-};
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
-export default Navbar;
+  return (
+    <header
+      className="fixed z-50 top-0 inset-x-0 transition-all duration-500"
+      style={{
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
+        backdropFilter: scrolled ? 'blur(24px) saturate(160%)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(24px) saturate(160%)' : 'none',
+        background: scrolled ? 'rgba(0,0,0,0.75)' : 'transparent',
+      }}
+    >
+      <div className="max-w-screen-lg mx-auto px-8 md:px-16 h-16 flex items-center justify-between">
+
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2.5">
+          {/* <span
+            className="w-7 h-7 flex items-center justify-center rounded-md text-[11px] font-bold"
+            style={{
+              fontFamily: 'monospace',
+              color: 'rgba(255,255,255,0.85)',
+              border: '1px solid rgba(255,255,255,0.12)',
+              background: 'rgba(255,255,255,0.04)',
+            }}
+          >
+            SO
+          </span> */}
+          <span
+            className="hidden sm:block text-[13px] font-medium"
+            style={{ color: 'rgba(255,255,255,0.5)' }}
+          >
+            Somkene Ojukwu
+          </span>
+        </Link>
+
+        {/* Desktop nav — right aligned */}
+        <nav className="hidden md:flex items-center gap-0.5">
+          {navigationOnLargeScreen.map((nav) => (
+            <Link
+              key={nav.name}
+              href={nav.href}
+              {...(nav.name === 'Resume' && { target: '_blank', rel: 'noopener noreferrer' })}
+              className="text-[13px] px-4 py-2 rounded-full transition-colors duration-150"
+              style={{ color: 'rgba(255,255,255,0.38)' }}
+              onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.88)')}
+              onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.38)')}
+            >
+              {nav.name}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Mobile nav */}
+        <nav className="md:hidden flex items-center gap-4">
+          <Link
+            href="#projects"
+            className="text-[12px] font-medium"
+            style={{ color: 'rgba(255,255,255,0.4)' }}
+          >
+            Work
+          </Link>
+          <Link
+            href="https://t4bg270yk4.ufs.sh/f/yvg0jlQbOFCvyv8c8ZybOFCvs3G4oILpNZdq7l10V6DzPMUn"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[12px] font-medium"
+            style={{ color: 'rgba(255,255,255,0.4)' }}
+          >
+            Resume
+          </Link>
+        </nav>
+
+      </div>
+    </header>
+  )
+}
+
+export default Navbar
