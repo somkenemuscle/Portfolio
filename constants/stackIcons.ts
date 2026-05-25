@@ -43,4 +43,8 @@ export const stackIcons = [
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
         name: "PostgreSQL"
     },
+    {
+        src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg",
+        name: "Golang"
+    },
 ];
