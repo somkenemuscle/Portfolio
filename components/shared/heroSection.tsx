@@ -39,7 +39,7 @@ export default function HeroSection() {
 
             <motion.a
               {...enter(0.3)}
-              href="https://t4bg270yk4.ufs.sh/f/yvg0jlQbOFCvyv8c8ZybOFCvs3G4oILpNZdq7l10V6DzPMUn"
+              href="https://ipw88zuno5.ufs.sh/f/rXxdhjbFRcsmts46fzgEX2T9k3HcdvPmeoQaKbgID8FxO0zl"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 mt-8"

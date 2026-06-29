@@ -2,7 +2,7 @@
 export const navigationOnLargeScreen = [
     { name: 'Projects', href: '#projects' },
     { name: 'About', href: '#about' },
-    { name: 'Resume', href: 'https://t4bg270yk4.ufs.sh/f/yvg0jlQbOFCvyv8c8ZybOFCvs3G4oILpNZdq7l10V6DzPMUn' },
+    { name: 'Resume', href: 'https://ipw88zuno5.ufs.sh/f/rXxdhjbFRcsmts46fzgEX2T9k3HcdvPmeoQaKbgID8FxO0zl' },
     { name: 'Contact', href: '#contact' },
 ];
 
@@ -10,7 +10,7 @@ export const navigationOnLargeScreen = [
 
 export const navigationOnMobile = [
     { name: 'Projects', href: '#projects' },
-    { name: 'Resume', href: 'https://t4bg270yk4.ufs.sh/f/yvg0jlQbOFCvyv8c8ZybOFCvs3G4oILpNZdq7l10V6DzPMUn' },
+    { name: 'Resume', href: 'https://ipw88zuno5.ufs.sh/f/rXxdhjbFRcsmts46fzgEX2T9k3HcdvPmeoQaKbgID8FxO0zl' },
     { name: 'Contact', href: '#contact' }
 ];
 
