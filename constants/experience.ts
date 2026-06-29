@@ -14,7 +14,7 @@ export const experiences = [
         link: "https://www.mybeautybutler.com/",
         company: "@Beauty Butler ",
         location: 'https://flagcdn.com/w320/ng.png',
-        description1: "Built and optimised scalable REST APIs with Node.js, Express, and MySQL, cutting average response time by 40%, and implemented JWT authentication with robust error handling for secure, consistent client responses. Developed a real-time chat system using Socket.io, led a full Next.js admin dashboard rebuild with Zustand for global state, and refactored the frontend into reusable components — reducing duplication and improving maintainability. Collaborated with design to ship pixel-perfect UIs from Figma, optimised assets to WebP for Core Web Vitals gains, and worked cross-functionally across backend, frontend, and product to deliver a reliable, high-performance platform.",
+        description1: "Led end-to-end development of three production applications from scratch as the sole senior frontend engineer at an early-stage startup: a booking platform, admin dashboard, and concierge website. Executed a full React to Next.js migration across all applications, improving SEO, routing performance, and frontend architecture. Built a real-time notification system with Socket.io, restructured inherited codebases into scalable reusable component systems, and drove performance gains through lazy loading, WebP conversion, and systematic refactoring. Currently leading frontend architecture and feature delivery for the company's marketplace platform.",
         technologies: ["NextJs", "Typescript", "NodeJs", "NestJs", "MySQL", "Express", "AWS", "Devops", "Redis",],
     }, {
         role: "Frontend Engineer",
@@ -22,7 +22,7 @@ export const experiences = [
         link: "https://clouddley.com/",
         company: "@Clouddley ",
         location: 'https://flagcdn.com/w320/us.png',
-        description1: "Built and maintained high-performing web applications with Next.js, React, and TypeScript, refactoring legacy UI into reusable atomic components that cut code duplication and improved development speed by 40%. Implemented Google OAuth and GitHub auth via NextAuth.js, integrated backend APIs with complex client state management, and optimised performance through WebP conversion, video compression, and Next.js image optimisation. Improved SEO and accessibility with semantic HTML5, JSON-LD structured data, and ARIA standards — pushing Lighthouse scores to 95+.",
+        description1: "Contributed to the frontend of a developer-focused cloud infrastructure platform enabling users to deploy applications, databases, and AI workloads to VPS environments without complex DevOps setup. Implemented Google and GitHub OAuth via NextAuth.js, wrote frontend tests with Jest and React Testing Library, and refactored legacy UI into reusable atomic components to improve scalability and maintainability. Drove performance gains through video compression, WebP conversion, and Next.js image optimisation, and improved SEO and accessibility across core pages with semantic HTML, JSON-LD structured data, and ARIA best practices.",
         technologies: ["NextJs", "Tailwind", "Typescript", 'Jest', "Zustand", "Framer Motion", "Custom Css",],
     },
     {
@@ -32,7 +32,7 @@ export const experiences = [
         link: "https://minderacodeacademy.com/",
         company: "@Mindera ",
         location: 'https://flagcdn.com/w320/gb.png',
-        description1: "Built and shipped multiple Next.js and TypeScript projects under senior developer mentorship, applying modern React patterns, reusable component architecture, and clean coding standards. Worked closely with designers and engineers in Agile sprints to deliver accessible, responsive UIs with Tailwind CSS. Participated in code reviews, pair programming, and technical workshops — sharpening both my frontend skills and my ability to translate business requirements into polished user experiences.",
+        description1: "Completed an intensive frontend engineering programme through Mindera, building responsive and accessible applications with React, Next.js, TypeScript, and Tailwind CSS. Worked in Agile team environments across code reviews, sprint planning, and pair programming sessions. Participated in technical workshops and mock interviews focused on frontend architecture, clean code practices, and scalable UI development.",
         technologies: ["NextJs", "Tailwind", "CSS", "Javascript", "Context Api", "SEO", "Agile Methodology"],
     },
     {
