@@ -39,7 +39,7 @@ export default function HeroSection() {
 
             <motion.a
               {...enter(0.3)}
-              href="https://ipw88zuno5.ufs.sh/f/rXxdhjbFRcsmts46fzgEX2T9k3HcdvPmeoQaKbgID8FxO0zl"
+              href="https://ipw88zuno5.ufs.sh/f/rXxdhjbFRcsmBXN272AUhgmKYwtQzGVMp1x37cAZOrsqafbd"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 mt-8"
@@ -66,13 +66,62 @@ export default function HeroSection() {
             </motion.a>
           </motion.div>
 
-          <motion.div {...enter(0.25)} className="hidden md:block shrink-0">
-            <img
-              src="/assets/images/bitmoji.avif"
-              alt="Somkene"
-              className="w-44 h-auto select-none"
-              draggable={false}
+          <motion.div
+            {...enter(0.25)}
+            className="hidden md:block shrink-0 relative"
+            style={{ width: 220, height: 258 }}
+          >
+            {/* nail */}
+            <div
+              className="absolute rounded-full"
+              style={{
+                top: 0,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 6,
+                height: 6,
+                background: '#2a2a2a',
+                boxShadow: '0 1px 2px rgba(0,0,0,0.7)',
+                zIndex: 2,
+              }}
             />
+
+            <motion.div
+              style={{ position: 'absolute', top: 0, left: 0, width: 220, transformOrigin: 'top center' }}
+              animate={{ rotate: [-3.5, 3.5, -3.5] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <svg width={220} height={38} style={{ position: 'absolute', top: 0, left: 0 }}>
+                <line x1={110} y1={2} x2={22} y2={36} stroke="rgba(210,210,210,0.55)" strokeWidth={1} />
+                <line x1={110} y1={2} x2={198} y2={36} stroke="rgba(210,210,210,0.55)" strokeWidth={1} />
+              </svg>
+
+              <motion.div
+                className="p-3"
+                style={{
+                  marginTop: 38,
+                  background: 'linear-gradient(135deg, #8a5a34 0%, #5e3c20 45%, #3d2712 100%)',
+                  boxShadow: `
+                    inset 0 1px 1px rgba(255,255,255,0.35),
+                    inset 0 -2px 3px rgba(0,0,0,0.5),
+                    inset 2px 0 2px rgba(255,255,255,0.12),
+                    inset -2px 0 3px rgba(0,0,0,0.4),
+                    0 25px 45px -16px rgba(0,0,0,0.65)
+                  `,
+                }}
+                whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 260, damping: 18 } }}
+              >
+                <div className="p-2.5" style={{ background: '#efe8da' }}>
+                  <img
+                    src="/assets/images/profile.jpg"
+                    alt="Somkene"
+                    className="w-44 h-44 object-cover object-[50%_30%] select-none"
+                    style={{ boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.15)' }}
+                    draggable={false}
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
 
         </div>

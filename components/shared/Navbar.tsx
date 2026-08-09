@@ -6,17 +6,17 @@ import { Linkedin, Mail, Github } from 'lucide-react'
 import Link from 'next/link'
 
 const links = [
-  { label: 'GitHub',   href: 'https://github.com/somkenemuscle',             icon: Github   },
+  { label: 'GitHub', href: 'https://github.com/somkenemuscle', icon: Github },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/somkene-ojukwu/', icon: Linkedin },
-  { label: 'Email',    href: 'mailto:somkeneoj@gmail.com',                   icon: Mail     },
+  { label: 'Email', href: 'mailto:somkeneoj@gmail.com', icon: Mail },
 ]
 
 const navLinks = [
-  { label: 'Projects',   href: '#projects'  },
-  { label: 'Experience', href: '#experience'},
-  { label: 'About',      href: '/about'     },
-  { label: 'Blog',       href: '/blog'      },
-  { label: 'Contact',    href: '#contact'   },
+  { label: 'Projects', href: '/#projects' },
+  { label: 'Experience', href: '/#experience' },
+  { label: 'About', href: '/about' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/#contact' },
 ]
 
 const Navbar = () => {
@@ -31,69 +31,69 @@ const Navbar = () => {
     <>
       <header className="fixed z-50 top-5 inset-x-0">
         <div className="w-full max-w-screen-lg mx-auto px-8 md:px-16">
-        <div
-          className="flex items-center justify-between w-full"
-          style={{
-            background: 'rgba(17,17,17,0.88)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255,255,255,0.08)',
-            borderRadius: 14,
-            padding: '10px 20px',
-          }}
-        >
-          <Link href="/"
-            className="text-[12px] font-semibold tracking-[0.16em] uppercase select-none transition-colors duration-150"
-            style={{ color: 'rgba(255,255,255,0.75)' }}
-            onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#fff')}
-            onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.75)')}
+          <div
+            className="flex items-center justify-between w-full"
+            style={{
+              background: 'rgba(17,17,17,0.88)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: 14,
+              padding: '10px 20px',
+            }}
           >
-            Somkene Ojukwu
-          </Link>
+            <Link href="/"
+              className="text-[12px] font-semibold tracking-[0.16em] uppercase select-none transition-colors duration-150"
+              style={{ color: 'rgba(255,255,255,0.75)' }}
+              onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#fff')}
+              onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.75)')}
+            >
+              Somkene Ojukwu
+            </Link>
 
-          <div className="hidden lg:flex items-center gap-5">
-            {/* Text nav links */}
-            {navLinks.map(({ label, href }) => (
-              <a key={label} href={href}
-                className="text-[13px] font-medium transition-colors duration-150"
-                style={{ color: 'rgba(255,255,255,0.38)' }}
-                onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#fff')}
-                onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.38)')}>
-                {label}
-              </a>
-            ))}
+            <div className="hidden lg:flex items-center gap-5">
+              {/* Text nav links */}
+              {navLinks.map(({ label, href }) => (
+                <a key={label} href={href}
+                  className="text-[13px] font-medium transition-colors duration-150"
+                  style={{ color: 'rgba(255,255,255,0.38)' }}
+                  onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#fff')}
+                  onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.38)')}>
+                  {label}
+                </a>
+              ))}
 
-            {/* Divider */}
-            <div className="w-px h-4" style={{ background: 'rgba(255,255,255,0.1)' }} />
+              {/* Divider */}
+              <div className="w-px h-4" style={{ background: 'rgba(255,255,255,0.1)' }} />
 
-            {/* Icon links */}
-            {links.map(({ label, href, icon: Icon }) => (
-              <a key={label} href={href}
-                target={label === 'Email' ? undefined : '_blank'}
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="w-7 h-7 flex items-center justify-center rounded-lg transition-colors duration-150"
-                style={{ color: 'rgba(255,255,255,0.42)' }}
-                onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#fff')}
-                onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.42)')}>
-                <Icon size={14} strokeWidth={1.7} />
-              </a>
-            ))}
+              {/* Icon links */}
+              {links.map(({ label, href, icon: Icon }) => (
+                <a key={label} href={href}
+                  target={label === 'Email' ? undefined : '_blank'}
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-7 h-7 flex items-center justify-center rounded-lg transition-colors duration-150"
+                  style={{ color: 'rgba(255,255,255,0.42)' }}
+                  onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#fff')}
+                  onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.42)')}>
+                  <Icon size={14} strokeWidth={1.7} />
+                </a>
+              ))}
+            </div>
+
+            <button
+              className="lg:hidden flex flex-col justify-center items-center w-7 h-7 gap-[5px]"
+              onClick={() => setOpen(v => !v)}
+              aria-label="Toggle menu"
+            >
+              <motion.span animate={open ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }} transition={{ duration: 0.22 }}
+                className="block h-px w-5 origin-center" style={{ background: 'rgba(255,255,255,0.7)' }} />
+              <motion.span animate={open ? { opacity: 0 } : { opacity: 1 }} transition={{ duration: 0.15 }}
+                className="block h-px w-5 origin-center" style={{ background: 'rgba(255,255,255,0.7)' }} />
+              <motion.span animate={open ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }} transition={{ duration: 0.22 }}
+                className="block h-px w-5 origin-center" style={{ background: 'rgba(255,255,255,0.7)' }} />
+            </button>
           </div>
-
-          <button
-            className="lg:hidden flex flex-col justify-center items-center w-7 h-7 gap-[5px]"
-            onClick={() => setOpen(v => !v)}
-            aria-label="Toggle menu"
-          >
-            <motion.span animate={open ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }} transition={{ duration: 0.22 }}
-              className="block h-px w-5 origin-center" style={{ background: 'rgba(255,255,255,0.7)' }} />
-            <motion.span animate={open ? { opacity: 0 } : { opacity: 1 }} transition={{ duration: 0.15 }}
-              className="block h-px w-5 origin-center" style={{ background: 'rgba(255,255,255,0.7)' }} />
-            <motion.span animate={open ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }} transition={{ duration: 0.22 }}
-              className="block h-px w-5 origin-center" style={{ background: 'rgba(255,255,255,0.7)' }} />
-          </button>
-        </div>
         </div>
       </header>
 

@@ -1,16 +1,16 @@
 export const experiences = [
+    // {
+    //     role: "Software Engineer",
+    //     duration: "June 2026 - Present",
+    //     link: "https://www.alkademy.com/",
+    //     company: "@Alkademy ",
+    //     location: 'https://flagcdn.com/w320/hu.png',
+    //     description1: "Just getting started here. More to come.",
+    //     technologies: ["React", "CSS", "Javascript", "Typescript", "Wordpress", "Tailwind", "NodeJs", "MongoDB", "SQL"],
+    // },
     {
-        role: "Software Engineer",
-        duration: "June 2026 - Present",
-        link: "https://www.alkademy.com/",
-        company: "@Alkademy ",
-        location: 'https://flagcdn.com/w320/hu.png',
-        description1: "Just getting started here. More to come.",
-        technologies: ["React", "CSS", "Javascript", "Typescript", "Wordpress", "Tailwind", "NodeJs", "MongoDB", "SQL"],
-    },
-    {
-        role: "Software Engineer",
-        duration: "March 2025 - May 2026",
+        role: "Full-Stack Software Engineer",
+        duration: "March 2025 - Present",
         link: "https://www.mybeautybutler.com/",
         company: "@Beauty Butler ",
         location: 'https://flagcdn.com/w320/ng.png',
