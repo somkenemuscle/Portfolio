@@ -1,13 +1,13 @@
 export const experiences = [
-    {
-        role: "Software Engineer",
-        duration: "June 2026 - Present",
-        link: "https://www.alkademy.com/",
-        company: "@Alkademy ",
-        location: 'https://flagcdn.com/w320/hu.png',
-        description1: "Just getting started here. More to come.",
-        technologies: ["Typescript", "Tailwind", "React", "NodeJs", "NestJs", "Postgresql", "Redis", "Docker", "AWS"],
-    },
+    // {
+    //     role: "Software Engineer",
+    //     duration: "June 2026 - Present",
+    //     link: "https://www.alkademy.com/",
+    //     company: "@Alkademy ",
+    //     location: 'https://flagcdn.com/w320/hu.png',
+    //     description1: "Just getting started here. More to come.",
+    //     technologies: ["Typescript", "Tailwind", "React", "NodeJs", "NestJs", "Postgresql", "Redis", "Docker", "AWS"],
+    // },
     {
         role: "Senior Software Engineer",
         duration: "March 2025 - Present",
@@ -27,7 +27,7 @@ export const experiences = [
     },
     {
         role: "Frontend Engineer",
-        badge: "Bootcamp",
+        badge: "Intern",
         duration: "Jan 2023 - June 2023",
         link: "https://minderacodeacademy.com/",
         company: "@Mindera ",

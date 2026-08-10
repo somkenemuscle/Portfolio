@@ -1,128 +1,53 @@
 'use client'
-
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-
-const socials = [
-  { label: 'GitHub',    href: 'https://github.com/somkenemuscle'                  },
-  { label: 'LinkedIn',  href: 'https://www.linkedin.com/in/somkene-ojukwu/'       },
-  { label: 'Twitter',   href: 'https://x.com/somkeneOj'                           },
-  { label: 'Instagram', href: 'https://www.instagram.com/codes.by.oj/'            },
-]
+import { contactlinks } from "@/constants/contactLinks";
 
 function Contact() {
   return (
-    <footer id="contact">
+    <div id="contact" className="cursor-pointer mt-32 mb-12">
       <div className="w-full max-w-screen-lg mx-auto px-8 md:px-16">
-
-        {/* Main CTA area */}
-        <div className="py-16 md:py-20">
-
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[11px] font-medium tracking-[0.22em] uppercase mb-5"
-            style={{ color: 'rgba(255,255,255,0.25)' }}
-          >
-            Get in touch
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.75, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center gap-x-6 gap-y-4"
-          >
-            <h2
-              className="font-bold tracking-tight leading-[1.1]"
-              style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', color: '#ffffff' }}
-            >
-              Have something in mind?{' '}
-              <span style={{ color: 'rgba(255,255,255,0.32)' }}>Let&apos;s talk</span>
-            </h2>
-
-            <Link
-              href="mailto:somkeneoj@gmail.com"
-              className="group inline-flex items-center gap-3"
-            >
-              <span
-                className="font-medium transition-colors duration-300 group-hover:text-white"
-                style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.8)' }}
-              >
-                somkeneoj@gmail.com
-              </span>
-              <motion.div
-                className="flex items-center justify-center rounded-full"
-                style={{
-                  width: 36,
-                  height: 36,
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  color: 'rgba(255,255,255,0.3)',
-                }}
-                whileHover={{
-                  scale: 1.1,
-                  borderColor: 'rgba(255,255,255,0.3)',
-                  color: '#ffffff',
-                  backgroundColor: 'rgba(255,255,255,0.05)',
-                }}
-                transition={{ duration: 0.2 }}
-              >
-                <ArrowUpRight size={14} strokeWidth={1.8} />
-              </motion.div>
-            </Link>
-          </motion.div>
-
+        <div className="text-center">
+          <header className="pb-7 flex items-center justify-center">
+            <img className="w-14 h-14"
+              src="https://framerusercontent.com/images/tDOGAARw0kdQ37aQk0HWXiX9X8.png?scale-down-to=512" alt="icon" />
+            <span className="text-2xl font-bold font-sans text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-pink-100">
+              {" "} get in touch!</span>
+          </header>
         </div>
 
-        {/* Bottom bar */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <div style={{ height: 1, background: 'rgba(255,255,255,0.06)' }} />
-
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 py-7">
-
-            {/* Name */}
-            <Link
-              href="/"
-              className="text-[13px] font-semibold tracking-[0.12em] uppercase transition-colors duration-150"
-              style={{ color: 'rgba(255,255,255,0.35)' }}
-              onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.75)')}
-              onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.35)')}
-            >
-              Somkene Ojukwu
+        {/* <!-- Use flex-col to stack on small screens, flex-row for larger screens --> */}
+        <div className="flex flex-col sm:flex-row justify-between items-center border-2 border-neutral-800 bg-neutral-900 w-full rounded-3xl p-8 hover:bg-gradient-to-bl hover:via-transparent hover:from-black hover:to-black transition-all duration-300">
+          <div className="mb-4 sm:mb-0">
+            <span className="text-neutral-300 text-xs tracking-wide font-medium">Reach out to me <span aria-hidden="true">→</span></span> <br />
+            <Link href="mailto:somkeneoj@gmail.com">
+              <span className="text-xl font-semibold tracking-wide font-sans transition-colors duration-200"
+                style={{ color: '#D7FF5E' }}>
+                somkeneoj@gmail.com
+              </span>
             </Link>
-
-            {/* Socials */}
-            <div className="flex items-center gap-6">
-              {socials.map(({ label, href }) => (
-                <Link
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[13px] font-medium transition-colors duration-150"
-                  style={{ color: 'rgba(255,255,255,0.25)' }}
-                  onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.7)')}
-                  onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.25)')}
-                >
-                  {label}
-                </Link>
-              ))}
-            </div>
-
           </div>
-        </motion.div>
 
+          {/* <!-- Keep icons in a straight line using flex-row on all screen sizes --> */}
+          <div className="flex flex-row items-center space-x-4">
+            {contactlinks.map((link, index) => (
+              <Link
+                key={index}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-14 w-14 flex items-center justify-center"
+                aria-label={link.title}
+                style={{
+                  transform: `rotate(${(index + 1) % 2 === 0 ? (index + 1) * 3 : -(index + 1) * 3}deg)`,
+                }}
+              >
+                <img src={link.icon} className="hover:scale-125 transition-transform duration-300 " />
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
-    </footer>
+    </div>
   )
 }
 
