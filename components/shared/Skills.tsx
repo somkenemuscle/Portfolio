@@ -27,7 +27,7 @@ function Skills() {
             {/* Left column */}
             <div className="flex flex-col gap-7">
               <motion.p {...enter(0.1)} className="text-[16px] leading-[1.9]"
-                style={{ color: 'rgba(255,255,255,0.48)' }}>
+                style={{ color: 'rgba(255,255,255,0.78)' }}>
                 My path into{' '}
                 <span style={{ color: 'rgba(255,255,255,0.85)' }}>software engineering</span>{' '}
                 didn&apos;t start with a computer. It started with a sketchbook and a pair of
@@ -38,7 +38,7 @@ function Skills() {
               </motion.p>
 
               <motion.p {...enter(0.15)} className="text-[16px] leading-[1.9]"
-                style={{ color: 'rgba(255,255,255,0.48)' }}>
+                style={{ color: 'rgba(255,255,255,0.78)' }}>
                 When I wrote my first lines of JavaScript I immediately recognised the same feeling.
                 The feedback loop of building something, breaking it, fixing it, and watching it
                 finally work was deeply satisfying in the same way making a beat or finishing a
@@ -49,7 +49,7 @@ function Skills() {
               </motion.p>
 
               <motion.p {...enter(0.2)} className="text-[16px] leading-[1.9]"
-                style={{ color: 'rgba(255,255,255,0.48)' }}>
+                style={{ color: 'rgba(255,255,255,0.78)' }}>
                 Over time I gravitated toward the{' '}
                 <span style={{ color: 'rgba(255,255,255,0.85)' }}>full stack</span>.
                 I wanted to understand every layer of what I was building, from the interface a
@@ -62,7 +62,7 @@ function Skills() {
             {/* Right column */}
             <div className="flex flex-col gap-7">
               <motion.p {...enter(0.12)} className="text-[16px] leading-[1.9]"
-                style={{ color: 'rgba(255,255,255,0.48)' }}>
+                style={{ color: 'rgba(255,255,255,0.78)' }}>
                 Today I specialise in building{' '}
                 <span style={{ color: 'rgba(255,255,255,0.85)' }}>
                   performant, accessible, and visually sharp
@@ -74,7 +74,7 @@ function Skills() {
               </motion.p>
 
               <motion.p {...enter(0.17)} className="text-[16px] leading-[1.9]"
-                style={{ color: 'rgba(255,255,255,0.48)' }}>
+                style={{ color: 'rgba(255,255,255,0.78)' }}>
                 I&apos;ve worked with early-stage startups and growing products across{' '}
                 <span style={{ color: 'rgba(255,255,255,0.85)' }}>Nigeria, the UK, and the US</span>.
                 Each environment taught me something different: shipping fast under pressure,
@@ -84,7 +84,7 @@ function Skills() {
               </motion.p>
 
               <motion.p {...enter(0.22)} className="text-[16px] leading-[1.9]"
-                style={{ color: 'rgba(255,255,255,0.48)' }}>
+                style={{ color: 'rgba(255,255,255,0.78)' }}>
                 Outside of work I&apos;m into{' '}
                 <span style={{ color: 'rgba(255,255,255,0.85)' }}>
                   video creation, editing, and anime

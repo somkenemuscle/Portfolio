@@ -30,13 +30,15 @@ function ProjectCard({ project, index }: { project: typeof projectData[0]; index
               {project.niche}
             </p>
             <div className="flex items-center gap-4">
-              <Link href={project.sourceCode} target="_blank" rel="noopener noreferrer"
-                className="text-[13px] font-medium transition-colors duration-150"
-                style={{ color: 'rgba(255,255,255,0.28)' }}
-                onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.8)')}
-                onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.28)')}>
-                Github ↗
-              </Link>
+              {project.sourceCode && (
+                <Link href={project.sourceCode} target="_blank" rel="noopener noreferrer"
+                  className="text-[13px] font-medium transition-colors duration-150"
+                  style={{ color: 'rgba(255,255,255,0.28)' }}
+                  onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.8)')}
+                  onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.28)')}>
+                  Github ↗
+                </Link>
+              )}
               <Link href={project.livePreview} target="_blank" rel="noopener noreferrer"
                 className="text-[13px] font-medium transition-colors duration-150"
                 style={{ color: 'rgba(255,255,255,0.28)' }}
@@ -52,7 +54,7 @@ function ProjectCard({ project, index }: { project: typeof projectData[0]; index
             {project.title}
           </h3>
 
-          <p className="text-[14px] leading-[1.75]" style={{ color: 'rgba(255,255,255,0.42)' }}>
+          <p className="text-[14px] leading-[1.75]" style={{ color: 'rgba(255,255,255,0.8)' }}>
             {project.description}
           </p>
 

@@ -65,7 +65,7 @@ export default function BlogList() {
                     >
                       {post.title}
                     </h2>
-                    <p className="text-[14px] leading-[1.8] max-w-xl" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                    <p className="text-[14px] leading-[1.8] max-w-xl" style={{ color: 'rgba(255,255,255,0.8)' }}>
                       {post.excerpt}
                     </p>
                     <div className="flex flex-wrap gap-2 mt-4">

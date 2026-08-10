@@ -1,5 +1,4 @@
-import { IconClothesRack, IconSchool, IconSocial } from "@tabler/icons-react";
-import { DocumentIcon } from "@heroicons/react/24/outline";
+import { IconClothesRack, IconSchool, IconSocial, IconMusic } from "@tabler/icons-react";
 export const projectData = [
     {
         title: "Celestique",
@@ -45,17 +44,13 @@ export const projectData = [
         image: "/assets/images/cq.png"
     },
     {
-        title: "SwiftDocs",
-        icon: DocumentIcon,
-        device: 'phone',
-        niche: 'LIVE DOCUMENT APP',
+        title: "SyncVerse NG",
+        icon: IconMusic,
+        device: 'laptop',
+        niche: 'MUSIC LYRICS SYNC SERVICE',
         description:
-            "A live document collaboration application that allows multiple users worldwide to share a common space, document and exchange innovative ideas seamlessly.",
+            "A single-page site for a client business that claims, uploads, and syncs artists' lyrics on Musixmatch so they appear correctly on Spotify, Apple Music, and Instagram Stories, giving fans a real-time karaoke experience.",
         technologies: [
-            {
-                name: "TypeScript",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
-            },
             {
                 name: "Next.js",
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
@@ -66,17 +61,12 @@ export const projectData = [
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
             },
             {
-                name: "Postman",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"
-            },
-            {
-                name: "MongoDB",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+                name: "CSS3",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
             },
         ],
-        livePreview: "https://swiftdocs.vercel.app/",
-        sourceCode: "https://github.com/somkenemuscle/Swift-Docs",
-        image: "/assets/images/tp.PNG"
+        livePreview: "https://syncverseng.com/",
+        image: "/assets/images/syncverse.png"
     },
     {
         title: "Appvarsity",

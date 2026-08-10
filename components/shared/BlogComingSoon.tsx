@@ -59,7 +59,7 @@ export default function BlogComingSoon() {
           <motion.p
             {...enter(0.18)}
             className="text-[16px] leading-[1.9]"
-            style={{ color: 'rgba(255,255,255,0.42)' }}
+            style={{ color: 'rgba(255,255,255,0.8)' }}
           >
             I&apos;m working on a space to write about the things I care about —
             engineering decisions, building products, lessons from shipping real software,
@@ -99,7 +99,7 @@ export default function BlogComingSoon() {
               rel="noopener noreferrer"
               className="text-[13px] font-medium transition-colors duration-150"
               style={{ color: 'rgba(255,255,255,0.55)' }}
-              onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#fff')}
+              onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#ffffff')}
               onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.55)')}
             >
               Twitter ↗

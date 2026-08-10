@@ -45,7 +45,7 @@ const Navbar = () => {
             <Link href="/"
               className="text-[12px] font-semibold tracking-[0.16em] uppercase select-none transition-colors duration-150"
               style={{ color: 'rgba(255,255,255,0.75)' }}
-              onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#fff')}
+              onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#ffffff')}
               onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.75)')}
             >
               Somkene Ojukwu
@@ -57,7 +57,7 @@ const Navbar = () => {
                 <a key={label} href={href}
                   className="text-[13px] font-medium transition-colors duration-150"
                   style={{ color: 'rgba(255,255,255,0.38)' }}
-                  onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#fff')}
+                  onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#ffffff')}
                   onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.38)')}>
                   {label}
                 </a>
@@ -74,7 +74,7 @@ const Navbar = () => {
                   aria-label={label}
                   className="w-7 h-7 flex items-center justify-center rounded-lg transition-colors duration-150"
                   style={{ color: 'rgba(255,255,255,0.42)' }}
-                  onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#fff')}
+                  onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#ffffff')}
                   onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.42)')}>
                   <Icon size={14} strokeWidth={1.7} />
                 </a>
@@ -120,7 +120,7 @@ const Navbar = () => {
                   onClick={() => setOpen(false)}
                   className="py-5 flex items-center justify-between text-[2rem] font-bold tracking-tight"
                   style={{ color: 'rgba(255,255,255,0.7)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
-                  onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#fff')}
+                  onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#ffffff')}
                   onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.7)')}
                 >
                   {n.label}

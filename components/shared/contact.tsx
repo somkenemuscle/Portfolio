@@ -51,7 +51,7 @@ function Contact() {
             >
               <span
                 className="font-medium transition-colors duration-300 group-hover:text-white"
-                style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.42)' }}
+                style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.8)' }}
               >
                 somkeneoj@gmail.com
               </span>

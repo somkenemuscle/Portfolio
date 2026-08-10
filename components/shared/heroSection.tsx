@@ -25,7 +25,7 @@ export default function HeroSection() {
               Software engineer building
             </h1>
             <h1 className="font-bold leading-[1.15] tracking-tight"
-              style={{ fontSize: 'clamp(2rem, 3.5vw, 2.6rem)', color: 'rgba(255,255,255,0.38)' }}>
+              style={{ fontSize: 'clamp(2rem, 3.5vw, 2.6rem)', color: 'rgba(255,255,255,0.6)' }}>
               products from{' '}
               <span style={{
                 background: 'linear-gradient(90deg, #00a550 0%, #00a550 25%, #ffffff 50%, #00a550 75%, #00a550 100%)',
