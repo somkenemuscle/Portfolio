@@ -11,7 +11,7 @@ const enter = (delay: number) => ({
 })
 
 const stats = [
-  { label: 'Experience',   value: '4+ years'    },
+  { label: 'Experience',   value: '5 years'    },
   { label: 'Focus',        value: 'Product & Systems'  },
   { label: 'Currently',    value: 'Beauty Butler'    },
   { label: 'Availability', value: 'Always building'},
