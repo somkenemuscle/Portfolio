@@ -1,4 +1,4 @@
-import { IconClothesRack, IconSchool, IconSocial, IconMusic } from "@tabler/icons-react";
+import { IconClothesRack, IconSchool, IconSocial, IconCloud } from "@tabler/icons-react";
 export const projectData = [
     {
         title: "Celestique",
@@ -44,29 +44,42 @@ export const projectData = [
         image: "/assets/images/cq.png"
     },
     {
-        title: "SyncVerse NG",
-        icon: IconMusic,
+        title: "Clouddley",
+        icon: IconCloud,
         device: 'laptop',
-        niche: 'MUSIC LYRICS SYNC SERVICE',
+        niche: 'CLOUD INFRASTRUCTURE PLATFORM',
         description:
-            "A single-page site for a client business that claims, uploads, and syncs artists' lyrics on Musixmatch so they appear correctly on Spotify, Apple Music, and Instagram Stories, giving fans a real-time karaoke experience.",
+            "Deploy anywhere, own everything. Backend infrastructure for running apps, databases, and AI workloads on your own VPS, with zero-downtime deployments and no DevOps overhead.",
         technologies: [
+            {
+                name: "React",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+            },
             {
                 name: "Next.js",
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
                 style: "bg-black"
             },
             {
+                name: "Framer Motion",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg"
+            },
+            {
                 name: "Tailwind",
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
             },
             {
-                name: "CSS3",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+                name: "SEO",
+                icon: "https://api.iconify.design/tabler/seo.svg",
+                style: "bg-gray-100 p-2 rounded-full"
+            },
+            {
+                name: "TypeScript",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
             },
         ],
-        livePreview: "https://syncverseng.com/",
-        image: "/assets/images/syncverse.png"
+        livePreview: "https://clouddley.com",
+        image: "/assets/images/clouddley.png"
     },
     {
         title: "Appvarsity",
