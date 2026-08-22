@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, ArrowUpRight } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import { blogs } from '@/constants/blogs'
 
 const enter = (delay: number) => ({
@@ -14,7 +14,7 @@ const enter = (delay: number) => ({
 export default function BlogList() {
   return (
     <section className="min-h-screen flex flex-col pt-36 pb-24">
-      <div className="w-full max-w-screen-lg mx-auto px-8 md:px-16 flex flex-col flex-1">
+      <div className="w-full max-w-screen-xl mx-auto px-8 md:px-16 flex flex-col flex-1">
 
         {/* Back */}
         <motion.div {...enter(0.05)} className="mb-14">
@@ -38,8 +38,7 @@ export default function BlogList() {
           Thoughts, written down.
         </motion.h1>
 
-        <div>
-          <div style={{ height: 1, background: 'rgba(255,255,255,0.07)' }} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {blogs.map((post, i) => (
             <motion.div
               key={post.id}
@@ -47,47 +46,61 @@ export default function BlogList() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
             >
-              <Link href={`/blog/${post.slug}`} className="block py-8 group">
-                <div className="flex items-start justify-between gap-6">
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-[12px]" style={{ color: 'rgba(255,255,255,0.28)' }}>
-                        {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                      </span>
-                      <span style={{ color: 'rgba(255,255,255,0.18)', fontSize: 12 }}>·</span>
-                      <span className="text-[12px]" style={{ color: 'rgba(255,255,255,0.28)' }}>
-                        {post.readTime}
-                      </span>
+              <Link
+                href={`/blog/${post.slug}`}
+                className="group flex flex-col h-full rounded-2xl overflow-hidden transition-colors duration-200"
+                style={{ border: '1px solid rgba(255,255,255,0.09)', background: 'rgba(255,255,255,0.02)' }}
+                onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.22)')}
+                onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.09)')}
+              >
+                {/* Image */}
+                <div
+                  className="relative w-full aspect-video overflow-hidden shrink-0"
+                  style={{ background: 'rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.09)' }}
+                >
+                  {post.coverImage?.src ? (
+                    <img
+                      src={post.coverImage.src}
+                      alt={post.coverImage.alt}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="text-[12px]" style={{ color: 'rgba(255,255,255,0.2)' }}>No image</span>
                     </div>
-                    <h2
-                      className="font-semibold transition-colors duration-150 mb-2"
-                      style={{ fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)', color: 'rgba(255,255,255,0.85)' }}
-                    >
-                      {post.title}
-                    </h2>
-                    <p className="text-[14px] leading-[1.8] max-w-xl" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                      {post.excerpt}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {post.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-[12px] px-3 py-1 rounded-full"
-                          style={{ color: 'rgba(255,255,255,0.38)', border: '1px solid rgba(255,255,255,0.08)' }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <ArrowUpRight
-                    size={18}
-                    className="shrink-0 mt-1 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    style={{ color: 'rgba(255,255,255,0.25)' }}
-                  />
+                  )}
+                </div>
+
+                {/* Text */}
+                <div className="flex flex-col flex-1 p-6">
+                  <span
+                    className="text-[11px] font-medium tracking-[0.14em] uppercase mb-3"
+                    style={{ color: '#D7FF5E' }}
+                  >
+                    {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                  </span>
+
+                  <h2
+                    className="font-bold leading-snug mb-2.5"
+                    style={{ fontSize: 18, color: 'rgba(255,255,255,0.95)' }}
+                  >
+                    {post.title}
+                  </h2>
+
+                  <p
+                    className="text-[13.5px] leading-[1.7]"
+                    style={{
+                      color: 'rgba(255,255,255,0.4)',
+                      display: '-webkit-box',
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    {post.excerpt}
+                  </p>
                 </div>
               </Link>
-              <div style={{ height: 1, background: 'rgba(255,255,255,0.07)' }} />
             </motion.div>
           ))}
         </div>

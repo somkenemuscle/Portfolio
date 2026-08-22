@@ -5,10 +5,10 @@ import { experiences } from "@/constants/experience";
 import { techIcons } from "@/constants/techIcons";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, Calendar } from "lucide-react";
 
 function Experience() {
-  const [openIndex, setOpenIndex] = useState<number>(0)
+  const [openIndex, setOpenIndex] = useState<number>(-1)
 
   const toggle = (i: number) => setOpenIndex(openIndex === i ? -1 : i)
 
@@ -43,9 +43,10 @@ function Experience() {
                 {/* Duration column */}
                 <div className="mb-3 md:mb-0 md:w-40 shrink-0">
                   <span
-                    className="text-[12px] font-medium tabular-nums"
+                    className="inline-flex items-center gap-1.5 text-[12px] font-medium tabular-nums"
                     style={{ color: 'rgba(255,255,255,0.28)' }}
                   >
+                    <Calendar size={12} strokeWidth={2} style={{ opacity: 0.85 }} />
                     {exp.duration}
                   </span>
                 </div>
