@@ -20,7 +20,6 @@ export const techIcons: Record<string, string> = {
     "Jest": devicon("jest", "plain"),
     "Docker": devicon("docker"),
     "Socket.io": devicon("socketio"),
-    "BullMQ": "https://api.iconify.design/tabler/queue.svg",
     "S3": "https://api.iconify.design/logos/aws-s3.svg",
     "NextAuth.js": "https://api.iconify.design/tabler/shield-lock.svg",
     "React Query": "https://api.iconify.design/simple-icons/reactquery.svg",

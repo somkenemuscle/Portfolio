@@ -55,19 +55,41 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },
 }
 
+const monogramPalette = [
+  'bg-amber-500/20 text-amber-300',
+  'bg-sky-500/20 text-sky-300',
+  'bg-rose-500/20 text-rose-300',
+  'bg-emerald-500/20 text-emerald-300',
+  'bg-violet-500/20 text-violet-300',
+]
+
+function monogramColor(name: string) {
+  let hash = 0
+  for (let i = 0; i < name.length; i++) hash = (hash * 31 + name.charCodeAt(i)) >>> 0
+  return monogramPalette[hash % monogramPalette.length]
+}
+
 function TechPill({ tech }: { tech: typeof projectData[0]['technologies'][0] }) {
   return (
     <span
       className="inline-flex items-center gap-2 pl-1.5 pr-3 py-1.5 rounded-full text-[12px] font-medium"
       style={{ color: 'rgba(255,255,255,0.55)', border: '1px solid rgba(255,255,255,0.09)', background: 'rgba(255,255,255,0.02)' }}
     >
-      <span
-        className={`w-5 h-5 rounded-full flex items-center justify-center overflow-hidden shrink-0 ${tech.style ?? ''}`}
-        style={{ background: tech.style ? undefined : 'rgba(255,255,255,0.07)' }}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={tech.icon} alt="" className="w-3 h-3 object-contain" />
-      </span>
+      {tech.icon ? (
+        <span
+          className={`w-5 h-5 rounded-full flex items-center justify-center overflow-hidden shrink-0 ${tech.style ?? ''}`}
+          style={{ background: tech.style ? undefined : 'rgba(255,255,255,0.07)' }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={tech.icon} alt="" className="w-3 h-3 object-contain" />
+        </span>
+      ) : (
+        <span
+          className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-[9px] font-bold ${monogramColor(tech.name)}`}
+        >
+          {tech.name.charAt(0)}
+        </span>
+      )}
       {tech.name}
     </span>
   )

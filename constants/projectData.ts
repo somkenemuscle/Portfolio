@@ -13,8 +13,12 @@ export const projectData = [
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
             },
             {
+                name: "React",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+            },
+            {
                 name: "NestJS",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-plain.svg"
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg"
             },
             {
                 name: "Node.js",
@@ -29,9 +33,7 @@ export const projectData = [
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg"
             },
             {
-                name: "BullMQ",
-                icon: "https://api.iconify.design/tabler/queue.svg",
-                style: "bg-gray-100 p-2 rounded-full"
+                name: "BullMQ"
             },
             {
                 name: "AWS S3",
@@ -56,7 +58,7 @@ export const projectData = [
             {
                 name: "Next.js",
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
-                style: "bg-black"
+                style: "bg-white p-0.5"
             },
             {
                 name: "TypeScript",
@@ -66,6 +68,13 @@ export const projectData = [
                 name: "Cloud Infrastructure",
                 icon: "https://api.iconify.design/tabler/cloud.svg",
                 style: "bg-gray-100 p-2 rounded-full"
+            },
+            {
+                name: "React Query",
+                icon: "https://api.iconify.design/simple-icons/reactquery.svg"
+            },
+            {
+                name: "Zustand"
             },
         ],
         livePreview: "https://clouddley.com",
@@ -86,7 +95,7 @@ export const projectData = [
             {
                 name: "Next.js",
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
-                style: "bg-black"
+                style: "bg-white p-0.5"
             },
             {
                 name: "Tailwind",
@@ -129,7 +138,7 @@ export const projectData = [
     //         {
     //             name: "Next.js",
     //             icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
-    //             style: "bg-black"
+    //             style: "bg-white p-0.5"
     //         },
     //         {
     //             name: "Tailwind",
@@ -169,7 +178,7 @@ export const projectData = [
     //         {
     //             name: "Next.js",
     //             icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
-    //             style: "bg-black"
+    //             style: "bg-white p-0.5"
 
     //         },
     //         {
