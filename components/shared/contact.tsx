@@ -21,7 +21,7 @@ function Contact() {
             <span className="text-neutral-300 text-xs tracking-wide font-medium">Reach out to me <span aria-hidden="true">→</span></span> <br />
             <Link href="mailto:somkeneoj@gmail.com">
               <span className="text-xl font-semibold tracking-wide font-sans transition-colors duration-200"
-                style={{ color: '#D7FF5E' }}>
+                style={{ color: '#ffffff' }}>
                 somkeneoj@gmail.com
               </span>
             </Link>
