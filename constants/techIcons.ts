@@ -1,0 +1,32 @@
+const devicon = (slug: string, variant = "original") =>
+    `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${slug}/${slug}-${variant}.svg`;
+
+export const techIcons: Record<string, string> = {
+    "React": devicon("react"),
+    "Postgresql": devicon("postgresql"),
+    "NextJs": devicon("nextjs"),
+    "Typescript": devicon("typescript"),
+    "Javascript": devicon("javascript"),
+    "NodeJs": devicon("nodejs"),
+    "NestJs": devicon("nestjs"),
+    "Express": devicon("express"),
+    "MySQL": devicon("mysql"),
+    "MongoDB": devicon("mongodb"),
+    "Redis": devicon("redis"),
+    "AWS": devicon("amazonwebservices", "original-wordmark"),
+    "Tailwind": devicon("tailwindcss"),
+    "CSS": devicon("css3"),
+    "Custom Css": devicon("css3"),
+    "Jest": devicon("jest", "plain"),
+    "Docker": devicon("docker"),
+    "Socket.io": devicon("socketio"),
+    "S3": "https://api.iconify.design/logos/aws-s3.svg",
+    "NextAuth.js": "https://api.iconify.design/tabler/shield-lock.svg",
+    "React Query": "https://api.iconify.design/simple-icons/reactquery.svg",
+    "Vercel": devicon("vercel"),
+    "GitHub Actions": devicon("githubactions", "plain"),
+    "HTML5": devicon("html5"),
+    "Git": devicon("git"),
+    "Postman": devicon("postman"),
+    "Figma": devicon("figma"),
+};

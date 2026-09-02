@@ -1,107 +1,157 @@
-'use client'; // Indicate that this is a client-side rendered component
-import { useState } from 'react'; // Import useState and useEffect hooks from React
-import { Dialog, DialogPanel } from '@headlessui/react'; // Import Dialog and DialogPanel components from Headless UI
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'; // Import icons from Heroicons
-import Link from 'next/link'; // Import Link from Next.js
-import { navigation } from '@/constants/navigation';
+'use client'
+
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Linkedin, Mail, Github } from 'lucide-react'
+import Link from 'next/link'
+
+const links = [
+  { label: 'GitHub', href: 'https://github.com/somkenemuscle', icon: Github },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/somkene-ojukwu/', icon: Linkedin },
+  { label: 'Email', href: 'mailto:somkeneoj@gmail.com', icon: Mail },
+]
+
+const navLinks = [
+  { label: 'Projects', href: '/#projects' },
+  { label: 'Experience', href: '/#experience' },
+  { label: 'About', href: '/about' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/#contact' },
+]
 
 const Navbar = () => {
-    // State to control the mobile menu open/close
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
-    return (
-        <div>
-            <header className='fixed inset-x-0 top-0 z-50'>
-                <nav aria-label="Global" className="bg-white flex items-center justify-between p-5 xl:px-36">
-                    <div className="flex lg:flex-1">
-                        {/* Company logo */}
-                        <Link href="/" className="-m-1.5 p-1.5">
-                            <h1 className='font-extrabold text-xl text-black font-sans'>Ojukwu<span className='text-yellow-400 font-bold'> Somkene</span></h1>
-                        </Link>
-                    </div>
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
 
-                    <div className="flex lg:hidden">
-                        {/* Button to open mobile menu on small screens */}
-                        <button
-                            type="button"
-                            onClick={() => setMobileMenuOpen(true)}
-                            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-                        >
-                            <span className="sr-only">Open main menu</span>
-                            <Bars3Icon aria-hidden="true" className="h-6 w-6 text-black" />
-                        </button>
-                    </div>
+  return (
+    <>
+      <header className="fixed z-50 top-5 inset-x-0">
+        <div className="w-full max-w-screen-lg mx-auto px-8 md:px-16">
+          <div
+            className="flex items-center justify-between w-full"
+            style={{
+              background: 'rgba(17,17,17,0.88)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: 14,
+              padding: '10px 20px',
+            }}
+          >
+            <Link href="/"
+              className="text-[12px] font-semibold tracking-[0.16em] uppercase select-none transition-colors duration-150"
+              style={{ color: 'rgba(255,255,255,0.75)' }}
+              onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#ffffff')}
+              onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.75)')}
+            >
+              Somkene Ojukwu
+            </Link>
 
-                    <div className="hidden lg:flex lg:gap-x-12">
-                        {/* Navigation links for large screens */}
-                        {navigation.map((item) => (
-                            <Link
-                                key={item.name}
-                                href={item.href}// Use fragment identifier
-                                className='text-gray-600 font-light font-sans leading-6 hover:text-black'>
-                                {item.name}
-                            </Link>
-                        ))}
-                    </div>
+            <div className="hidden lg:flex items-center gap-5">
+              {/* Text nav links */}
+              {navLinks.map(({ label, href }) => (
+                <a key={label} href={href}
+                  className="text-[13px] font-medium transition-colors duration-150"
+                  style={{ color: 'rgba(255,255,255,0.38)' }}
+                  onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#ffffff')}
+                  onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.38)')}>
+                  {label}
+                </a>
+              ))}
 
-                    <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <Link href="mailto:somkeneoj@gmail.com">
-                            <button className="font-semibold text-sm font-sans bg-black text-white px-4 py-2 rounded hover:bg-gray-900 focus:outline-none">
-                                <span className=" blinking-dot inline-block bg-green-500 rounded-full w-2 h-2 mr-2"></span>
-                                Let's Work!
-                            </button>
-                        </Link>
-                    </div>
-                </nav>
+              {/* Divider */}
+              <div className="w-px h-4" style={{ background: 'rgba(255,255,255,0.1)' }} />
 
-                {/* Mobile menu dialog */}
-                <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
-                    <div className="fixed inset-0 z-50" />
-                    <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                        <div className="flex items-center justify-between">
-                            {/* Company logo in mobile menu */}
-                            <Link href="/" className="-m-1.5 p-1.5">
-                                <span className="sr-only">Your Company</span>
-                                <h1 className='font-extrabold text-slate-950'>Ojukwu<span className='font-extrabold text-yellow-400'> Somkene</span></h1>
-                            </Link>
+              {/* Icon links */}
+              {links.map(({ label, href, icon: Icon }) => (
+                <a key={label} href={href}
+                  target={label === 'Email' ? undefined : '_blank'}
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-7 h-7 flex items-center justify-center rounded-lg transition-colors duration-150"
+                  style={{ color: 'rgba(255,255,255,0.42)' }}
+                  onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#ffffff')}
+                  onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.42)')}>
+                  <Icon size={14} strokeWidth={1.7} />
+                </a>
+              ))}
+            </div>
 
-                            {/* Button to close mobile menu */}
-                            <button
-                                type="button"
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                            >
-                                <span className="sr-only">Close menu</span>
-                                <XMarkIcon aria-hidden="true" className=" h-6 w-6" />
-                            </button>
-                        </div>
-                        <div className="mt-6 flow-root">
-                            <div className="-my-6 divide-y divide-gray-500/10">
-                                {/* Navigation links in mobile menu */}
-                                <div className="space-y-2 py-6">
-                                    {navigation.map((item) => (
-                                        <Link
-                                            key={item.name}
-                                            href={item.href} // Use fragment identifier
-                                            className='-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'>
-                                            {item.name}
-                                        </Link>
-                                    ))}
-                                </div>
-                                {/* Log in link in mobile menu */}
-                                <Link href="mailto:somkeneoj@gmail.com">
-                                    <div className="py-6 font-bold">
-                                        Let's Work!
-                                    </div>
-                                </Link>
-
-                            </div>
-                        </div>
-                    </DialogPanel>
-                </Dialog>
-            </header>
+            <button
+              className="lg:hidden flex flex-col justify-center items-center w-7 h-7 gap-[5px]"
+              onClick={() => setOpen(v => !v)}
+              aria-label="Toggle menu"
+            >
+              <motion.span animate={open ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }} transition={{ duration: 0.22 }}
+                className="block h-px w-5 origin-center" style={{ background: 'rgba(255,255,255,0.7)' }} />
+              <motion.span animate={open ? { opacity: 0 } : { opacity: 1 }} transition={{ duration: 0.15 }}
+                className="block h-px w-5 origin-center" style={{ background: 'rgba(255,255,255,0.7)' }} />
+              <motion.span animate={open ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }} transition={{ duration: 0.22 }}
+                className="block h-px w-5 origin-center" style={{ background: 'rgba(255,255,255,0.7)' }} />
+            </button>
+          </div>
         </div>
-    );
-};
+      </header>
 
-export default Navbar;
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            key="mobile-nav"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-40 lg:hidden flex flex-col px-8 pt-28 pb-12"
+            style={{ background: '#111111' }}
+          >
+            <nav className="flex flex-col gap-0">
+              {navLinks.map((n, i) => (
+                <motion.a
+                  key={n.label}
+                  href={n.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -12 }}
+                  transition={{ duration: 0.3, delay: i * 0.06 }}
+                  onClick={() => setOpen(false)}
+                  className="py-5 flex items-center justify-between text-[2rem] font-bold tracking-tight"
+                  style={{ color: 'rgba(255,255,255,0.7)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
+                  onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#ffffff')}
+                  onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.7)')}
+                >
+                  {n.label}
+                  <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '1.2rem' }}>↗</span>
+                </motion.a>
+              ))}
+            </nav>
+
+            <div className="flex items-center gap-4 mt-12">
+              {links.map(({ label, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={label === 'Email' ? undefined : '_blank'}
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center rounded-xl"
+                  style={{
+                    background: 'rgba(255,255,255,0.05)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    color: 'rgba(255,255,255,0.5)',
+                  }}
+                >
+                  <Icon size={16} strokeWidth={1.6} />
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  )
+}
+
+export default Navbar

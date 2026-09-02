@@ -2,26 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Define the keyframes for the blinking effect */
-@keyframes blink {
 
-  0%,
-  100% {
-    opacity: 1;
+
+@font-face {
+  font-family: 'Apfel Grotezk';
+  src: url('/font/ApfelGrotezk-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Euclid Circular';
+  src: url('/font/EuclidCircular-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  50% {
-    opacity: 0;
+  body {
+    font-family: 'Euclid Circular', sans-serif;
+    color: #f5f5f7;
+    background: #111111;
   }
 }
 
 html {
   scroll-behavior: smooth;
-  
 }
 
-/* Apply the animation to the blinking-dot class */
-.blinking-dot {
-  animation: blink 0.7s infinite;
+/* ── Aurora blob animations ── */
+@keyframes aurora-float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(4%, -3%) scale(1.08); }
+  50%  { transform: translate(-3%, 5%) scale(0.94); }
+  75%  { transform: translate(2%, 2%) scale(1.04); }
 }
 
+@keyframes aurora-float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(-5%, 2%) scale(0.92); }
+  50%  { transform: translate(4%, -4%) scale(1.1); }
+  75%  { transform: translate(-2%, -2%) scale(0.97); }
+}
+
+@keyframes aurora-float-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(3%, 5%) scale(1.06); }
+  66%  { transform: translate(-5%, -3%) scale(0.93); }
+}
+
+.aurora-blob-1 { animation: aurora-float-1 20s ease-in-out infinite; }
+.aurora-blob-2 { animation: aurora-float-2 25s ease-in-out infinite; }
+.aurora-blob-3 { animation: aurora-float-3 17s ease-in-out infinite; }
+
+/* ── Animations ── */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 1.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ── Experience cards ── */
+.experience-card:hover {
+  background-color: rgb(18, 18, 18);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* ── Mobile tweaks ── */
+@media (max-width: 463px) {
+  .hero-subtext-mobile {
+    text-align: left;
+  }
+
+  .project-header {
+    text-align: left;
+    margin-left: 1.5rem;
+  }
+}
