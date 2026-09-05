@@ -62,7 +62,7 @@ export default function HeroSection() {
               }}
             >
               <ArrowDownToLine size={14} strokeWidth={1.8} />
-              Download CV
+              Download Resume
             </motion.a>
           </motion.div>
 

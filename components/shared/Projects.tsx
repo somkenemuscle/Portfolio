@@ -152,10 +152,13 @@ function ProjectRow({
       <button onClick={onToggle} className="w-full text-left py-7 md:py-8 group">
         <div className="flex items-center gap-4 md:gap-6">
           <span
-            className="text-[13px] font-medium tabular-nums shrink-0 md:w-10 transition-colors duration-200"
-            style={{ color: isOpen ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.18)' }}
+            className="shrink-0 md:w-10 flex items-center justify-center transition-transform duration-200"
+            style={{ transform: isOpen ? 'scale(1)' : 'scale(0.8)' }}
           >
-            {String(index + 1).padStart(2, '0')}
+            <span
+              className="w-2.5 h-2.5 rounded-full transition-opacity duration-200"
+              style={{ background: gradients[index % gradients.length], opacity: isOpen ? 1 : 0.5 }}
+            />
           </span>
 
           {/* mobile-only thumbnail */}
