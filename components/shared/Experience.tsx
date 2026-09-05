@@ -32,7 +32,7 @@ function Experience() {
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="flex items-baseline gap-3">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                   <div className="flex items-center gap-2 flex-wrap shrink-0">
                     <h3
                       className="font-semibold tracking-tight"
@@ -68,7 +68,7 @@ function Experience() {
                   </div>
 
                   <span
-                    className="flex-1 min-w-[24px]"
+                    className="hidden md:block flex-1 min-w-[24px]"
                     style={{ borderBottom: '1px dotted rgba(255,255,255,0.15)', transform: 'translateY(-4px)' }}
                   />
 
