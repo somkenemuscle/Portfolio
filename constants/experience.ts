@@ -1,6 +1,6 @@
 export const experiences = [
     {
-        role: "Lead Software Engineer",
+        role: "Senior Software Engineer",
         duration: "Jun 2026 - Present",
         link: "https://www.alkademy.com/",
         company: "@Alkademy ",
