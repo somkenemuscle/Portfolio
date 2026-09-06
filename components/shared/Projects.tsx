@@ -222,7 +222,7 @@ function ProjectRow({
                 {project.description}
               </motion.p>
 
-              <motion.div variants={fadeUp} className="mb-8">
+              {/* <motion.div variants={fadeUp} className="mb-8">
                 <p className="text-[10px] font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: 'rgba(255,255,255,0.22)' }}>
                   Stack
                 </p>
@@ -231,7 +231,7 @@ function ProjectRow({
                     <TechPill key={i} tech={tech} />
                   ))}
                 </div>
-              </motion.div>
+              </motion.div> */}
 
               <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-3">
                 <CtaLink href={project.livePreview} icon={<ArrowUpRight size={14} strokeWidth={2} />} emphasis>
