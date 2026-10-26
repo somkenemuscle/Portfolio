@@ -2,7 +2,6 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ACCENT, Container, Spark } from './Sketch'
-import { now } from '@/constants/now'
 
 const RESUME_URL = 'https://ipw88zuno5.ufs.sh/f/rXxdhjbFRcsmn6PErT5l8kYXyHG2ceZvwRmFfOCbVuKPWIiB'
 
@@ -13,9 +12,6 @@ const enter = (delay = 0) => ({
 })
 
 export default function HeroSection() {
-  // The status pill mirrors whatever is first on the Now board.
-  const building = now.find(n => n.label === 'Building')
-
   return (
     <Container>
       <section id="top" className="flex flex-wrap items-center gap-14 pt-36 pb-20">
@@ -37,12 +33,6 @@ export default function HeroSection() {
               Download resume
             </a>
           </motion.div>
-          {building && (
-            <motion.div {...enter(0.32)} className="inline-flex self-start items-center gap-3 mt-2.5 px-4 py-2.5 border-2 border-dashed border-sb-mint rounded-full">
-              <span className="sb-pulse w-2.5 h-2.5 rounded-full bg-sb-mint" />
-              <span className="font-mono text-[13px]">currently building: {building.title.charAt(0).toLowerCase() + building.title.slice(1)}</span>
-            </motion.div>
-          )}
         </div>
 
         <motion.div

@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { ACCENT, Container } from './Sketch'
 
 const navLinks = [
-  { label: 'Now', href: '/#now', color: ACCENT.gum },
   { label: 'Work', href: '/#work', color: ACCENT.sun },
   { label: 'Experience', href: '/#experience', color: ACCENT.peri },
   { label: 'Journal', href: '/blog', color: ACCENT.tomato },
@@ -58,7 +57,7 @@ const Navbar = () => {
               SO
             </span>
             <span className="hidden sm:inline font-extrabold text-xl text-sb-cream">
-              somkene<span className="text-sb-sun">.</span>
+              somkene
             </span>
           </Link>
 

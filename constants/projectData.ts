@@ -42,8 +42,14 @@ export const projectData = [
         ],
         livePreview: "https://press.alkademy.com",
         blurb: "A multi-tenant journal platform for heavy editorial workflows: async jobs, caching and cloud storage under the hood.",
-        outcome: "~35% lower API latency",
         accent: "sun",
+        art: "journals",
+        architecture: [
+            { role: "client", nodes: ["React app"] },
+            { role: "api", nodes: ["NestJS · Node.js"] },
+            { role: "data", nodes: ["PostgreSQL", "Redis cache", "BullMQ jobs"] },
+            { role: "files", nodes: ["AWS S3 · signed URLs"] },
+        ],
         image: "/assets/images/alkademypress.png"
     },
     {
@@ -83,6 +89,13 @@ export const projectData = [
         livePreview: "https://clouddley.com",
         blurb: "Frontend for a platform where developers spin up apps, databases, VPS instances and AI workloads.",
         accent: "peri",
+        art: "cloud",
+        architecture: [
+            { role: "ui", nodes: ["Next.js · TypeScript"] },
+            { role: "state", nodes: ["React Query", "Zustand"] },
+            { role: "api", nodes: ["Clouddley platform API"] },
+            { role: "infra", nodes: ["Apps", "Databases", "VPS", "AI"] },
+        ],
         image: "/assets/images/cdd.PNG"
     },
     {
@@ -127,8 +140,40 @@ export const projectData = [
         livePreview: "https://celestique.vercel.app/",
         blurb: "A clothing store for men and women with order tracking and payments built right in.",
         accent: "gum",
+        art: "hanger",
+        architecture: [
+            { role: "store", nodes: ["Next.js · Tailwind"] },
+            { role: "api", nodes: ["Express · Node.js"] },
+            { role: "data", nodes: ["MongoDB", "Orders", "Payments"] },
+        ],
         sourceCode: "https://github.com/somkenemuscle/celestique",
         image: "/assets/images/cq.png"
+    },
+    {
+        title: "Appvarsity",
+        icon: IconSchool,
+        niche: 'STUDENT LEARNING PLATFORM',
+        device: 'laptop',
+        description:
+            "The one place for your Aptech journey: project guides, past questions, and free courses, organized in one place, kept current every semester, and free to start.",
+        technologies: [
+            { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" },
+            { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg", style: "bg-white p-0.5" },
+            { name: "Tailwind", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
+            { name: "Express.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" },
+            { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" },
+        ],
+        livePreview: "https://appvarsity.vercel.app/",
+        blurb: "A free hub I built for Aptech students: project guides, past questions and courses, kept current every semester.",
+        accent: "mint",
+        art: "campus",
+        architecture: [
+            { role: "client", nodes: ["Next.js · Tailwind"] },
+            { role: "api", nodes: ["Express · Node.js"] },
+            { role: "data", nodes: ["MongoDB"] },
+            { role: "content", nodes: ["Guides", "Past questions", "Courses"] },
+        ],
+        image: "/assets/images/appvarsity.png"
     },
     // {
     //     title: "Appvarsity",
