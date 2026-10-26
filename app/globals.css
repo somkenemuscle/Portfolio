@@ -129,7 +129,6 @@ html {
 .sb-float { animation: sb-float 5s ease-in-out infinite; }
 .sb-spin { animation: sb-spin 14s linear infinite; }
 .sb-pulse { animation: sb-pulse 1.6s ease-out infinite; }
-.sb-marquee { animation: sb-marquee 28s linear infinite; }
 
 @keyframes sb-swing { 0%, 100% { transform: rotate(-3.5deg); } 50% { transform: rotate(3.5deg); } }
 @keyframes sb-jiggle {
@@ -148,7 +147,44 @@ html {
   0% { box-shadow: 0 0 0 0 rgba(111, 224, 176, .75); }
   100% { box-shadow: 0 0 0 12px rgba(111, 224, 176, 0); }
 }
-@keyframes sb-marquee { to { transform: translateX(-50%); } }
+
+/* ── Project cover art (components/shared/ProjectArt.tsx) ── */
+.art-twinkle { transform-box: fill-box; transform-origin: center; animation: art-twinkle 2.4s ease-in-out infinite; }
+.art-bob-slow { animation: art-bob 4s ease-in-out infinite; }
+.art-write { stroke-dasharray: 100; animation: art-write 2.6s ease-in-out infinite; }
+.art-scribble { animation: art-scribble 2.6s ease-in-out infinite; }
+.art-drift { animation: art-drift 6s ease-in-out infinite; }
+.art-drift-slow { animation: art-drift-slow 9s ease-in-out infinite; }
+.art-flow { animation: art-flow .9s linear infinite; }
+.art-blink { animation: art-blink 1.4s steps(2, jump-none) infinite; }
+.art-swing-hook { transform-box: view-box; transform-origin: 160px 22px; animation: art-swing 3.5s ease-in-out infinite; }
+.art-flap { transform-box: view-box; transform-origin: 192px 120px; animation: art-flap 1.8s ease-in-out infinite; }
+.art-dash { animation: art-flow .9s linear infinite; }
+.art-check { stroke-dasharray: 100; animation: art-check 3.6s ease-out infinite; }
+.art-pulse { transform-box: fill-box; transform-origin: center; animation: art-pulse 1.8s ease-in-out infinite; }
+.art-progress { transform-box: fill-box; transform-origin: left center; animation: art-progress 3.6s ease-in-out infinite; }
+.art-toss { transform-box: fill-box; transform-origin: center; animation: art-toss 3s ease-in-out infinite; }
+.art-tassel { transform-box: view-box; transform-origin: 234px 66px; animation: art-flap 1.6s ease-in-out infinite; }
+
+@keyframes art-twinkle { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(.6) rotate(45deg); } }
+@keyframes art-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes art-write { 0% { stroke-dashoffset: 100; opacity: 1; } 60%, 88% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes art-scribble {
+  0% { transform: translate(-44px, 0); }
+  15% { transform: translate(-34px, -3px); } 30% { transform: translate(-24px, 2px); } 45% { transform: translate(-12px, -3px); }
+  60%, 88% { transform: translate(0, 0); }
+  100% { transform: translate(-44px, 0); }
+}
+@keyframes art-drift { 0%, 100% { transform: translateX(-6px); } 50% { transform: translateX(6px); } }
+@keyframes art-drift-slow { 0%, 100% { transform: translateX(10px); } 50% { transform: translateX(-14px); } }
+@keyframes art-flow { to { stroke-dashoffset: -22; } }
+@keyframes art-blink { 0%, 100% { opacity: 1; } 50% { opacity: .2; } }
+@keyframes art-swing { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+@keyframes art-check { 0% { stroke-dashoffset: 100; opacity: 1; } 18%, 85% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes art-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+@keyframes art-progress { 0% { transform: scaleX(0.1); } 70%, 100% { transform: scaleX(1); } }
+@keyframes art-toss { 0%, 100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-12px) rotate(7deg); } }
+@keyframes art-flap { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(10deg); } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
