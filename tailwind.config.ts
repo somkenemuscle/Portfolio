@@ -52,6 +52,25 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Sketchbook palette
+        sb: {
+          paper: "#15110D",
+          card: "#211A14",
+          raised: "#2C231B",
+          cream: "#F4EBDD",
+          soft: "#CFC3B2",
+          muted: "#B8AC9B",
+          sun: "#FFD23F",
+          gum: "#FF8FB1",
+          mint: "#6FE0B0",
+          peri: "#8EA0FF",
+          tomato: "#FF6B4A",
+        },
+      },
+      fontFamily: {
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+        hand: ["var(--font-hand)", "cursive"],
       },
       borderRadius: {
         lg: "var(--radius)",

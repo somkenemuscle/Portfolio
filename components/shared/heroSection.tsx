@@ -1,131 +1,80 @@
 'use client'
-
+import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowDownToLine } from 'lucide-react'
+import { ACCENT, Container, Spark } from './Sketch'
+import { now } from '@/constants/now'
 
-const enter = (delay: number) => ({
+const RESUME_URL = 'https://ipw88zuno5.ufs.sh/f/rXxdhjbFRcsmn6PErT5l8kYXyHG2ceZvwRmFfOCbVuKPWIiB'
+
+const enter = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { type: 'spring' as const, stiffness: 220, damping: 20, delay },
 })
 
 export default function HeroSection() {
+  // The status pill mirrors whatever is first on the Now board.
+  const building = now.find(n => n.label === 'Building')
+
   return (
-    <section className="pt-56 pb-32">
-      <div className="w-full max-w-screen-lg mx-auto px-8 md:px-16">
-        <div className="flex items-center justify-between gap-8">
-
-          <motion.div {...enter(0.1)}>
-            <h1 className="font-bold leading-[1.15] tracking-tight"
-              style={{ fontSize: 'clamp(2rem, 3.5vw, 2.6rem)', color: '#ffffff' }}>
-              I&apos;m Somkene ✌️
-            </h1>
-            <h1 className="font-bold leading-[1.15] tracking-tight"
-              style={{ fontSize: 'clamp(2rem, 3.5vw, 2.6rem)', color: '#ffffff' }}>
-              Software engineer building
-            </h1>
-            <h1 className="font-bold leading-[1.15] tracking-tight"
-              style={{ fontSize: 'clamp(2rem, 3.5vw, 2.6rem)', color: 'rgba(255,255,255,0.6)' }}>
-              products from{' '}
-              <span style={{
-                background: 'linear-gradient(90deg, #00a550 0%, #00a550 25%, #ffffff 50%, #00a550 75%, #00a550 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}>
-                Lagos, Nigeria
-              </span>
-            </h1>
-
-            <motion.a
-              {...enter(0.3)}
-              href="https://ipw88zuno5.ufs.sh/f/rXxdhjbFRcsmn6PErT5l8kYXyHG2ceZvwRmFfOCbVuKPWIiB"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 mt-8"
-              style={{
-                padding: '10px 20px',
-                borderRadius: 10,
-                border: '1px solid rgba(255,255,255,0.1)',
-                background: 'rgba(255,255,255,0.04)',
-                color: 'rgba(255,255,255,0.55)',
-                fontSize: 13,
-                fontWeight: 500,
-                letterSpacing: '0.01em',
-                textDecoration: 'none',
-                transition: 'all 0.2s ease',
-              }}
-              whileHover={{
-                borderColor: 'rgba(255,255,255,0.22)',
-                background: 'rgba(255,255,255,0.08)',
-                color: '#ffffff',
-              }}
-            >
-              <ArrowDownToLine size={14} strokeWidth={1.8} />
-              Download Resume
-            </motion.a>
+    <Container>
+      <section id="top" className="flex flex-wrap items-center gap-14 pt-36 pb-20">
+        <div className="flex-[999_1_520px] min-w-0 flex flex-col gap-6">
+          <motion.p {...enter(0)} className="m-0 font-hand text-[34px] text-sb-gum -rotate-2 origin-left">
+            hey, I&apos;m Somkene
+          </motion.p>
+          <motion.h1 {...enter(0.08)} className="m-0 font-extrabold tracking-[-0.03em] leading-[0.98] text-[clamp(44px,6.4vw,84px)]">
+            Software engineer building products from{' '}
+            <span className="sb-wavy text-sb-sun">Lagos, Nigeria</span>.
+          </motion.h1>
+          <motion.p {...enter(0.16)} className="m-0 text-xl leading-relaxed text-sb-soft max-w-[560px]">
+            Backend systems, multi-tenant platforms and the frontends that sit on top of them.
+            This site is my sketchbook: what I&apos;m building, learning and thinking about, updated as it happens.
+          </motion.p>
+          <motion.div {...enter(0.24)} className="flex flex-wrap items-center gap-3.5 pt-1.5">
+            <Link href="#work" className="sb-btn bg-sb-mint">See my work</Link>
+            <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="sb-btn bg-sb-cream">
+              Download resume
+            </a>
           </motion.div>
-
-          <motion.div
-            {...enter(0.25)}
-            className="hidden md:block shrink-0 relative"
-            style={{ width: 220, height: 258 }}
-          >
-            {/* nail */}
-            <div
-              className="absolute rounded-full"
-              style={{
-                top: 0,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: 6,
-                height: 6,
-                background: '#2a2a2a',
-                boxShadow: '0 1px 2px rgba(0,0,0,0.7)',
-                zIndex: 2,
-              }}
-            />
-
-            <motion.div
-              style={{ position: 'absolute', top: 0, left: 0, width: 220, transformOrigin: 'top center' }}
-              animate={{ rotate: [-3.5, 3.5, -3.5] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <svg width={220} height={38} style={{ position: 'absolute', top: 0, left: 0 }}>
-                <line x1={110} y1={2} x2={22} y2={36} stroke="rgba(210,210,210,0.55)" strokeWidth={1} />
-                <line x1={110} y1={2} x2={198} y2={36} stroke="rgba(210,210,210,0.55)" strokeWidth={1} />
-              </svg>
-
-              <motion.div
-                className="p-3"
-                style={{
-                  marginTop: 38,
-                  background: 'linear-gradient(135deg, #8a5a34 0%, #5e3c20 45%, #3d2712 100%)',
-                  boxShadow: `
-                    inset 0 1px 1px rgba(255,255,255,0.35),
-                    inset 0 -2px 3px rgba(0,0,0,0.5),
-                    inset 2px 0 2px rgba(255,255,255,0.12),
-                    inset -2px 0 3px rgba(0,0,0,0.4),
-                    0 25px 45px -16px rgba(0,0,0,0.65)
-                  `,
-                }}
-                whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 260, damping: 18 } }}
-              >
-                <div className="p-2.5" style={{ background: '#efe8da' }}>
-                  <img
-                    src="/assets/images/profile.jpg"
-                    alt="Somkene"
-                    className="w-44 h-44 object-cover object-[50%_30%] select-none"
-                    style={{ boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.15)' }}
-                    draggable={false}
-                  />
-                </div>
-              </motion.div>
+          {building && (
+            <motion.div {...enter(0.32)} className="inline-flex self-start items-center gap-3 mt-2.5 px-4 py-2.5 border-2 border-dashed border-sb-mint rounded-full">
+              <span className="sb-pulse w-2.5 h-2.5 rounded-full bg-sb-mint" />
+              <span className="font-mono text-[13px]">currently building: {building.title.charAt(0).toLowerCase() + building.title.slice(1)}</span>
             </motion.div>
-          </motion.div>
-
+          )}
         </div>
-      </div>
-    </section>
+
+        <motion.div
+          initial={{ opacity: 0, y: -60, rotate: -12 }}
+          animate={{ opacity: 1, y: 0, rotate: 0 }}
+          transition={{ type: 'spring', stiffness: 120, damping: 12, delay: 0.2 }}
+          className="flex-[1_1_320px] flex justify-center relative min-h-[460px]"
+        >
+          <Spark size={70} className="sb-spin absolute top-10 right-2" />
+          <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true" className="absolute bottom-10 left-2.5">
+            <circle cx="12" cy="12" r="9" fill={ACCENT.gum} stroke={ACCENT.cream} strokeWidth="2" />
+          </svg>
+
+          <div className="sb-swing flex flex-col items-center pt-1.5">
+            {/* nail + string */}
+            <svg width="200" height="70" viewBox="0 0 200 70" aria-hidden="true" className="block -mb-1.5">
+              <circle cx="100" cy="8" r="7" fill={ACCENT.sun} stroke={ACCENT.cream} strokeWidth="2.5" />
+              <path d="M100 10 L22 68 M100 10 L178 68" stroke={ACCENT.cream} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+            </svg>
+            <div className="bg-sb-tomato border-[3px] border-sb-cream rounded-[22px] p-4 shadow-[10px_10px_0_#000]">
+              <div className="bg-sb-cream rounded-xl p-3 border-[2.5px] border-sb-paper">
+                <img
+                  src="/assets/images/profile.jpg"
+                  alt="Portrait of Somkene"
+                  className="block w-[240px] h-[290px] sm:w-[260px] sm:h-[310px] object-cover rounded-lg border-[2.5px] border-sb-paper"
+                />
+              </div>
+            </div>
+          </div>
+          <p className="absolute -bottom-2 right-2.5 m-0 font-hand text-2xl text-sb-mint -rotate-6">that&apos;s me, swinging</p>
+        </motion.div>
+      </section>
+    </Container>
   )
 }

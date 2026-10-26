@@ -25,7 +25,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   if (!post) notFound();
 
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <Navbar />
       <BlogPost post={post} />
     </main>

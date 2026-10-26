@@ -1,53 +1,50 @@
 'use client'
-import Link from "next/link";
-import { contactlinks } from "@/constants/contactLinks";
+import type { ReactNode } from "react";
+import { GitHubLogoIcon, LinkedInLogoIcon, EnvelopeClosedIcon } from "@radix-ui/react-icons";
+import { XLogo } from "./BrandIcons";
+import { Container, Pop, Spark, ACCENT } from "./Sketch";
+
+const radix = "w-full h-full";
+const links: { label: string; href: string; bg: string; icon: ReactNode }[] = [
+  { label: "Email", href: "mailto:somkeneoj@gmail.com", bg: "bg-sb-tomato", icon: <EnvelopeClosedIcon className={radix} aria-hidden="true" /> },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/somkene-ojukwu/", bg: "bg-sb-peri", icon: <LinkedInLogoIcon className={radix} aria-hidden="true" /> },
+  { label: "GitHub", href: "https://github.com/somkenemuscle", bg: "bg-sb-cream", icon: <GitHubLogoIcon className={radix} aria-hidden="true" /> },
+  { label: "X / Twitter", href: "https://x.com/somkeneOj", bg: "bg-sb-mint", icon: <XLogo /> },
+];
 
 function Contact() {
   return (
-    <div id="contact" className="cursor-pointer mt-32 mb-12">
-      <div className="w-full max-w-screen-lg mx-auto px-8 md:px-16">
-        <div className="text-center">
-          <header className="pb-7 flex items-center justify-center">
-            <img className="w-14 h-14"
-              src="https://framerusercontent.com/images/tDOGAARw0kdQ37aQk0HWXiX9X8.png?scale-down-to=512" alt="icon" />
-            <span className="text-2xl font-bold font-sans text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-pink-100">
-              {" "} get in touch!</span>
-          </header>
-        </div>
-
-        {/* <!-- Use flex-col to stack on small screens, flex-row for larger screens --> */}
-        <div className="flex flex-col sm:flex-row justify-between items-center border-2 border-neutral-800 bg-neutral-900 w-full rounded-3xl p-8 hover:bg-gradient-to-bl hover:via-transparent hover:from-black hover:to-black transition-all duration-300">
-          <div className="mb-4 sm:mb-0">
-            <span className="text-neutral-300 text-xs tracking-wide font-medium">Reach out to me <span aria-hidden="true">→</span></span> <br />
-            <Link href="mailto:somkeneoj@gmail.com">
-              <span className="text-xl font-semibold tracking-wide font-sans transition-colors duration-200"
-                style={{ color: '#ffffff' }}>
-                somkeneoj@gmail.com
-              </span>
-            </Link>
+    <Container>
+      <section id="hi" className="scroll-mt-28 pt-28 md:pt-32 pb-12">
+        <Pop>
+          <div className="sb-card relative overflow-hidden !bg-sb-sun text-sb-paper px-6 sm:px-10 py-16 flex flex-col items-center gap-7 text-center"
+            style={{ boxShadow: "8px 8px 0 #000" }}>
+            <Spark size={90} fill={ACCENT.gum} className="sb-spin absolute -top-5 -left-5" />
+            <Spark size={50} fill={ACCENT.mint} className="sb-spin absolute bottom-6 right-8" style={{ animationDirection: "reverse" }} />
+            <p className="m-0 font-hand text-[32px] -rotate-2">got an idea?</p>
+            <h2 className="m-0 font-extrabold tracking-[-0.03em] leading-none text-[clamp(44px,6vw,80px)]">
+              Let&apos;s build something fun.
+            </h2>
+            <a href="mailto:somkeneoj@gmail.com" className="font-mono text-base sm:text-lg underline decoration-wavy decoration-2 underline-offset-[6px]">
+              somkeneoj@gmail.com
+            </a>
+            <div className="flex flex-wrap justify-center gap-3.5">
+              {links.map(l => (
+                <a key={l.label} href={l.href} aria-label={l.label}
+                  className={`sb-btn ${l.bg} max-sm:!w-14 max-sm:!h-14 max-sm:!p-0 max-sm:justify-center max-sm:!rounded-full`}
+                  {...(l.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+                  <span className="w-[22px] h-[22px] sm:w-[18px] sm:h-[18px] shrink-0 flex">{l.icon}</span>
+                  <span className="max-sm:hidden">{l.label}</span>
+                </a>
+              ))}
+            </div>
           </div>
-
-          {/* <!-- Keep icons in a straight line using flex-row on all screen sizes --> */}
-          <div className="flex flex-row items-center space-x-4">
-            {contactlinks.map((link, index) => (
-              <Link
-                key={index}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-14 w-14 flex items-center justify-center"
-                aria-label={link.title}
-                style={{
-                  transform: `rotate(${(index + 1) % 2 === 0 ? (index + 1) * 3 : -(index + 1) * 3}deg)`,
-                }}
-              >
-                <img src={link.icon} className="hover:scale-125 transition-transform duration-300 " />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
+        </Pop>
+        <p className="font-mono text-center mt-10 text-xs text-sb-muted">
+          Built by Somkene · © {new Date().getFullYear()} Somkene Ojukwu
+        </p>
+      </section>
+    </Container>
   )
 }
 

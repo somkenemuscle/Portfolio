@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function BlogPage() {
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <Navbar />
       {blogs.length > 0 ? <BlogList /> : <BlogComingSoon />}
     </main>
