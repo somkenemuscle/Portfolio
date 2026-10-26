@@ -41,6 +41,9 @@ export const projectData = [
             }
         ],
         livePreview: "https://press.alkademy.com",
+        blurb: "A multi-tenant journal platform for heavy editorial workflows: async jobs, caching and cloud storage under the hood.",
+        outcome: "~35% lower API latency",
+        accent: "sun",
         image: "/assets/images/alkademypress.png"
     },
     {
@@ -78,7 +81,9 @@ export const projectData = [
             },
         ],
         livePreview: "https://clouddley.com",
-        image: "/assets/images/clouddley.png"
+        blurb: "Frontend for a platform where developers spin up apps, databases, VPS instances and AI workloads.",
+        accent: "peri",
+        image: "/assets/images/cdd.PNG"
     },
     {
         title: "Celestique",
@@ -120,6 +125,8 @@ export const projectData = [
             }
         ],
         livePreview: "https://celestique.vercel.app/",
+        blurb: "A clothing store for men and women with order tracking and payments built right in.",
+        accent: "gum",
         sourceCode: "https://github.com/somkenemuscle/celestique",
         image: "/assets/images/cq.png"
     },

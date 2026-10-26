@@ -1,13 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
+import { BackLink } from './AboutHero'
+import { ACCENT, Container, Spark, cycleAccent, cycleTilt, vars } from './Sketch'
 
 const enter = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { type: 'spring' as const, stiffness: 220, damping: 20, delay },
 })
 
 const topics = [
@@ -21,94 +21,41 @@ const topics = [
 
 export default function BlogComingSoon() {
   return (
-    <section className="min-h-screen flex flex-col pt-36 pb-24">
-      <div className="w-full max-w-screen-lg mx-auto px-8 md:px-16 flex flex-col flex-1">
+    <Container>
+      <section className="min-h-screen pt-32 pb-24 flex flex-col gap-10">
+        <motion.div {...enter(0.05)}><BackLink /></motion.div>
 
-        {/* Back */}
-        <motion.div {...enter(0.05)} className="mb-14">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-[13px] font-medium transition-colors duration-150"
-            style={{ color: 'rgba(255,255,255,0.28)' }}
-            onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.7)')}
-            onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.28)')}
-          >
-            <ArrowLeft size={13} strokeWidth={2} />
-            Back
-          </Link>
+        <motion.div {...enter(0.1)} className="sb-card sb-lined relative max-w-[760px] py-12 pr-8 pl-16 sm:pl-20 flex flex-col gap-6"
+          style={vars({ '--sh': ACCENT.tomato })}>
+          <span aria-hidden="true" className="absolute left-10 sm:left-12 inset-y-0 w-0.5 bg-sb-tomato" />
+          <Spark size={60} fill={ACCENT.sun} className="sb-spin absolute -top-6 -right-6" />
+          <span className="self-start font-mono text-xs font-bold px-3 py-1 border-2 border-dashed border-sb-tomato text-sb-tomato rounded-md rotate-2">
+            COMING SOON
+          </span>
+          <h1 className="m-0 font-extrabold tracking-[-0.03em] leading-none text-[clamp(40px,5.5vw,68px)] text-sb-paper">
+            Thoughts, written down.
+          </h1>
+          <p className="m-0 text-[17px] leading-relaxed text-[#3B332B]">
+            I&apos;m working on a space to write about the things I care about: engineering decisions, building
+            products, lessons from shipping real software, and the occasional creative tangent. It&apos;s coming.
+          </p>
+          <p className="m-0 font-hand text-[26px] text-sb-paper">what I&apos;ll write about:</p>
+          <div className="flex flex-wrap gap-3">
+            {topics.map((t, i) => (
+              <span key={t} className="sb-sticker !text-sm !px-3.5 !py-1.5 !border-sb-paper"
+                style={{ ...vars({ '--r': `${cycleTilt(i)}deg` }), background: cycleAccent(i) }}>
+                {t}
+              </span>
+            ))}
+          </div>
         </motion.div>
 
-        {/* Main content */}
-        <div className="flex flex-col gap-8 max-w-2xl">
-
-          <motion.div {...enter(0.1)}>
-            <span
-              className="inline-block text-[10px] font-semibold tracking-[0.2em] uppercase px-3 py-1 rounded-full mb-6"
-              style={{ color: 'rgba(255,255,255,0.35)', border: '1px solid rgba(255,255,255,0.1)' }}
-            >
-              Coming soon
-            </span>
-            <h1
-              className="font-bold tracking-tight leading-[1.08]"
-              style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)', color: '#ffffff' }}
-            >
-              Thoughts, written down.
-            </h1>
-          </motion.div>
-
-          <motion.p
-            {...enter(0.18)}
-            className="text-[16px] leading-[1.9]"
-            style={{ color: 'rgba(255,255,255,0.8)' }}
-          >
-            I&apos;m working on a space to write about the things I care about —
-            engineering decisions, building products, lessons from shipping real software,
-            and the occasional creative tangent. It&apos;s coming.
-          </motion.p>
-
-          {/* Topics preview */}
-          <motion.div {...enter(0.25)}>
-            <p className="text-[11px] font-medium tracking-[0.18em] uppercase mb-4"
-              style={{ color: 'rgba(255,255,255,0.22)' }}>
-              What I&apos;ll write about
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {topics.map((topic) => (
-                <span
-                  key={topic}
-                  className="text-[13px] px-3 py-1.5 rounded-full"
-                  style={{
-                    color: 'rgba(255,255,255,0.38)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                  }}
-                >
-                  {topic}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Follow CTA */}
-          <motion.div {...enter(0.32)} className="flex items-center gap-3 pt-2">
-            <p className="text-[13px]" style={{ color: 'rgba(255,255,255,0.28)' }}>
-              Follow along on
-            </p>
-            <Link
-              href="https://x.com/somkeneOj"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[13px] font-medium transition-colors duration-150"
-              style={{ color: 'rgba(255,255,255,0.55)' }}
-              onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#ffffff')}
-              onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.55)')}
-            >
-              Twitter ↗
-            </Link>
-          </motion.div>
-
-        </div>
-
-      </div>
-    </section>
+        <motion.div {...enter(0.2)}>
+          <a href="https://x.com/somkeneOj" target="_blank" rel="noopener noreferrer" className="sb-btn bg-sb-sun">
+            Follow along on X ↗
+          </a>
+        </motion.div>
+      </section>
+    </Container>
   )
 }

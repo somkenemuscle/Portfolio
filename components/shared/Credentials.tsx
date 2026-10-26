@@ -1,106 +1,87 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import type { ReactNode } from 'react'
 import { GraduationCap, BadgeCheck } from 'lucide-react'
 import { certificates, education } from '@/constants/credentials'
+import { ACCENT, Container, Pop, Section, SectionHeading, vars } from './Sketch'
 
-const enter = (delay: number) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] },
-})
+// A certificate-style card with a little rubber-stamp year in the corner.
+function PaperCard({ icon, title, badge, sub, year, color, delay }: {
+  icon: ReactNode
+  title: string
+  badge?: string
+  sub: ReactNode
+  year: string
+  color: string
+  delay: number
+}) {
+  return (
+    <Pop delay={delay}>
+      <div className="sb-card sb-card-hover relative flex items-start gap-4 p-6 min-h-[120px]" style={vars({ '--sh': color })}>
+        <div className="w-12 h-12 shrink-0 flex items-center justify-center rounded-xl border-[2.5px] border-sb-cream text-sb-paper -rotate-6"
+          style={{ background: color }}>
+          {icon}
+        </div>
+        <div className="flex flex-col gap-1 pr-16">
+          <h3 className="m-0 text-lg font-extrabold leading-snug">
+            {title}
+            {badge && (
+              <span className="ml-2 align-middle font-mono text-[11px] px-2 py-0.5 rounded-md border-2" style={{ borderColor: color, color }}>
+                {badge}
+              </span>
+            )}
+          </h3>
+          <p className="m-0 text-[15px] text-sb-soft">{sub}</p>
+        </div>
+        <span className="absolute top-5 right-5 font-mono text-xs font-bold px-2.5 py-1 border-2 border-dashed rounded-md rotate-6"
+          style={{ borderColor: color, color }}>
+          {year}
+        </span>
+      </div>
+    </Pop>
+  )
+}
 
 export default function Credentials() {
   return (
-    <section className="pb-24 md:pb-32">
-      <div className="w-full max-w-screen-lg mx-auto px-8 md:px-16">
-
-        {/* Divider */}
-        <div className="h-px mb-16" style={{ background: 'rgba(255,255,255,0.06)' }} />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-
-          {/* Certificates */}
-          <motion.div {...enter(0.05)}>
-            <p className="text-[11px] font-medium tracking-[0.18em] uppercase mb-8"
-              style={{ color: 'rgba(255,255,255,0.25)' }}>
-              Certificates
-            </p>
-            <div className="flex flex-col gap-4">
-              {certificates.map((cert, i) => (
-                <motion.div
-                  key={i}
-                  {...enter(0.1 + i * 0.08)}
-                  className="flex items-start gap-4 rounded-2xl p-5"
-                  style={{ background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.07)', minHeight: 96 }}
-                >
-                  <div className="mt-0.5 w-9 h-9 flex items-center justify-center rounded-xl shrink-0"
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.07)' }}>
-                    <BadgeCheck size={16} strokeWidth={1.6} style={{ color: 'rgba(255,255,255,0.5)' }} />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <h3 className="text-[15px] font-semibold" style={{ color: 'rgba(255,255,255,0.88)' }}>
-                      {cert.title}
-                    </h3>
-                    <p className="text-[13px]" style={{ color: 'rgba(255,255,255,0.38)' }}>
-                      {cert.issuer}
-                      {cert.location && (
-                        <span style={{ color: 'rgba(255,255,255,0.22)' }}> · {cert.location}</span>
-                      )}
-                    </p>
-                    <p className="text-[11px] font-medium tracking-[0.1em]"
-                      style={{ color: 'rgba(255,255,255,0.2)' }}>
-                      {cert.year}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Education */}
-          <motion.div {...enter(0.1)}>
-            <p className="text-[11px] font-medium tracking-[0.18em] uppercase mb-8"
-              style={{ color: 'rgba(255,255,255,0.25)' }}>
-              Education
-            </p>
-            <div className="flex flex-col gap-4">
-              {education.map((edu, i) => (
-                <motion.div
-                  key={i}
-                  {...enter(0.15 + i * 0.08)}
-                  className="flex items-start gap-4 rounded-2xl p-5"
-                  style={{ background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.07)', minHeight: 96 }}
-                >
-                  <div className="mt-0.5 w-9 h-9 flex items-center justify-center rounded-xl shrink-0"
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.07)' }}>
-                    <GraduationCap size={16} strokeWidth={1.6} style={{ color: 'rgba(255,255,255,0.5)' }} />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <h3 className="text-[15px] font-semibold" style={{ color: 'rgba(255,255,255,0.88)' }}>
-                      {edu.degree}
-                      {edu.short && (
-                        <span className="ml-2 text-[11px] font-medium px-2 py-0.5 rounded-full align-middle"
-                          style={{ color: 'rgba(255,255,255,0.3)', border: '1px solid rgba(255,255,255,0.09)' }}>
-                          {edu.short}
-                        </span>
-                      )}
-                    </h3>
-                    <p className="text-[13px]" style={{ color: 'rgba(255,255,255,0.38)' }}>
-                      {edu.institution}
-                    </p>
-                    <p className="text-[11px] font-medium tracking-[0.1em]"
-                      style={{ color: 'rgba(255,255,255,0.2)' }}>
-                      {edu.year}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
+    <Container className="pb-24 md:pb-32">
+      <Section id="credentials">
+        <SectionHeading
+          label="PAPERWORK" title="Credentials" accent="peri"
+          aside={<p className="m-0 font-hand text-[26px] text-sb-sun -rotate-2">the official bits</p>}
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-7 gap-y-10">
+          <div className="flex flex-col gap-5">
+            <p className="m-0 font-mono text-xs tracking-[0.14em] text-sb-muted">CERTIFICATES</p>
+            {certificates.map((cert, i) => (
+              <PaperCard
+                key={cert.title}
+                icon={<BadgeCheck size={22} strokeWidth={2.2} />}
+                title={cert.title}
+                sub={<>{cert.issuer}{cert.location && <span className="text-sb-muted"> · {cert.location}</span>}</>}
+                year={cert.year}
+                color={ACCENT.sun}
+                delay={i * 0.08}
+              />
+            ))}
+          </div>
+          <div className="flex flex-col gap-5">
+            <p className="m-0 font-mono text-xs tracking-[0.14em] text-sb-muted">EDUCATION</p>
+            {education.map((edu, i) => (
+              <PaperCard
+                key={edu.degree}
+                icon={<GraduationCap size={22} strokeWidth={2.2} />}
+                title={edu.degree}
+                badge={edu.short}
+                sub={edu.institution}
+                year={edu.year}
+                color={ACCENT.mint}
+                delay={0.06 + i * 0.08}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </Section>
+    </Container>
   )
 }

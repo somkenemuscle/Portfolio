@@ -2,143 +2,93 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
+import { ACCENT, Container, Spark, vars } from './Sketch'
 
 const enter = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { type: 'spring' as const, stiffness: 220, damping: 20, delay },
 })
 
 const stats = [
-  { label: 'Experience',   value: '5 years'    },
-  { label: 'Focus',        value: 'Product & Systems'  },
-  { label: 'Currently',    value: 'Alkademy'    },
-  { label: 'Availability', value: 'Always building'},
+  { label: 'Experience', value: '5 years', accent: ACCENT.gum },
+  { label: 'Focus', value: 'Product & Systems', accent: ACCENT.sun },
+  { label: 'Currently', value: 'Alkademy', accent: ACCENT.mint },
+  { label: 'Availability', value: 'Always building', accent: ACCENT.peri },
 ]
+
+export function BackLink({ href = '/', label = 'back home' }: { href?: string; label?: string }) {
+  return (
+    <Link href={href}
+      className="inline-flex items-center gap-2 font-mono text-[13px] text-sb-muted px-3 py-2 -ml-3 rounded-lg transition-colors hover:text-sb-sun hover:bg-sb-card">
+      <span aria-hidden="true">←</span> {label}
+    </Link>
+  )
+}
 
 export default function AboutHero() {
   return (
-    <section className="pt-36 pb-16">
-      <div className="w-full max-w-screen-lg mx-auto px-8 md:px-16">
-
-        {/* Back */}
-        <motion.div {...enter(0.05)} className="mb-14">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-[13px] font-medium transition-colors duration-150"
-            style={{ color: 'rgba(255,255,255,0.28)' }}
-            onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.7)')}
-            onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.28)')}
-          >
-            <ArrowLeft size={13} strokeWidth={2} />
-            Back
-          </Link>
+    <Container>
+      <section className="pt-32 pb-6">
+        <motion.div {...enter(0.05)} className="mb-10">
+          <BackLink />
         </motion.div>
 
-        {/* Profile row */}
-        <div className="flex items-center gap-10 md:gap-16 mb-14">
-
-          {/* Profile photo — framed, matches hero section */}
+        <div className="flex flex-wrap items-center gap-x-14 gap-y-10 mb-14">
+          {/* Mini version of the homepage's swinging frame */}
           <motion.div
-            {...enter(0.1)}
-            className="shrink-0 relative"
-            style={{ width: 160, height: 190 }}
+            initial={{ opacity: 0, y: -40, rotate: -10 }}
+            animate={{ opacity: 1, y: 0, rotate: 0 }}
+            transition={{ type: 'spring', stiffness: 120, damping: 12, delay: 0.1 }}
+            className="relative shrink-0"
           >
-            {/* nail */}
-            <div
-              className="absolute rounded-full"
-              style={{
-                top: 0,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: 5,
-                height: 5,
-                background: '#2a2a2a',
-                boxShadow: '0 1px 2px rgba(0,0,0,0.7)',
-                zIndex: 2,
-              }}
-            />
-
-            <motion.div
-              style={{ position: 'absolute', top: 0, left: 0, width: 160, transformOrigin: 'top center' }}
-              animate={{ rotate: [-3.5, 3.5, -3.5] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <svg width={160} height={28} style={{ position: 'absolute', top: 0, left: 0 }}>
-                <line x1={80} y1={2} x2={16} y2={26} stroke="rgba(210,210,210,0.55)" strokeWidth={1} />
-                <line x1={80} y1={2} x2={144} y2={26} stroke="rgba(210,210,210,0.55)" strokeWidth={1} />
+            <Spark size={46} className="sb-spin absolute -top-2 -right-8 z-10" />
+            <div className="sb-swing flex flex-col items-center">
+              <svg width="150" height="50" viewBox="0 0 150 50" aria-hidden="true" className="block -mb-1">
+                <circle cx="75" cy="7" r="6" fill={ACCENT.sun} stroke={ACCENT.cream} strokeWidth="2.5" />
+                <path d="M75 9 L16 48 M75 9 L134 48" stroke={ACCENT.cream} strokeWidth="2.5" fill="none" strokeLinecap="round" />
               </svg>
-
-              <motion.div
-                className="p-2.5"
-                style={{
-                  marginTop: 28,
-                  background: 'linear-gradient(135deg, #3a3a3a 0%, #202020 45%, #0a0a0a 100%)',
-                  boxShadow: `
-                    inset 0 1px 1px rgba(255,255,255,0.15),
-                    inset 0 -2px 3px rgba(0,0,0,0.6),
-                    inset 2px 0 2px rgba(255,255,255,0.06),
-                    inset -2px 0 3px rgba(0,0,0,0.5),
-                    0 25px 45px -16px rgba(0,0,0,0.65)
-                  `,
-                }}
-                whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 260, damping: 18 } }}
-              >
-                <div className="p-2" style={{ background: '#1e1e1e' }}>
+              <div className="bg-sb-peri border-[3px] border-sb-cream rounded-[18px] p-3 shadow-[8px_8px_0_#000]">
+                <div className="bg-sb-cream rounded-[10px] p-2 border-[2.5px] border-sb-paper">
                   <img
                     src="/assets/images/profile.jpg"
                     alt="Somkene"
-                    className="w-32 h-32 object-cover object-[50%_30%] select-none"
-                    style={{ boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.15)' }}
                     draggable={false}
+                    className="block w-[150px] h-[170px] object-cover object-[50%_30%] rounded-md border-[2.5px] border-sb-paper select-none"
                   />
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Name + role */}
-          <motion.div {...enter(0.15)}>
-            <p className="text-[11px] font-medium tracking-[0.2em] uppercase mb-3"
-              style={{ color: 'rgba(255,255,255,0.28)' }}>
-              About me
-            </p>
-            <h1 className="font-bold tracking-tight leading-[1.08] mb-2"
-              style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', color: '#ffffff' }}>
+          <motion.div {...enter(0.15)} className="flex-[1_1_320px] min-w-0 flex flex-col gap-3">
+            <span className="font-mono text-[13px] tracking-[0.1em] text-sb-gum">ABOUT ME</span>
+            <h1 className="m-0 font-extrabold tracking-[-0.03em] leading-[0.98] text-[clamp(44px,6.4vw,84px)]">
               Somkene Ojukwu
             </h1>
-            <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.6)', fontWeight: 500 }}>
-              Software Engineer &middot;{' '}
-              <span style={{
-                background: 'linear-gradient(90deg, #00a550 0%, #00a550 25%, #ffffff 50%, #00a550 75%, #00a550 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}>
-                Lagos, Nigeria
-              </span>
+            <p className="m-0 text-xl text-sb-soft font-medium">
+              Software Engineer · <span className="sb-wavy text-sb-sun">Lagos, Nigeria</span>
+            </p>
+            <p className="m-0 mt-2 font-hand text-[26px] text-sb-mint -rotate-1 origin-left">
+              artist first, engineer second (or both at once)
             </p>
           </motion.div>
         </div>
 
-        {/* Stat cards — full width row */}
-        <motion.div {...enter(0.25)} className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {stats.map((s) => (
-            <div key={s.label} className="rounded-xl px-5 py-4"
-              style={{ background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.07)' }}>
-              <p className="text-[10px] font-medium tracking-[0.16em] uppercase mb-1.5"
-                style={{ color: 'rgba(255,255,255,0.25)' }}>
-                {s.label}
-              </p>
-              <p className="text-[15px] font-semibold" style={{ color: 'rgba(255,255,255,0.82)' }}>
-                {s.value}
-              </p>
-            </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+          {stats.map((s, i) => (
+            <motion.div key={s.label} {...enter(0.25 + i * 0.06)}>
+              <div className="sb-card sb-card-hover px-5 py-4 h-full"
+                style={vars({ '--sh': s.accent })}>
+                <p className="m-0 mb-1.5 font-mono text-[11px] tracking-[0.14em] uppercase" style={{ color: s.accent }}>
+                  {s.label}
+                </p>
+                <p className="m-0 text-lg font-extrabold leading-tight">{s.value}</p>
+              </div>
+            </motion.div>
           ))}
-        </motion.div>
-
-      </div>
-    </section>
+        </div>
+      </section>
+    </Container>
   )
 }

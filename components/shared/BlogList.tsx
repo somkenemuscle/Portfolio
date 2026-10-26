@@ -1,111 +1,59 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
 import { blogs } from '@/constants/blogs'
+import { BackLink } from './AboutHero'
+import { JournalEntry, sortedPosts } from './JournalPreview'
+import { ACCENT, Container, Pop, Spark, cycleAccent, cycleTilt, vars } from './Sketch'
 
 const enter = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { type: 'spring' as const, stiffness: 220, damping: 20, delay },
 })
 
 export default function BlogList() {
+  const posts = sortedPosts()
+  const tags = Array.from(new Set(blogs.flatMap(b => b.tags)))
+
   return (
-    <section className="min-h-screen flex flex-col pt-36 pb-24">
-      <div className="w-full max-w-screen-xl mx-auto px-8 md:px-16 flex flex-col flex-1">
+    <Container>
+      <section className="min-h-screen pt-32 pb-24 flex flex-col gap-12">
+        <motion.div {...enter(0.05)}><BackLink /></motion.div>
 
-        {/* Back */}
-        <motion.div {...enter(0.05)} className="mb-14">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-[13px] font-medium transition-colors duration-150"
-            style={{ color: 'rgba(255,255,255,0.28)' }}
-            onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.7)')}
-            onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.28)')}
-          >
-            <ArrowLeft size={13} strokeWidth={2} />
-            Back
-          </Link>
-        </motion.div>
-
-        <motion.h1
-          {...enter(0.1)}
-          className="font-bold tracking-tight leading-[1.08] mb-14"
-          style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)', color: '#ffffff' }}
-        >
-          Thoughts, written down.
-        </motion.h1>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {blogs.map((post, i) => (
-            <motion.div
-              key={post.id}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <Link
-                href={`/blog/${post.slug}`}
-                className="group flex flex-col h-full rounded-2xl overflow-hidden transition-colors duration-200"
-                style={{ border: '1px solid rgba(255,255,255,0.09)', background: 'rgba(255,255,255,0.02)' }}
-                onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.22)')}
-                onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.09)')}
-              >
-                {/* Image */}
-                <div
-                  className="relative w-full aspect-video overflow-hidden shrink-0"
-                  style={{ background: 'rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.09)' }}
-                >
-                  {post.coverImage?.src ? (
-                    <img
-                      src={post.coverImage.src}
-                      alt={post.coverImage.alt}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <span className="text-[12px]" style={{ color: 'rgba(255,255,255,0.2)' }}>No image</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Text */}
-                <div className="flex flex-col flex-1 p-6">
-                  <span
-                    className="text-[11px] font-medium tracking-[0.14em] uppercase mb-3"
-                    style={{ color: '#D7FF5E' }}
-                  >
-                    {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-                  </span>
-
-                  <h2
-                    className="font-bold leading-snug mb-2.5"
-                    style={{ fontSize: 18, color: 'rgba(255,255,255,0.95)' }}
-                  >
-                    {post.title}
-                  </h2>
-
-                  <p
-                    className="text-[13.5px] leading-[1.7]"
-                    style={{
-                      color: 'rgba(255,255,255,0.4)',
-                      display: '-webkit-box',
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden',
-                    }}
-                  >
-                    {post.excerpt}
-                  </p>
-                </div>
-              </Link>
+        <div className="relative flex flex-col gap-4">
+          <Spark size={56} fill={ACCENT.tomato} className="sb-spin absolute -top-6 right-0 sm:right-10" />
+          <motion.span {...enter(0.08)} className="font-mono text-[13px] tracking-[0.1em] text-sb-tomato">
+            THE JOURNAL · {posts.length} {posts.length === 1 ? 'ENTRY' : 'ENTRIES'}
+          </motion.span>
+          <motion.h1 {...enter(0.12)} className="m-0 font-extrabold tracking-[-0.03em] leading-[0.98] text-[clamp(44px,6.4vw,84px)]">
+            Thoughts, <span className="sb-wavy text-sb-sun">written down</span>.
+          </motion.h1>
+          <motion.p {...enter(0.18)} className="m-0 text-xl leading-relaxed text-sb-soft max-w-[620px]">
+            Notes from the build: engineering decisions, things I got wrong, and the occasional creative tangent.
+          </motion.p>
+          {tags.length > 0 && (
+            <motion.div {...enter(0.24)} className="flex flex-wrap gap-3 pt-3">
+              {tags.map((t, i) => (
+                <span key={t} className="sb-sticker !text-sm !px-3.5 !py-1.5"
+                  style={{ ...vars({ '--r': `${cycleTilt(i)}deg` }), background: cycleAccent(i) }}>
+                  {t}
+                </span>
+              ))}
             </motion.div>
+          )}
+        </div>
+
+        <div className="flex flex-col gap-8">
+          {posts.map((post, i) => (
+            <Pop key={post.id} delay={0.1 + i * 0.08}>
+              <JournalEntry post={post} showCover />
+            </Pop>
           ))}
         </div>
 
-      </div>
-    </section>
+        <p className="m-0 font-hand text-[26px] text-sb-muted text-center -rotate-1">more pages coming soon…</p>
+      </section>
+    </Container>
   )
 }
