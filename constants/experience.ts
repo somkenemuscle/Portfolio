@@ -32,7 +32,7 @@ export const experiences = [
         technologies: ["Typescript", "NextJs", "NestJs", "NodeJs", "Express", "Socket.io", "Docker", "Redis", "AWS", "MySQL"],
     },
     {
-        role: "Frontend Engineer",
+        role: "Software Engineer",
         duration: "Jun 2023 - Jan 2025",
         link: "https://clouddley.com/",
         company: "@Clouddley ",
@@ -63,7 +63,7 @@ export const experiences = [
         technologies: ["Typescript", "React", "NextJs", "Jest", "Zustand", "Javascript", "HTML5", "CSS", "Tailwind", "Git", "Figma"],
     },
     {
-        role: "Backend Engineer",
+        role: "Software Engineer",
         badge: "Intern",
         duration: "Jun 2021 - Jun 2022",
         link: "https://wildfire.ng/",
