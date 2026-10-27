@@ -109,6 +109,18 @@ html {
     text-underline-offset: 10px;
   }
 
+  /* a wavy underline that drops in on hover of the surrounding .group */
+  .sb-wavy-hover {
+    text-decoration: underline wavy transparent;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 16px;
+    transition: text-decoration-color .25s, text-underline-offset .35s cubic-bezier(.34, 1.56, .64, 1);
+  }
+  .group:hover .sb-wavy-hover {
+    text-decoration-color: #FF6B4A;
+    text-underline-offset: 8px;
+  }
+
   .sb-lined {
     background-color: #F4EBDD;
     background-image: linear-gradient(transparent 31px, rgba(21, 17, 13, .12) 32px);
@@ -213,6 +225,7 @@ html {
 }
 @keyframes art-shake { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(-1.5px, 1px); } 50% { transform: translate(1.5px, -1px); } 75% { transform: translate(-1px, -1px); } }
 @keyframes sb-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-3px); } }
+@keyframes sb-nudge-r { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
 @keyframes art-spin { to { transform: rotate(360deg); } }
 @keyframes art-bounce {
   0%, 100% { transform: translateY(0) scale(1.08, .9); }

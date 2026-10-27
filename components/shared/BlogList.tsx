@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { blogs } from '@/constants/blogs'
 import { BackLink } from './AboutHero'
 import { JournalEntry, sortedPosts } from './JournalPreview'
-import { ACCENT, Container, Pop, Spark, cycleAccent, cycleTilt, vars } from './Sketch'
+import { ACCENT, Container, Pop, Spark } from './Sketch'
 
 const enter = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -33,14 +33,12 @@ export default function BlogList() {
             Notes from the build: engineering decisions, things I got wrong, and the occasional creative tangent.
           </motion.p>
           {tags.length > 0 && (
-            <motion.div {...enter(0.24)} className="flex flex-wrap gap-3 pt-3">
-              {tags.map((t, i) => (
-                <span key={t} className="sb-sticker !text-sm !px-3.5 !py-1.5"
-                  style={{ ...vars({ '--r': `${cycleTilt(i)}deg` }), background: cycleAccent(i) }}>
-                  {t}
-                </span>
+            <motion.p {...enter(0.24)} className="m-0 pt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className="font-hand text-[24px] text-sb-muted">filed under</span>
+              {tags.map(t => (
+                <span key={t} className="font-mono text-sm text-sb-soft lowercase">#{t}</span>
               ))}
-            </motion.div>
+            </motion.p>
           )}
         </div>
 
