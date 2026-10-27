@@ -75,7 +75,7 @@ export default function AboutHero() {
               Somkene Ojukwu
             </h1>
             <p className="m-0 text-xl text-sb-soft font-medium">
-              Software Engineer · <span className="sb-wavy">Lagos, Nigeria</span>
+              Software Engineer · <span className="font-extrabold text-[#008751]">Lagos, Nigeria</span>
             </p>
             <p className="m-0 mt-2 font-hand text-[26px] text-sb-mint-deep -rotate-1 origin-left">
               artist first, engineer second (or both at once)
