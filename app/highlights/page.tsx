@@ -1,17 +1,17 @@
 import Navbar from "@/components/shared/Navbar";
-import LogbookWall from "@/components/shared/LogbookWall";
+import HighlightsWall from "@/components/shared/HighlightsWall";
 import Contact from "@/components/shared/contact";
 
 export const metadata = {
-  title: "Logbook — Somkene Ojukwu",
+  title: "Highlights — Somkene Ojukwu",
   description: "Talks, hackathons, events and credentials: everything Somkene Ojukwu has shown up for, with photos and links.",
 };
 
-export default function LogbookPage() {
+export default function HighlightsPage() {
   return (
     <main className="overflow-x-hidden">
       <Navbar />
-      <LogbookWall />
+      <HighlightsWall />
       <Contact />
     </main>
   );

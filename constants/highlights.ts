@@ -1,18 +1,18 @@
-// The Logbook: talks, hackathons, events I showed up to, and the paperwork.
+// Highlights: talks, hackathons, events I showed up to, and the paperwork.
 // Order doesn't matter, entries are sorted by date. The first photo is the
-// cover (the polaroid on the About corkboard). Photos live in public/logbook/.
+// cover (the polaroid on the About corkboard). Photos live in public/highlights/.
 
-export type LogType = "talk" | "hackathon" | "event" | "open-source" | "award" | "paperwork"
+export type HighlightType = "talk" | "hackathon" | "event" | "open-source" | "award" | "paperwork"
 
-export interface LogLink {
+export interface HighlightLink {
   label: string // what it is, e.g. "The announcement"
   href: string
   kind: "instagram" | "x" | "linkedin" | "github" | "web"
 }
 
-export interface LogEntry {
-  slug: string // used in the URL: /logbook#slug
-  type: LogType
+export interface Highlight {
+  slug: string // used in the URL: /highlights#slug
+  type: HighlightType
   title: string
   date: string // "2026-09-27", "2026-10" or "2026"
   endDate?: string // for multi-day things
@@ -21,11 +21,11 @@ export interface LogEntry {
   blurb: string // one line, shown on the card
   story?: string[] // optional paragraphs for the pop-up
   photos?: { src: string; alt: string }[]
-  links?: LogLink[]
+  links?: HighlightLink[]
   icon?: "grad" // paperwork only: a cap instead of a badge
 }
 
-export const logbook: LogEntry[] = [
+export const highlights: Highlight[] = [
   {
     slug: "paystack-ai-builder-challenge-2026",
     type: "hackathon",
@@ -40,12 +40,12 @@ export const logbook: LogEntry[] = [
       "These photos are from the final day.",
     ],
     photos: [
-      { src: "/logbook/paystack-thumbs-up.jpg", alt: "Four builders at the Paystack AI Builder Challenge, one giving a thumbs up" },
-      { src: "/logbook/paystack-the-four.jpg", alt: "Four builders posing together at the end of the challenge" },
-      { src: "/logbook/paystack-the-four-2.jpg", alt: "The same four builders in front of the glass wall at the venue" },
-      { src: "/logbook/paystack-duo.jpg", alt: "Two builders at the challenge venue" },
-      { src: "/logbook/paystack-duo-wide.jpg", alt: "Two builders at the venue, with cameras and lights set up around them" },
-      { src: "/logbook/paystack-duo-lounge.jpg", alt: "Two builders in the lounge at the venue" },
+      { src: "/highlights/paystack-thumbs-up.jpg", alt: "Four builders at the Paystack AI Builder Challenge, one giving a thumbs up" },
+      { src: "/highlights/paystack-the-four.jpg", alt: "Four builders posing together at the end of the challenge" },
+      { src: "/highlights/paystack-the-four-2.jpg", alt: "The same four builders in front of the glass wall at the venue" },
+      { src: "/highlights/paystack-duo.jpg", alt: "Two builders at the challenge venue" },
+      { src: "/highlights/paystack-duo-wide.jpg", alt: "Two builders at the venue, with cameras and lights set up around them" },
+      { src: "/highlights/paystack-duo-lounge.jpg", alt: "Two builders in the lounge at the venue" },
     ],
     links: [
       { label: "About the challenge", href: "https://paystack.com/build-challenge", kind: "web" },
@@ -64,11 +64,11 @@ export const logbook: LogEntry[] = [
       "The main idea: don't start with a tool or a course. Notice a problem, understand it properly, learn only what you need, build it, then improve it and scale it.",
     ],
     photos: [
-      { src: "/logbook/youthversary-start-with-a-problem.jpg", alt: "Somkene speaking on stage in front of a slide titled Start with a problem" },
-      { src: "/logbook/youthversary-journey-slide.jpg", alt: "Somkene speaking with a slide about his journey into tech behind him" },
-      { src: "/logbook/youthversary-on-the-mic.jpg", alt: "Somkene speaking into the mic" },
-      { src: "/logbook/youthversary-wave.jpg", alt: "Somkene waving to the audience while speaking" },
-      { src: "/logbook/youthversary-front-row.jpg", alt: "Somkene seated in the front row before his talk" },
+      { src: "/highlights/youthversary-start-with-a-problem.jpg", alt: "Somkene speaking on stage in front of a slide titled Start with a problem" },
+      { src: "/highlights/youthversary-journey-slide.jpg", alt: "Somkene speaking with a slide about his journey into tech behind him" },
+      { src: "/highlights/youthversary-on-the-mic.jpg", alt: "Somkene speaking into the mic" },
+      { src: "/highlights/youthversary-wave.jpg", alt: "Somkene waving to the audience while speaking" },
+      { src: "/highlights/youthversary-front-row.jpg", alt: "Somkene seated in the front row before his talk" },
     ],
     links: [
       { label: "The speaker announcement", href: "https://www.instagram.com/p/DdZPIYoMgB1/", kind: "instagram" },

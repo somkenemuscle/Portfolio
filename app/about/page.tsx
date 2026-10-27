@@ -3,7 +3,7 @@ import Skills from "@/components/shared/Skills";
 import AboutHero from "@/components/shared/AboutHero";
 import Interests from "@/components/shared/Interests";
 import Know from "@/components/shared/Know";
-import LogbookBoard from "@/components/shared/LogbookBoard";
+import HighlightsBoard from "@/components/shared/HighlightsBoard";
 import Contact from "@/components/shared/contact";
 
 export const metadata = {
@@ -18,7 +18,7 @@ export default function AboutPage() {
       <AboutHero />
       <Skills />
       <Know />
-      <LogbookBoard />
+      <HighlightsBoard />
       <Interests />
       <Contact />
     </main>
