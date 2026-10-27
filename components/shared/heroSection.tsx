@@ -1,7 +1,7 @@
 'use client'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Volume2 } from 'lucide-react'
 import { ACCENT, Container, INK, Spark } from './Sketch'
 import { latestWithPhoto, thumb } from './HighlightsShared'
@@ -71,11 +71,23 @@ function TuckedPolaroid() {
   )
 }
 
+// How my name sounds, written out; shown on a note while the clip plays.
+const PRONUNCIATION = 'som-KEH-neh'
+
 // A little speaker sticker beside my name: click it to hear me say it. While
-// it plays, the icon swaps for a bouncing sound wave.
+// it plays, the icon swaps for a bouncing sound wave and a handwritten note
+// pops up with the pronunciation, lingering a moment after the clip ends.
 function SayMyName() {
   const audio = useRef<HTMLAudioElement | null>(null)
   const [playing, setPlaying] = useState(false)
+  const [note, setNote] = useState(false)
+  const hideNote = useRef<ReturnType<typeof setTimeout>>()
+
+  useEffect(() => {
+    if (playing) { clearTimeout(hideNote.current); setNote(true) }
+    else hideNote.current = setTimeout(() => setNote(false), 1600)
+  }, [playing])
+  useEffect(() => () => clearTimeout(hideNote.current), [])
 
   // load the clip the moment someone shows interest, so the click plays instantly
   const prime = () => {
@@ -95,27 +107,47 @@ function SayMyName() {
   }
 
   return (
-    <button
-      type="button"
-      onClick={play}
-      onPointerEnter={prime}
-      onFocus={prime}
-      aria-label="Hear how I say my name"
-      title="Hear how I say my name"
-      className="group relative inline-flex items-center justify-center w-11 h-11 align-middle rounded-full bg-sb-sun text-sb-ink border-[2.5px] border-sb-ink shadow-[3px_3px_0_#1A1410] rotate-6 transition-transform duration-300 ease-[cubic-bezier(.34,1.56,.64,1)] hover:-rotate-6 hover:scale-110 active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0_#1A1410] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-sb-ink"
-    >
-      {playing ? (
-        <span aria-hidden="true" className="flex items-center gap-[3px] h-5">
-          {[0, 1, 2, 3].map(i => (
-            <motion.span key={i} className="block w-[3px] h-full rounded-full bg-sb-ink origin-center"
-              animate={{ scaleY: [0.3, 1, 0.45, 0.85, 0.3] }}
-              transition={{ duration: 0.7, repeat: Infinity, ease: 'easeInOut', delay: i * 0.12 }} />
-          ))}
-        </span>
-      ) : (
-        <Volume2 size={20} strokeWidth={2.6} aria-hidden="true" />
-      )}
-    </button>
+    <span className="relative inline-flex">
+      <button
+        type="button"
+        onClick={play}
+        onPointerEnter={prime}
+        onFocus={prime}
+        aria-label={`Hear how I say my name (${PRONUNCIATION})`}
+        title="Hear how I say my name"
+        className="group relative inline-flex items-center justify-center w-11 h-11 align-middle rounded-full bg-sb-sun text-sb-ink border-[2.5px] border-sb-ink shadow-[3px_3px_0_#1A1410] rotate-6 transition-transform duration-300 ease-[cubic-bezier(.34,1.56,.64,1)] hover:-rotate-6 hover:scale-110 active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0_#1A1410] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-sb-ink"
+      >
+        {playing ? (
+          <span aria-hidden="true" className="flex items-center gap-[3px] h-5">
+            {[0, 1, 2, 3].map(i => (
+              <motion.span key={i} className="block w-[3px] h-full rounded-full bg-sb-ink origin-center"
+                animate={{ scaleY: [0.3, 1, 0.45, 0.85, 0.3] }}
+                transition={{ duration: 0.7, repeat: Infinity, ease: 'easeInOut', delay: i * 0.12 }} />
+            ))}
+          </span>
+        ) : (
+          <Volume2 size={20} strokeWidth={2.6} aria-hidden="true" />
+        )}
+      </button>
+      {/* the note sits above the sticker, growing leftward so it never runs off a phone screen */}
+      <AnimatePresence>
+        {note && (
+          <motion.span
+            aria-hidden="true"
+            initial={{ opacity: 0, scale: 0.5, y: 8, rotate: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0, rotate: -3 }}
+            exit={{ opacity: 0, scale: 0.7, y: 6 }}
+            transition={{ type: 'spring', stiffness: 420, damping: 18 }}
+            style={{ transformOrigin: '85% 100%' }}
+            className="pointer-events-none absolute bottom-full right-0 mb-3 z-30 whitespace-nowrap font-hand text-[24px] leading-none text-sb-ink px-3 pt-1 pb-1.5 rounded-md bg-sb-mint border-[2.5px] border-sb-ink shadow-[2px_3px_0_#1A1410]"
+          >
+            {PRONUNCIATION}
+            {/* little tail pointing down at the speaker */}
+            <span className="absolute -bottom-[7px] right-4 w-3 h-3 rotate-45 bg-sb-mint border-r-[2.5px] border-b-[2.5px] border-sb-ink" />
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </span>
   )
 }
 
