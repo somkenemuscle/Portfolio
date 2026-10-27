@@ -165,6 +165,11 @@ html {
 .art-progress { transform-box: fill-box; transform-origin: left center; animation: art-progress 3.6s ease-in-out infinite; }
 .art-toss { transform-box: fill-box; transform-origin: center; animation: art-toss 3s ease-in-out infinite; }
 .art-tassel { transform-box: view-box; transform-origin: 234px 66px; animation: art-flap 1.6s ease-in-out infinite; }
+.art-steam { animation: art-steam 2.6s ease-in-out infinite; }
+.art-sheen { animation: art-sheen 5s ease-in-out infinite; }
+.art-sign { transform-box: fill-box; transform-origin: 50% 0; animation: art-sign 3.4s ease-in-out infinite; }
+.art-dip { transform-box: fill-box; transform-origin: 0% 100%; animation: art-dip 2.4s ease-in-out infinite; }
+.art-stir { transform-box: fill-box; transform-origin: 70% 90%; animation: art-stir 2.2s ease-in-out infinite; }
 
 @keyframes art-twinkle { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(.6) rotate(45deg); } }
 @keyframes art-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
@@ -184,6 +189,11 @@ html {
 @keyframes art-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
 @keyframes art-progress { 0% { transform: scaleX(0.1); } 70%, 100% { transform: scaleX(1); } }
 @keyframes art-toss { 0%, 100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-12px) rotate(7deg); } }
+@keyframes art-sheen { 0%, 55% { transform: skewX(-20deg) translateX(-160px); } 85%, 100% { transform: skewX(-20deg) translateX(380px); } }
+@keyframes art-sign { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+@keyframes art-dip { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(6px) rotate(-6deg); } }
+@keyframes art-stir { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(8deg); } }
+@keyframes art-steam { 0% { transform: translateY(6px); opacity: 0; } 30% { opacity: .45; } 100% { transform: translateY(-14px); opacity: 0; } }
 @keyframes art-flap { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(10deg); } }
 
 /* ── Aurora blob animations ── */
