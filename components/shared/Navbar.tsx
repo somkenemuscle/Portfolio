@@ -8,7 +8,7 @@ import { ACCENT, Container, deep } from './Sketch'
 const navLinks = [
   { label: 'Work', href: '/#work', color: ACCENT.sun },
   { label: 'Experience', href: '/#experience', color: ACCENT.peri },
-  { label: 'Journal', href: '/blog', color: ACCENT.tomato },
+  { label: 'Journal', href: '/journal', color: ACCENT.tomato },
   { label: 'Highlights', href: '/highlights', color: ACCENT.gum },
   { label: 'About', href: '/about', color: ACCENT.mint },
 ]

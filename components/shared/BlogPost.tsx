@@ -43,7 +43,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
 
       <Container>
         <section className="min-h-screen pt-32 pb-24">
-          <motion.div {...enter(0.05)} className="mb-10"><BackLink href="/blog" label="back to the journal" /></motion.div>
+          <motion.div {...enter(0.05)} className="mb-10"><BackLink href="/journal" label="back to the journal" /></motion.div>
 
           <article className="max-w-[720px] mx-auto">
             <motion.header {...enter(0.1)} className="mb-12 flex flex-col gap-5">
@@ -95,9 +95,9 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               <div className="flex flex-wrap gap-3">
                 <a href="https://x.com/somkeneOj" target="_blank" rel="noopener noreferrer" className="sb-btn bg-sb-cream">Reply on X</a>
                 {next ? (
-                  <Link href={`/blog/${next.slug}`} className="sb-btn bg-sb-sun">Next entry →</Link>
+                  <Link href={`/journal/${next.slug}`} className="sb-btn bg-sb-sun">Next entry →</Link>
                 ) : (
-                  <Link href="/blog" className="sb-btn bg-sb-sun">All entries</Link>
+                  <Link href="/journal" className="sb-btn bg-sb-sun">All entries</Link>
                 )}
               </div>
             </div>

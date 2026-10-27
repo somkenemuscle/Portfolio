@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // The Highlights page used to be called the Logbook.
+    // Old addresses: the Highlights page used to be the Logbook, and the
+    // Journal used to live at /blog.
     async redirects() {
-        return [{ source: '/logbook', destination: '/highlights', permanent: true }];
+        return [
+            { source: '/logbook', destination: '/highlights', permanent: true },
+            { source: '/blog', destination: '/journal', permanent: true },
+            { source: '/blog/:slug', destination: '/journal/:slug', permanent: true },
+        ];
     },
     images: {
         remotePatterns: [
