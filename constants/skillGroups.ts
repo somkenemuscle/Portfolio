@@ -1,5 +1,6 @@
 // The "What I know" sticker collection on the homepage.
 // Move a skill between groups as you get more (or less) comfortable with it.
+// Names in [BRACKETS] are placeholders and stay hidden until filled in.
 
 export interface SkillGroup {
   title: string
