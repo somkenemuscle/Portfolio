@@ -8,16 +8,29 @@ const MotionLink = motion(Link)
 
 // A spinning "see my highlights" badge pinned to the bottom-right of the
 // homepage. It rolls in once you've scrolled past the hero (where the tucked
-// polaroid already points there), with the latest highlight photo in the middle.
+// polaroid already points there), with the latest highlight photo in the middle,
+// and ducks out while the Experience section passes behind it.
 export default function HighlightsBadge() {
-  const [show, setShow] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  // the Experience rows keep their dates at the right edge, so step aside there
+  const [overExperience, setOverExperience] = useState(false)
   const photo = latestWithPhoto()?.photos?.[0]
+  const show = scrolled && !overExperience
 
   useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > window.innerHeight * 0.6)
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.6)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    const section = document.getElementById('experience')
+    if (!section) return
+    // only the bottom of the screen matters, since that's where the badge sits
+    const io = new IntersectionObserver(([e]) => setOverExperience(e.isIntersecting), { rootMargin: '-70% 0px 0px 0px' })
+    io.observe(section)
+    return () => io.disconnect()
   }, [])
 
   return (
