@@ -12,7 +12,7 @@ export function JournalEntry({ post, showCover = false }: { post: BlogPost; show
   const cover = showCover && post.coverImage?.src ? post.coverImage : null
   return (
     <Link
-      href={`/blog/${post.slug}`}
+      href={`/journal/${post.slug}`}
       className="sb-card sb-card-hover sb-lined relative flex flex-wrap items-center gap-7 py-9 pr-6 sm:pr-10 pl-14 sm:pl-[72px]"
       style={vars({ '--sh': ACCENT.tomato })}
     >
@@ -46,7 +46,7 @@ export function JournalEntry({ post, showCover = false }: { post: BlogPost; show
 function JournalLine({ post }: { post: BlogPost }) {
   return (
     <Link
-      href={`/blog/${post.slug}`}
+      href={`/journal/${post.slug}`}
       className="sb-card sb-card-hover sb-lined group relative flex items-center gap-5 py-4 pr-5 sm:pr-7 pl-14 sm:pl-[72px]"
       style={vars({ '--sh': ACCENT.tomato })}
     >
@@ -74,7 +74,7 @@ export default function JournalPreview() {
       <Section id="journal">
         <SectionHeading
           label="JOURNAL" title="Notes from the build" accent="tomato"
-          aside={<Link href="/blog" className="sb-btn bg-sb-tomato">All entries</Link>}
+          aside={<Link href="/journal" className="sb-btn bg-sb-tomato">All entries</Link>}
         />
         <div className="flex flex-col gap-4">
           <Pop>

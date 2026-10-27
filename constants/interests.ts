@@ -47,7 +47,7 @@ export const desk: DeskItem[] = [
     id: "notepad",
     label: "Writing",
     note: "Thinking out loud about the things I build.",
-    links: [{ label: "Read the journal", href: "/blog", icon: "journal" }],
+    links: [{ label: "Read the journal", href: "/journal", icon: "journal" }],
   },
   {
     id: "food",
