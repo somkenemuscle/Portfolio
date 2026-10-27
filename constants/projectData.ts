@@ -37,7 +37,7 @@ export const projectData = [
             },
             {
                 name: "AWS S3",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original.svg"
             }
         ],
         livePreview: "https://press.alkademy.com",

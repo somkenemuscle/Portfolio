@@ -13,7 +13,7 @@ export const techIcons: Record<string, string> = {
     "MySQL": devicon("mysql"),
     "MongoDB": devicon("mongodb"),
     "Redis": devicon("redis"),
-    "AWS": devicon("amazonwebservices", "original-wordmark"),
+    "AWS": devicon("amazonwebservices", "original"),
     "Tailwind": devicon("tailwindcss"),
     "CSS": devicon("css3"),
     "Custom Css": devicon("css3"),
