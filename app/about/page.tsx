@@ -4,6 +4,7 @@ import AboutHero from "@/components/shared/AboutHero";
 import Credentials from "@/components/shared/Credentials";
 import Interests from "@/components/shared/Interests";
 import Know from "@/components/shared/Know";
+import Contact from "@/components/shared/contact";
 
 export const metadata = {
   title: "About — Somkene Ojukwu",
@@ -16,9 +17,10 @@ export default function AboutPage() {
       <Navbar />
       <AboutHero />
       <Skills />
-      <Interests />
       <Know />
+      <Interests />
       <Credentials />
+      <Contact />
     </main>
   );
 }

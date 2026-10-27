@@ -2,7 +2,7 @@
 import { skillGroups } from '@/constants/skillGroups'
 import { stackIcons } from '@/constants/stackIcons'
 import { projectData } from '@/constants/projectData'
-import { ACCENT, Container, Pop, Section, SectionHeading, cycleAccent, cycleTilt, vars } from './Sketch'
+import { ACCENT, Container, Pop, Section, SectionHeading, cycleAccent, cycleTilt, isPlaceholder, vars } from './Sketch'
 
 // Icon lookup by loose name ("Next.js" == "NextJs"), from the stack icons
 // plus whatever the project cards already reference.
@@ -29,7 +29,7 @@ export default function Know() {
                   <span className="font-mono text-xs text-sb-muted">{g.hint}</span>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  {g.skills.map((s, i) => (
+                  {g.skills.filter(s => !isPlaceholder(s)).map((s, i) => (
                     <span
                       key={`${s}-${i}`}
                       className={`sb-sticker ${g.learning ? '!bg-transparent !text-sb-ink border-dashed' : ''}`}

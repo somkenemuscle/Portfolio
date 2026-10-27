@@ -44,7 +44,7 @@ function PaperCard({ icon, title, badge, sub, year, color, delay }: {
 
 export default function Credentials() {
   return (
-    <Container className="pb-24 md:pb-32">
+    <Container>
       <Section id="credentials">
         <SectionHeading
           label="PAPERWORK" title="Credentials" accent="peri"

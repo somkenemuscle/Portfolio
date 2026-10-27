@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { InstagramLogoIcon } from '@radix-ui/react-icons'
 import { interests } from '@/constants/interests'
 import { TikTokLogo } from './BrandIcons'
-import { Container, Pop, Section, SectionHeading, cycleAccent, cycleTilt, vars } from './Sketch'
+import { Container, Pop, Section, SectionHeading, cycleAccent, cycleTilt, isPlaceholder, vars } from './Sketch'
 
 // A board of floating stickers. Each one can be picked up and tossed around;
 // it springs back home when let go.
@@ -18,7 +18,7 @@ export default function Interests() {
         <Pop>
           <div className="sb-card flex flex-wrap justify-center items-center gap-x-8 gap-y-6 px-6 sm:px-8 py-12 min-h-[340px]"
             style={vars({ '--sh': '#FF6B4A' })}>
-            {interests.map(({ label, links }, i) => (
+            {interests.filter(t => !isPlaceholder(t.label)).map(({ label, links }, i) => (
               <motion.div
                 key={`${label}-${i}`}
                 drag

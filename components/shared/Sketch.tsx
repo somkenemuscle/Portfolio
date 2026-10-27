@@ -38,6 +38,9 @@ const TILTS = [-4, 3, -2, 5, -5, 2, -1, 4]
 export const cycleAccent = (i: number) => ACCENT[CYCLE[i % CYCLE.length]]
 export const cycleTilt = (i: number) => TILTS[i % TILTS.length]
 
+// Content written as "[SOMETHING]" is a placeholder still to be filled in.
+export const isPlaceholder = (s: string) => /^\[.*\]$/.test(s.trim())
+
 // Style helper for CSS custom properties (TS doesn't allow them on CSSProperties).
 export const vars = (v: Record<string, string>) => v as React.CSSProperties
 

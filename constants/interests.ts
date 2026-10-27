@@ -1,5 +1,6 @@
 // Stickers for the "Things I'm into" board. Order = render order;
 // colours cycle automatically. A sticker can carry small icon links.
+// Labels in [BRACKETS] are placeholders and stay hidden until filled in.
 
 export interface Interest {
   label: string
