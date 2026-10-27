@@ -31,8 +31,7 @@ export const skillGroups: SkillGroup[] = [
     accent: "sun",
     skills: [
       "React", "Next.js", "TypeScript", "JavaScript", "Tailwind",
-      "React Query", "Zustand", "Framer Motion",
-      "Responsive design", "Accessibility", "SEO", "Micro-frontends",
+      "TanStack", "Zustand", "SEO", "Accessibility", "Micro-frontends",
     ],
   },
   {

@@ -6,7 +6,7 @@ import { projectData } from '@/constants/projectData'
 import { ACCENT, Accent, Container, Pop, Section, SectionHeading, cycleAccent, cycleTilt, deep, isPlaceholder, vars } from './Sketch'
 
 // Loose name matching ("Next.js" == "NextJs", "Express.js" == "Express").
-const ALIAS: Record<string, string> = { expressjs: 'express', awss3: 'aws' }
+const ALIAS: Record<string, string> = { expressjs: 'express', awss3: 'aws', tanstack: 'reactquery' }
 const key = (s: string) => {
   const k = s.toLowerCase().replace(/[^a-z0-9]/g, '')
   return ALIAS[k] ?? k
