@@ -127,14 +127,6 @@ html {
     background-size: 100% 32px;
     color: #15110D;
   }
-
-  .sb-xray {
-    background-color: #0D1638;
-    background-image:
-      linear-gradient(rgba(142, 160, 255, .18) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(142, 160, 255, .18) 1px, transparent 1px);
-    background-size: 18px 18px;
-  }
 }
 
 .sb-swing { transform-origin: 50% 0; animation: sb-swing 4.5s ease-in-out infinite; }

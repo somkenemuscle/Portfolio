@@ -1,101 +1,143 @@
 'use client'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { projectData } from '@/constants/projectData'
-import { ACCENT, Accent, Container, Pop, Section, SectionHeading, deep, vars } from './Sketch'
+import { ACCENT, Accent, Container, Section, SectionHeading, cycleTilt, deep, vars } from './Sketch'
 import ProjectArt, { hasArt } from './ProjectArt'
 
 const host = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '')
 
 type Project = (typeof projectData)[number]
 
+// The whole row pops in together as the section scrolls into view, so cards
+// further along are already settled by the time you scroll sideways to them.
+const rowIn = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } }
+const cardIn = {
+  hidden: { opacity: 0, y: 40, scale: 0.96 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring' as const, stiffness: 260, damping: 20 } },
+}
+
+// The back of each drawing: how it's built, sketched like you'd explain it
+// on a napkin. One bright block per layer, top to bottom, with the role
+// scribbled beside it.
+const LAYER_COLORS = [ACCENT.sun, ACCENT.mint, ACCENT.peri, ACCENT.gum]
+const ROLE_NOTE: Record<string, string> = {
+  client: 'the app', ui: 'the app', store: 'the store', state: 'state', api: 'the api',
+  data: 'the data', files: 'files', infra: 'runs on', content: 'the content',
+}
+
+function HowItsBuilt({ project, open }: { project: Project; open: boolean }) {
+  const layers = project.architecture ?? [{ role: 'built with', nodes: project.technologies.map(t => t.name) }]
+  return (
+    <span className="absolute inset-0 flex flex-col px-4 pt-3 pb-4 text-left">
+      <span className="font-hand text-[22px] leading-none text-sb-tomato-deep -rotate-2 self-start mb-2.5">how it&apos;s built</span>
+      <span className="flex-1 flex flex-col justify-center">
+        {layers.map((layer, li) => (
+          <span key={layer.role} className="flex flex-col">
+            {li > 0 && (
+              <svg aria-hidden="true" width="14" height="12" viewBox="0 0 14 12" className="ml-6 block">
+                <path d="M7 0 V9 M3 6 L7 10 L11 6" stroke="#1A1410" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            )}
+            <motion.span
+              initial={false}
+              animate={open ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+              transition={{ type: 'spring', stiffness: 360, damping: 24, delay: open ? 0.22 + li * 0.07 : 0 }}
+              className="flex items-center gap-2.5"
+            >
+              <span className="min-w-0 max-w-[76%] px-2.5 py-1.5 rounded-lg border-2 border-sb-ink shadow-[2px_2px_0_#1A1410] text-[13.5px] font-extrabold leading-snug text-sb-ink"
+                style={{ background: LAYER_COLORS[li % LAYER_COLORS.length], rotate: `${li % 2 ? 0.6 : -0.6}deg` }}>
+                {layer.nodes.join(' · ')}
+              </span>
+              <span className="shrink-0 font-hand text-[19px] leading-none text-sb-soft">← {ROLE_NOTE[layer.role] ?? layer.role}</span>
+            </motion.span>
+          </span>
+        ))}
+      </span>
+    </span>
+  )
+}
+
+const face = 'absolute inset-0 overflow-hidden rounded-[14px] border-[2.5px] border-sb-ink [backface-visibility:hidden] [-webkit-backface-visibility:hidden]'
+
 function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const [xray, setXray] = useState(false)
+  const [flipped, setFlipped] = useState(false)
+  // phones tap to flip (holding fights with scrolling); mouse and keyboard hold
+  const [touch, setTouch] = useState(false)
+  const lastPointer = useRef('mouse')
+  const box = useRef<HTMLButtonElement>(null)
   const color = ACCENT[(project.accent ?? 'sun') as Accent]
   const Icon = project.icon
   // optional result sticker, e.g. outcome: "2x faster checkout" in projectData
   const outcome = (project as { outcome?: string }).outcome
-  const on = () => setXray(true)
-  const off = () => setXray(false)
+  const on = () => setFlipped(true)
+  const off = () => setFlipped(false)
+
+  useEffect(() => setTouch(window.matchMedia('(hover: none)').matches), [])
+
+  // a tap anywhere else flips a tapped card back
+  useEffect(() => {
+    if (!flipped || lastPointer.current === 'mouse') return
+    const close = (e: PointerEvent) => !box.current?.contains(e.target as Node) && off()
+    document.addEventListener('pointerdown', close)
+    return () => document.removeEventListener('pointerdown', close)
+  }, [flipped])
+
 
   return (
-    <Pop delay={index * 0.08} className={`snap-start shrink-0 w-[min(85vw,360px)] ${index % 2 === 1 ? 'md:mt-9' : ''}`}>
-      <article className="sb-card sb-card-hover p-[18px] flex flex-col gap-4 h-full" style={vars({ '--sh': color })}>
+    <motion.div variants={cardIn} className="snap-start shrink-0 w-[min(85vw,360px)]">
+      {/* all on one line, each with the same gentle tilt as the About story panels */}
+      <article className="sb-card sb-card-hover p-[18px] flex flex-col gap-4 h-full" style={{ ...vars({ '--sh': color }), rotate: `${cycleTilt(index) * 0.25}deg` }}>
         <button
+          ref={box}
           type="button"
-          aria-label={`Hold to see how ${project.title} is built`}
-          onPointerDown={on} onPointerUp={off} onPointerLeave={off} onPointerCancel={off}
-          onKeyDown={e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); on() } }}
+          aria-label={`${touch ? 'Tap' : 'Hold'} to see how ${project.title} is built`}
+          aria-pressed={flipped}
+          onPointerDown={e => { lastPointer.current = e.pointerType; if (e.pointerType === 'mouse') on() }}
+          onPointerUp={e => e.pointerType === 'mouse' && off()}
+          onPointerLeave={e => e.pointerType === 'mouse' && off()}
+          onClick={() => lastPointer.current !== 'mouse' && setFlipped(f => !f)}
+          onKeyDown={e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); lastPointer.current = 'mouse'; on() } }}
           onKeyUp={off} onBlur={off}
           onContextMenu={e => e.preventDefault()}
-          className="relative block h-[260px] w-full overflow-hidden rounded-[14px] border-[2.5px] border-sb-ink cursor-pointer select-none touch-manipulation [-webkit-touch-callout:none] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-sb-ink"
-          style={{ background: color }}
+          className="relative block h-[260px] w-full rounded-[14px] cursor-pointer select-none touch-manipulation [-webkit-touch-callout:none] [perspective:1400px] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-sb-ink"
         >
-          {hasArt(project.art) ? (
-            <>
-              {/* dotted paper behind the drawing */}
-              <span aria-hidden="true" className="absolute inset-0 [background-image:radial-gradient(rgba(21,17,13,0.14)_1.2px,transparent_1.6px)] [background-size:16px_16px]" />
-              <ProjectArt art={project.art} title={project.title} />
-            </>
-          ) : (
-            <span className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 text-sb-ink">
-              <Icon size={56} stroke={1.8} aria-hidden="true" />
-              <span className="font-extrabold text-2xl">{project.title}</span>
+          {/* the drawing turns over like a card to show its back */}
+          <motion.span
+            className="absolute inset-0 block [transform-style:preserve-3d]"
+            initial={false}
+            animate={{ rotateY: flipped ? 180 : 0 }}
+            transition={{ type: 'spring', stiffness: 220, damping: 22 }}
+          >
+            <span className={face} style={{ background: color }}>
+              {hasArt(project.art) ? (
+                <>
+                  {/* dotted paper behind the drawing */}
+                  <span aria-hidden="true" className="absolute inset-0 [background-image:radial-gradient(rgba(21,17,13,0.14)_1.2px,transparent_1.6px)] [background-size:16px_16px]" />
+                  <ProjectArt art={project.art} title={project.title} />
+                </>
+              ) : (
+                <span className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 text-sb-ink">
+                  <Icon size={56} stroke={1.8} aria-hidden="true" />
+                  <span className="font-extrabold text-2xl">{project.title}</span>
+                </span>
+              )}
             </span>
-          )}
-          <span aria-hidden="true" className="absolute bottom-3 right-3 font-mono text-[11px] px-2 py-1 rounded-md bg-sb-ink text-sb-cream border-2 border-sb-ink rotate-2">
-            hold to x-ray
-          </span>
+            <span className={`${face} bg-sb-card [transform:rotateY(180deg)] [background-image:radial-gradient(rgba(21,17,13,0.10)_1.2px,transparent_1.6px)] [background-size:16px_16px]`}>
+              <HowItsBuilt project={project} open={flipped} />
+            </span>
+          </motion.span>
 
-          <AnimatePresence>
-            {xray && (
-              <motion.span
-                initial={{ clipPath: 'inset(0 0 100% 0)' }}
-                animate={{ clipPath: 'inset(0 0 0% 0)' }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="sb-xray absolute inset-0 flex flex-col justify-center gap-0 px-5 py-4 text-left"
-              >
-                <span className="font-mono text-[11px] tracking-[0.15em] text-sb-peri mb-2.5">X-RAY · HOW IT&apos;S BUILT</span>
-                {project.architecture ? (
-                  project.architecture.map((layer, li) => (
-                    <span key={layer.role} className="flex flex-col">
-                      {li > 0 && (
-                        // animated wire between layers
-                        <svg aria-hidden="true" width="12" height="14" viewBox="0 0 12 14" className="ml-[62px] block">
-                          <path className="art-dash" d="M6 0 V10" stroke="#8EA0FF" strokeWidth="2" strokeDasharray="3 4" fill="none" />
-                          <path d="M2 9 L6 13 L10 9" stroke="#8EA0FF" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      )}
-                      <motion.span
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ type: 'spring', stiffness: 300, damping: 22, delay: 0.12 + li * 0.1 }}
-                        className="flex items-center gap-2"
-                      >
-                        <span className="w-[50px] shrink-0 text-right font-mono text-[10px] uppercase tracking-[0.1em] text-sb-peri/80">{layer.role}</span>
-                        <span className="flex flex-wrap gap-1.5">
-                          {layer.nodes.map(n => (
-                            <span key={n} className="font-mono text-[12px] leading-none px-2 py-1.5 rounded-md border-[1.5px] border-sb-cream/70 bg-[#16224D] text-sb-cream">
-                              {n}
-                            </span>
-                          ))}
-                        </span>
-                      </motion.span>
-                    </span>
-                  ))
-                ) : (
-                  <span className="flex flex-wrap gap-2">
-                    {project.technologies.map(t => (
-                      <span key={t.name} className="font-mono text-[13px] px-2.5 py-1 border border-sb-peri/60 rounded-md text-sb-cream">
-                        {t.name}
-                      </span>
-                    ))}
-                  </span>
-                )}
-              </motion.span>
-            )}
-          </AnimatePresence>
+          {/* the hint sticker; it ducks out of the way while the back is showing */}
+          <motion.span aria-hidden="true"
+            animate={flipped ? { opacity: 0, scale: 0.6, rotate: 20 } : { opacity: 1, scale: 1, rotate: 2 }}
+            transition={{ type: 'spring', stiffness: 320, damping: 20 }}
+            className="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 text-[12px] font-bold leading-none pl-1.5 pr-2.5 py-1.5 rounded-full bg-sb-card text-sb-ink border-2 border-sb-ink shadow-[2px_2px_0_#1A1410]">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 12a9 9 0 1 1-3-6.7L21 8" /><path d="M21 3v5h-5" />
+            </svg>
+            {touch ? 'tap' : 'hold'} to see how it&apos;s built
+          </motion.span>
         </button>
 
         <div className="flex flex-col gap-2 px-1.5 pb-1.5">
@@ -115,7 +157,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </div>
         </div>
       </article>
-    </Pop>
+    </motion.div>
   )
 }
 
@@ -182,16 +224,18 @@ export function Projects() {
           }
         />
         <div className="relative">
-          <div
+          {/* snapping is firm on touch, gentle on desktop so trackpads glide */}
+          <motion.div
             ref={row}
             onScroll={update}
-            className="flex items-start gap-8 overflow-x-auto snap-x snap-mandatory scroll-px-1 -mx-4 sm:-mx-6 px-4 sm:px-6 pt-2 pb-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            variants={rowIn}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="flex gap-8 overflow-x-auto overscroll-x-contain snap-x snap-mandatory md:snap-proximity scroll-px-1 -mx-4 sm:-mx-6 px-4 sm:px-6 pt-4 pb-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {projectData.map((p, i) => <ProjectCard key={p.title} project={p} index={i} />)}
-          </div>
-          {/* fade on the side that has more to scroll to */}
-          {!edge.end && <span aria-hidden="true" className="pointer-events-none absolute right-[-24px] top-0 bottom-12 w-16 bg-gradient-to-l from-sb-paper to-transparent" />}
-          {!edge.start && <span aria-hidden="true" className="pointer-events-none absolute left-[-24px] top-0 bottom-12 w-16 bg-gradient-to-r from-sb-paper to-transparent" />}
+          </motion.div>
         </div>
         {scrollable && (
           <p className="sm:hidden -mt-8 m-0 font-mono text-xs text-sb-muted text-center">swipe for more →</p>
