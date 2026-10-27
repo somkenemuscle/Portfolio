@@ -14,7 +14,7 @@ export const TYPE_META: Record<HighlightType, { label: string; plural: string; u
   event: { label: 'Event', plural: 'Events', unit: ['event', 'events'], color: ACCENT.mint, icon: (s = 18) => <Ticket size={s} strokeWidth={2.4} /> },
   'open-source': { label: 'Open source', plural: 'Open source', unit: ['contribution', 'contributions'], color: ACCENT.sun, icon: (s = 18) => <GitPullRequest size={s} strokeWidth={2.4} /> },
   award: { label: 'Award', plural: 'Awards', unit: ['award', 'awards'], color: ACCENT.gum, icon: (s = 18) => <Trophy size={s} strokeWidth={2.4} /> },
-  paperwork: { label: 'Paperwork', plural: 'Paperwork', unit: ['credential', 'credentials'], color: ACCENT.sun, icon: (s = 18) => <BadgeCheck size={s} strokeWidth={2.4} /> },
+  paperwork: { label: 'Credential', plural: 'Credentials', unit: ['credential', 'credentials'], color: ACCENT.sun, icon: (s = 18) => <BadgeCheck size={s} strokeWidth={2.4} /> },
 }
 
 export const entryIcon = (e: Highlight, size?: number) =>
