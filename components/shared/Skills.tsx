@@ -3,7 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Modal from "./Modal";
-import { ACCENT, Container, INK, Pop, Section, SectionHeading, cycleTilt, vars } from "./Sketch";
+import { ACCENT, Container, INK, Section, SectionHeading, cycleTilt, vars } from "./Sketch";
 
 // "How I got here" as a little comic strip: one drawing and one line per
 // panel. Motion classes (art-*) live in globals.css.
@@ -105,6 +105,12 @@ function Tenants() {
   );
 }
 
+const stripIn = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
+const panelIn = {
+  hidden: { opacity: 0, y: 40, scale: 0.96 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { type: "spring" as const, stiffness: 260, damping: 20 } },
+};
+
 const panels = [
   { Art: Sketchbook, color: ACCENT.gum, title: "It started with a sketchbook.", body: "Years of drawing and making beats: turning ideas into things people can feel." },
   { Art: FirstCode, color: ACCENT.sun, title: "Then I wrote my first JavaScript.", body: "Same feeling. Build it, break it, fix it, watch it work. I was hooked." },
@@ -180,9 +186,18 @@ function Skills() {
           label="MY STORY" title="How I got here" accent="sun"
           aside={<p className="m-0 font-hand text-[26px] text-sb-gum-deep rotate-2">the short version</p>}
         />
-        <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory -mx-4 sm:-mx-6 px-4 sm:px-6 pt-2 pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-4 lg:overflow-visible lg:mx-0 lg:px-0">
+        {/* On phones it's a sideways strip: it only scrolls sideways (never up and
+            down inside itself), and the cards pop in together as the section
+            appears, so ones further along don't rise up mid-swipe. */}
+        <motion.div
+          variants={stripIn}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="flex gap-5 overflow-x-auto overflow-y-hidden overscroll-x-contain snap-x snap-mandatory -mx-4 sm:-mx-6 px-4 sm:px-6 pt-3 pb-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-4 lg:overflow-visible lg:mx-0 lg:px-0"
+        >
           {panels.map(({ Art, color, title, body }, i) => (
-            <Pop key={title} delay={i * 0.08} className="snap-start shrink-0 w-[min(78vw,280px)] lg:w-auto">
+            <motion.div key={title} variants={panelIn} className="snap-start shrink-0 w-[min(78vw,280px)] lg:w-auto">
               <div className="sb-card h-full p-3.5 flex flex-col gap-3.5" style={{ ...vars({ "--sh": color }), rotate: `${cycleTilt(i) * 0.25}deg` }}>
                 <div className="relative h-[150px] rounded-xl border-[2.5px] border-sb-ink overflow-hidden" style={{ background: color }}>
                   <span aria-hidden="true" className="absolute inset-0 [background-image:radial-gradient(rgba(26,20,16,0.14)_1.2px,transparent_1.6px)] [background-size:14px_14px]" />
@@ -195,9 +210,9 @@ function Skills() {
                   <p className="m-0 text-[15px] leading-relaxed text-sb-soft">{body}</p>
                 </div>
               </div>
-            </Pop>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         <p className="lg:hidden -mt-6 m-0 font-mono text-xs text-sb-muted text-center">swipe for the rest →</p>
 
         <div className="flex justify-center">
