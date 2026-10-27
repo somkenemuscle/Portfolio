@@ -170,6 +170,12 @@ html {
 .art-sign { transform-box: fill-box; transform-origin: 50% 0; animation: art-sign 3.4s ease-in-out infinite; }
 .art-dip { transform-box: fill-box; transform-origin: 0% 100%; animation: art-dip 2.4s ease-in-out infinite; }
 .art-stir { transform-box: fill-box; transform-origin: 70% 90%; animation: art-stir 2.2s ease-in-out infinite; }
+.art-rock { transform-box: fill-box; transform-origin: center; animation: art-stir 3s ease-in-out infinite; }
+.art-roll { transform-box: fill-box; transform-origin: center; animation: art-roll 2.2s cubic-bezier(.3,.7,.4,1) infinite; }
+.art-spin-slow { transform-box: fill-box; transform-origin: center; animation: art-spin 14s linear infinite; }
+.art-reps { transform-box: fill-box; transform-origin: center; animation: art-reps 1.3s ease-in-out infinite; }
+.art-shake { animation: art-shake .35s linear infinite; }
+.art-bounce { transform-box: fill-box; transform-origin: 50% 100%; animation: art-bounce 1.6s ease-in infinite; }
 
 @keyframes art-twinkle { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(.6) rotate(45deg); } }
 @keyframes art-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
@@ -194,6 +200,29 @@ html {
 @keyframes art-dip { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(6px) rotate(-6deg); } }
 @keyframes art-stir { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(8deg); } }
 @keyframes art-steam { 0% { transform: translateY(6px); opacity: 0; } 30% { opacity: .45; } 100% { transform: translateY(-14px); opacity: 0; } }
+@keyframes art-roll {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  35% { transform: translateX(44px) rotate(63deg); }
+  60% { transform: translateX(-6px) rotate(-9deg); }
+  75% { transform: translateX(0) rotate(0); }
+}
+@keyframes art-reps {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  45% { transform: translateY(-22px) rotate(-4deg); }
+  60% { transform: translateY(-22px) rotate(-3deg); }
+}
+@keyframes art-shake { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(-1.5px, 1px); } 50% { transform: translate(1.5px, -1px); } 75% { transform: translate(-1px, -1px); } }
+@keyframes art-spin { to { transform: rotate(360deg); } }
+@keyframes art-bounce {
+  0%, 100% { transform: translateY(0) scale(1.08, .9); }
+  6% { transform: translateY(0) scale(1); }
+  22% { transform: translateY(-34px) scale(.96, 1.04); animation-timing-function: ease-in; }
+  40% { transform: translateY(0) scale(1.06, .92); }
+  52% { transform: translateY(-16px) scale(1); animation-timing-function: ease-in; }
+  64% { transform: translateY(0) scale(1.03, .96); }
+  72% { transform: translateY(-6px) scale(1); }
+  80%, 96% { transform: translateY(0) scale(1); }
+}
 @keyframes art-flap { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(10deg); } }
 
 /* ── Aurora blob animations ── */

@@ -2,7 +2,7 @@
 // components/shared/Interests.tsx; hovering (or tapping) it shows the bubble.
 // Text in [BRACKETS] is a placeholder and stays hidden until filled in.
 
-export type DeskObject = "laptop" | "headphones" | "parfait" | "camera" | "sketchbook" | "notepad" | "food" | "screen" | "controller"
+export type DeskObject = "laptop" | "headphones" | "parfait" | "camera" | "sketchbook" | "notepad" | "food" | "screen" | "controller" | "football" | "basketball" | "gym"
 
 export interface DeskItem {
   id: DeskObject
@@ -37,6 +37,21 @@ export const desk: DeskItem[] = [
       { label: "TikTok", href: "https://www.tiktok.com/@codes.by.oj", icon: "tiktok" },
       { label: "Instagram", href: "https://www.instagram.com/codes.by.oj/", icon: "instagram" },
     ],
+  },
+  {
+    id: "football",
+    label: "Football",
+    note: "Paris Saint-Germain, all the way. Ici c'est Paris.",
+  },
+  {
+    id: "basketball",
+    label: "Basketball",
+    note: "Golden State Warriors. Strength in numbers.",
+  },
+  {
+    id: "gym",
+    label: "Gym",
+    note: "Lift, rest, repeat. Some of my best debugging happens between sets.",
   },
   {
     id: "sketchbook",
