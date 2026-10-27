@@ -186,14 +186,6 @@ html {
 @keyframes art-toss { 0%, 100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-12px) rotate(7deg); } }
 @keyframes art-flap { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(10deg); } }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
-}
-
 /* ── Aurora blob animations ── */
 @keyframes aurora-float-1 {
   0%, 100% { transform: translate(0, 0) scale(1); }
