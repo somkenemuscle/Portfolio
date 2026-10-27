@@ -23,7 +23,7 @@ export const skillGroups: SkillGroup[] = [
       "PostgreSQL", "MySQL", "MongoDB", "Redis", "BullMQ",
       "Microservices", "Modular monoliths", "Event-driven", "System design",
     ],
-    learning: ["Golang", "[SKILL]"],
+    learning: ["Golang"],
   },
   {
     title: "Frontend",

@@ -109,7 +109,7 @@ const panels = [
   { Art: Sketchbook, color: ACCENT.gum, title: "It started with a sketchbook.", body: "Years of drawing and making beats: turning ideas into things people can feel." },
   { Art: FirstCode, color: ACCENT.sun, title: "Then I wrote my first JavaScript.", body: "Same feeling. Build it, break it, fix it, watch it work. I was hooked." },
   { Art: Globe, color: ACCENT.peri, title: "Shipped across three countries.", body: "Startups in Nigeria, the UK and the US taught me speed, scale and time zones." },
-  { Art: Tenants, color: ACCENT.tomato, title: "Now: backend systems & SaaS.", body: "Multi-tenant platforms, APIs and the frontends on top. Still drawing, just in code." },
+  { Art: Tenants, color: ACCENT.tomato, title: "Now: building products end to end.", body: "Backend systems, APIs and the frontends on top. Still drawing, just in code." },
 ];
 
 // The longer telling, tucked behind a toggle under the strip.
