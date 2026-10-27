@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { ChevronLeft } from 'lucide-react'
 import { ACCENT, Container, INK, Spark, deep, vars } from './Sketch'
 
 const enter = (delay: number) => ({
@@ -17,11 +18,18 @@ const stats = [
   { label: 'Open to', value: 'New work', accent: ACCENT.peri },
 ]
 
+// The same round sticker button as the photo carousel's arrows. Hover and it
+// turns sunny, leans back the way it's pointing and the chevron keeps nudging;
+// press and it squashes flat onto the page.
 export function BackLink({ href = '/', label = 'back home' }: { href?: string; label?: string }) {
   return (
     <Link href={href}
-      className="inline-flex items-center gap-2 font-mono text-[13px] text-sb-muted px-3 py-2 -ml-3 rounded-lg transition-colors hover:text-sb-tomato-deep hover:bg-sb-card">
-      <span aria-hidden="true">←</span> {label}
+      className="group inline-flex items-center gap-3 font-mono text-[13px] text-sb-soft rounded-full outline-none focus-visible:ring-[3px] focus-visible:ring-sb-peri focus-visible:ring-offset-4 focus-visible:ring-offset-sb-paper">
+      <span aria-hidden="true"
+        className="w-11 h-11 rounded-full bg-sb-cream border-[2.5px] border-sb-ink shadow-[3px_3px_0_#1A1410] flex items-center justify-center text-sb-ink transition-all duration-200 ease-out group-hover:bg-sb-sun group-hover:-translate-x-1 group-hover:-rotate-6 group-hover:shadow-[5px_4px_0_#1A1410] group-active:translate-x-[3px] group-active:translate-y-[3px] group-active:rotate-0 group-active:shadow-none">
+        <ChevronLeft size={20} strokeWidth={2.6} className="group-hover:animate-[sb-nudge_.8s_ease-in-out_infinite]" />
+      </span>
+      <span className="transition-colors group-hover:text-sb-ink">{label}</span>
     </Link>
   )
 }

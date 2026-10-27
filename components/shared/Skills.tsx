@@ -56,27 +56,6 @@ function FirstCode() {
   );
 }
 
-// The whole stack, top to bottom, with data running down the side.
-function Layers() {
-  const slabs = [
-    { y: 28, c: ACCENT.sun, t: "UI" },
-    { y: 60, c: ACCENT.mint, t: "API" },
-    { y: 92, c: ACCENT.peri, t: "DB" },
-  ];
-  return (
-    <>
-      {slabs.map((s, i) => (
-        <g key={s.t} className={i === 0 ? "art-bob-slow" : undefined}>
-          <rect x="40" y={s.y} width="104" height="26" rx="7" fill={s.c} {...line} />
-          <text x="92" y={s.y + 18} fontSize="13" textAnchor="middle" fill={INK} style={mono}>{s.t}</text>
-        </g>
-      ))}
-      <path className="art-flow" d="M164 34 V112" {...line} strokeWidth={2.5} strokeDasharray="4 7" fill="none" />
-      <path d="M158 106 L164 114 L170 106" {...line} strokeWidth={2.5} fill="none" />
-    </>
-  );
-}
-
 // A globe with pins in Nigeria, the UK and the US.
 function Globe() {
   const pins = [
@@ -129,7 +108,6 @@ function Tenants() {
 const panels = [
   { Art: Sketchbook, color: ACCENT.gum, title: "It started with a sketchbook.", body: "Years of drawing and making beats: turning ideas into things people can feel." },
   { Art: FirstCode, color: ACCENT.sun, title: "Then I wrote my first JavaScript.", body: "Same feeling. Build it, break it, fix it, watch it work. I was hooked." },
-  { Art: Layers, color: ACCENT.mint, title: "I wanted every layer.", body: "From the button you tap to the row in the database, so I can own features end to end." },
   { Art: Globe, color: ACCENT.peri, title: "Shipped across three countries.", body: "Startups in Nigeria, the UK and the US taught me speed, scale and time zones." },
   { Art: Tenants, color: ACCENT.tomato, title: "Now: backend systems & SaaS.", body: "Multi-tenant platforms, APIs and the frontends on top. Still drawing, just in code." },
 ];
@@ -202,7 +180,7 @@ function Skills() {
           label="MY STORY" title="How I got here" accent="sun"
           aside={<p className="m-0 font-hand text-[26px] text-sb-gum-deep rotate-2">the short version</p>}
         />
-        <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory -mx-4 sm:-mx-6 px-4 sm:px-6 pt-2 pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-5 lg:overflow-visible lg:mx-0 lg:px-0">
+        <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory -mx-4 sm:-mx-6 px-4 sm:px-6 pt-2 pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-4 lg:overflow-visible lg:mx-0 lg:px-0">
           {panels.map(({ Art, color, title, body }, i) => (
             <Pop key={title} delay={i * 0.08} className="snap-start shrink-0 w-[min(78vw,280px)] lg:w-auto">
               <div className="sb-card h-full p-3.5 flex flex-col gap-3.5" style={{ ...vars({ "--sh": color }), rotate: `${cycleTilt(i) * 0.25}deg` }}>
