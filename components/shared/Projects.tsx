@@ -232,7 +232,7 @@ export function Projects() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
-            className="flex gap-8 overflow-x-auto overscroll-x-contain snap-x snap-mandatory md:snap-proximity scroll-px-1 -mx-4 sm:-mx-6 px-4 sm:px-6 pt-4 pb-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="flex gap-8 overflow-x-auto overflow-y-hidden overscroll-x-contain snap-x snap-mandatory md:snap-proximity scroll-px-1 -mx-4 sm:-mx-6 px-4 sm:px-6 pt-4 pb-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {projectData.map((p, i) => <ProjectCard key={p.title} project={p} index={i} />)}
           </motion.div>
