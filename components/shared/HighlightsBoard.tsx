@@ -1,12 +1,12 @@
 'use client'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import type { LogEntry } from '@/constants/logbook'
+import type { Highlight } from '@/constants/highlights'
 import { ACCENT, Container, Pop, Section, SectionHeading, cycleTilt, vars } from './Sketch'
-import { CountUp, Cover, TYPE_META, TypeStamp, countLabel, fmtLogDate, sortedLog, typeCounts } from './LogbookShared'
+import { CountUp, Cover, TYPE_META, TypeStamp, countLabel, fmtHighlightDate, sortedHighlights, typeCounts } from './HighlightsShared'
 
-// A corkboard teaser for the Logbook: the latest three things, pinned up as
-// polaroids. Each one opens straight onto its entry on /logbook.
+// A corkboard teaser for Highlights: the latest three things, pinned up as
+// polaroids. Each one opens straight onto its entry on /highlights.
 
 const CORK = {
   backgroundColor: '#DDBB8C',
@@ -18,18 +18,18 @@ const CORK = {
 
 // Photos first, newest first.
 const pinned = () => {
-  const all = sortedLog()
+  const all = sortedHighlights()
   return [...all.filter(e => e.photos?.length), ...all.filter(e => !e.photos?.length)].slice(0, 3)
 }
 
-function Polaroid({ entry, index }: { entry: LogEntry; index: number }) {
+function Polaroid({ entry, index }: { entry: Highlight; index: number }) {
   const tilt = cycleTilt(index + 1)
   const { color } = TYPE_META[entry.type]
   const delay = 0.15 + index * 0.18
 
   return (
     <Link
-      href={`/logbook#${entry.slug}`}
+      href={`/highlights#${entry.slug}`}
       className="group relative block shrink-0 snap-center w-[min(68vw,250px)] sm:w-auto pt-3 rounded-lg outline-none focus-visible:ring-[3px] focus-visible:ring-sb-ink focus-visible:ring-offset-4 focus-visible:ring-offset-[#DDBB8C]"
     >
       {/* the pin drops in first… */}
@@ -58,22 +58,22 @@ function Polaroid({ entry, index }: { entry: LogEntry; index: number }) {
             <TypeStamp entry={entry} className="absolute top-2 left-2 -rotate-3 !text-[10px]" />
           </span>
           <span className="block mt-3 px-1 font-hand text-[23px] leading-[1.05] text-sb-ink">{entry.title}</span>
-          <span className="block mt-1 px-1 font-mono text-[11px] text-sb-muted">{fmtLogDate(entry)}</span>
+          <span className="block mt-1 px-1 font-mono text-[11px] text-sb-muted">{fmtHighlightDate(entry)}</span>
         </span>
       </motion.span>
     </Link>
   )
 }
 
-export default function LogbookBoard() {
+export default function HighlightsBoard() {
   const items = pinned()
   if (!items.length) return null
 
   return (
     <Container>
-      <Section id="logbook">
+      <Section id="highlights">
         <SectionHeading
-          label="LOGBOOK" title="Out in the wild" accent="tomato"
+          label="HIGHLIGHTS" title="Out in the wild" accent="tomato"
           aside={<p className="m-0 font-hand text-[26px] text-sb-tomato-deep rotate-2">talks, hackathons &amp; the rest</p>}
         />
         <Pop>
@@ -94,7 +94,7 @@ export default function LogbookBoard() {
                   </span>
                 ))}
               </div>
-              <Link href="/logbook" className="group sb-btn bg-sb-cream">
+              <Link href="/highlights" className="group sb-btn bg-sb-cream">
                 See the whole wall
                 <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
               </Link>

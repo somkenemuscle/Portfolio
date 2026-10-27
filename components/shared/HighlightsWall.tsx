@@ -2,18 +2,18 @@
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 import { Camera, CalendarDays, MapPin, ChevronLeft, ChevronRight } from 'lucide-react'
-import type { LogEntry, LogLink, LogType } from '@/constants/logbook'
+import type { Highlight, HighlightLink, HighlightType } from '@/constants/highlights'
 import { ACCENT, Container, cycleTilt, deep, vars } from './Sketch'
 import { BackLink } from './AboutHero'
 import Modal from './Modal'
-import { CountUp, Cover, LINK_ICON, PaperArt, TYPE_META, TypeStamp, countLabel, fmtLogDate, sortedLog, typeCounts, yearOf } from './LogbookShared'
+import { CountUp, Cover, LINK_ICON, PaperArt, TYPE_META, TypeStamp, countLabel, fmtHighlightDate, sortedHighlights, typeCounts, yearOf } from './HighlightsShared'
 
-// The full Logbook: filter stickers, a wall grouped by year, and each entry
-// opening as a pop-up with a swipeable photo stack. /logbook#slug opens an
+// The full Highlights page: filter stickers, a wall grouped by year, and each entry
+// opening as a pop-up with a swipeable photo stack. /highlights#slug opens an
 // entry directly, so the corkboard on About can link straight to one.
 
-const ENTRIES = sortedLog()
-type Filter = LogType | 'all'
+const ENTRIES = sortedHighlights()
+type Filter = HighlightType | 'all'
 
 const enter = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -27,7 +27,7 @@ function Filters({ value, onChange }: { value: Filter; onChange: (f: Filter) => 
     ...typeCounts().map(t => ({ id: t.type, label: TYPE_META[t.type].plural, count: t.count, color: TYPE_META[t.type].color })),
   ]
   return (
-    <div role="group" aria-label="Filter the logbook" className="flex flex-wrap gap-2.5">
+    <div role="group" aria-label="Filter highlights" className="flex flex-wrap gap-2.5">
       {tabs.map(t => {
         const on = value === t.id
         return (
@@ -43,7 +43,7 @@ function Filters({ value, onChange }: { value: Filter; onChange: (f: Filter) => 
             {/* the coloured fill slides between tabs */}
             {on && (
               <motion.span
-                layoutId="logbook-filter"
+                layoutId="highlights-filter"
                 className="absolute inset-0 rounded-full"
                 style={{ background: t.color }}
                 transition={{ type: 'spring', stiffness: 420, damping: 30 }}
@@ -58,7 +58,7 @@ function Filters({ value, onChange }: { value: Filter; onChange: (f: Filter) => 
   )
 }
 
-const LogCard = forwardRef<HTMLElement, { entry: LogEntry; index: number; onOpen: (e: LogEntry, el: HTMLElement) => void }>(
+const LogCard = forwardRef<HTMLElement, { entry: Highlight; index: number; onOpen: (e: Highlight, el: HTMLElement) => void }>(
   function LogCard({ entry, index, onOpen }, ref) {
     const { color } = TYPE_META[entry.type]
     const count = entry.photos?.length ?? 0
@@ -94,7 +94,7 @@ const LogCard = forwardRef<HTMLElement, { entry: LogEntry; index: number; onOpen
           </span>
           <span className="flex flex-col gap-1.5 px-1.5">
             <span className="font-mono text-[12px] text-sb-muted">
-              {fmtLogDate(entry)}{entry.place && ` · ${entry.place}`}
+              {fmtHighlightDate(entry)}{entry.place && ` · ${entry.place}`}
             </span>
             <span className="text-[21px] font-extrabold leading-snug">{entry.title}</span>
             <span className="text-[15px] leading-relaxed text-sb-soft line-clamp-2">{entry.blurb}</span>
@@ -110,7 +110,7 @@ const LogCard = forwardRef<HTMLElement, { entry: LogEntry; index: number; onOpen
 )
 
 // A stack of photos: swipe, arrow keys, the side buttons or the thumbnails.
-function Gallery({ entry }: { entry: LogEntry }) {
+function Gallery({ entry }: { entry: Highlight }) {
   const photos = entry.photos ?? []
   const [[i, dir], setPage] = useState<[number, number]>([0, 0])
   const many = photos.length > 1
@@ -195,7 +195,7 @@ function Gallery({ entry }: { entry: LogEntry }) {
   )
 }
 
-function LinkCard({ link, color, delay }: { link: LogLink; color: string; delay: number }) {
+function LinkCard({ link, color, delay }: { link: HighlightLink; color: string; delay: number }) {
   const host = new URL(link.href).hostname.replace(/^www\./, '')
   return (
     <motion.a
@@ -219,7 +219,7 @@ function LinkCard({ link, color, delay }: { link: LogLink; color: string; delay:
   )
 }
 
-function EntryModal({ entry, onClose }: { entry: LogEntry | null; onClose: () => void }) {
+function EntryModal({ entry, onClose }: { entry: Highlight | null; onClose: () => void }) {
   // keep the last entry around while the pop-up animates out
   const [shown, setShown] = useState(entry)
   useEffect(() => { if (entry) setShown(entry) }, [entry])
@@ -248,7 +248,7 @@ function EntryModal({ entry, onClose }: { entry: LogEntry | null; onClose: () =>
               {e.title}
             </motion.h3>
             <motion.p {...step(2)} className="m-0 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[13px] text-sb-muted">
-              <span className="inline-flex items-center gap-1.5"><CalendarDays size={14} aria-hidden="true" /> {fmtLogDate(e)}</span>
+              <span className="inline-flex items-center gap-1.5"><CalendarDays size={14} aria-hidden="true" /> {fmtHighlightDate(e)}</span>
               {e.place && <span className="inline-flex items-center gap-1.5"><MapPin size={14} aria-hidden="true" /> {e.place}</span>}
             </motion.p>
             <motion.p {...step(3)} className="m-0 text-[17px] leading-relaxed font-semibold">{e.blurb}</motion.p>
@@ -270,12 +270,12 @@ function EntryModal({ entry, onClose }: { entry: LogEntry | null; onClose: () =>
   )
 }
 
-export default function LogbookWall() {
+export default function HighlightsWall() {
   const [filter, setFilter] = useState<Filter>('all')
   const [openSlug, setOpenSlug] = useState<string | null>(null)
   const trigger = useRef<HTMLElement | null>(null)
 
-  // /logbook#slug opens that entry (on load and on back/forward)
+  // /highlights#slug opens that entry (on load and on back/forward)
   useEffect(() => {
     const sync = () => {
       const slug = decodeURIComponent(window.location.hash.slice(1))
@@ -286,7 +286,7 @@ export default function LogbookWall() {
     return () => window.removeEventListener('hashchange', sync)
   }, [])
 
-  const open = (e: LogEntry, el: HTMLElement) => {
+  const open = (e: Highlight, el: HTMLElement) => {
     trigger.current = el
     history.replaceState(null, '', `#${e.slug}`)
     setOpenSlug(e.slug)
@@ -304,7 +304,7 @@ export default function LogbookWall() {
     <Container className="pb-8">
       <section className="pt-32 flex flex-col gap-5">
         <motion.div {...enter(0.05)}><BackLink href="/about" label="back to about" /></motion.div>
-        <motion.span {...enter(0.08)} className="font-mono text-[13px] tracking-[0.1em] text-sb-tomato-deep">LOGBOOK</motion.span>
+        <motion.span {...enter(0.08)} className="font-mono text-[13px] tracking-[0.1em] text-sb-tomato-deep">HIGHLIGHTS</motion.span>
         <motion.h1 {...enter(0.12)} className="m-0 font-extrabold tracking-[-0.03em] leading-[0.98] text-[clamp(44px,6.4vw,84px)]">
           Out in the <span className="sb-wavy">wild</span>.
         </motion.h1>
