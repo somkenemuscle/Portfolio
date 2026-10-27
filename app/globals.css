@@ -122,8 +122,8 @@ html {
   }
 
   /* "Lagos, Nigeria" in Nigerian green with an Ankara-style print showing
-     through the letters: rings, dots and diamonds that slowly drift, like
-     fabric moving. A thin ink outline keeps it crisp on paper. */
+     through the letters: rings, dots and diamonds. A thin ink outline keeps
+     it crisp on paper. */
   .sb-naija {
     background-color: #008751;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Crect width='44' height='44' fill='%23008751'/%3E%3Ccircle cx='22' cy='22' r='12' fill='none' stroke='%2334B07A' stroke-width='3.5'/%3E%3Ccircle cx='22' cy='22' r='5.5' fill='%230B5D3B'/%3E%3Ccircle cx='22' cy='22' r='2.2' fill='%23F4EBDD'/%3E%3Cg fill='%230B5D3B'%3E%3Ccircle cx='0' cy='0' r='8'/%3E%3Ccircle cx='44' cy='0' r='8'/%3E%3Ccircle cx='0' cy='44' r='8'/%3E%3Ccircle cx='44' cy='44' r='8'/%3E%3C/g%3E%3Cg fill='%23F4EBDD'%3E%3Ccircle cx='0' cy='0' r='2.5'/%3E%3Ccircle cx='44' cy='0' r='2.5'/%3E%3Ccircle cx='0' cy='44' r='2.5'/%3E%3Ccircle cx='44' cy='44' r='2.5'/%3E%3C/g%3E%3Cg fill='%2300B36B'%3E%3Cpath d='M22 -4 L26 0 L22 4 L18 0Z'/%3E%3Cpath d='M22 40 L26 44 L22 48 L18 44Z'/%3E%3Cpath d='M-4 22 L0 18 L4 22 L0 26Z'/%3E%3Cpath d='M40 22 L44 18 L48 22 L44 26Z'/%3E%3C/g%3E%3C/svg%3E");
@@ -136,7 +136,6 @@ html {
     filter: drop-shadow(1.2px 0 0 #1A1410) drop-shadow(-1.2px 0 0 #1A1410) drop-shadow(0 1.2px 0 #1A1410) drop-shadow(0 -1.2px 0 #1A1410);
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
-    animation: sb-ankara 24s linear infinite;
   }
 
   .sb-lined {
@@ -237,7 +236,6 @@ html {
 @keyframes sb-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-3px); } }
 @keyframes sb-nudge-r { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
 @keyframes art-hop { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-7px); } 60% { transform: translateY(-7px); } }
-@keyframes sb-ankara { to { background-position: 1.04em .52em; } }
 @keyframes art-spin { to { transform: rotate(360deg); } }
 @keyframes art-bounce {
   0%, 100% { transform: translateY(0) scale(1.08, .9); }
