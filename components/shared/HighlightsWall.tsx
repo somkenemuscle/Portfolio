@@ -6,7 +6,7 @@ import type { Highlight, HighlightLink, HighlightType } from '@/constants/highli
 import { ACCENT, Container, cycleTilt, deep, vars } from './Sketch'
 import { BackLink } from './AboutHero'
 import Modal from './Modal'
-import { CountUp, Cover, LINK_ICON, thumb, PaperArt, TYPE_META, TypeStamp, countLabel, fmtHighlightDate, sortedHighlights, typeCounts, yearOf } from './HighlightsShared'
+import { Cover, LINK_ICON, thumb, PaperArt, TYPE_META, TypeStamp, fmtHighlightDate, sortedHighlights, typeCounts, yearOf } from './HighlightsShared'
 
 // The full Highlights page: filter stickers, a wall grouped by year, and each entry
 // opening as a pop-up with a swipeable photo stack. /highlights#slug opens an
@@ -309,20 +309,12 @@ export default function HighlightsWall() {
           Out in the <span className="sb-wavy">wild</span>.
         </motion.h1>
         <motion.p {...enter(0.18)} className="m-0 text-xl leading-relaxed text-sb-soft max-w-[620px]">
-          Talks I&apos;ve given, hackathons I&apos;ve built at, events I showed up to, and the paperwork.
+          Talks I&apos;ve given, hackathons I&apos;ve built at, events I showed up to, and my credentials.
           Tap anything for the photos and the story.
         </motion.p>
-        <motion.div {...enter(0.24)} className="flex flex-wrap gap-2.5 pt-1">
-          {typeCounts().map((t, i) => (
-            <span key={t.type} className="sb-sticker !text-[15px] !px-4 !py-2"
-              style={{ ...vars({ '--r': `${cycleTilt(i) * 0.6}deg` }), background: TYPE_META[t.type].color }}>
-              <CountUp to={t.count} /> {countLabel(t.type, t.count)}
-            </span>
-          ))}
-        </motion.div>
       </section>
 
-      <motion.div {...enter(0.3)} className="mt-12">
+      <motion.div {...enter(0.24)} className="mt-9">
         <Filters value={filter} onChange={setFilter} />
       </motion.div>
 
