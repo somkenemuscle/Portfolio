@@ -138,23 +138,55 @@ const Notepad = () => (
   </>
 )
 
-const Screen = () => (
+// An anime episode mid-shout: speed lines, a spiky-haired hero with big
+// shiny eyes, a manga sound effect and a play bar. Poke it and he powers up.
+const Screen = ({ on }: ArtProps) => (
   <>
+    <defs>
+      <clipPath id="screen-clip"><rect x="-86" y="-52" width="172" height="104" rx="7" /></clipPath>
+      <linearGradient id="screen-sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stopColor={ACCENT.sun} />
+        <stop offset="1" stopColor={ACCENT.tomato} />
+      </linearGradient>
+    </defs>
     <rect x="-100" y="-66" width="200" height="132" rx="16" fill="#2E2B33" {...line} />
-    <rect x="-86" y="-52" width="172" height="104" rx="7" fill={ACCENT.gum} {...line} strokeWidth={2.5} />
-    {/* speed lines behind a very happy face */}
-    <g className="art-pulse" opacity="0.5">
-      {[-60, -30, 0, 30, 60, 90, 120, 150].map(a => (
-        <path key={a} d="M0 -30 V-46" transform={`rotate(${a})`} {...line} strokeWidth={2.5} />
-      ))}
+    <g clipPath="url(#screen-clip)">
+      <rect x="-86" y="-52" width="172" height="104" fill="url(#screen-sky)" />
+      {/* speed lines rushing out from the hero */}
+      <g className="art-pulse" style={{ transformOrigin: '0px 20px' }}>
+        {Array.from({ length: 18 }, (_, i) => i * 20).map(a => (
+          <path key={a} d="M0 -46 L-3 -110 L3 -110 Z" fill="#FFFFFF" opacity="0.55" transform={`translate(0 20) rotate(${a})`} />
+        ))}
+      </g>
+      {/* power-up aura */}
+      <circle cx="0" cy="22" r="44" fill="#FFFFFF" style={{ opacity: on ? 0.55 : 0, transition: 'opacity .3s' }} />
+      <g transform="translate(0 -6)"><g className={on ? 'art-shake' : undefined}>
+        {/* spiky hair */}
+        <path d="M-34 14 L-46 -8 L-28 -6 L-34 -32 L-14 -16 L-8 -42 L4 -18 L18 -40 L20 -14 L40 -28 L32 -4 L48 0 L32 14 Z" fill="#E4E1EA" {...line} strokeWidth={2.5} />
+        {/* face */}
+        <path d="M-26 6 Q-26 40 0 48 Q26 40 26 6 Z" fill="#FFE2C4" {...line} strokeWidth={2.5} />
+        <path d="M-26 6 L-14 -6 L-6 6 L4 -8 L12 6 L22 -4 L26 6" fill="#E4E1EA" {...line} strokeWidth={2.5} />
+        {/* determined brows and big shiny eyes */}
+        <path d="M-20 12 L-6 16 M20 12 L6 16" {...line} strokeWidth={3} />
+        <ellipse cx="-12" cy="25" rx="6" ry="8" fill="#2F8F5B" {...line} strokeWidth={2} />
+        <ellipse cx="12" cy="25" rx="6" ry="8" fill="#2F8F5B" {...line} strokeWidth={2} />
+        <circle cx="-14" cy="22" r="2.4" fill="#FFFFFF" />
+        <circle cx="10" cy="22" r="2.4" fill="#FFFFFF" />
+        {/* mid-shout */}
+        <path d="M-6 38 Q0 46 6 38 Z" fill={INK} />
+        <path d="M-22 34 l6 -1 M22 34 l-6 -1" stroke={ACCENT.tomato} strokeWidth="2.5" strokeLinecap="round" />
+      </g></g>
+      {/* manga sound effect */}
+      <text x="-74" y="-24" fontSize="22" fontWeight="900" fill="#FFFFFF" stroke={INK} strokeWidth="1.6" paintOrder="stroke" transform="rotate(-12 -74 -24)">ドン!</text>
+      <path className="art-twinkle" d="M62 -30 l3 8 l8 3 l-8 3 l-3 8 l-3 -8 l-8 -3 l8 -3 Z" fill="#FFFFFF" {...line} strokeWidth={1.5} />
+      {/* play bar */}
+      <rect x="-86" y="40" width="172" height="12" fill={INK} opacity="0.55" />
+      <path d="M-78 42.5 l6 3.5 l-6 3.5 Z" fill="#FFFFFF" />
+      <rect x="-64" y="45" width="140" height="3" rx="1.5" fill="#FFFFFF" opacity="0.35" />
+      <rect x="-64" y="45" width="88" height="3" rx="1.5" fill={ACCENT.gum} />
+      <circle cx="24" cy="46.5" r="3.5" fill="#FFFFFF" />
     </g>
-    <circle cx="0" cy="4" r="30" fill={CREAM} {...line} strokeWidth={2.5} />
-    <path d="M-16 0 q5 -7 10 0 M6 0 q5 -7 10 0" {...line} strokeWidth={2.5} fill="none" />
-    <ellipse cx="-17" cy="12" rx="6" ry="3.5" fill={ACCENT.tomato} opacity="0.7" />
-    <ellipse cx="17" cy="12" rx="6" ry="3.5" fill={ACCENT.tomato} opacity="0.7" />
-    <path d="M-5 16 q5 5 10 0" {...line} strokeWidth={2.5} fill="none" />
-    <path className="art-twinkle" d="M58 -30 l3 8 l8 3 l-8 3 l-3 8 l-3 -8 l-8 -3 l8 -3 Z" fill={ACCENT.sun} {...line} strokeWidth={1.5} />
-    <path className="art-twinkle" style={{ animationDelay: '-1.2s' }} d="M-58 22 l2 6 l6 2 l-6 2 l-2 6 l-2 -6 l-6 -2 l6 -2 Z" fill={CREAM} {...line} strokeWidth={1.5} />
+    <rect x="-86" y="-52" width="172" height="104" rx="7" fill="none" {...line} strokeWidth={2.5} />
   </>
 )
 
@@ -235,6 +267,67 @@ const Plate = () => (
   </>
 )
 
+// A team sticker that sits beside a ball: club colours, no crest.
+const TeamTag = ({ x, y, r, text, bg, stripe, fg }: { x: number; y: number; r: number; text: string; bg: string; stripe: string; fg: string }) => (
+  <g transform={`translate(${x} ${y}) rotate(${r})`}>
+    <rect x="-30" y="-15" width="60" height="30" rx="7" fill={bg} {...line} strokeWidth={2.5} />
+    <rect x="-8" y="-13.5" width="16" height="27" fill={stripe} />
+    <text x="0" y="7" textAnchor="middle" fontSize="20" fill={fg} stroke={INK} strokeWidth="0.6" style={hand}>{text}</text>
+  </g>
+)
+
+// PSG: a football that rocks in place, then rolls off its sticker and back.
+const Football = ({ on }: ArtProps) => (
+  <>
+    <TeamTag x={46} y={22} r={8} text="PSG" bg="#1B2A5E" stripe="#DA291C" fg="#FFFFFF" />
+    <g transform="translate(-24 -4)">
+      <g className={on ? 'art-roll' : 'art-rock'}>
+        <circle cx="0" cy="0" r="40" fill="#FFFFFF" {...line} />
+        <path d="M0 -13 L12.4 -4 L7.6 10.5 H-7.6 L-12.4 -4 Z" fill="#1B2A5E" {...line} strokeWidth={2} />
+        <path d="M0 -13 V-28 M12.4 -4 L27 -9 M7.6 10.5 L17 23 M-7.6 10.5 L-17 23 M-12.4 -4 L-27 -9" {...line} strokeWidth={2} />
+        <path d="M-10 -38 L0 -28 L10 -38 A40 40 0 0 0 -10 -38 Z" fill="#1B2A5E" {...line} strokeWidth={2} />
+        <path d="M27 -9 L38.5 -3 A40 40 0 0 0 33 -22 Z" fill="#DA291C" {...line} strokeWidth={2} />
+        <path d="M-27 -9 L-38.5 -3 A40 40 0 0 1 -33 -22 Z" fill="#DA291C" {...line} strokeWidth={2} />
+        <path d="M17 23 L16 36 A40 40 0 0 0 30 26 Z" fill="#1B2A5E" {...line} strokeWidth={2} />
+        <path d="M-17 23 L-16 36 A40 40 0 0 1 -30 26 Z" fill="#1B2A5E" {...line} strokeWidth={2} />
+      </g>
+    </g>
+  </>
+)
+
+// Warriors: a basketball spinning lazily on the desk; pick it up and it bounces.
+const Basketball = ({ on }: ArtProps) => (
+  <>
+    <TeamTag x={-48} y={22} r={-8} text="GSW" bg="#1D428A" stripe="#FFC72C" fg="#FFFFFF" />
+    <g transform="translate(24 -4)">
+      <g className={on ? 'art-bounce' : 'art-spin-slow'}>
+        <circle cx="0" cy="0" r="40" fill="#E8803A" {...line} />
+        <path d="M-40 0 H40 M0 -40 V40 M-28 -28 Q-10 0 -28 28 M28 -28 Q10 0 28 28" {...line} strokeWidth={2.5} fill="none" />
+        <path d="M-22 -26 q10 -8 22 -8" stroke="#FFFFFF" strokeWidth="3.5" strokeLinecap="round" fill="none" opacity="0.5" />
+      </g>
+    </g>
+  </>
+)
+
+// A dumbbell on the mat. Pick it up and it does reps.
+const Plates = ({ side }: { side: 1 | -1 }) => (
+  <g transform={`scale(${side} 1)`}>
+    <rect x="48" y="-12" width="10" height="24" rx="3" fill="#B9B4AC" {...line} strokeWidth={2.5} />
+    <rect x="58" y="-36" width="18" height="72" rx="6" fill={ACCENT.tomato} {...line} />
+    <rect x="76" y="-27" width="14" height="54" rx="5" fill={ACCENT.sun} {...line} />
+    <path d="M63 -26 V-10" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" opacity="0.6" />
+  </g>
+)
+const Dumbbell = ({ on }: ArtProps) => (
+  <g className={on ? 'art-reps' : 'art-rock'}>
+    <rect x="-50" y="-7" width="100" height="14" rx="6" fill="#8F8A83" {...line} strokeWidth={2.5} />
+    {[-30, -18, -6, 6, 18, 30].map(x => <path key={x} d={`M${x} -5 v10`} stroke={INK} strokeWidth="1.5" opacity="0.35" />)}
+    <Plates side={1} />
+    <Plates side={-1} />
+    {on && <path d="M-34 52 h20 M-6 58 h12 M14 52 h20" {...line} strokeWidth={2.5} opacity="0.4" />}
+  </g>
+)
+
 // Where each object sits (x, y, tilt, scale), its hit area, and where its
 // bubble opens.
 type Spot = {
@@ -252,6 +345,9 @@ const SPOTS: Record<DeskObject, Spot> = {
   notepad: { x: 310, y: 432, r: 6, s: 0.95, hit: [70, 90], art: Notepad, bubble: { x: 310, y: 352, side: 'above', align: 'center' } },
   food: { x: 480, y: 424, r: 0, hit: [84, 84], art: Plate, bubble: { x: 480, y: 347, side: 'above', align: 'center' } },
   screen: { x: 668, y: 428, r: -4, s: 0.9, hit: [106, 72], art: Screen, bubble: { x: 668, y: 362, side: 'above', align: 'center' } },
+  football: { x: 160, y: 292, r: -4, s: 0.9, hit: [76, 50], art: Football, bubble: { x: 130, y: 342, side: 'below', align: 'start' } },
+  basketball: { x: 840, y: 290, r: 4, s: 0.9, hit: [76, 50], art: Basketball, bubble: { x: 870, y: 340, side: 'below', align: 'end' } },
+  gym: { x: 645, y: 298, r: -6, s: 0.85, hit: [100, 42], art: Dumbbell, bubble: { x: 645, y: 338, side: 'below', align: 'center' } },
   controller: { x: 870, y: 420, r: 7, s: 0.9, hit: [112, 80], art: Controller, bubble: { x: 885, y: 352, side: 'above', align: 'end' } },
 }
 
