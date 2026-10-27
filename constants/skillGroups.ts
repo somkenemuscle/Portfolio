@@ -38,10 +38,10 @@ export const skillGroups: SkillGroup[] = [
     title: "Shipping",
     note: "getting it out the door",
     accent: "peri",
-    skills: ["Docker", "AWS", "GitHub Actions", "Playwright", "Jest", "Postman", "Excalidraw", "Claude Code", "Codex", "Cloud"],
-    learning: ["DevOps"],
+    skills: ["Docker", "AWS", "GitHub Actions", "Playwright", "Jest", "Postman", "Excalidraw", "Claude", "Codex"],
+    learning: ["Cloud", "DevOps"],
   },
 ]
 
 // Tools used on every project, even if a project's tech list doesn't say so.
-export const usedEverywhere = ["GitHub Actions", "Excalidraw", "Claude Code", "Codex"]
+export const usedEverywhere = ["GitHub Actions", "Excalidraw", "Claude", "Codex"]
