@@ -2,7 +2,7 @@
 // components/shared/Interests.tsx; hovering (or tapping) it shows the bubble.
 // Text in [BRACKETS] is a placeholder and stays hidden until filled in.
 
-export type DeskObject = "laptop" | "headphones" | "parfait" | "camera" | "sketchbook" | "notepad" | "food" | "screen" | "controller" | "football" | "basketball" | "gym"
+export type DeskObject = "laptop" | "headphones" | "parfait" | "camera" | "notepad" | "food" | "screen" | "controller" | "football" | "basketball" | "gym" | "phone"
 
 export interface DeskItem {
   id: DeskObject
@@ -54,9 +54,11 @@ export const desk: DeskItem[] = [
     note: "Lift, rest, repeat. Some of my best debugging happens between sets.",
   },
   {
-    id: "sketchbook",
-    label: "Drawing",
-    note: "The sketchbook came before the code editor.",
+    id: "phone",
+    label: "Lagos time",
+    // the bubble swaps this for the live time, the gap to your timezone and a
+    // guess at what I'm up to (see LagosNote in Interests.tsx)
+    note: "Where I am, right now.",
   },
   {
     id: "notepad",
