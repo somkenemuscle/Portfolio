@@ -1,6 +1,6 @@
 'use client'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { projectData } from '@/constants/projectData'
 import { ACCENT, Accent, Container, Section, SectionHeading, cycleTilt, deep, vars } from './Sketch'
 import ProjectArt, { hasArt } from './ProjectArt'
@@ -178,11 +178,121 @@ function Arrow({ dir, disabled, onClick }: { dir: 'prev' | 'next'; disabled: boo
   )
 }
 
+// Rest the mouse near either end of the row and it glides on by itself, so
+// nobody has to hunt for a scrollbar. It waits a beat before moving (passing
+// through shouldn't trigger it), speeds up the closer you get to the edge,
+// eases to a stop, and holds still while you're pressing a card or on a link.
+// Mouse only: touch and trackpads already scroll naturally.
+type Glide = { side: -1 | 1; armed: boolean } | null
+
+function useEdgeGlide(row: React.RefObject<HTMLDivElement>) {
+  const [glide, setGlide] = useState<Glide>(null)
+  const st = useRef({ x: -1, over: false, pressed: false, onLink: false, enteredAt: 0, side: 0, v: 0, pos: 0, raf: 0, last: 0, glide: null as Glide })
+
+  const show = useCallback((g: Glide) => {
+    const cur = st.current.glide
+    if (cur?.side === g?.side && cur?.armed === g?.armed) return
+    st.current.glide = g
+    setGlide(g)
+  }, [])
+
+  const tick = useCallback((now: number) => {
+    const s = st.current, el = row.current
+    if (!el) return
+    const dt = Math.min(0.05, (now - (s.last || now)) / 1000)
+    s.last = now
+    const r = el.getBoundingClientRect()
+    const zone = Math.min(120, r.width * 0.14)
+    const max = el.scrollWidth - el.clientWidth
+    const x = s.x - r.left
+
+    let side: -1 | 0 | 1 = 0, t = 0
+    if (s.over && x >= 0) {
+      if (x < zone && el.scrollLeft > 2) { side = -1; t = 1 - x / zone }
+      else if (x > r.width - zone && el.scrollLeft < max - 2) { side = 1; t = 1 - (r.width - x) / zone }
+    }
+    if (side !== s.side) { s.side = side; s.enteredAt = now }
+    const armed = side !== 0 && now - s.enteredAt > 300 && !s.pressed && !s.onLink
+    show(side ? { side, armed } : null)
+
+    // ease toward the target speed (up to ~900px/s right at the edge)
+    const target = armed ? side * 900 * Math.pow(t, 1.5) : 0
+    s.v += (target - s.v) * Math.min(1, dt * 7)
+    if (Math.abs(s.v) > 4) {
+      if (!el.style.scrollSnapType) { el.style.scrollSnapType = 'none'; s.pos = el.scrollLeft }
+      s.pos = Math.max(0, Math.min(max, s.pos + s.v * dt))
+      el.scrollLeft = s.pos
+    } else {
+      s.v = 0
+      // stopped: hand control back to snapping so it settles on a card
+      if (el.style.scrollSnapType) el.style.scrollSnapType = ''
+    }
+
+    if (s.over || s.v) s.raf = requestAnimationFrame(tick)
+    else { s.raf = 0; s.last = 0; show(null) }
+  }, [row, show])
+
+  const start = () => { if (!st.current.raf) st.current.raf = requestAnimationFrame(tick) }
+
+  useEffect(() => {
+    const s = st.current
+    const release = () => { s.pressed = false }
+    window.addEventListener('pointerup', release)
+    return () => { window.removeEventListener('pointerup', release); cancelAnimationFrame(s.raf) }
+  }, [])
+
+  const fine = () => typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches
+  const handlers = {
+    onPointerMove: (e: React.PointerEvent) => {
+      if (e.pointerType !== 'mouse' || !fine()) return
+      const s = st.current
+      s.x = e.clientX; s.over = true
+      s.onLink = !!(e.target as HTMLElement).closest('a')
+      start()
+    },
+    onPointerLeave: (e: React.PointerEvent) => { if (e.pointerType === 'mouse') st.current.over = false },
+    onPointerDown: (e: React.PointerEvent) => { if (e.pointerType === 'mouse') st.current.pressed = true },
+  }
+  return { glide, handlers }
+}
+
+// The cue at the edge: a sticker arrow that pops in when you hover near the
+// end, fills its ring while it waits, then keeps nudging while the row glides.
+function GlideCue({ glide }: { glide: Glide }) {
+  return (
+    <AnimatePresence>
+      {glide && (
+        <motion.span
+          key={glide.side}
+          aria-hidden="true"
+          initial={{ opacity: 0, scale: 0.5, rotate: glide.side * -20 }}
+          animate={{ opacity: 1, scale: 1, rotate: glide.side * 4 }}
+          exit={{ opacity: 0, scale: 0.6 }}
+          transition={{ type: 'spring', stiffness: 420, damping: 20 }}
+          className={`pointer-events-none absolute z-30 top-[calc(50%-12px)] -mt-6 ${glide.side < 0 ? '-left-2' : '-right-2'} w-12 h-12 rounded-full bg-sb-sun border-[2.5px] border-sb-ink shadow-[3px_3px_0_#1A1410] flex items-center justify-center text-sb-ink`}
+        >
+          <svg width="52" height="52" viewBox="0 0 52 52" className="absolute -inset-[4.5px] -rotate-90">
+            <motion.circle cx="26" cy="26" r="23" fill="none" stroke="#1A1410" strokeWidth="2.5" strokeLinecap="round"
+              initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.3, ease: 'linear' }} />
+          </svg>
+          <motion.svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.75" strokeLinecap="round" strokeLinejoin="round"
+            style={{ scaleX: glide.side }}
+            animate={glide.armed ? { x: [0, glide.side * 4, 0] } : { x: 0 }}
+            transition={glide.armed ? { duration: 0.6, repeat: Infinity, ease: 'easeInOut' } : { duration: 0.2 }}>
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </motion.svg>
+        </motion.span>
+      )}
+    </AnimatePresence>
+  )
+}
+
 // Projects sit in one horizontal row that scrolls (swipe, trackpad or the
-// arrows) so the section stays the same height as more get added.
+// arrows, or by resting the mouse near either end) so the section stays the same height as more get added.
 export function Projects() {
   const row = useRef<HTMLDivElement>(null)
   const [edge, setEdge] = useState({ start: true, end: false })
+  const { glide, handlers } = useEdgeGlide(row)
 
   const update = useCallback(() => {
     const el = row.current
@@ -228,6 +338,7 @@ export function Projects() {
           <motion.div
             ref={row}
             onScroll={update}
+            {...handlers}
             variants={rowIn}
             initial="hidden"
             whileInView="show"
@@ -236,6 +347,7 @@ export function Projects() {
           >
             {projectData.map((p, i) => <ProjectCard key={p.title} project={p} index={i} />)}
           </motion.div>
+          <GlideCue glide={glide} />
         </div>
         {scrollable && (
           <p className="sm:hidden -mt-8 m-0 font-mono text-xs text-sb-muted text-center">swipe for more →</p>
