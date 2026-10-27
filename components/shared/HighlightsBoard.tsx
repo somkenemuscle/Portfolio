@@ -23,7 +23,8 @@ const pinned = () => {
 }
 
 function Polaroid({ entry, index }: { entry: Highlight; index: number }) {
-  const tilt = cycleTilt(index + 1)
+  // lined up, each with the same gentle tilt as the About story panels
+  const tilt = cycleTilt(index) * 0.25
   const { color } = TYPE_META[entry.type]
   const delay = 0.15 + index * 0.18
 
