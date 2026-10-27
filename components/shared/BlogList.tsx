@@ -23,11 +23,11 @@ export default function BlogList() {
 
         <div className="relative flex flex-col gap-4">
           <Spark size={56} fill={ACCENT.tomato} className="sb-spin absolute -top-6 right-0 sm:right-10" />
-          <motion.span {...enter(0.08)} className="font-mono text-[13px] tracking-[0.1em] text-sb-tomato">
+          <motion.span {...enter(0.08)} className="font-mono text-[13px] tracking-[0.1em] text-sb-tomato-deep">
             THE JOURNAL · {posts.length} {posts.length === 1 ? 'ENTRY' : 'ENTRIES'}
           </motion.span>
           <motion.h1 {...enter(0.12)} className="m-0 font-extrabold tracking-[-0.03em] leading-[0.98] text-[clamp(44px,6.4vw,84px)]">
-            Thoughts, <span className="sb-wavy text-sb-sun">written down</span>.
+            Thoughts, <span className="sb-wavy">written down</span>.
           </motion.h1>
           <motion.p {...enter(0.18)} className="m-0 text-xl leading-relaxed text-sb-soft max-w-[620px]">
             Notes from the build: engineering decisions, things I got wrong, and the occasional creative tangent.

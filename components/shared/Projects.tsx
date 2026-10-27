@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { projectData } from '@/constants/projectData'
-import { ACCENT, Accent, Container, Pop, Section, SectionHeading, vars } from './Sketch'
+import { ACCENT, Accent, Container, Pop, Section, SectionHeading, deep, vars } from './Sketch'
 import ProjectArt, { hasArt } from './ProjectArt'
 
 const host = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '')
@@ -28,7 +28,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           onKeyDown={e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); on() } }}
           onKeyUp={off} onBlur={off}
           onContextMenu={e => e.preventDefault()}
-          className="relative block h-[260px] w-full overflow-hidden rounded-[14px] border-[2.5px] border-sb-cream cursor-pointer select-none touch-manipulation [-webkit-touch-callout:none] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-sb-sun"
+          className="relative block h-[260px] w-full overflow-hidden rounded-[14px] border-[2.5px] border-sb-ink cursor-pointer select-none touch-manipulation [-webkit-touch-callout:none] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-sb-ink"
           style={{ background: color }}
         >
           {hasArt(project.art) ? (
@@ -38,12 +38,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               <ProjectArt art={project.art} title={project.title} />
             </>
           ) : (
-            <span className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 text-sb-paper">
+            <span className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 text-sb-ink">
               <Icon size={56} stroke={1.8} aria-hidden="true" />
               <span className="font-extrabold text-2xl">{project.title}</span>
             </span>
           )}
-          <span aria-hidden="true" className="absolute bottom-3 right-3 font-mono text-[11px] px-2 py-1 rounded-md bg-sb-paper text-sb-cream border-2 border-sb-paper rotate-2">
+          <span aria-hidden="true" className="absolute bottom-3 right-3 font-mono text-[11px] px-2 py-1 rounded-md bg-sb-ink text-sb-cream border-2 border-sb-ink rotate-2">
             hold to x-ray
           </span>
 
@@ -99,12 +99,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </button>
 
         <div className="flex flex-col gap-2 px-1.5 pb-1.5">
-          <span className="font-mono text-xs tracking-[0.08em]" style={{ color }}>{project.niche}</span>
+          <span className="font-mono text-xs tracking-[0.08em]" style={{ color: deep(color) }}>{project.niche}</span>
           <h3 className="m-0 text-[28px] font-extrabold">{project.title}</h3>
           <p className="m-0 text-base leading-normal text-sb-soft">{project.blurb ?? project.description}</p>
           <div className="flex flex-wrap items-center justify-between gap-3 mt-1">
             <a href={project.livePreview} target="_blank" rel="noopener noreferrer"
-              className="font-mono text-[13px] text-sb-cream underline-offset-4 hover:text-sb-sun hover:underline">
+              className="font-mono text-[13px] text-sb-ink underline-offset-4 hover:text-sb-tomato-deep hover:underline">
               {host(project.livePreview)} ↗
             </a>
             {outcome && (
@@ -171,7 +171,7 @@ export function Projects() {
           label="SELECTED WORK" title="Things I've shipped" accent="sun"
           aside={
             <div className="flex items-center gap-5">
-              <p className="m-0 font-hand text-[26px] text-sb-peri -rotate-3">psst, press &amp; hold a drawing</p>
+              <p className="m-0 font-hand text-[26px] text-sb-peri-deep -rotate-3">psst, press &amp; hold a drawing</p>
               {scrollable && (
                 <div className="hidden sm:flex gap-3">
                   <Arrow dir="prev" disabled={edge.start} onClick={() => nudge(-1)} />

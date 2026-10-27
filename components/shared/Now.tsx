@@ -13,7 +13,7 @@ export default function Now() {
         <SectionHeading
           label="NOW" title="What I'm up to" accent="gum"
           aside={
-            <span className="font-mono text-[13px] px-3.5 py-2 border-2 border-sb-gum rounded-[10px] text-sb-gum rotate-3">
+            <span className="font-mono text-[13px] px-3.5 py-2 border-2 border-sb-gum rounded-[10px] text-sb-gum-deep rotate-3">
               UPDATED · {stamp}
             </span>
           }
@@ -34,7 +34,7 @@ export default function Now() {
                   {item.progress !== undefined && (
                     <div className="mt-auto flex flex-col gap-1.5">
                       <span className="font-mono text-xs text-sb-muted">progress · {item.progress}%</span>
-                      <div className="h-3.5 border-2 border-sb-cream rounded-full overflow-hidden"
+                      <div className="h-3.5 border-2 border-sb-ink rounded-full overflow-hidden"
                         role="progressbar" aria-valuenow={item.progress} aria-valuemin={0} aria-valuemax={100} aria-label={`${item.title} progress`}>
                         <div className="h-full" style={{ width: `${item.progress}%`, background: color }} />
                       </div>

@@ -17,8 +17,8 @@ function Contact() {
     <Container>
       <section id="hi" className="scroll-mt-28 pt-28 md:pt-32 pb-12">
         <Pop>
-          <div className="sb-card relative overflow-hidden !bg-sb-sun text-sb-paper px-6 sm:px-10 py-16 flex flex-col items-center gap-7 text-center"
-            style={{ boxShadow: "8px 8px 0 #000" }}>
+          <div className="sb-card relative overflow-hidden !bg-sb-sun text-sb-ink px-6 sm:px-10 py-16 flex flex-col items-center gap-7 text-center"
+            style={{ boxShadow: "8px 8px 0 #1A1410" }}>
             <Spark size={90} fill={ACCENT.gum} className="sb-spin absolute -top-5 -left-5" />
             <Spark size={50} fill={ACCENT.mint} className="sb-spin absolute bottom-6 right-8" style={{ animationDirection: "reverse" }} />
             <p className="m-0 font-hand text-[32px] -rotate-2">got an idea?</p>

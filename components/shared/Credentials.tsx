@@ -3,7 +3,7 @@
 import type { ReactNode } from 'react'
 import { GraduationCap, BadgeCheck } from 'lucide-react'
 import { certificates, education } from '@/constants/credentials'
-import { ACCENT, Container, Pop, Section, SectionHeading, vars } from './Sketch'
+import { ACCENT, Container, Pop, Section, SectionHeading, deep, vars } from './Sketch'
 
 // A certificate-style card with a little rubber-stamp year in the corner.
 function PaperCard({ icon, title, badge, sub, year, color, delay }: {
@@ -18,7 +18,7 @@ function PaperCard({ icon, title, badge, sub, year, color, delay }: {
   return (
     <Pop delay={delay}>
       <div className="sb-card sb-card-hover relative flex items-start gap-4 p-6 min-h-[120px]" style={vars({ '--sh': color })}>
-        <div className="w-12 h-12 shrink-0 flex items-center justify-center rounded-xl border-[2.5px] border-sb-cream text-sb-paper -rotate-6"
+        <div className="w-12 h-12 shrink-0 flex items-center justify-center rounded-xl border-[2.5px] border-sb-ink text-sb-ink -rotate-6"
           style={{ background: color }}>
           {icon}
         </div>
@@ -26,7 +26,7 @@ function PaperCard({ icon, title, badge, sub, year, color, delay }: {
           <h3 className="m-0 text-lg font-extrabold leading-snug">
             {title}
             {badge && (
-              <span className="ml-2 align-middle font-mono text-[11px] px-2 py-0.5 rounded-md border-2" style={{ borderColor: color, color }}>
+              <span className="ml-2 align-middle font-mono text-[11px] px-2 py-0.5 rounded-md border-2" style={{ borderColor: color, color: deep(color) }}>
                 {badge}
               </span>
             )}
@@ -34,7 +34,7 @@ function PaperCard({ icon, title, badge, sub, year, color, delay }: {
           <p className="m-0 text-[15px] text-sb-soft">{sub}</p>
         </div>
         <span className="absolute top-5 right-5 font-mono text-xs font-bold px-2.5 py-1 border-2 border-dashed rounded-md rotate-6"
-          style={{ borderColor: color, color }}>
+          style={{ borderColor: color, color: deep(color) }}>
           {year}
         </span>
       </div>
@@ -48,7 +48,7 @@ export default function Credentials() {
       <Section id="credentials">
         <SectionHeading
           label="PAPERWORK" title="Credentials" accent="peri"
-          aside={<p className="m-0 font-hand text-[26px] text-sb-sun -rotate-2">the official bits</p>}
+          aside={<p className="m-0 font-hand text-[26px] text-sb-sun-deep -rotate-2">the official bits</p>}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-7 gap-y-10">
           <div className="flex flex-col gap-5">

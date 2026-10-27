@@ -6,7 +6,7 @@ import { ACCENT, Container, Pop, Section, SectionHeading, vars } from "./Sketch"
 // Highlighter-marker emphasis for key phrases in the story.
 const Mark = ({ children, color = ACCENT.sun }: { children: React.ReactNode; color?: string }) => (
   <span
-    className="font-semibold text-sb-paper px-1.5 rounded-[4px] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]"
+    className="font-semibold text-sb-ink px-1.5 rounded-[4px] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]"
     style={{ background: color }}
   >
     {children}
@@ -14,7 +14,7 @@ const Mark = ({ children, color = ACCENT.sun }: { children: React.ReactNode; col
 );
 
 const P = ({ children }: { children: React.ReactNode }) => (
-  <p className="m-0 text-[17px] leading-[1.85] text-[#E6DCCB]">{children}</p>
+  <p className="m-0 text-[17px] leading-[1.85] text-sb-ink/90">{children}</p>
 );
 
 function Skills() {
@@ -25,7 +25,7 @@ function Skills() {
         <Section id="story">
           <SectionHeading
             label="MY STORY" title="How I got here" accent="sun"
-            aside={<p className="m-0 font-hand text-[26px] text-sb-gum rotate-2">it started with a sketchbook</p>}
+            aside={<p className="m-0 font-hand text-[26px] text-sb-gum-deep rotate-2">it started with a sketchbook</p>}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
             <Pop>

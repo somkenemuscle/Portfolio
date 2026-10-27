@@ -20,7 +20,7 @@ function Taped({ src, alt, caption, tilt = 0 }: { src: string; alt: string; capt
       <span aria-hidden="true" className="absolute -top-3 left-8 -rotate-6 w-20 h-6 bg-sb-sun/80 z-10" />
       <span aria-hidden="true" className="absolute -top-3 right-8 rotate-6 w-20 h-6 bg-sb-gum/80 z-10" />
       <img src={src} alt={alt} draggable={false}
-        className="block w-full h-auto rounded-xl border-[2.5px] border-sb-cream shadow-[6px_6px_0_#000] select-none bg-sb-card" />
+        className="block w-full h-auto rounded-xl border-[2.5px] border-sb-ink shadow-[6px_6px_0_#1A1410] select-none bg-sb-card" />
       {caption && (
         <figcaption className="font-hand text-[22px] text-sb-muted mt-4 text-center">{caption}</figcaption>
       )}
@@ -48,7 +48,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
           <article className="max-w-[720px] mx-auto">
             <motion.header {...enter(0.1)} className="mb-12 flex flex-col gap-5">
               <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                <span className="font-hand text-[38px] leading-none text-sb-gum -rotate-2">
+                <span className="font-hand text-[38px] leading-none text-sb-gum-deep -rotate-2">
                   {fmtDate(post.date, { month: 'long', day: 'numeric', year: 'numeric' })}
                 </span>
                 <span className="font-mono text-[13px] text-sb-muted">· {post.readTime}</span>
@@ -79,7 +79,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   return <Taped key={i} src={block.src} alt={block.alt} caption={block.caption} tilt={i % 2 ? 0.8 : -0.8} />
                 }
                 return (
-                  <p key={i} className={`m-0 text-[18px] leading-[1.85] text-[#E6DCCB] ${i === 0 ? 'first-letter:font-extrabold first-letter:text-[64px] first-letter:leading-[0.8] first-letter:float-left first-letter:mr-3 first-letter:mt-1.5 first-letter:text-sb-sun' : ''}`}>
+                  <p key={i} className={`m-0 text-[18px] leading-[1.85] text-sb-ink/90 ${i === 0 ? 'first-letter:font-extrabold first-letter:text-[64px] first-letter:leading-[0.8] first-letter:float-left first-letter:mr-3 first-letter:mt-1.5 first-letter:text-sb-tomato-deep' : ''}`}>
                     {block.text}
                   </p>
                 )
@@ -89,7 +89,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             {/* sign-off */}
             <div className="sb-card mt-16 p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6" style={vars({ '--sh': ACCENT.mint })}>
               <div className="flex flex-col gap-1">
-                <p className="m-0 font-hand text-[30px] text-sb-mint -rotate-1 origin-left">thanks for reading!</p>
+                <p className="m-0 font-hand text-[30px] text-sb-mint-deep -rotate-1 origin-left">thanks for reading!</p>
                 <p className="m-0 text-sb-soft">Thoughts or pushback? I&apos;d love to hear them.</p>
               </div>
               <div className="flex flex-wrap gap-3">
