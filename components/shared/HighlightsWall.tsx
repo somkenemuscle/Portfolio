@@ -6,7 +6,7 @@ import type { Highlight, HighlightLink, HighlightType } from '@/constants/highli
 import { ACCENT, Container, cycleTilt, deep, vars } from './Sketch'
 import { BackLink } from './AboutHero'
 import Modal from './Modal'
-import { CountUp, Cover, LINK_ICON, PaperArt, TYPE_META, TypeStamp, countLabel, fmtHighlightDate, sortedHighlights, typeCounts, yearOf } from './HighlightsShared'
+import { CountUp, Cover, LINK_ICON, thumb, PaperArt, TYPE_META, TypeStamp, countLabel, fmtHighlightDate, sortedHighlights, typeCounts, yearOf } from './HighlightsShared'
 
 // The full Highlights page: filter stickers, a wall grouped by year, and each entry
 // opening as a pop-up with a swipeable photo stack. /highlights#slug opens an
@@ -186,7 +186,7 @@ function Gallery({ entry }: { entry: Highlight }) {
               className="relative shrink-0 w-14 h-14 overflow-hidden rounded-lg border-[2.5px] border-sb-ink bg-sb-raised"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={p.src} alt="" loading="lazy" draggable={false} className="w-full h-full object-cover" />
+              <img src={thumb(p.src)} alt="" loading="lazy" decoding="async" draggable={false} className="w-full h-full object-cover" />
             </motion.button>
           ))}
         </div>

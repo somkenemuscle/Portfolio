@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
-import { latestWithPhoto } from './HighlightsShared'
+import { latestWithPhoto, thumb } from './HighlightsShared'
 
 const MotionLink = motion(Link)
 
@@ -68,7 +68,7 @@ export default function HighlightsBadge() {
             {/* the middle: latest photo, flips to an arrow on hover */}
             <span className="absolute inset-[24%] rounded-full overflow-hidden border-[2.5px] border-sb-ink bg-sb-gum">
               {photo && (
-                <img src={photo.src} alt="" draggable={false}
+                <img src={thumb(photo.src)} alt="" loading="lazy" decoding="async" draggable={false}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
               )}
               <span aria-hidden="true"
