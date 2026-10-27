@@ -83,8 +83,8 @@ export default function HeroSection() {
             <span className="sb-wavy">Lagos, Nigeria</span>.
           </motion.h1>
           <motion.p {...enter(0.16)} className="m-0 text-xl leading-relaxed text-sb-soft max-w-[560px]">
-            Backend systems, multi-tenant platforms and the frontends that sit on top of them.
-            This site is my sketchbook: what I&apos;m building, learning and thinking about, updated as it happens.
+            I build products end to end, from the backend systems that run them to the frontends people use.
+            This site is my sketchbook: what I&apos;m building, learning and thinking about.
           </motion.p>
           <motion.div {...enter(0.24)} className="flex flex-wrap items-center gap-3.5 pt-1.5">
             <Link href="#work" className="sb-btn bg-sb-mint">See my work</Link>
