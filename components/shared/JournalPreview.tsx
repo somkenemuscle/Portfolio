@@ -38,7 +38,7 @@ function CornerCurl() {
 
 // One journal entry on lined notebook paper. With `showArt`, the post's
 // animated drawing is taped onto the page (the cover photo stays on the post).
-export function JournalEntry({ post, showArt = false }: { post: BlogPost; showArt?: boolean }) {
+export function JournalEntry({ post, showArt = false, latest = false }: { post: BlogPost; showArt?: boolean; latest?: boolean }) {
   const art = showArt ? post.art : undefined
   return (
     <Link
@@ -49,9 +49,20 @@ export function JournalEntry({ post, showArt = false }: { post: BlogPost; showAr
       <span aria-hidden="true" className="absolute left-9 sm:left-12 inset-y-0 w-0.5 bg-sb-tomato" />
       <Holes at={['22%', '50%', '78%']} />
       <CornerCurl />
+      {latest && (
+        // a sticky tab marking the newest page; it perks up when you hover the page
+        <span aria-hidden="true"
+          className="absolute -top-4 right-8 sm:right-12 z-10 font-hand text-[22px] leading-none px-3 pt-1 pb-1.5 rounded-md bg-sb-sun border-[2.5px] border-sb-ink shadow-[2px_3px_0_#1A1410] text-sb-ink rotate-3 transition-transform duration-300 ease-[cubic-bezier(.34,1.56,.64,1)] group-hover:-rotate-3 group-hover:-translate-y-1">
+          latest
+        </span>
+      )}
       <div className="flex-[0_0_120px] self-start flex flex-col gap-1">
         <span className="font-hand text-[44px] leading-none text-sb-ink">{fmtDate(post.date, { month: 'short', day: 'numeric' })}</span>
-        <span className="font-mono text-xs text-[#5A4F43]">{fmtDate(post.date, { year: 'numeric' })} · {post.readTime}</span>
+        <span className="font-mono text-xs leading-relaxed text-[#5A4F43]">
+          {fmtDate(post.date, { year: 'numeric' })}
+          <br />
+          {post.readTime}
+        </span>
       </div>
       <div className="flex-[999_1_360px] min-w-0 flex flex-col gap-3">
         <h3 className="m-0 text-[30px] font-extrabold leading-tight text-sb-ink"><span className="sb-wavy-hover">{post.title}</span></h3>
@@ -110,7 +121,7 @@ export default function JournalPreview() {
         />
         <div className="flex flex-col gap-4">
           <Pop>
-            <JournalEntry post={featured} />
+            <JournalEntry post={featured} latest />
           </Pop>
           {rest.map((post, i) => (
             <Pop key={post.slug} delay={0.08 + i * 0.06}>
