@@ -80,7 +80,7 @@ export default function HeroSection() {
           </motion.p>
           <motion.h1 {...enter(0.08)} className="m-0 font-extrabold tracking-[-0.03em] leading-[0.98] text-[clamp(44px,6.4vw,84px)]">
             Software engineer building products from{' '}
-            <span className="sb-wavy">Lagos, Nigeria</span>.
+            <span className="sb-naija">Lagos, Nigeria</span>.
           </motion.h1>
           <motion.p {...enter(0.16)} className="m-0 text-xl leading-relaxed text-sb-soft max-w-[560px]">
             I build products end to end, from the backend systems that run them to the frontends people use.
