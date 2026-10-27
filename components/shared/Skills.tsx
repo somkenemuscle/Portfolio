@@ -1,8 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { useCallback, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import Modal from "./Modal";
 import { ACCENT, Container, INK, Pop, Section, SectionHeading, cycleTilt, vars } from "./Sketch";
 
 // "How I got here" as a little comic strip: one drawing and one line per
@@ -143,111 +143,46 @@ const longer = [
   "Outside work I edit videos and watch a lot of anime. Both quietly taught me about pacing and composition, and I think that shows up in what I build.",
 ];
 
-// The longer story as a notebook page dropped onto the desk. Closes on the
-// x, a click on the backdrop, or Escape; the page underneath never moves.
+// The longer story as a notebook page dropped onto the desk.
 function StoryModal({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const closeBtn = useRef<HTMLButtonElement>(null);
-  // portal target only exists in the browser; wait for mount to avoid a hydration mismatch
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-    const { overflow } = document.body.style;
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKey);
-    closeBtn.current?.focus();
-    return () => {
-      document.body.style.overflow = overflow;
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [open, onClose]);
-
-  if (!mounted) return null;
-
-  return createPortal(
-    <AnimatePresence>
-      {open && (
-        <motion.div
-          key="story"
-          className="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.2, delay: 0.05 } }}
-        >
-          {/* backdrop */}
-          <button
-            type="button"
-            aria-label="Close story"
-            tabIndex={-1}
-            onClick={onClose}
-            className="absolute inset-0 bg-sb-ink/55 backdrop-blur-[3px] cursor-default"
-          />
-
-          <motion.div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="story-title"
-            className="relative w-full max-w-[680px]"
-            initial={{ opacity: 0, y: 80, scale: 0.85, rotate: -6 }}
-            animate={{ opacity: 1, y: 0, scale: 1, rotate: -1 }}
-            exit={{ opacity: 0, y: 60, scale: 0.92, rotate: 4, transition: { duration: 0.22, ease: "easeIn" } }}
-            transition={{ type: "spring", stiffness: 260, damping: 18 }}
+  return (
+    <Modal open={open} onClose={onClose} labelledBy="story-title">
+      {/* tape */}
+      <motion.span
+        aria-hidden="true"
+        className="absolute -top-3.5 left-1/2 z-10 w-28 h-7 -ml-14 bg-sb-sun/85 border border-sb-ink/20"
+        initial={{ scaleX: 0, rotate: -4 }}
+        animate={{ scaleX: 1, rotate: -4 }}
+        transition={{ delay: 0.25, type: "spring", stiffness: 400, damping: 20 }}
+      />
+      <div
+        className="sb-card sb-lined max-h-[82vh] overflow-y-auto overscroll-contain flex flex-col gap-8 py-10 pr-6 sm:pr-10 pl-12 sm:pl-16"
+        style={vars({ "--sh": ACCENT.gum })}
+      >
+        <h3 id="story-title" className="m-0 font-hand text-[34px] leading-[32px] text-sb-gum-deep -rotate-1 origin-left">
+          the longer version
+        </h3>
+        {longer.map((p, i) => (
+          <motion.p
+            key={p.slice(0, 20)}
+            className="m-0 text-[17px] leading-[32px] text-sb-ink"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 + i * 0.07, type: "spring", stiffness: 260, damping: 24 }}
           >
-            {/* tape */}
-            <motion.span
-              aria-hidden="true"
-              className="absolute -top-3.5 left-1/2 z-10 w-28 h-7 -ml-14 bg-sb-sun/85 border border-sb-ink/20"
-              initial={{ scaleX: 0, rotate: -4 }}
-              animate={{ scaleX: 1, rotate: -4 }}
-              transition={{ delay: 0.25, type: "spring", stiffness: 400, damping: 20 }}
-            />
-            <motion.button
-              ref={closeBtn}
-              type="button"
-              onClick={onClose}
-              aria-label="Close"
-              whileHover={{ rotate: 90, scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              className="absolute -top-4 -right-3 sm:-right-4 z-10 w-11 h-11 rounded-full bg-sb-tomato border-[2.5px] border-sb-ink shadow-[3px_3px_0_#1A1410] flex items-center justify-center text-2xl font-bold leading-none text-sb-ink"
-            >
-              ×
-            </motion.button>
-
-            <div
-              className="sb-card sb-lined max-h-[82vh] overflow-y-auto overscroll-contain flex flex-col gap-8 py-10 pr-6 sm:pr-10 pl-12 sm:pl-16"
-              style={vars({ "--sh": ACCENT.gum })}
-            >
-              <h3 id="story-title" className="m-0 font-hand text-[34px] leading-[32px] text-sb-gum-deep -rotate-1 origin-left">
-                the longer version
-              </h3>
-              {longer.map((p, i) => (
-                <motion.p
-                  key={p.slice(0, 20)}
-                  className="m-0 text-[17px] leading-[32px] text-sb-ink"
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 + i * 0.07, type: "spring", stiffness: 260, damping: 24 }}
-                >
-                  {p}
-                </motion.p>
-              ))}
-              <motion.p
-                className="m-0 font-hand text-[26px] text-sb-tomato-deep -rotate-1 origin-left"
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 + longer.length * 0.07 + 0.1 }}
-              >
-                that&apos;s the whole story (so far)
-              </motion.p>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>,
-    document.body,
+            {p}
+          </motion.p>
+        ))}
+        <motion.p
+          className="m-0 font-hand text-[26px] text-sb-tomato-deep -rotate-1 origin-left"
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 + longer.length * 0.07 + 0.1 }}
+        >
+          that&apos;s the whole story (so far)
+        </motion.p>
+      </div>
+    </Modal>
   );
 }
 

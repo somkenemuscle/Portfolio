@@ -1,9 +1,9 @@
 import Navbar from "@/components/shared/Navbar";
 import Skills from "@/components/shared/Skills";
 import AboutHero from "@/components/shared/AboutHero";
-import Credentials from "@/components/shared/Credentials";
 import Interests from "@/components/shared/Interests";
 import Know from "@/components/shared/Know";
+import LogbookBoard from "@/components/shared/LogbookBoard";
 import Contact from "@/components/shared/contact";
 
 export const metadata = {
@@ -18,8 +18,8 @@ export default function AboutPage() {
       <AboutHero />
       <Skills />
       <Know />
+      <LogbookBoard />
       <Interests />
-      <Credentials />
       <Contact />
     </main>
   );
