@@ -1,33 +1,48 @@
-// The "What I know" sticker collection on the homepage.
-// Move a skill between groups as you get more (or less) comfortable with it.
+// The "What I know" sticker collection on the About page, grouped by what
+// each tool is for. Hovering (or tapping) a sticker shows which projects in
+// projectData.ts used it, so nothing to maintain here for that.
 // Names in [BRACKETS] are placeholders and stay hidden until filled in.
 
 export interface SkillGroup {
   title: string
-  hint: string
+  note: string // handwritten line under the title
   accent: "mint" | "sun" | "peri"
-  learning?: boolean // dashed "still peeling" style
+  wide?: boolean // takes the full row
   skills: string[]
+  learning?: string[] // dashed stickers: picking these up right now
 }
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: "Daily drivers",
-    hint: "use it every day",
+    title: "Backend",
+    note: "where I spend most days",
     accent: "mint",
-    skills: ["TypeScript", "JavaScript", "NestJS", "Node.js", "PostgreSQL", "React", "Next.js"],
+    wide: true,
+    skills: [
+      "NestJS", "Node.js", "Express", "REST APIs", "GraphQL",
+      "PostgreSQL", "MySQL", "MongoDB", "Redis", "BullMQ",
+      "Microservices", "Modular monoliths", "Event-driven", "System design",
+    ],
+    learning: ["Golang", "[SKILL]"],
   },
   {
-    title: "Comfortable",
-    hint: "reach for it often",
+    title: "Frontend",
+    note: "the bit you get to touch",
     accent: "sun",
-    skills: ["Redis", "BullMQ", "Docker", "AWS", "Express", "MongoDB", "Tailwind", "Jest", "Postman"],
+    skills: [
+      "React", "Next.js", "TypeScript", "JavaScript", "Tailwind",
+      "React Query", "Zustand", "Framer Motion",
+      "Responsive design", "Accessibility", "SEO", "Micro-frontends",
+    ],
   },
   {
-    title: "Still peeling",
-    hint: "learning now",
+    title: "Shipping",
+    note: "getting it out the door",
     accent: "peri",
-    learning: true,
-    skills: ["Golang", "[SKILL]"],
+    skills: ["Docker", "AWS", "GitHub Actions", "Playwright", "Jest", "Postman", "Excalidraw", "Claude Code", "Codex", "Cloud"],
+    learning: ["DevOps"],
   },
 ]
+
+// Tools used on every project, even if a project's tech list doesn't say so.
+export const usedEverywhere = ["GitHub Actions", "Excalidraw", "Claude Code", "Codex"]
