@@ -11,6 +11,7 @@ export interface BlogPost {
   readTime: string
   tags: string[]
   coverImage?: { src: string; alt: string } // shown after the header, before the body — skipped if src is empty
+  art?: "tenants" // animated drawing on the journal card (components/shared/JournalArt.tsx); no art, no panel
   content: ContentBlock[]
 }
 
@@ -24,6 +25,7 @@ export const blogs: BlogPost[] = [
     date: "2026-08-09",
     readTime: "6 min read",
     tags: ["Architecture", "Backend", "Postgres"],
+    art: "tenants",
     coverImage: {
       src: "https://ipw88zuno5.ufs.sh/f/rXxdhjbFRcsmODPqjRrhUBcA9sr1TSMCko4q2EaWP8QIxRi7",
       alt: "Choosing a data isolation strategy for a multi-tenant SaaS",
