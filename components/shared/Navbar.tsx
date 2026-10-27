@@ -9,6 +9,7 @@ const navLinks = [
   { label: 'Work', href: '/#work', color: ACCENT.sun },
   { label: 'Experience', href: '/#experience', color: ACCENT.peri },
   { label: 'Journal', href: '/blog', color: ACCENT.tomato },
+  { label: 'Logbook', href: '/logbook', color: ACCENT.gum },
   { label: 'About', href: '/about', color: ACCENT.mint },
 ]
 

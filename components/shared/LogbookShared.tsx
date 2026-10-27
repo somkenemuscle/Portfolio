@@ -116,3 +116,6 @@ export function CountUp({ to }: { to: number }) {
 
 // "2 talks", "1 hackathon"…
 export const countLabel = (type: LogType, n: number) => TYPE_META[type].unit[n === 1 ? 0 : 1]
+
+// The newest entry that has photos (used for the homepage peek).
+export const latestWithPhoto = () => sortedLog().find(e => e.photos?.length)
