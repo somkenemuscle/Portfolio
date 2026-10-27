@@ -14,7 +14,7 @@ const stats = [
   { label: 'Experience', value: '5 years', accent: ACCENT.gum },
   { label: 'Focus', value: 'Product & Systems', accent: ACCENT.sun },
   { label: 'Currently', value: 'Alkademy', accent: ACCENT.mint },
-  { label: 'Availability', value: 'Always building', accent: ACCENT.peri },
+  { label: 'Open to', value: 'New work', accent: ACCENT.peri },
 ]
 
 export function BackLink({ href = '/', label = 'back home' }: { href?: string; label?: string }) {
