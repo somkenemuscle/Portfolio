@@ -51,9 +51,24 @@ html {
     transition: transform .3s cubic-bezier(.34, 1.56, .64, 1), box-shadow .3s cubic-bezier(.34, 1.56, .64, 1);
   }
 
+  .sb-card-hover {
+    position: relative;
+  }
+
   .sb-card-hover:hover {
     transform: translate(-4px, -4px) rotate(-0.6deg);
     box-shadow: 10px 10px 0 var(--sh);
+  }
+
+  /* The lift moves the card off a cursor resting on its bottom/right edge,
+     which un-hovers it, drops it back, re-hovers it... and it vibrates. While
+     lifted, an invisible strip keeps covering the spot it moved away from. */
+  .sb-card-hover:hover::before {
+    content: "";
+    position: absolute;
+    inset: -2.5px -12px -12px -2.5px;
+    border-radius: inherit;
+    z-index: -1;
   }
 
   .sb-sticker {
