@@ -18,24 +18,24 @@ export function JournalEntry({ post, showCover = false }: { post: BlogPost; show
     >
       <span aria-hidden="true" className="absolute left-9 sm:left-12 inset-y-0 w-0.5 bg-sb-tomato" />
       <div className="flex-[0_0_120px] self-start flex flex-col gap-1">
-        <span className="font-hand text-[44px] leading-none text-sb-paper">{fmtDate(post.date, { month: 'short', day: 'numeric' })}</span>
+        <span className="font-hand text-[44px] leading-none text-sb-ink">{fmtDate(post.date, { month: 'short', day: 'numeric' })}</span>
         <span className="font-mono text-xs text-[#5A4F43]">{fmtDate(post.date, { year: 'numeric' })} · {post.readTime}</span>
       </div>
       <div className="flex-[999_1_360px] min-w-0 flex flex-col gap-3">
-        <h3 className="m-0 text-[30px] font-extrabold leading-tight text-sb-paper">{post.title}</h3>
+        <h3 className="m-0 text-[30px] font-extrabold leading-tight text-sb-ink">{post.title}</h3>
         <p className="m-0 text-[17px] leading-relaxed text-[#3B332B]">{post.excerpt}</p>
         <div className="flex flex-wrap gap-2">
           {post.tags.map(t => (
-            <span key={t} className="font-mono text-xs px-2.5 py-1 border-2 border-sb-paper rounded-lg text-sb-paper lowercase">{t}</span>
+            <span key={t} className="font-mono text-xs px-2.5 py-1 border-2 border-sb-ink rounded-lg text-sb-ink lowercase">{t}</span>
           ))}
         </div>
       </div>
       {cover && (
         <div className="relative flex-[1_1_240px] max-w-[320px] rotate-2 mx-auto">
           {/* tape */}
-          <span aria-hidden="true" className="absolute -top-3 left-1/2 -translate-x-1/2 -rotate-3 w-20 h-6 bg-sb-sun/80 border border-sb-paper/20 z-10" />
+          <span aria-hidden="true" className="absolute -top-3 left-1/2 -translate-x-1/2 -rotate-3 w-20 h-6 bg-sb-sun/80 border border-sb-ink/20 z-10" />
           <img src={cover.src} alt={cover.alt} draggable={false}
-            className="block w-full aspect-video object-cover border-[2.5px] border-sb-paper rounded-md shadow-[4px_4px_0_#15110D] bg-sb-card" />
+            className="block w-full aspect-video object-cover border-[2.5px] border-sb-ink rounded-md shadow-[4px_4px_0_#15110D] bg-sb-card" />
         </div>
       )}
     </Link>
@@ -51,11 +51,11 @@ function JournalLine({ post }: { post: BlogPost }) {
       style={vars({ '--sh': ACCENT.tomato })}
     >
       <span aria-hidden="true" className="absolute left-9 sm:left-12 inset-y-0 w-0.5 bg-sb-tomato" />
-      <span className="font-hand text-[28px] leading-none text-sb-paper shrink-0 w-[84px]">
+      <span className="font-hand text-[28px] leading-none text-sb-ink shrink-0 w-[84px]">
         {fmtDate(post.date, { month: 'short', day: 'numeric' })}
       </span>
-      <span className="flex-1 min-w-0 text-lg sm:text-xl font-extrabold leading-snug text-sb-paper truncate">{post.title}</span>
-      <span aria-hidden="true" className="text-xl text-sb-tomato transition-transform group-hover:translate-x-1">→</span>
+      <span className="flex-1 min-w-0 text-lg sm:text-xl font-extrabold leading-snug text-sb-ink truncate">{post.title}</span>
+      <span aria-hidden="true" className="text-xl text-sb-tomato-deep transition-transform group-hover:translate-x-1">→</span>
     </Link>
   )
 }

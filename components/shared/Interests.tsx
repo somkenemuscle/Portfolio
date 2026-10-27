@@ -13,7 +13,7 @@ export default function Interests() {
       <Section id="into">
         <SectionHeading
           label="THINGS I'M INTO" title="Outside the editor" accent="peri"
-          aside={<p className="m-0 font-hand text-[26px] text-sb-gum rotate-2">go on, drag one</p>}
+          aside={<p className="m-0 font-hand text-[26px] text-sb-gum-deep rotate-2">go on, drag one</p>}
         />
         <Pop>
           <div className="sb-card flex flex-wrap justify-center items-center gap-x-8 gap-y-6 px-6 sm:px-8 py-12 min-h-[340px]"
@@ -45,7 +45,7 @@ export default function Interests() {
                       aria-label={`${l.label}: codes.by.oj`}
                       // keep a tap on the icon from starting a drag
                       onPointerDownCapture={e => e.stopPropagation()}
-                      className="w-9 h-9 -my-1 flex items-center justify-center rounded-full bg-sb-paper text-sb-cream border-2 border-sb-cream transition-transform hover:scale-110 hover:-rotate-6 cursor-pointer"
+                      className="w-9 h-9 -my-1 flex items-center justify-center rounded-full bg-sb-ink text-sb-cream border-2 border-sb-ink transition-transform hover:scale-110 hover:-rotate-6 cursor-pointer"
                     >
                       <span className="w-[18px] h-[18px] flex">
                         {l.icon === 'tiktok' ? <TikTokLogo /> : <InstagramLogoIcon className="w-full h-full" aria-hidden="true" />}

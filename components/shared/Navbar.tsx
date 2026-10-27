@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import Link from 'next/link'
-import { ACCENT, Container } from './Sketch'
+import { ACCENT, Container, deep } from './Sketch'
 
 const navLinks = [
   { label: 'Work', href: '/#work', color: ACCENT.sun },
@@ -46,25 +46,25 @@ const Navbar = () => {
         {/* paper strip taped across the top once you scroll */}
         <motion.div
           aria-hidden="true"
-          className="absolute inset-0 bg-sb-paper border-b-[2.5px] border-sb-cream shadow-[0_4px_0_#000]"
+          className="absolute inset-0 bg-sb-paper border-b-[2.5px] border-sb-ink shadow-[0_4px_0_#1A1410]"
           initial={false}
           animate={{ y: scrolled ? '0%' : '-105%' }}
           transition={{ type: 'spring', stiffness: 320, damping: 30 }}
         />
         <Container className={`relative flex items-center justify-between gap-4 transition-[padding] duration-300 ${scrolled ? 'py-2.5' : 'py-4'}`}>
           <Link href="/" className="flex items-center gap-3 group" aria-label="Somkene Ojukwu, home">
-            <span className="w-11 h-11 rounded-xl bg-sb-tomato border-[2.5px] border-sb-cream shadow-[3px_3px_0_#000] flex items-center justify-center font-extrabold text-xl text-sb-paper -rotate-6 transition-transform duration-300 group-hover:rotate-6">
+            <span className="w-11 h-11 rounded-xl bg-sb-tomato border-[2.5px] border-sb-ink shadow-[3px_3px_0_#1A1410] flex items-center justify-center font-extrabold text-xl text-sb-ink -rotate-6 transition-transform duration-300 group-hover:rotate-6">
               SO
             </span>
-            <span className="hidden sm:inline font-extrabold text-xl text-sb-cream">
+            <span className="hidden sm:inline font-extrabold text-xl text-sb-ink">
               somkene
             </span>
           </Link>
 
-          <nav aria-label="Main" className="hidden lg:flex gap-0.5 p-1.5 bg-sb-card border-[2.5px] border-sb-cream rounded-[18px] shadow-[4px_4px_0_#000]">
+          <nav aria-label="Main" className="hidden lg:flex gap-0.5 p-1.5 bg-sb-card border-[2.5px] border-sb-ink rounded-[18px] shadow-[4px_4px_0_#1A1410]">
             {navLinks.map(({ label, href, color }) => (
               <Link key={label} href={href}
-                className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-[15px] font-semibold text-sb-cream transition-colors hover:bg-sb-raised hover:text-sb-sun">
+                className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-[15px] font-semibold text-sb-ink transition-colors hover:bg-sb-raised hover:text-sb-tomato-deep">
                 <span aria-hidden="true" className="w-2 h-2 rounded-full self-center" style={{ background: color }} />
                 {label}
               </Link>
@@ -77,17 +77,17 @@ const Navbar = () => {
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </Link>
             <button
-              className="lg:hidden w-12 h-12 flex flex-col justify-center items-center gap-[5px] bg-sb-card border-[2.5px] border-sb-cream rounded-xl shadow-[3px_3px_0_#000]"
+              className="lg:hidden w-12 h-12 flex flex-col justify-center items-center gap-[5px] bg-sb-card border-[2.5px] border-sb-ink rounded-xl shadow-[3px_3px_0_#1A1410]"
               onClick={() => setOpen(v => !v)}
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
             >
               <motion.span animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }} transition={{ duration: 0.22 }}
-                className="block h-[2.5px] w-5 rounded bg-sb-cream origin-center" />
+                className="block h-[2.5px] w-5 rounded bg-sb-ink origin-center" />
               <motion.span animate={open ? { opacity: 0 } : { opacity: 1 }} transition={{ duration: 0.15 }}
-                className="block h-[2.5px] w-5 rounded bg-sb-cream origin-center" />
+                className="block h-[2.5px] w-5 rounded bg-sb-ink origin-center" />
               <motion.span animate={open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }} transition={{ duration: 0.22 }}
-                className="block h-[2.5px] w-5 rounded bg-sb-cream origin-center" />
+                className="block h-[2.5px] w-5 rounded bg-sb-ink origin-center" />
             </button>
           </div>
         </Container>
@@ -115,14 +115,14 @@ const Navbar = () => {
                   <Link
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-between px-5 py-4 bg-sb-card border-[2.5px] border-sb-cream rounded-2xl text-3xl font-extrabold tracking-tight text-sb-cream"
+                    className="flex items-center justify-between px-5 py-4 bg-sb-card border-[2.5px] border-sb-ink rounded-2xl text-3xl font-extrabold tracking-tight text-sb-ink"
                     style={{ boxShadow: `4px 4px 0 ${l.color}` }}
                   >
                     <span className="flex items-center gap-3">
                       <span aria-hidden="true" className="w-3 h-3 rounded-full" style={{ background: l.color }} />
                       {l.label}
                     </span>
-                    <span aria-hidden="true" style={{ color: l.color }}>↗</span>
+                    <span aria-hidden="true" style={{ color: deep(l.color) }}>↗</span>
                   </Link>
                 </motion.div>
               ))}

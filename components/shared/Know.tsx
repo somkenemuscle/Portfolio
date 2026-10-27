@@ -32,11 +32,11 @@ export default function Know() {
                   {g.skills.map((s, i) => (
                     <span
                       key={`${s}-${i}`}
-                      className={`sb-sticker ${g.learning ? '!bg-transparent !text-sb-cream border-dashed' : ''}`}
+                      className={`sb-sticker ${g.learning ? '!bg-transparent !text-sb-ink border-dashed' : ''}`}
                       style={{ ...vars({ '--r': `${cycleTilt(i + gi * 3)}deg` }), background: cycleAccent(i + gi * 2) }}
                     >
                       {ICONS.get(key(s)) && (
-                        <span className="w-7 h-7 -ml-2 shrink-0 rounded-full bg-sb-cream border-2 border-sb-paper flex items-center justify-center">
+                        <span className="w-7 h-7 -ml-2 shrink-0 rounded-full bg-sb-cream border-2 border-sb-ink flex items-center justify-center">
                           <img src={ICONS.get(key(s))} alt="" className="w-4 h-4 object-contain" draggable={false} />
                         </span>
                       )}
@@ -44,7 +44,7 @@ export default function Know() {
                     </span>
                   ))}
                 </div>
-                {g.learning && <p className="m-0 font-hand text-[22px] text-sb-peri">new stickers land here first</p>}
+                {g.learning && <p className="m-0 font-hand text-[22px] text-sb-peri-deep">new stickers land here first</p>}
               </div>
             </Pop>
           ))}

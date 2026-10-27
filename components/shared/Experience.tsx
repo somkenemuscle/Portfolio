@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { experiences } from "@/constants/experience";
-import { Container, Pop, Section, SectionHeading, cycleAccent, vars } from "./Sketch";
+import { Container, Pop, Section, SectionHeading, cycleAccent, deep, vars } from "./Sketch";
 
 function Experience() {
   const [open, setOpen] = useState<number | null>(null);
@@ -13,7 +13,7 @@ function Experience() {
       <Section id="experience">
         <SectionHeading
           label="THE ROAD SO FAR" title="Where I've worked" accent="peri"
-          aside={<p className="m-0 font-hand text-[26px] text-sb-mint -rotate-2">tap one for the story</p>}
+          aside={<p className="m-0 font-hand text-[26px] text-sb-mint-deep -rotate-2">tap one for the story</p>}
         />
         <div className="flex flex-col gap-4">
           {experiences.map((exp, i) => {
@@ -32,24 +32,24 @@ function Experience() {
                     className="w-full text-left px-6 sm:px-7 py-5 flex flex-wrap items-center gap-x-6 gap-y-2"
                   >
                     <span
-                      className={`w-3.5 h-3.5 rounded-full border-2 border-sb-cream shrink-0 ${current ? "sb-pulse" : ""}`}
+                      className={`w-3.5 h-3.5 rounded-full border-2 border-sb-ink shrink-0 ${current ? "sb-pulse" : ""}`}
                       style={{ background: color }}
                     />
                     <span className="flex-[1_1_240px] flex flex-col gap-0.5 min-w-0">
                       <span className="flex items-center gap-2.5 text-[22px] font-extrabold">
                         {company}
-                        <img src={exp.location} alt="" className="w-5 h-3.5 object-cover rounded-[3px] border border-sb-cream/60" />
+                        <img src={exp.location} alt="" className="w-5 h-3.5 object-cover rounded-[3px] border border-sb-ink/60" />
                       </span>
                       <span className="text-[15px] text-sb-muted">{exp.summary}</span>
                     </span>
                     <span className="flex-[1_1_200px] text-sb-soft">{exp.role}</span>
-                    <span className="font-mono text-[13px] uppercase" style={{ color: current ? color : "#B8AC9B" }}>
+                    <span className="font-mono text-[13px] uppercase" style={{ color: current ? deep(color) : "#6F6255" }}>
                       {exp.duration.replace(" - ", " → ")}
                     </span>
                     <motion.span
                       animate={{ rotate: isOpen ? 45 : 0 }}
                       className="ml-auto text-2xl font-bold leading-none"
-                      style={{ color }}
+                      style={{ color: deep(color) }}
                       aria-hidden="true"
                     >
                       +
@@ -69,13 +69,13 @@ function Experience() {
                           <p className="m-0 text-base leading-relaxed text-sb-soft max-w-[820px]">{exp.description1}</p>
                           <div className="flex flex-wrap gap-2">
                             {exp.technologies.map((t) => (
-                              <span key={t} className="font-mono text-xs px-2.5 py-1 border-2 rounded-lg" style={{ borderColor: color, color }}>
+                              <span key={t} className="font-mono text-xs px-2.5 py-1 border-2 rounded-lg" style={{ borderColor: color, color: deep(color) }}>
                                 {t}
                               </span>
                             ))}
                           </div>
                           {exp.link && (
-                            <a href={exp.link} target="_blank" rel="noopener noreferrer" className="font-mono text-[13px] self-start hover:text-sb-sun">
+                            <a href={exp.link} target="_blank" rel="noopener noreferrer" className="font-mono text-[13px] self-start hover:text-sb-tomato-deep">
                               visit {company} ↗
                             </a>
                           )}

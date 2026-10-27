@@ -52,19 +52,26 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Sketchbook palette
+        // Sketchbook palette (light). Bright accents are fills; the -deep
+        // twins are for text on paper so it stays readable.
         sb: {
-          paper: "#15110D",
-          card: "#211A14",
-          raised: "#2C231B",
+          paper: "#FBF5EA",
+          card: "#FFFDF8",
+          raised: "#F2E9DA",
+          ink: "#1A1410",
           cream: "#F4EBDD",
-          soft: "#CFC3B2",
-          muted: "#B8AC9B",
+          soft: "#4A3F35",
+          muted: "#6F6255",
           sun: "#FFD23F",
           gum: "#FF8FB1",
           mint: "#6FE0B0",
           peri: "#8EA0FF",
           tomato: "#FF6B4A",
+          "sun-deep": "#8A6500",
+          "gum-deep": "#C42D63",
+          "mint-deep": "#0E7A4F",
+          "peri-deep": "#3E4FD0",
+          "tomato-deep": "#C63A18",
         },
       },
       fontFamily: {
