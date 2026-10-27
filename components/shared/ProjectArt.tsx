@@ -1,6 +1,6 @@
 // Hand-drawn cover art for project cards, used instead of screenshots.
 // Each scene is a small looping cartoon; motion classes live in globals.css
-// (art-*) and switch off under prefers-reduced-motion.
+// (art-*).
 
 const INK = '#15110D'
 const CREAM = '#F4EBDD'
