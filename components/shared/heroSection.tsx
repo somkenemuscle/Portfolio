@@ -1,7 +1,8 @@
 'use client'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { Volume2 } from 'lucide-react'
 import { ACCENT, Container, INK, Spark } from './Sketch'
 import { latestWithPhoto, thumb } from './HighlightsShared'
 
@@ -70,14 +71,65 @@ function TuckedPolaroid() {
   )
 }
 
+// A little speaker sticker beside my name: click it to hear me say it. While
+// it plays, the icon swaps for a bouncing sound wave.
+function SayMyName() {
+  const audio = useRef<HTMLAudioElement | null>(null)
+  const [playing, setPlaying] = useState(false)
+
+  // load the clip the moment someone shows interest, so the click plays instantly
+  const prime = () => {
+    if (audio.current) return audio.current
+    const a = new Audio('/audio/somkene.m4a')
+    a.preload = 'auto'
+    a.onended = a.onpause = () => setPlaying(false)
+    audio.current = a
+    return a
+  }
+
+  const play = () => {
+    const a = prime()
+    a.currentTime = 0
+    setPlaying(true)
+    a.play().catch(() => setPlaying(false))
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={play}
+      onPointerEnter={prime}
+      onFocus={prime}
+      aria-label="Hear how I say my name"
+      title="Hear how I say my name"
+      className="group relative inline-flex items-center justify-center w-11 h-11 align-middle rounded-full bg-sb-sun text-sb-ink border-[2.5px] border-sb-ink shadow-[3px_3px_0_#1A1410] rotate-6 transition-transform duration-300 ease-[cubic-bezier(.34,1.56,.64,1)] hover:-rotate-6 hover:scale-110 active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0_#1A1410] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-sb-ink"
+    >
+      {playing ? (
+        <span aria-hidden="true" className="flex items-center gap-[3px] h-5">
+          {[0, 1, 2, 3].map(i => (
+            <motion.span key={i} className="block w-[3px] h-full rounded-full bg-sb-ink origin-center"
+              animate={{ scaleY: [0.3, 1, 0.45, 0.85, 0.3] }}
+              transition={{ duration: 0.7, repeat: Infinity, ease: 'easeInOut', delay: i * 0.12 }} />
+          ))}
+        </span>
+      ) : (
+        <Volume2 size={20} strokeWidth={2.6} aria-hidden="true" />
+      )}
+    </button>
+  )
+}
+
 export default function HeroSection() {
   return (
     <Container>
       <section id="top" className="flex flex-wrap items-center gap-14 pt-36 pb-20">
         <div className="flex-[999_1_520px] min-w-0 flex flex-col gap-6">
-          <motion.p {...enter(0)} className="m-0 font-hand text-[34px] text-sb-gum-deep -rotate-2 origin-left">
-            hey, I&apos;m Somkene
-          </motion.p>
+          <motion.div {...enter(0)} className="flex items-center gap-3.5">
+            <p className="m-0 font-hand text-[34px] text-sb-gum-deep -rotate-2 origin-left">
+              hey, I&apos;m Somkene
+            </p>
+            <SayMyName />
+          </motion.div>
           <motion.h1 {...enter(0.08)} className="m-0 font-extrabold tracking-[-0.03em] leading-[0.98] text-[clamp(44px,6.4vw,84px)]">
             Software engineer building products from{' '}
             <span className="sb-naija">Lagos, Nigeria</span>.

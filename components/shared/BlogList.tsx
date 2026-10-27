@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { blogs } from '@/constants/blogs'
 import { BackLink } from './AboutHero'
 import { JournalEntry, sortedPosts } from './JournalPreview'
 import { ACCENT, Container, Pop, Spark } from './Sketch'
@@ -14,7 +13,6 @@ const enter = (delay: number) => ({
 
 export default function BlogList() {
   const posts = sortedPosts()
-  const tags = Array.from(new Set(blogs.flatMap(b => b.tags)))
 
   return (
     <Container>
@@ -32,14 +30,6 @@ export default function BlogList() {
           <motion.p {...enter(0.18)} className="m-0 text-xl leading-relaxed text-sb-soft max-w-[620px]">
             Notes from the build: engineering decisions, things I got wrong, and the occasional creative tangent.
           </motion.p>
-          {tags.length > 0 && (
-            <motion.p {...enter(0.24)} className="m-0 pt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="font-hand text-[24px] text-sb-muted">filed under</span>
-              {tags.map(t => (
-                <span key={t} className="font-mono text-sm text-sb-soft lowercase">#{t}</span>
-              ))}
-            </motion.p>
-          )}
         </div>
 
         <div className="flex flex-col gap-8">
