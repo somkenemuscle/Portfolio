@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { pageMeta } from "@/constants/site";
 import Navbar from "@/components/shared/Navbar";
 import HeroSection from "@/components/shared/heroSection";
 import { Projects } from "@/components/shared/Projects";
@@ -5,6 +7,8 @@ import JournalPreview from "@/components/shared/JournalPreview";
 import Experience from "@/components/shared/Experience";
 import Contact from "@/components/shared/contact";
 import HighlightsBadge from "@/components/shared/HighlightsBadge";
+
+export const metadata: Metadata = pageMeta({ path: "/" });
 
 export default function Home() {
   return (

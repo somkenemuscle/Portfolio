@@ -70,10 +70,6 @@ function Contact() {
             style={{ boxShadow: "8px 8px 0 #1A1410" }}>
             <Spark size={90} fill={ACCENT.gum} className="sb-spin absolute -top-5 -left-5" />
             <Spark size={50} fill={ACCENT.mint} className="sb-spin absolute bottom-6 right-8" style={{ animationDirection: "reverse" }} />
-            <span className="inline-flex items-center gap-2.5 font-mono text-[13px] uppercase tracking-[0.1em] px-3.5 py-1.5 rounded-full bg-sb-card border-2 border-sb-ink">
-              <span className="w-2.5 h-2.5 rounded-full bg-sb-mint border-[1.5px] border-sb-ink sb-pulse" aria-hidden="true" />
-              open to new work
-            </span>
             <p className="m-0 font-hand text-[32px] -rotate-2">got an idea?</p>
             <h2 className="m-0 font-extrabold tracking-[-0.03em] leading-none text-[clamp(44px,6vw,80px)]">
               Let&apos;s build something fun.
