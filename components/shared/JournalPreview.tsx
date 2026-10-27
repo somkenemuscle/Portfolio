@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { blogs, type BlogPost } from '@/constants/blogs'
 import { ACCENT, Container, Pop, Section, SectionHeading, vars } from './Sketch'
+import JournalArt from './JournalArt'
 
 export const fmtDate = (iso: string, opts: Intl.DateTimeFormatOptions) =>
   new Date(iso + 'T00:00:00').toLocaleDateString('en-US', opts)
@@ -35,10 +36,10 @@ function CornerCurl() {
   )
 }
 
-// One journal entry on lined notebook paper. With `showCover`, the post's
-// cover image is taped onto the page.
-export function JournalEntry({ post, showCover = false }: { post: BlogPost; showCover?: boolean }) {
-  const cover = showCover && post.coverImage?.src ? post.coverImage : null
+// One journal entry on lined notebook paper. With `showArt`, the post's
+// animated drawing is taped onto the page (the cover photo stays on the post).
+export function JournalEntry({ post, showArt = false }: { post: BlogPost; showArt?: boolean }) {
+  const art = showArt ? post.art : undefined
   return (
     <Link
       href={`/journal/${post.slug}`}
@@ -61,12 +62,11 @@ export function JournalEntry({ post, showCover = false }: { post: BlogPost; show
           ))}
         </div>
       </div>
-      {cover && (
+      {art && (
         <div className="relative flex-[1_1_240px] max-w-[320px] rotate-2 mx-auto transition-transform duration-300 ease-[cubic-bezier(.34,1.56,.64,1)] group-hover:rotate-0 group-hover:scale-[1.02]">
-          {/* tape: lifts a little, like you're about to peel the photo off */}
+          {/* tape: lifts a little, like you're about to peel the drawing off */}
           <span aria-hidden="true" className="absolute -top-3 left-1/2 -translate-x-1/2 -rotate-3 w-20 h-6 bg-sb-sun/80 border border-sb-ink/20 z-10 transition-transform duration-300 group-hover:-translate-y-1.5 group-hover:-rotate-[9deg]" />
-          <img src={cover.src} alt={cover.alt} draggable={false}
-            className="block w-full aspect-video object-cover border-[2.5px] border-sb-ink rounded-md shadow-[4px_4px_0_#15110D] bg-sb-card" />
+          <JournalArt art={art} />
         </div>
       )}
     </Link>

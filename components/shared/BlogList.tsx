@@ -45,7 +45,7 @@ export default function BlogList() {
         <div className="flex flex-col gap-8">
           {posts.map((post, i) => (
             <Pop key={post.id} delay={0.1 + i * 0.08}>
-              <JournalEntry post={post} showCover />
+              <JournalEntry post={post} showArt />
             </Pop>
           ))}
         </div>
