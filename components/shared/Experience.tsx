@@ -38,7 +38,7 @@ function Experience() {
                     <span className="flex-1 min-w-[200px] flex flex-col gap-0.5">
                       <span className="flex flex-wrap items-center gap-2.5 text-[22px] font-extrabold">
                         {company}
-                        <img src={exp.location} alt="" className="w-5 h-3.5 object-cover rounded-[3px] border border-sb-ink/60" />
+                        <img src={exp.location} alt="" loading="lazy" decoding="async" className="w-5 h-3.5 object-cover rounded-[3px] border border-sb-ink/60" />
                       </span>
                       <span className="flex flex-wrap items-center gap-2 text-[15px] text-sb-soft">
                         {exp.role}

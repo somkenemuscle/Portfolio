@@ -86,12 +86,16 @@ export function PaperArt({ entry, compact = false }: { entry: Highlight; compact
   )
 }
 
+// A 640px copy of a highlight photo (public/highlights/thumbs) for anywhere it
+// shows small; the full-size file is only loaded in the gallery.
+export const thumb = (src: string) => src.replace('/highlights/', '/highlights/thumbs/')
+
 // The entry's cover: its first photo, or the paper stand-in.
 export function Cover({ entry, compact, className = '' }: { entry: Highlight; compact?: boolean; className?: string }) {
   const photo = entry.photos?.[0]
   return photo ? (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={photo.src} alt={photo.alt} loading="lazy" draggable={false}
+    <img src={thumb(photo.src)} alt={photo.alt} loading="lazy" decoding="async" draggable={false}
       className={`absolute inset-0 w-full h-full object-cover select-none ${className}`} />
   ) : (
     <PaperArt entry={entry} compact={compact} />

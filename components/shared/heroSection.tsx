@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ACCENT, Container, INK, Spark } from './Sketch'
-import { latestWithPhoto } from './HighlightsShared'
+import { latestWithPhoto, thumb } from './HighlightsShared'
 
 const RESUME_URL = 'https://ipw88zuno5.ufs.sh/f/rXxdhjbFRcsmn6PErT5l8kYXyHG2ceZvwRmFfOCbVuKPWIiB'
 
@@ -55,7 +55,7 @@ function TuckedPolaroid() {
           <span aria-hidden="true" className="absolute -top-2.5 left-1/2 -ml-6 w-12 h-[18px] rotate-[-8deg] bg-sb-sun/85 border border-sb-ink/20" />
           <span className="block h-[104px] overflow-hidden rounded-[3px] border-2 border-sb-ink bg-sb-raised">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={photo.src} alt="" draggable={false}
+            <img src={thumb(photo.src)} alt="" decoding="async" draggable={false}
               className="w-full h-full object-cover select-none transition-transform duration-500 group-hover:scale-110" />
           </span>
           <span className="flex items-center justify-between gap-1 mt-1.5 px-0.5">
