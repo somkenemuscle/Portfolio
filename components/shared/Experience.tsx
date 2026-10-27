@@ -29,31 +29,47 @@ function Experience() {
                     type="button"
                     onClick={() => setOpen(isOpen ? null : i)}
                     aria-expanded={isOpen}
-                    className="w-full text-left px-6 sm:px-7 py-5 flex flex-wrap items-center gap-x-6 gap-y-2"
+                    className="group relative w-full text-left pl-6 pr-14 sm:px-7 py-5 flex flex-wrap items-center gap-x-5 gap-y-3"
                   >
                     <span
-                      className={`w-3.5 h-3.5 rounded-full border-2 border-sb-ink shrink-0 ${current ? "sb-pulse" : ""}`}
+                      className={`w-3.5 h-3.5 rounded-full border-2 border-sb-ink shrink-0 transition-transform duration-300 ease-[cubic-bezier(.34,1.56,.64,1)] group-hover:scale-[1.4] ${current ? "sb-pulse" : ""}`}
                       style={{ background: color }}
                     />
-                    <span className="flex-[1_1_240px] flex flex-col gap-0.5 min-w-0">
-                      <span className="flex items-center gap-2.5 text-[22px] font-extrabold">
+                    <span className="flex-1 min-w-[200px] flex flex-col gap-0.5">
+                      <span className="flex flex-wrap items-center gap-2.5 text-[22px] font-extrabold">
                         {company}
                         <img src={exp.location} alt="" className="w-5 h-3.5 object-cover rounded-[3px] border border-sb-ink/60" />
                       </span>
-                      <span className="text-[15px] text-sb-muted">{exp.summary}</span>
+                      <span className="flex flex-wrap items-center gap-2 text-[15px] text-sb-soft">
+                        {exp.role}
+                        {exp.badge && (
+                          <span className="font-mono text-[10.5px] uppercase tracking-[0.08em] leading-none px-1.5 py-1 rounded-md border-[1.5px] border-sb-ink bg-sb-cream text-sb-ink -rotate-2">
+                            {exp.badge}
+                          </span>
+                        )}
+                      </span>
                     </span>
-                    <span className="flex-[1_1_200px] text-sb-soft">{exp.role}</span>
-                    <span className="font-mono text-[13px] uppercase" style={{ color: current ? deep(color) : "#6F6255" }}>
-                      {exp.duration.replace(" - ", " → ")}
+                    {/* right side: the headline result, dates and the toggle */}
+                    <span className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-5 basis-full sm:basis-auto pl-[34px] sm:pl-0">
+                      {exp.win && (
+                        <span className="sb-sticker !text-[14px] !px-3 !py-1 !border-[2.5px] whitespace-nowrap"
+                          style={{ ...vars({ "--r": `${i % 2 ? 2 : -2}deg` }), background: color }}>
+                          {exp.win}
+                        </span>
+                      )}
+                      <span className="font-mono text-[13px] uppercase whitespace-nowrap" style={{ color: current ? deep(color) : "#6F6255" }}>
+                        {exp.duration.replace(" - ", " → ")}
+                      </span>
+                      <span aria-hidden="true" className="absolute top-6 right-6 sm:static inline-block transition-transform duration-300 ease-[cubic-bezier(.34,1.56,.64,1)] group-hover:scale-125">
+                        <motion.span
+                          animate={{ rotate: isOpen ? 45 : 0 }}
+                          className="block text-2xl font-bold leading-none"
+                          style={{ color: deep(color) }}
+                        >
+                          +
+                        </motion.span>
+                      </span>
                     </span>
-                    <motion.span
-                      animate={{ rotate: isOpen ? 45 : 0 }}
-                      className="ml-auto text-2xl font-bold leading-none"
-                      style={{ color: deep(color) }}
-                      aria-hidden="true"
-                    >
-                      +
-                    </motion.span>
                   </button>
 
                   <AnimatePresence initial={false}>
@@ -65,8 +81,23 @@ function Experience() {
                         transition={{ type: "spring", stiffness: 260, damping: 28 }}
                         className="overflow-hidden"
                       >
-                        <div className="px-6 sm:px-7 pb-6 flex flex-col gap-4 border-t-2 border-dashed border-sb-raised pt-5">
-                          <p className="m-0 text-base leading-relaxed text-sb-soft max-w-[820px]">{exp.description1}</p>
+                        <div className="px-6 sm:px-7 pb-6 pt-5 sm:pl-[61px] flex flex-col gap-4 border-t-2 border-dashed border-sb-raised">
+                          <p className="m-0 font-hand text-[22px] leading-snug" style={{ color: deep(color) }}>{exp.summary}</p>
+                          {/* what I did, one thing per line */}
+                          <ul className="m-0 p-0 list-none flex flex-col gap-2.5 max-w-[780px]">
+                            {exp.points.map((pt, pi) => (
+                              <motion.li
+                                key={pt}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ type: "spring", stiffness: 320, damping: 24, delay: 0.08 + pi * 0.06 }}
+                                className="flex gap-3 text-base leading-relaxed text-sb-soft"
+                              >
+                                <span aria-hidden="true" className="mt-[9px] w-2.5 h-2.5 shrink-0 rounded-full border-2 border-sb-ink" style={{ background: color }} />
+                                {pt}
+                              </motion.li>
+                            ))}
+                          </ul>
                           <div className="flex flex-wrap gap-2">
                             {exp.technologies.map((t) => (
                               <span key={t} className="font-mono text-xs px-2.5 py-1 border-2 rounded-lg" style={{ borderColor: color, color: deep(color) }}>

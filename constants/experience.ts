@@ -6,7 +6,13 @@ export const experiences = [
         company: "@Alkademy ",
         location: 'https://flagcdn.com/w320/hu.png',
         summary: "Backend services across Alkademy's suite of products.",
-        description1: "Design and build backend services for a multi-tenant journal platform, working with complex datasets and developing efficient data querying and processing workflows. Reduced API latency by roughly 35% through database and query optimisation, Redis caching, application-level improvements, and moving resource-intensive operations to background workers. Designed asynchronous job processing with BullMQ to keep heavy operations off the main request cycle, and integrated AWS S3 for secure file storage with signed URLs. Lead the breakdown and resolution of complex engineering problems across APIs, databases, and infrastructure, with system design decisions focused on performance, reliability, and scalability.",
+        win: "−35% API latency", // headline result, shown as a sticker on the row
+        points: [
+            "I design and build the backend services behind a multi-tenant journal platform, with a lot of complex data to query and process.",
+            "Cut API latency by about 35% through query tuning, Redis caching and moving heavy work onto background workers.",
+            "Set up BullMQ job queues so heavy operations never hold up a request, and AWS S3 with signed URLs for secure file storage.",
+            "I lead the breakdown of hard problems across APIs, databases and infrastructure, and make the system design calls with performance and reliability in mind.",
+        ],
         technologies: ["Typescript", "NestJs", "NodeJs", "Express", "Docker", "Redis", "BullMQ", "AWS", "S3", "Postgresql"],
     },
     {
@@ -16,7 +22,13 @@ export const experiences = [
         company: "@Beauty Butler ",
         location: 'https://flagcdn.com/w320/ng.png',
         summary: "Booking platform, concierge portal, and admin dashboard for beauty businesses.",
-        description1: "Increased booking completion rates by roughly 25% by redesigning the end-to-end customer booking experience, simplifying scheduling workflows, and integrating real-time availability, payments, and location-based search across three production applications. Reduced average API response times by roughly 35% through database optimisation, Redis caching, and application performance tuning. Built and delivered the customer booking platform, concierge portal, and administrative dashboard, enabling 20+ partner businesses to manage bookings, customers, payments, and day-to-day operations through a unified platform. Architected scalable backend services for authentication, booking, scheduling, payments, notifications, and chat, and established reusable engineering patterns and code review practices that improved consistency across the team.",
+        win: "+25% bookings", // headline result, shown as a sticker on the row
+        points: [
+            "Built three production apps: the customer booking platform, a concierge portal and an admin dashboard, used by 20+ partner businesses.",
+            "Redesigned the booking flow end to end with real-time availability, payments and location search. Completed bookings went up about 25%.",
+            "Brought API response times down about 35% with database work, Redis caching and performance tuning.",
+            "Architected the backend for auth, booking, scheduling, payments, notifications and chat, and set up the shared patterns and code reviews the team worked by.",
+        ],
         technologies: ["Typescript", "NextJs", "NestJs", "NodeJs", "Express", "Socket.io", "Docker", "Redis", "AWS", "MySQL"],
     },
     {
@@ -26,7 +38,13 @@ export const experiences = [
         company: "@Clouddley ",
         location: 'https://flagcdn.com/w320/us.png',
         summary: "Cloud management dashboards for provisioning apps, databases, and servers.",
-        description1: "Reduced page load times by roughly 40% and improved Core Web Vitals through rendering optimisation, code splitting, lazy loading, and Lighthouse-driven performance tuning. Increased organic search visibility through technical SEO improvements, structured metadata, and accessibility enhancements across customer-facing products. Accelerated feature delivery by architecting reusable component libraries and shared hooks, reducing duplicate code across platform modules. Developed secure cloud management dashboards and authentication workflows that let developers provision and manage applications, databases, VPS instances, and AI workloads through a unified platform.",
+        win: "−40% load time", // headline result, shown as a sticker on the row
+        points: [
+            "Built the dashboards developers use to spin up and manage apps, databases, VPS instances and AI workloads, plus the auth flows around them.",
+            "Made pages load about 40% faster and improved Core Web Vitals with code splitting, lazy loading and Lighthouse-driven tuning.",
+            "Grew organic search visibility through technical SEO, structured metadata and accessibility work.",
+            "Created shared component libraries and hooks, so the team shipped features faster with less duplicate code.",
+        ],
         technologies: ["Typescript", "React", "NextJs", "NextAuth.js", "Zustand", "Tailwind", "React Query", "Vercel", "GitHub Actions"],
     },
     {
@@ -37,7 +55,11 @@ export const experiences = [
         company: "@Mindera ",
         location: 'https://flagcdn.com/w320/gb.png',
         summary: "Frontend engineering programme focused on React, Next.js, and TypeScript.",
-        description1: "Completed an intensive frontend engineering programme focused on React, Next.js, TypeScript, modern JavaScript, and software architecture through hands-on project development. Led frontend development across collaborative team projects, translating product requirements into responsive, accessible, and maintainable user interfaces within Agile delivery cycles. Designed reusable React components and scalable frontend architecture, applying performance optimisation, debugging, and clean code principles through peer code reviews.",
+        points: [
+            "An intensive frontend programme in React, Next.js, TypeScript and software architecture, learned by building real projects.",
+            "Led the frontend on team projects, turning product requirements into responsive, accessible interfaces in Agile sprints.",
+            "Designed reusable React components and sharpened my clean-code habits through peer code reviews.",
+        ],
         technologies: ["Typescript", "React", "NextJs", "Jest", "Zustand", "Javascript", "HTML5", "CSS", "Tailwind", "Git", "Figma"],
     },
     {
@@ -48,7 +70,11 @@ export const experiences = [
         company: "@WildFire ",
         location: 'https://flagcdn.com/w320/ng.png',
         summary: "Backend services and RESTful APIs with Node.js and Express.",
-        description1: "Developed and maintained backend services and RESTful APIs using Node.js, Express.js, MySQL, and MongoDB, contributing to production web applications under the guidance of senior engineers. Implemented authentication, request validation, and business logic while improving API reliability and stability through debugging and code enhancements. Collaborated within Agile development teams, participating in code reviews, API testing, and Git-based workflows.",
+        points: [
+            "Built and maintained REST APIs with Node.js, Express, MySQL and MongoDB on production apps, guided by senior engineers.",
+            "Implemented authentication, request validation and business logic, and made the APIs more reliable through debugging.",
+            "Worked in an Agile team with code reviews, API testing and Git-based workflows.",
+        ],
         technologies: ["Javascript", "NodeJs", "Express", "MySQL", "MongoDB", "Git", "Postman"],
     },
 ];
