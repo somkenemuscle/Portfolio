@@ -136,9 +136,6 @@ html {
     filter: drop-shadow(1.2px 0 0 #1A1410) drop-shadow(-1.2px 0 0 #1A1410) drop-shadow(0 1.2px 0 #1A1410) drop-shadow(0 -1.2px 0 #1A1410);
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
-    text-decoration: underline wavy #008751;
-    text-decoration-thickness: 3px;
-    text-underline-offset: 10px;
     animation: sb-ankara 24s linear infinite;
   }
 
