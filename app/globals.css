@@ -221,6 +221,9 @@ html {
 .art-spin-slow { transform-box: fill-box; transform-origin: center; animation: art-spin 14s linear infinite; }
 .art-reps { transform-box: fill-box; transform-origin: center; animation: art-reps 1.3s ease-in-out infinite; }
 .art-shake { animation: art-shake .35s linear infinite; }
+.art-breathe { transform-box: fill-box; transform-origin: 50% 100%; animation: art-breathe 3.2s ease-in-out infinite; }
+.art-tail { animation: art-tail 2.8s ease-in-out infinite; }
+.art-slowblink { transform-box: fill-box; transform-origin: center; animation: art-slowblink 3.4s ease-in-out infinite; }
 .art-bounce { transform-box: fill-box; transform-origin: 50% 100%; animation: art-bounce 1.6s ease-in infinite; }
 
 @keyframes art-twinkle { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(.6) rotate(45deg); } }
@@ -261,6 +264,9 @@ html {
 @keyframes sb-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-3px); } }
 @keyframes sb-nudge-r { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
 @keyframes art-hop { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-7px); } 60% { transform: translateY(-7px); } }
+@keyframes art-breathe { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.045); } }
+@keyframes art-tail { 0%, 55%, 100% { transform: rotate(0); } 70% { transform: rotate(-26deg); } 85% { transform: rotate(8deg); } }
+@keyframes art-slowblink { 0%, 62%, 100% { transform: scaleY(1); } 72%, 80% { transform: scaleY(0.1); } }
 @keyframes art-spin { to { transform: rotate(360deg); } }
 @keyframes art-bounce {
   0%, 100% { transform: translateY(0) scale(1.08, .9); }

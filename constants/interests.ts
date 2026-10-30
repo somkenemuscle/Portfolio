@@ -2,7 +2,7 @@
 // components/shared/Interests.tsx; hovering (or tapping) it shows the bubble.
 // Text in [BRACKETS] is a placeholder and stays hidden until filled in.
 
-export type DeskObject = "laptop" | "headphones" | "parfait" | "camera" | "notepad" | "food" | "screen" | "controller" | "football" | "basketball" | "gym" | "phone"
+export type DeskObject = "laptop" | "headphones" | "parfait" | "camera" | "notepad" | "food" | "screen" | "controller" | "football" | "basketball" | "gym" | "phone" | "cat"
 
 export interface DeskItem {
   id: DeskObject
@@ -70,6 +70,11 @@ export const desk: DeskItem[] = [
     id: "food",
     label: "Jollof rice & chicken",
     note: "My favourite thing to eat, and to cook.",
+  },
+  {
+    id: "cat",
+    label: "I'm Penny",
+    note: "Meow. Chief napping officer, and the real boss of this desk.",
   },
   {
     id: "screen",

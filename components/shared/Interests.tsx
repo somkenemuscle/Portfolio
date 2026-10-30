@@ -326,6 +326,96 @@ const Dumbbell = ({ on }: ArtProps) => (
   </g>
 )
 
+// Penny, white and gold, curled up asleep on the mat: she breathes, her tail
+// tip flicks and the z's drift up. Pick her up and she wakes: ears perk, head
+// lifts, and she gives you a slow cat blink (that's cat for "I like you").
+const GOLD = '#E8AE4F'
+const PINK = '#F4A6B4'
+const FUR = '#FFFDF8'
+const TailTip = ({ color, width }: { color: string; width: number }) => (
+  <g transform="translate(16 44)">
+    <g className="art-tail" style={{ transformBox: 'view-box', transformOrigin: '0 0' }}>
+      <path d="M0 0 q-10 0 -14 -12" stroke={color} strokeWidth={width} fill="none" strokeLinecap="round" />
+    </g>
+  </g>
+)
+const Cat = ({ on }: ArtProps) => {
+  const ease = 'transform .45s cubic-bezier(.34,1.56,.64,1)'
+  const ear = (side: 1 | -1) => ({
+    transform: on ? 'rotate(0)' : `rotate(${side * 14}deg)`,
+    transformBox: 'fill-box' as const, transformOrigin: '50% 100%', transition: ease,
+  })
+  return (
+    <>
+      <defs>
+        <clipPath id="penny-body"><ellipse cx="12" cy="8" rx="60" ry="30" /></clipPath>
+        <clipPath id="penny-head"><circle r="27" /></clipPath>
+      </defs>
+      {/* body, rising and falling as she breathes */}
+      <g className="art-breathe">
+        <ellipse cx="12" cy="8" rx="60" ry="30" fill={FUR} />
+        <g clipPath="url(#penny-body)">
+          <ellipse cx="44" cy="-16" rx="48" ry="26" fill={GOLD} />
+          <ellipse cx="-4" cy="-24" rx="18" ry="12" fill={GOLD} />
+        </g>
+        <ellipse cx="12" cy="8" rx="60" ry="30" fill="none" {...line} />
+      </g>
+      {/* tail wrapped round the front, tip flicking */}
+      <path d="M64 18 C92 26 86 46 52 44 H16" stroke={INK} strokeWidth="19" fill="none" strokeLinecap="round" />
+      <TailTip color={INK} width={19} />
+      <path d="M64 18 C92 26 86 46 52 44 H16" stroke={GOLD} strokeWidth="13" fill="none" strokeLinecap="round" />
+      <TailTip color={FUR} width={13} />
+      {/* tucked paws */}
+      <ellipse cx="-34" cy="30" rx="11" ry="7" fill={FUR} {...line} strokeWidth={2.5} />
+      <ellipse cx="-14" cy="33" rx="11" ry="7" fill={FUR} {...line} strokeWidth={2.5} />
+      {/* head: lifts when she wakes */}
+      <g transform="translate(-44 -2)">
+        <g style={{ transform: on ? 'translateY(-6px) rotate(-6deg)' : 'none', transformBox: 'fill-box', transformOrigin: '50% 100%', transition: ease }}>
+          <g style={ear(-1)}>
+            <path d="M-23 -12 L-25 -42 L-3 -25 Z" fill={FUR} {...line} strokeWidth={2.5} />
+            <path d="M-19 -17 L-21 -34 L-9 -25 Z" fill={PINK} />
+          </g>
+          <g style={ear(1)}>
+            <path d="M23 -12 L25 -42 L3 -25 Z" fill={GOLD} {...line} strokeWidth={2.5} />
+            <path d="M19 -17 L21 -34 L9 -25 Z" fill={PINK} />
+          </g>
+          <circle r="27" fill={FUR} />
+          <g clipPath="url(#penny-head)">
+            <path d="M2 -30 Q30 -30 30 0 Q20 -4 14 -10 Q6 -14 2 -30 Z" fill={GOLD} />
+          </g>
+          <circle r="27" fill="none" {...line} />
+          {on ? (
+            <g className="art-slowblink">
+              {[-10, 10].map(x => (
+                <g key={x}>
+                  <ellipse cx={x} cy="1" rx="4" ry="5.5" fill="#3E7D4F" stroke={INK} strokeWidth="2" />
+                  <ellipse cx={x} cy="1.5" rx="1.6" ry="4" fill={INK} />
+                  <circle cx={x - 1.5} cy="-1.5" r="1.3" fill="#FFFFFF" />
+                </g>
+              ))}
+            </g>
+          ) : (
+            <path d="M-15 1 q5 5 10 0 M5 1 q5 5 10 0" {...line} strokeWidth={2.5} fill="none" />
+          )}
+          <path d="M-3 9 h6 l-3 4 Z" fill={PINK} stroke={INK} strokeWidth="1.5" strokeLinejoin="round" />
+          <path d="M-5 15 q2.5 3 5 0 q2.5 3 5 0" {...line} strokeWidth={1.8} fill="none" />
+          <path d="M-12 12 L-32 9 M-12 15 L-31 18 M12 12 L32 9 M12 15 L31 18" {...line} strokeWidth={1.4} opacity="0.55" />
+          <circle cx="-17" cy="10" r="4" fill={PINK} style={{ opacity: on ? 0.6 : 0, transition: 'opacity .3s' }} />
+          <circle cx="17" cy="10" r="4" fill={PINK} style={{ opacity: on ? 0.6 : 0, transition: 'opacity .3s' }} />
+        </g>
+      </g>
+      {/* z's while she sleeps, a heart once she's awake */}
+      <g style={{ opacity: on ? 0 : 1, transition: 'opacity .3s' }}>
+        <text className="art-steam" x="-92" y="-36" fontSize="18" fill={INK} style={hand}>z</text>
+        <text className="art-steam" x="-106" y="-52" fontSize="24" fill={INK} style={{ ...hand, animationDelay: '-1.3s' }}>z</text>
+      </g>
+      <g className="art-bob-slow" style={{ opacity: on ? 1 : 0, transition: 'opacity .3s' }}>
+        <path d="M62 -40 c-4 -8 -16 -4 -12 4 l12 12 l12 -12 c4 -8 -8 -12 -12 -4 Z" fill={ACCENT.gum} {...line} strokeWidth={2} />
+      </g>
+    </>
+  )
+}
+
 // ── Lagos time, for the phone ──
 
 // Ticks on the minute (the clock only shows minutes), null until mounted so
@@ -485,7 +575,7 @@ const SPOTS: Record<DeskObject, Spot> = {
   football: { x: 160, y: 292, r: -4, s: 0.9, hit: [76, 50], art: Football, bubble: { x: 130, y: 342, side: 'below', align: 'start' } },
   basketball: { x: 840, y: 290, r: 4, s: 0.9, hit: [76, 50], art: Basketball, bubble: { x: 870, y: 340, side: 'below', align: 'end' } },
   gym: { x: 645, y: 298, r: -6, s: 0.85, hit: [100, 42], art: Dumbbell, bubble: { x: 645, y: 338, side: 'below', align: 'center' } },
-
+  cat: { x: 450, y: 296, r: -3, s: 0.85, hit: [92, 50], art: Cat, bubble: { x: 450, y: 336, side: 'below', align: 'center' } },
   controller: { x: 870, y: 420, r: 7, s: 0.9, hit: [112, 80], art: Controller, bubble: { x: 885, y: 352, side: 'above', align: 'end' } },
 }
 
