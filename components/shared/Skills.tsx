@@ -194,7 +194,7 @@ function Skills() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="flex gap-5 overflow-x-auto overflow-y-hidden overscroll-x-contain snap-x snap-mandatory -mx-4 sm:-mx-6 px-4 sm:px-6 pt-3 pb-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-4 lg:overflow-visible lg:mx-0 lg:px-0"
+          className="flex gap-5 overflow-x-auto overflow-y-hidden overscroll-x-contain snap-x snap-mandatory scroll-px-4 sm:scroll-px-6 -mx-4 sm:-mx-6 px-4 sm:px-6 pt-3 pb-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-4 lg:overflow-visible lg:mx-0 lg:px-0"
         >
           {panels.map(({ Art, color, title, body }, i) => (
             <motion.div key={title} variants={panelIn} className="snap-start shrink-0 w-[min(78vw,280px)] lg:w-auto">
